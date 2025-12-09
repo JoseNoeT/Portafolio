@@ -1,0 +1,33 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# macOS
+.DS_Store
+
+# Database files
+*.sqlite3
+db.sqlite3
+
+# Django static and media
+staticfiles/
+media/
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+*.log
+
+# Editor directories
+.vscode/
+.idea/
+
+# Build/dist
+build/
+dist/
+*.egg-info/

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Proyectos</h1>
+{% if projects %}
+    <ul>
+    {% for project in projects %}
+        <li>
+            <h2>{{ project.title }}</h2>
+            <p>{{ project.description }}</p>
+            {% if project.url %}<p><a href="{{ project.url }}">Enlace</a></p>{% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay proyectos aún.</p>
+{% endif %}
+{% endblock %}
