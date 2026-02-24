@@ -16,7 +16,7 @@
     <div class="nav-container">
 
         <div class="nav-left">
-            <a href="/" class="nav-logo" aria-label="Inicio - Jose Noe">
+            <a href="{% url 'home' %}" class="nav-logo" aria-label="Inicio - Jose Noe">
                 <span class="nav-logo-mark" aria-hidden="true"></span>
                 <span class="nav-logo-text">Jose Noe</span>
             </a>
@@ -24,22 +24,22 @@
 
         <nav class="nav-links" role="navigation" aria-label="Main Navigation">
             <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/proyectos/">Proyectos</a></li>
-                <li><a href="/servicios/">Servicios</a></li>
-                <li><a href="/metodologia/">Metodología</a></li>
-                <li><a href="/about/">Sobre mí</a></li>
-                <li><a href="/contact/">Contacto</a></li>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'proyectos:list' %}">Proyectos</a></li>
+                <li><a href="{% url 'services' %}">Servicios</a></li>
+                <li><a href="{% url 'metodologia' %}">Metodología</a></li>
+                <li><a href="{% url 'about' %}">Sobre mí</a></li>
+                <li><a href="{% url 'contact' %}">Contacto</a></li>
             </ul>
 
             <div class="nav-cta-mobile">
-                <a href="/contact/" class="btn-primary">Hablemos</a>
+                <a href="{% url 'contact' %}" class="btn-primary">Hablemos</a>
             </div>
         </nav>
 
         <div class="nav-right">
             <div class="nav-cta desktop-only">
-                <a href="/contact/" class="btn-primary">Hablemos</a>
+                <a href="{% url 'contact' %}" class="btn-primary">Hablemos</a>
             </div>
 
             <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
