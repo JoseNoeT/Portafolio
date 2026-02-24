@@ -1,7 +1,14 @@
-/* static/css/services.css - minimal styles for Services */
-.services-hero{ padding:40px 20px; text-align:center; }
-.services-list{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:24px 0; }
-.service-card{ background:#0f172a; padding:20px; border-radius:8px; }
-.services-cta{ grid-column:1/-1; text-align:center; margin-top:12px; }
+/* services.css - styles specific to services.html */
 
-@media (max-width:900px){ .services-list{ grid-template-columns:1fr; } }
+.services.container{ max-width:1100px; margin:40px auto; padding:20px; color:#e6eef8; }
+.service-list{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+
+@media (max-width: 1024px) {
+	.service-list{ grid-template-columns: repeat(2,1fr); }
+}
+
+@media (max-width: 768px) {
+	.service-list{ grid-template-columns: repeat(1,1fr); }
+}
+.service{ background:rgba(255,255,255,0.03); padding:16px; border-radius:8px; }
+.service h2{ color:#cbd5e1; }

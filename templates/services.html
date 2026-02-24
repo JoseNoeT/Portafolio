@@ -8,30 +8,24 @@
 {% endblock %}
 
 {% block content %}
-<section class="services-hero container">
-  <h1>Servicios</h1>
-  <p class="lead">Servicios orientados a equipos y productos que requieren ingeniería estable y entrega continua.</p>
+<section class="services container">
+    <h1>Servicios</h1>
+
+    <div class="service-list">
+        <article class="service">
+            <h2>Desarrollo Backend</h2>
+            <p>APIs REST, GraphQL, integraciones y arquitectura escalable.</p>
+        </article>
+
+        <article class="service">
+            <h2>Consultoría Técnica</h2>
+            <p>Auditorías de código, diseño arquitectónico y planes de mejora.</p>
+        </article>
+
+        <article class="service">
+            <h2>MVP & Despliegue</h2>
+            <p>Construcción de MVPs listos para producción y despliegue automatizado.</p>
+        </article>
+    </div>
 </section>
-
-<section class="services-list container">
-  <div class="service-card">
-    <h3>Backend Engineering</h3>
-    <p>Desarrollo de APIs, modelado de datos y arquitectura para producción.</p>
-  </div>
-
-  <div class="service-card">
-    <h3>MVP Rápido</h3>
-    <p>Prototipos sólidos que validan hipótesis con foco en tiempo-to-market.</p>
-  </div>
-
-  <div class="service-card">
-    <h3>Consultoría Técnica</h3>
-    <p>Revisión de arquitectura, optimización de costes y formación para equipos.</p>
-  </div>
-
-  <div class="services-cta">
-    <a href="/contact/" class="btn-primary">Hablemos</a>
-  </div>
-</section>
-
 {% endblock %}

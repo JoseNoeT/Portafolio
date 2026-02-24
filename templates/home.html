@@ -9,84 +9,71 @@
 
 {% block content %}
 
-<!-- HERO -->
-<section class="hero">
+<!-- HERO: fondo desde CSS (static/img/fondoabstract.jpeg) con overlay oscuro -->
+<section class="hero" role="banner" aria-label="Hero">
     <div class="hero-container">
         <h1>Construyo Sistemas Backend Sólidos y Escalables</h1>
-        <p>
-            Backend Engineer especializado en Django, arquitectura limpia
-            y despliegue en producción. Transformo problemas reales
-            en soluciones técnicas bien diseñadas.
-        </p>
+        <p>Backend Engineer especializado en Django, arquitectura limpia y despliegue en producción.</p>
 
         <div class="hero-buttons">
-            <a href="/proyectos/" class="btn-primary">Ver Proyectos</a>
+            <a href="{% url 'list_projects' %}" class="btn-primary">Ver Proyectos</a>
             <a href="/contact/" class="btn-secondary">Trabajemos Juntos</a>
         </div>
     </div>
 </section>
 
-<!-- PROPUESTA DE VALOR -->
-<section class="value">
+<!-- INGENIERÍA / METODOLOGÍA: imagen lateral (usar static img/arquitec.jpeg) -->
+<section class="methodology">
+    <div class="container method-wrap">
+        <div class="method-text">
+            <h2>Ingeniería y Metodología</h2>
+            <p>Diseño de arquitectura, planificación y ejecución orientada a resultados.</p>
+        </div>
+        <div class="method-image">
+            <!-- Insertar imagen con tag <img> y usar la etiqueta static en el src -->
+        <div class="method-image">
+            <!-- Reusable image-card: mantiene 16:9, object-fit, reveal y hover -->
+            <div class="image-card reveal">
+                <img src="{% static 'img/arquitec.jpeg' %}" alt="Arquitectura" />
+            </div>
+        </div>
+
+<!-- SERVICIOS: card decorativa con imagen (static/img/escritorio.jpg) -->
+<section class="services">
     <div class="container">
-        <h2>Ingeniería con Método</h2>
-        <p class="value-sub">
-            No solo escribo código. Diseño arquitectura, planifico fases
-            y ejecuto con estructura.
-        </p>
-
-        <div class="value-grid">
-            <div class="value-card">
-                <h3>Arquitectura Limpia</h3>
-                <p>Sistemas mantenibles, escalables y bien estructurados.</p>
+        <h2>Servicios</h2>
+        <div class="service-card">
+            <img src="{% static 'img/escritorio.jpg' %}" alt="Escritorio" class="service-img">
+        <div class="service-grid">
+            <div class="service-card reveal">
+                <div class="image-card">
+                    <img src="{% static 'img/escritorio.jpg' %}" alt="Escritorio" />
+                </div>
+                <div class="service-body">
+                    <h3>Desarrollo Web</h3>
+                    <p>APIs REST, integración, y despliegue en producción.</p>
+                </div>
             </div>
 
-            <div class="value-card">
-                <h3>Backend Profesional</h3>
-                <p>APIs, bases de datos, lógica robusta y segura.</p>
-            </div>
-
-            <div class="value-card">
-                <h3>Despliegue Real</h3>
-                <p>Producción en Render, PostgreSQL y buenas prácticas.</p>
-            </div>
+<!-- SOBRE MÍ: imagen profesional lateral (static/img/personaCompu.jpg) -->
+<section class="about">
+    <div class="container about-wrap">
+        <div class="about-image">
+            <img src="{% static 'img/personaCompu.jpg' %}" alt="Sobre mí" class="img-side">
+        </div>
+        <div class="about-text">
+            <h2>Sobre mí</h2>
+            <p>Ingeniero en sistemas con experiencia en backend, arquitecturas limpias y despliegues seguros.</p>
         </div>
     </div>
 </section>
 
-<!-- PROYECTOS DESTACADOS -->
-<section class="featured">
-    <div class="container">
-        <h2>Proyectos Destacados</h2>
-
-        <div class="featured-grid">
-            <div class="project-card">
-                <h3>CrazyFamily Remates</h3>
-                <p>Sistema de subastas con Django + Oracle.</p>
-                <a href="/proyectos/" class="card-link">Ver Caso</a>
-            </div>
-
-            <div class="project-card">
-                <h3>ToolGuard</h3>
-                <p>Registro y control de herramientas con backend robusto.</p>
-                <a href="/proyectos/" class="card-link">Ver Caso</a>
-            </div>
-
-            <div class="project-card">
-                <h3>Sistema de Metas</h3>
-                <p>Aplicación personal con arquitectura modular.</p>
-                <a href="/proyectos/" class="card-link">Ver Caso</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA FINAL -->
-<section class="cta">
-    <div class="cta-container">
-        <h2>¿Tienes un proyecto en mente?</h2>
-        <p>Convirtamos tu idea en una solución sólida y profesional.</p>
-        <a href="/contact/" class="btn-primary">Hablemos</a>
+<!-- CTA final: fondo desde CSS (static/img/paisajecompu.jpg) con overlay oscuro -->
+<section class="cta-hero" role="region" aria-label="Call to Action">
+    <div class="cta-inner">
+        <h2>¿Listo para colaborar?</h2>
+        <p>Contacta para proyectos o consultas.</p>
+        <a href="{% url 'list_projects' %}" class="btn-primary">Ver proyectos</a>
     </div>
 </section>
 

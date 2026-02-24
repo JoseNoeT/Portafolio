@@ -18,6 +18,19 @@ body {
     padding: 20px;
 }
 
+/* Responsive container tweaks */
+@media (max-width: 1024px) {
+    .container { max-width: 1000px; padding: 18px; }
+}
+
+@media (max-width: 768px) {
+    .container { max-width: 720px; padding: 16px; }
+}
+
+@media (max-width: 480px) {
+    .container { max-width: 100%; padding: 12px; }
+}
+
 .content {
     min-height: 80vh;
 }

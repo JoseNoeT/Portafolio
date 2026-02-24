@@ -1,0 +1,13 @@
+/* proyectos-detail.css - styles for proyecto detail / case study */
+
+.project-detail.container{ max-width:1000px; margin:30px auto; color:#e6eef8; padding:16px; }
+.project-hero{ width:100%; max-height:420px; object-fit:cover; border-radius:8px; margin-bottom:16px; }
+.project-meta{ background:rgba(255,255,255,0.02); padding:12px; border-radius:6px; }
+
+@media (max-width: 768px) {
+	.project-hero{ max-height:320px; }
+}
+
+@media (max-width: 480px) {
+	.project-hero{ max-height:220px; }
+}

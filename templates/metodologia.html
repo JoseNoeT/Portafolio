@@ -4,29 +4,19 @@
 {% block title %}Metodología - Jose Noe{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/metodologia.css' %}">
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
 {% endblock %}
 
 {% block content %}
-<section class="method-hero container">
-  <h1>Metodología</h1>
-  <p class="lead">Proceso estructurado para entregar software con calidad y rapidez.</p>
+<section class="methodology container">
+    <h1>Metodología</h1>
+    <p>Trabajo por fases: diagnóstico, diseño, implementación y despliegue. Priorizo pruebas, observabilidad y entregas iterativas.</p>
+    <h2>Fases</h2>
+    <ol>
+        <li>Análisis y alcance</li>
+        <li>Arquitectura y diseño</li>
+        <li>Implementación y pruebas</li>
+        <li>Despliegue y monitoreo</li>
+    </ol>
 </section>
-
-<section class="method-steps container">
-  <h2>Fases</h2>
-  <ol class="steps-list">
-    <li>Discovery — Reunión de requisitos y objetivos</li>
-    <li>Diseño — Arquitectura e interfaces</li>
-    <li>Implementación — Desarrollo iterativo</li>
-    <li>Pruebas — QA y seguridad</li>
-    <li>Despliegue — Producción y monitorización</li>
-  </ol>
-</section>
-
-<section class="method-philosophy container">
-  <h2>Filosofía</h2>
-  <p>Comunicación clara, entregas incrementales y responsabilidad técnica en cada entrega.</p>
-</section>
-
 {% endblock %}

@@ -16,7 +16,7 @@
     <div class="nav-container">
 
         <div class="nav-left">
-            <a href="{% url 'home' %}" class="nav-logo" aria-label="Inicio - Jose Noe">
+            <a href="/" class="nav-logo" aria-label="Inicio - Jose Noe">
                 <span class="nav-logo-mark" aria-hidden="true"></span>
                 <span class="nav-logo-text">Jose Noe</span>
             </a>
@@ -25,7 +25,7 @@
         <nav class="nav-links" role="navigation" aria-label="Main Navigation">
             <ul>
                 <li><a href="{% url 'home' %}">Inicio</a></li>
-                <li><a href="{% url 'proyectos:list' %}">Proyectos</a></li>
+                <li><a href="{% url 'list_projects' %}">Proyectos</a></li>
                 <li><a href="{% url 'services' %}">Servicios</a></li>
                 <li><a href="{% url 'metodologia' %}">Metodología</a></li>
                 <li><a href="{% url 'about' %}">Sobre mí</a></li>
@@ -33,13 +33,13 @@
             </ul>
 
             <div class="nav-cta-mobile">
-                <a href="{% url 'contact' %}" class="btn-primary">Hablemos</a>
+                <a href="/contact/" class="btn-primary">Hablemos</a>
             </div>
         </nav>
 
         <div class="nav-right">
             <div class="nav-cta desktop-only">
-                <a href="{% url 'contact' %}" class="btn-primary">Hablemos</a>
+                <a href="/contact/" class="btn-primary">Hablemos</a>
             </div>
 
             <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
@@ -100,5 +100,6 @@
 </footer>
 
 <script src="{% static 'js/navbar.js' %}" defer></script>
+{% block extra_js %}{% endblock %}
 </body>
 </html>
