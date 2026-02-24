@@ -1,11 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Portafolio - Jose Noe</title>
-    <link rel="stylesheet" href="/static/style.css">
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Portafolio - Jose Noe{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 </head>
 <body>
-    {% block content %}{% endblock %}
+
+<header class="navbar">
+    <div class="nav-container">
+
+        <div class="nav-left">
+            <a href="/" class="nav-logo" aria-label="Inicio - Jose Noe">
+                <span class="nav-logo-mark" aria-hidden="true"></span>
+                <span class="nav-logo-text">Jose Noe</span>
+            </a>
+        </div>
+
+        <nav class="nav-links" role="navigation" aria-label="Main Navigation">
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/proyectos/">Proyectos</a></li>
+                <li><a href="/servicios/">Servicios</a></li>
+                <li><a href="/metodologia/">Metodología</a></li>
+                <li><a href="/about/">Sobre mí</a></li>
+                <li><a href="/contact/">Contacto</a></li>
+            </ul>
+
+            <div class="nav-cta-mobile">
+                <a href="/contact/" class="btn-primary">Hablemos</a>
+            </div>
+        </nav>
+
+        <div class="nav-right">
+            <div class="nav-cta desktop-only">
+                <a href="/contact/" class="btn-primary">Hablemos</a>
+            </div>
+
+            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+    </div>
+</header>
+
+<main class="container content">
+        {% block content %}
+        {% endblock %}
+</main>
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <!-- Identidad -->
+        <section class="footer-brand">
+            <h3 class="footer-logo">Jose Noe</h3>
+            <p class="footer-tagline">Backend Engineer · Freelancer</p>
+            <p class="footer-mini">Soluciones reales, ingeniería real.</p>
+        </section>
+
+        <!-- Navegación -->
+        <section class="footer-links">
+            <h4 class="footer-title">Navegación</h4>
+            <nav class="footer-nav">
+                <a href="/">Inicio</a>
+                <a href="/proyectos/">Proyectos</a>
+                <a href="/servicios/">Servicios</a>
+                <a href="/metodologia/">Metodología</a>
+                <a href="/about/">Sobre mí</a>
+                <a href="/contact/">Contacto</a>
+            </nav>
+        </section>
+
+        <!-- Contacto -->
+        <section class="footer-contact">
+            <h4 class="footer-title">Contacto</h4>
+            <div class="footer-contact-links">
+                <a href="mailto:TU_CORREO_AQUI">TU_CORREO_AQUI</a>
+                <a href="https://github.com/TU_USUARIO" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.linkedin.com/in/TU_USUARIO" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
+
+            <a class="footer-cta" href="/contact/">Hablemos</a>
+        </section>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Jose Noe · Backend Developer</p>
+    </div>
+</footer>
+
+<script src="{% static 'js/navbar.js' %}" defer></script>
 </body>
 </html>
