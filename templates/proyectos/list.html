@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Proyectos - Jose Noe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/projects.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="projects-hero container">
+  <h1>Proyectos</h1>
+  <p class="lead">Proyectos seleccionados con enfoque en backend y resultados de negocio.</p>
+</section>
+
+<section class="projects-grid container">
+  <div class="grid">
+    {% comment %} Loop de ejemplo; reemplazar con queryset en la vista {% endcomment %}
+    {% for project in projects %}
+      <article class="project-card">
+        <h3>{{ project.title }}</h3>
+        <p class="summary">{{ project.summary }}</p>
+        <a href="{% url 'proyectos:detail' project.pk %}" class="btn-secondary">Ver más</a>
+      </article>
+    {% empty %}
+      <p>No hay proyectos publicados todavía.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

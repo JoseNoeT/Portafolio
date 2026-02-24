@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Servicios - Jose Noe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="services-hero container">
+  <h1>Servicios</h1>
+  <p class="lead">Servicios orientados a equipos y productos que requieren ingeniería estable y entrega continua.</p>
+</section>
+
+<section class="services-list container">
+  <div class="service-card">
+    <h3>Backend Engineering</h3>
+    <p>Desarrollo de APIs, modelado de datos y arquitectura para producción.</p>
+  </div>
+
+  <div class="service-card">
+    <h3>MVP Rápido</h3>
+    <p>Prototipos sólidos que validan hipótesis con foco en tiempo-to-market.</p>
+  </div>
+
+  <div class="service-card">
+    <h3>Consultoría Técnica</h3>
+    <p>Revisión de arquitectura, optimización de costes y formación para equipos.</p>
+  </div>
+
+  <div class="services-cta">
+    <a href="/contact/" class="btn-primary">Hablemos</a>
+  </div>
+</section>
+
+{% endblock %}

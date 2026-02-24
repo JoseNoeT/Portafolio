@@ -1,0 +1,6 @@
+/* static/css/metodologia.css - minimal styles for Methodology */
+.method-hero{ padding:40px 20px; text-align:center; }
+.method-steps{ padding:20px 0; }
+.steps-list{ margin-left:18px; }
+
+@media (max-width:900px){ .steps-list{ margin-left:12px; } }

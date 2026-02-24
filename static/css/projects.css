@@ -1,0 +1,7 @@
+/* static/css/projects.css - minimal styles for projects listing and detail */
+.projects-hero{ padding:40px 20px; text-align:center; }
+.projects-grid .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.project-card{ background:#0f172a; padding:18px; border-radius:8px; }
+.project-overview{ padding:20px 0; }
+
+@media (max-width:900px){ .projects-grid .grid{ grid-template-columns:1fr; } }

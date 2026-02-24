@@ -1,0 +1,6 @@
+/* static/css/about.css - minimal styles for About page */
+.about-hero{ padding: 64px 20px; text-align:center; }
+.about-title{ color:#f8fafc; font-size:32px; margin-bottom:8px; }
+.about-lead{ color:#94a3b8; margin-bottom:18px; }
+.about-history, .about-stack, .about-values{ padding:28px 20px; background:transparent; color:#e2e8f0; }
+.tech-list{ list-style: none; display:flex; gap:12px; flex-wrap:wrap; }

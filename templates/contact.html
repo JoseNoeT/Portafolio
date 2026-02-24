@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contacto - Jose Noe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="contact-hero container">
+  <h1>Contacto</h1>
+  <p class="lead">Hablemos sobre tu proyecto.</p>
+</section>
+
+<section class="contact-form container">
+  <form action="" method="post" class="form-contact">
+    {% csrf_token %}
+    <label for="id_name">Nombre</label>
+    <input type="text" name="name" id="id_name" required>
+
+    <label for="id_email">Email</label>
+    <input type="email" name="email" id="id_email" required>
+
+    <label for="id_message">Mensaje</label>
+    <textarea name="message" id="id_message" rows="6" required></textarea>
+
+    <button type="submit" class="btn-primary">Enviar</button>
+  </form>
+
+  <div class="contact-alt">
+    <h3>Contacto alternativo</h3>
+    <p>Email: <a href="mailto:TU_CORREO_AQUI">TU_CORREO_AQUI</a></p>
+    <p>GitHub: <a href="https://github.com/TU_USUARIO" target="_blank" rel="noopener">TU_USUARIO</a></p>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ project.title }} - Jose Noe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/projects.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="project-hero container">
+  <h1>{{ project.title }}</h1>
+  <p class="lead">{{ project.subtitle }}</p>
+</section>
+
+<section class="project-overview container">
+  <h2>Problema</h2>
+  <p>{{ project.problem }}</p>
+
+  <h2>Solución</h2>
+  <p>{{ project.solution }}</p>
+
+  <h3>Tecnologías</h3>
+  <ul class="tech-list">
+    {% for tech in project.technologies %}
+      <li>{{ tech }}</li>
+    {% empty %}
+      <li>Python, Django, PostgreSQL</li>
+    {% endfor %}
+  </ul>
+
+  <p><a href="{{ project.repo_url }}" target="_blank" rel="noopener" class="btn-secondary">Repo / Demo</a></p>
+
+  <div class="project-cta">
+    <a href="/contact/" class="btn-primary">Hablemos</a>
+  </div>
+</section>
+
+{% endblock %}

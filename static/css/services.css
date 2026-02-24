@@ -1,0 +1,7 @@
+/* static/css/services.css - minimal styles for Services */
+.services-hero{ padding:40px 20px; text-align:center; }
+.services-list{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:24px 0; }
+.service-card{ background:#0f172a; padding:20px; border-radius:8px; }
+.services-cta{ grid-column:1/-1; text-align:center; margin-top:12px; }
+
+@media (max-width:900px){ .services-list{ grid-template-columns:1fr; } }

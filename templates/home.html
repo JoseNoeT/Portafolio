@@ -1,22 +1,93 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Inicio - Jose Noe{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
 {% block content %}
 
+<!-- HERO -->
 <section class="hero">
-    <h1>Hola, soy Jose Noe</h1>
-    <p>Desarrollador Backend especializado en Python y Django.</p>
-    <a href="/proyectos/" class="btn">Ver mis proyectos</a>
+    <div class="hero-container">
+        <h1>Construyo Sistemas Backend Sólidos y Escalables</h1>
+        <p>
+            Backend Engineer especializado en Django, arquitectura limpia
+            y despliegue en producción. Transformo problemas reales
+            en soluciones técnicas bien diseñadas.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="/proyectos/" class="btn-primary">Ver Proyectos</a>
+            <a href="/contact/" class="btn-secondary">Trabajemos Juntos</a>
+        </div>
+    </div>
 </section>
 
-<section class="about">
-    <h2>Sobre mí</h2>
-    <p>
-        Programador titulado con enfoque en desarrollo backend,
-        arquitectura limpia y despliegue en producción.
-        Me interesa construir sistemas sólidos y escalables.
-    </p>
+<!-- PROPUESTA DE VALOR -->
+<section class="value">
+    <div class="container">
+        <h2>Ingeniería con Método</h2>
+        <p class="value-sub">
+            No solo escribo código. Diseño arquitectura, planifico fases
+            y ejecuto con estructura.
+        </p>
+
+        <div class="value-grid">
+            <div class="value-card">
+                <h3>Arquitectura Limpia</h3>
+                <p>Sistemas mantenibles, escalables y bien estructurados.</p>
+            </div>
+
+            <div class="value-card">
+                <h3>Backend Profesional</h3>
+                <p>APIs, bases de datos, lógica robusta y segura.</p>
+            </div>
+
+            <div class="value-card">
+                <h3>Despliegue Real</h3>
+                <p>Producción en Render, PostgreSQL y buenas prácticas.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROYECTOS DESTACADOS -->
+<section class="featured">
+    <div class="container">
+        <h2>Proyectos Destacados</h2>
+
+        <div class="featured-grid">
+            <div class="project-card">
+                <h3>CrazyFamily Remates</h3>
+                <p>Sistema de subastas con Django + Oracle.</p>
+                <a href="/proyectos/" class="card-link">Ver Caso</a>
+            </div>
+
+            <div class="project-card">
+                <h3>ToolGuard</h3>
+                <p>Registro y control de herramientas con backend robusto.</p>
+                <a href="/proyectos/" class="card-link">Ver Caso</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Sistema de Metas</h3>
+                <p>Aplicación personal con arquitectura modular.</p>
+                <a href="/proyectos/" class="card-link">Ver Caso</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta">
+    <div class="cta-container">
+        <h2>¿Tienes un proyecto en mente?</h2>
+        <p>Convirtamos tu idea en una solución sólida y profesional.</p>
+        <a href="/contact/" class="btn-primary">Hablemos</a>
+    </div>
 </section>
 
 {% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Sobre mí - Jose Noe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="about-hero">
+  <div class="container about-hero-container">
+    <h1 class="about-title">Sobre mí</h1>
+    <p class="about-lead">Backend Engineer con experiencia en diseño de sistemas fiables y escalables.</p>
+  </div>
+</section>
+
+<section class="about-history container">
+  <h2>Mi trayectoria</h2>
+  <p>He trabajado en proyectos empresariales y startups, diseñando APIs, arquitectura y pipelines de despliegue. Me enfoco en resultados mantenibles y prácticas de ingeniería.</p>
+</section>
+
+<section class="about-stack container">
+  <h2>Stack Tecnológico</h2>
+  <ul class="tech-list">
+    <li>Python / Django</li>
+    <li>PostgreSQL</li>
+    <li>Docker / CI & CD</li>
+    <li>REST / GraphQL</li>
+    <li>Testing & Observability</li>
+  </ul>
+</section>
+
+<section class="about-values container">
+  <h2>Valores y Metodología</h2>
+  <p>Priorizo claridad, responsabilidad técnica y entregables con impacto. Trabajo por iteraciones medibles y diseño con límites de contexto claros.</p>
+</section>
+
+{% endblock %}
