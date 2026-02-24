@@ -1,5 +1,6 @@
 /* ====================================================================
    home.css - Hero, Services, Projects, Image System & Animations
+   PREMIUM SaaS / Senior Portfolio Design
    
    Estructura:
    1. Root variables y reset
@@ -25,12 +26,16 @@
     --cta: #2563eb;
     --cta-dark: #1e40af;
     --container-width: 1100px;
+    --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --spacing-section: clamp(60px, 8vw, 100px);
+    --line-height-relaxed: 1.65;
 }
 
 body {
     background-color: var(--bg-dark);
     color: var(--text-light);
-    font-family: Inter, Arial, sans-serif;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: var(--line-height-relaxed);
 }
 
 .container {
@@ -43,10 +48,12 @@ body {
    2. HERO SECTION - Full width with background image + overlay
    ==================================================================== */
 .hero {
-    padding: 100px 20px;
+    padding: var(--spacing-section) 20px;
     text-align: center;
-    background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)),
-                url("../img/fondoabstract.jpeg");
+    background:
+        radial-gradient(circle at 30% 20%, rgba(56,189,248,0.08), transparent 40%),
+        linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)),
+        url("../img/fondoabstract.jpeg");
     background-size: cover;
     background-position: center;
     color: var(--text-light);
@@ -58,17 +65,20 @@ body {
 }
 
 .hero h1 {
-    font-size: 2.6rem;
-    margin-bottom: 20px;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: clamp(16px, 2vw, 24px);
     text-shadow: 0 2px 8px rgba(2,6,23,0.6);
     color: #f8fafc;
 }
 
 .hero p {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    line-height: var(--line-height-relaxed);
     color: var(--text-muted);
-    margin-bottom: 30px;
+    margin: 0 auto clamp(24px, 3vw, 32px);
+    max-width: 60ch;
 }
 
 .hero-buttons {
@@ -81,47 +91,72 @@ body {
     display: inline-block;
     background: linear-gradient(135deg, var(--cta), var(--cta-dark));
     color: white;
-    padding: 10px 20px;
-    border-radius: 6px;
+    padding: 11px 24px;
+    border-radius: 8px;
     text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+    will-change: transform;
+    cursor: pointer;
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(37,99,235,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(37,99,235,0.35);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
 }
 
 .btn-secondary {
     display: inline-block;
     background: transparent;
-    border: 1px solid var(--accent);
+    border: 1.5px solid var(--accent);
     color: var(--accent);
-    padding: 10px 20px;
-    border-radius: 6px;
+    padding: 10px 24px;
+    border-radius: 8px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s var(--ease-out);
+    cursor: pointer;
 }
 
 .btn-secondary:hover {
     background: var(--accent);
     border-color: var(--accent);
     color: var(--bg-dark);
+    transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+    transform: scale(0.98);
 }
 
 /* ====================================================================
    3. METHODOLOGY / INGENIERÍA SECTION
    ==================================================================== */
+/* ====================================================================
+   3. METHODOLOGY / INGENIERÍA SECTION
+   ==================================================================== */
+
 .methodology {
-    padding: 80px 20px;
+    padding: var(--spacing-section) 20px;
 }
 
 .method-wrap {
     display: flex;
-    align-items: center;
-    gap: 40px;
-    max-width: var(--container-width);
-    margin: 0 auto;
+    flex-direction: column;
+    gap: clamp(32px, 4vw, 48px);
+}
+
+@media (min-width: 1024px) {
+    .method-wrap {
+        flex-direction: row;
+        align-items: flex-start;
+    }
 }
 
 .method-text {
@@ -129,49 +164,68 @@ body {
 }
 
 .method-text h2 {
-    font-size: 2rem;
-    margin-bottom: 12px;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: clamp(12px, 1.5vw, 16px);
+    line-height: 1.2;
+}
+
+.method-text p {
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    line-height: var(--line-height-relaxed);
+    color: var(--text-muted);
+    margin-bottom: 1em;
 }
 
 .method-image {
-    flex: 1;
+    width: 100%;
     display: flex;
     justify-content: center;
+}
+
+@media (min-width: 1024px) {
+    .method-image {
+        flex: 1;
+        width: auto;
+    }
 }
 
 /* ====================================================================
    4. SERVICES SECTION
    ==================================================================== */
 .services {
-    padding: 80px 20px;
+    padding: var(--spacing-section) 20px;
 }
 
 .services h2 {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 40px;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: clamp(32px, 4vw, 48px);
+    line-height: 1.2;
 }
 
 .service-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
-    max-width: var(--container-width);
-    margin: 0 auto;
 }
 
 .service-card {
     background: rgba(255,255,255,0.03);
-    padding: 20px;
+    padding: clamp(18px, 3vw, 24px);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
 }
 
 .service-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(56,189,248,0.1);
 }
 
 .service-body {
@@ -179,30 +233,49 @@ body {
 }
 
 .service-body h3 {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
     margin-bottom: 8px;
     color: var(--text-light);
+}
+
+.service-body p {
+    font-size: clamp(0.9rem, 1.1vw, 0.98rem);
+    line-height: var(--line-height-relaxed);
 }
 
 /* ====================================================================
    5. ABOUT SECTION
    ==================================================================== */
 .about {
-    padding: 80px 20px;
+    padding: var(--spacing-section) 20px;
 }
 
 .about-wrap {
     display: flex;
-    align-items: center;
-    gap: 40px;
-    max-width: var(--container-width);
-    margin: 0 auto;
+    flex-direction: column;
+    gap: clamp(32px, 4vw, 48px);
+}
+
+@media (min-width: 1024px) {
+    .about-wrap {
+        flex-direction: row;
+        align-items: flex-start;
+    }
 }
 
 .about-image {
-    flex: 1;
+    width: 100%;
     display: flex;
     justify-content: center;
+}
+
+@media (min-width: 1024px) {
+    .about-image {
+        flex: 1;
+        width: auto;
+    }
 }
 
 .about-text {
@@ -210,58 +283,71 @@ body {
 }
 
 .about-text h2 {
-    font-size: 2rem;
-    margin-bottom: 16px;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: clamp(16px, 2vw, 20px);
+    line-height: 1.2;
 }
 
 .about-text p {
-    line-height: 1.8;
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    line-height: var(--line-height-relaxed);
     color: var(--text-muted);
+    margin-bottom: 1em;
+    max-width: 65ch;
 }
 
 /* ====================================================================
    6. FEATURED PROJECTS SECTION
    ==================================================================== */
 .featured {
-    padding: 80px 20px;
+    padding: var(--spacing-section) 20px;
 }
 
 .featured h2 {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 40px;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: clamp(32px, 4vw, 48px);
+    line-height: 1.2;
 }
 
 .featured-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
-    max-width: var(--container-width);
-    margin: 0 auto;
 }
 
 .project-card {
     background: rgba(255,255,255,0.03);
-    padding: 18px;
+    padding: clamp(16px, 2.5vw, 20px);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     gap: 14px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(56,189,248,0.1);
 }
 
 .project-card h3 {
     color: var(--text-light);
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
     margin-top: 8px;
+    line-height: 1.3;
 }
 
 .project-card p {
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: clamp(0.85rem, 1vw, 0.95rem);
+    line-height: var(--line-height-relaxed);
 }
 
 .card-link {
@@ -279,10 +365,12 @@ body {
    7. CTA HERO SECTION
    ==================================================================== */
 .cta-hero {
-    padding: 80px 20px;
+    padding: var(--spacing-section) 20px;
     text-align: center;
-    background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)),
-                url("../img/paisajecompu.jpg");
+    background:
+        radial-gradient(circle at 50% 50%, rgba(56,189,248,0.06), transparent 50%),
+        linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)),
+        url("../img/paisajecompu.jpg");
     background-size: cover;
     background-position: center;
     color: var(--text-light);
@@ -294,14 +382,20 @@ body {
 }
 
 .cta-inner h2 {
-    font-size: 2rem;
-    margin-bottom: 12px;
+    font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: clamp(12px, 1.5vw, 20px);
     text-shadow: 0 2px 8px rgba(2,6,23,0.6);
+    line-height: 1.2;
 }
 
 .cta-inner p {
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
     color: var(--text-muted);
-    margin-bottom: 24px;
+    margin: 0 auto clamp(20px, 2vw, 28px);
+    max-width: 60ch;
+    line-height: var(--line-height-relaxed);
 }
 
 /* ====================================================================
@@ -316,7 +410,7 @@ body {
     background: var(--bg-dark);
     box-shadow: 0 12px 30px rgba(0,0,0,0.5);
     display: block;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
 }
 
 .image-card img {
@@ -324,25 +418,32 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.6s ease;
+    transition: transform 0.7s var(--ease-out);
 }
 
 .image-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px rgba(56,189,248,0.15);
 }
 
 .image-card:hover img {
-    transform: scale(1.06);
+    transform: scale(1.05);
 }
 
 /* ====================================================================
    9. REVEAL ANIMATION - Elements fade in on scroll
    ==================================================================== */
 .reveal {
+    /* Show by default (fallback if JS disabled) */
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Initial state when JS is ready (will be changed by JavaScript to .active) */
+html.js-enabled .reveal:not(.active) {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .reveal.active {
@@ -366,11 +467,7 @@ body {
 
     .method-wrap,
     .about-wrap {
-        gap: 24px;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
+        gap: 32px;
     }
 }
 
@@ -393,20 +490,9 @@ body {
         width: 100%;
     }
 
-    .methodology,
-    .services,
-    .about,
-    .featured,
-    .cta-hero {
-        padding: 60px 20px;
-    }
-
-    .hero h1 {
-        font-size: 1.6rem;
-    }
-
-    .hero p {
-        font-size: 0.95rem;
+    .method-image {
+        flex: none;
+        width: 100%;
     }
 
     .hero-buttons {
@@ -419,51 +505,18 @@ body {
         width: 100%;
         text-align: center;
     }
-
-    .featured h2,
-    .services h2 {
-        font-size: 1.6rem;
-    }
-
-    .method-text h2,
-    .about-text h2,
-    .cta-inner h2 {
-        font-size: 1.6rem;
-    }
 }
 
 /* Mobile small (480px and below) */
 @media (max-width: 480px) {
-    .hero {
-        padding: 60px 12px;
-    }
-
-    .hero h1 {
-        font-size: 1.4rem;
-        margin-bottom: 16px;
-    }
-
-    .hero p {
-        font-size: 0.9rem;
-        margin-bottom: 24px;
-    }
-
     .hero-buttons {
         gap: 8px;
     }
 
     .btn-primary,
     .btn-secondary {
-        padding: 8px 16px;
+        padding: 10px 20px;
         font-size: 0.9rem;
-    }
-
-    .methodology,
-    .services,
-    .about,
-    .featured,
-    .cta-hero {
-        padding: 60px 12px;
     }
 
     .method-wrap,
@@ -472,26 +525,9 @@ body {
         margin: 0 auto;
     }
 
-    .service-card,
-    .project-card {
-        padding: 14px;
-    }
-
-    .featured h2,
-    .services h2,
-    .method-text h2,
-    .about-text h2,
-    .cta-inner h2 {
-        font-size: 1.3rem;
-        margin-bottom: 24px;
-    }
-
     .image-card {
         border-radius: 10px;
-    }
-
-    .cta-inner {
-        padding: 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
 }
 
@@ -502,8 +538,4 @@ body {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-}
-
-@media (max-width:900px){
-    .image-card{ max-width:100%; }
 }

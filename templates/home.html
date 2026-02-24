@@ -9,7 +9,7 @@
 
 {% block content %}
 
-<!-- HERO: fondo desde CSS (static/img/fondoabstract.jpeg) con overlay oscuro -->
+<!-- HERO -->
 <section class="hero" role="banner" aria-label="Hero">
     <div class="hero-container">
         <h1>Construyo Sistemas Backend Sólidos y Escalables</h1>
@@ -22,53 +22,126 @@
     </div>
 </section>
 
-<!-- INGENIERÍA / METODOLOGÍA: imagen lateral (usar static img/arquitec.jpeg) -->
+<!-- METHODOLOGY -->
 <section class="methodology">
-    <div class="container method-wrap">
-        <div class="method-text">
-            <h2>Ingeniería y Metodología</h2>
-            <p>Diseño de arquitectura, planificación y ejecución orientada a resultados.</p>
-        </div>
-        <div class="method-image">
-            <!-- Insertar imagen con tag <img> y usar la etiqueta static en el src -->
-        <div class="method-image">
-            <!-- Reusable image-card: mantiene 16:9, object-fit, reveal y hover -->
-            <div class="image-card reveal">
-                <img src="{% static 'img/arquitec.jpeg' %}" alt="Arquitectura" />
-            </div>
-        </div>
-
-<!-- SERVICIOS: card decorativa con imagen (static/img/escritorio.jpg) -->
-<section class="services">
     <div class="container">
-        <h2>Servicios</h2>
-        <div class="service-card">
-            <img src="{% static 'img/escritorio.jpg' %}" alt="Escritorio" class="service-img">
-        <div class="service-grid">
-            <div class="service-card reveal">
-                <div class="image-card">
-                    <img src="{% static 'img/escritorio.jpg' %}" alt="Escritorio" />
-                </div>
-                <div class="service-body">
-                    <h3>Desarrollo Web</h3>
-                    <p>APIs REST, integración, y despliegue en producción.</p>
-                </div>
+        <div class="method-wrap">
+            <div class="method-text">
+                <h2>Ingeniería y Metodología</h2>
+                <p>
+                    Cada proyecto que desarrollo sigue una metodología rigurosa centrada en arquitectura escalable y código de calidad producción.
+                </p>
+                <p>
+                    Diseño systems con patrones SOLID, realizo code reviews exhaustivos y configuro testing automatizado. Mi objetivo es entregar soluciones robustas que crezcan con tu negocio.
+                </p>
             </div>
 
-<!-- SOBRE MÍ: imagen profesional lateral (static/img/personaCompu.jpg) -->
-<section class="about">
-    <div class="container about-wrap">
-        <div class="about-image">
-            <img src="{% static 'img/personaCompu.jpg' %}" alt="Sobre mí" class="img-side">
-        </div>
-        <div class="about-text">
-            <h2>Sobre mí</h2>
-            <p>Ingeniero en sistemas con experiencia en backend, arquitecturas limpias y despliegues seguros.</p>
+            <div class="method-image reveal">
+                <div class="image-card">
+                    <img src="{% static 'img/arquitec.jpeg' %}" alt="Arquitectura" />
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- CTA final: fondo desde CSS (static/img/paisajecompu.jpg) con overlay oscuro -->
+<!-- SERVICES -->
+<section class="services">
+    <div class="container">
+        <h2>Servicios</h2>
+
+        <div class="service-grid">
+
+            <div class="service-card reveal">
+                <div class="image-card">
+                    <img src="{% static 'img/escritorio.jpg' %}" alt="Desarrollo Backend" />
+                </div>
+                <div class="service-body">
+                    <h3>Desarrollo Backend</h3>
+                    <p>APIs REST escalables, arquitectura limpia y optimización de desempeño con Django.</p>
+                </div>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="image-card">
+                    <img src="{% static 'img/azulabstracto.jpg' %}" alt="Arquitectura" />
+                </div>
+                <div class="service-body">
+                    <h3>Arquitectura de Sistemas</h3>
+                    <p>Diseño escalable, patrones SOLID y bases de datos optimizadas para producción.</p>
+                </div>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="image-card">
+                    <img src="{% static 'img/campus360.jpg' %}" alt="Deployment" />
+                </div>
+                <div class="service-body">
+                    <h3>Despliegue & DevOps</h3>
+                    <p>CI/CD, Docker, servidores cloud y monitoreo de aplicaciones en tiempo real.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+    <div class="container">
+        <div class="about-wrap">
+
+            <div class="about-image reveal">
+                <div class="image-card">
+                    <img src="{% static 'img/personaCompu.jpg' %}" alt="Sobre mí" />
+                </div>
+            </div>
+
+            <div class="about-text">
+                <h2>Sobre mí</h2>
+                <p>
+                    Soy ingeniero en sistemas especializado en desarrollo backend con Django. Con más de 3 años de experiencia, he construido arquitecturas escalables, APIs robustas y sistemas de despliegue automatizado.
+                </p>
+                <p>
+                    Mi enfoque: escribir código limpio, documentado y listo para producción. Sigo principios SOLID, realizo testing exhaustivo y configuro CI/CD para garantizar calidad.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FEATURED PROJECTS -->
+<section class="featured">
+    <div class="container">
+        <h2>Proyectos Destacados</h2>
+
+        <div class="featured-grid">
+
+            {% if projects %}
+                {% for project in projects %}
+                    <div class="project-card reveal">
+                        {% if project.image %}
+                            <div class="image-card">
+                                <img src="{{ project.image.url }}" alt="{{ project.title }}" />
+                            </div>
+                        {% endif %}
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description|truncatewords:20 }}</p>
+                        {% if project.url %}
+                            <a href="{{ project.url }}" class="card-link" target="_blank">Ver Proyecto →</a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No hay proyectos disponibles en este momento.</p>
+            {% endif %}
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
 <section class="cta-hero" role="region" aria-label="Call to Action">
     <div class="cta-inner">
         <h2>¿Listo para colaborar?</h2>

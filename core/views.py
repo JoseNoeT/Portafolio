@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from proyectos.models import Project
 
 def home(request):
-	return render(request, 'home.html')
+	projects = Project.objects.all()[:3]  # Últimos 3 proyectos
+	return render(request, 'home.html', {'projects': projects})
 
 
 def contact(request):

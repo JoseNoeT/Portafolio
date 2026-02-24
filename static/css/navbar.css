@@ -88,5 +88,5 @@
   *{ transition: none !important; }
 }
 
-/* Small tweaks */
-.container{ width:100%; }
+/* Small tweaks - Container width controlled in base.css */
+/* Removed conflicting width:100% rule that was causing scrollbars */
