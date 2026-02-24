@@ -1,122 +1,73 @@
-/* home.css
-   Styles for home page sections and image integration.
-   - Background images are referenced relatively (../img/...), not via {% static %}.
-   - Use overlay gradients for dark theme coherence.
-   - Images inserted via <img> use object-fit and max-height constraints.
-*/
+/* ====================================================================
+   home.css - Hero, Services, Projects, Image System & Animations
+   
+   Estructura:
+   1. Root variables y reset
+   2. HERO section
+   3. Methodology section
+   4. Services section
+   5. About section
+   6. Featured Projects section
+   7. CTA section
+   8. IMAGE CARD System
+   9. REVEAL Animation
+   10. Responsive media queries
+   ==================================================================== */
 
-:root{
+/* ====================================================================
+   1. ROOT VARIABLES & RESET
+   ==================================================================== */
+:root {
     --bg-dark: #0f172a;
     --text-light: #e6eef8;
+    --text-muted: #cbd5e1;
+    --accent: #38bdf8;
+    --cta: #2563eb;
+    --cta-dark: #1e40af;
     --container-width: 1100px;
 }
 
-body{
+body {
     background-color: var(--bg-dark);
     color: var(--text-light);
     font-family: Inter, Arial, sans-serif;
 }
 
-/* HERO: background from static/img/fondoabstract.jpeg with dark overlay */
-.hero{
-    padding: 80px 0;
-    color: var(--text-light);
-    background: linear-gradient(
-        rgba(15,23,42,0.85),
-        rgba(15,23,42,0.85)
-    ),
-    url("../img/fondoabstract.jpeg");
-    background-size: cover;
-    background-position: center;
-}
-.hero-container{ max-width: var(--container-width); margin: 0 auto; padding: 40px; }
-.hero h1{ font-size: 2.2rem; margin-bottom: 12px; }
-.hero p{ max-width: 700px; line-height: 1.5; color: #cbd5e1; }
-.hero-buttons{ margin-top: 18px; }
-.btn-primary{ background:#2563eb; color:white; padding:10px 16px; border-radius:6px; text-decoration:none; }
-.btn-secondary{ background:transparent; border:1px solid #334155; color:#e2e8f0; padding:10px 16px; border-radius:6px; text-decoration:none; margin-left:10px }
-
-/* Methodology / Ingeniería - image at side */
-.method-wrap{ display:flex; align-items:center; gap:24px; max-width:var(--container-width); margin:40px auto; padding:20px; }
-.method-text{ flex:1; }
-.method-image{ flex:1; }
-.img-side{ width:100%; max-height:360px; object-fit:cover; border-radius:8px; display:block; }
-
-/* Services card with decorative image */
-.services{ padding:40px 0; }
-.service-card{ display:flex; align-items:center; gap:18px; background: rgba(255,255,255,0.03); padding:16px; border-radius:8px; max-width:var(--container-width); margin:16px auto; }
-.service-img{ width:220px; height:140px; object-fit:cover; border-radius:6px; }
-.service-body{ color:#cbd5e1; }
-
-/* About section */
-.about-wrap{ display:flex; align-items:center; gap:24px; max-width:var(--container-width); margin:40px auto; padding:20px; }
-.about-image{ flex:0 0 320px; }
-.about-text{ flex:1; }
-
-/* CTA Hero - background image with overlay (static/img/paisajecompu.jpg) */
-.cta-hero{
-    padding: 60px 0;
-    color: var(--text-light);
-    background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)), url("../img/paisajecompu.jpg");
-    background-size: cover;
-    background-position: center;
-    text-align:center;
-}
-.cta-inner{ max-width:800px; margin:0 auto; padding:40px; }
-
-/* Responsive behavior */
-@media (max-width: 900px){
-    .method-wrap, .about-wrap{ flex-direction:column; }
-    .service-card{ flex-direction:column; }
-    .service-img{ width:100%; height:200px; }
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Grid adjustments for tablet and mobile per spec */
-@media (max-width: 1024px) {
-    .value-grid { grid-template-columns: repeat(2, 1fr); }
-    .featured-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 768px) {
-    .value-grid { grid-template-columns: repeat(2, 1fr); }
-    .featured-grid { grid-template-columns: repeat(1, 1fr); }
-    .method-wrap, .about-wrap { flex-direction: column-reverse; }
-    .hero h1 { font-size: 1.8rem; }
-}
-
-@media (max-width: 480px) {
-    .value-grid, .featured-grid { grid-template-columns: 1fr; }
-    .hero h1 { font-size: 1.4rem; }
-    .hero p { font-size: 0.95rem; }
-    .hero { padding: 60px 12px; }
-    .image-card { max-width: 100%; }
-}
-
-/* Accessibility / visual polish */
-.hero h1, .cta-inner h2{ text-shadow: 0 2px 8px rgba(2,6,23,0.6); }
-
-/* Small tweaks */
-.container{ padding:0 16px; }
-/* HERO */
+/* ====================================================================
+   2. HERO SECTION - Full width with background image + overlay
+   ==================================================================== */
 .hero {
     padding: 100px 20px;
     text-align: center;
+    background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)),
+                url("../img/fondoabstract.jpeg");
+    background-size: cover;
+    background-position: center;
+    color: var(--text-light);
 }
 
 .hero-container {
     max-width: 800px;
-    margin: auto;
+    margin: 0 auto;
 }
 
 .hero h1 {
-    font-size: 42px;
-    color: #f8fafc;
+    font-size: 2.6rem;
     margin-bottom: 20px;
+    text-shadow: 0 2px 8px rgba(2,6,23,0.6);
+    color: #f8fafc;
 }
 
 .hero p {
-    color: #94a3b8;
-    font-size: 18px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-muted);
     margin-bottom: 30px;
 }
 
@@ -126,118 +77,254 @@ body{
     gap: 20px;
 }
 
-.btn-secondary {
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--cta), var(--cta-dark));
+    color: white;
     padding: 10px 20px;
-    border: 1px solid #38bdf8;
-    color: #38bdf8;
     border-radius: 6px;
     text-decoration: none;
-    transition: 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(37,99,235,0.3);
+}
+
+.btn-secondary {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-    background: #38bdf8;
-    color: #0f172a;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg-dark);
 }
 
-/* VALUE */
-.value {
+/* ====================================================================
+   3. METHODOLOGY / INGENIERÍA SECTION
+   ==================================================================== */
+.methodology {
     padding: 80px 20px;
+}
+
+.method-wrap {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.method-text {
+    flex: 1;
+}
+
+.method-text h2 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.method-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* ====================================================================
+   4. SERVICES SECTION
+   ==================================================================== */
+.services {
+    padding: 80px 20px;
+}
+
+.services h2 {
     text-align: center;
-}
-
-.value-sub {
+    font-size: 2rem;
     margin-bottom: 40px;
-    color: #94a3b8;
 }
 
-.value-grid {
+.service-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 24px;
+    max-width: var(--container-width);
+    margin: 0 auto;
 }
 
-.value-card {
-    background: #0f172a;
-    padding: 30px;
-    border-radius: 10px;
-    transition: 0.3s ease;
+.service-card {
+    background: rgba(255,255,255,0.03);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform 0.3s ease;
 }
 
-.value-card:hover {
-    transform: translateY(-5px);
+.service-card:hover {
+    transform: translateY(-4px);
 }
 
-/* FEATURED */
+.service-body {
+    color: var(--text-muted);
+}
+
+.service-body h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
+
+/* ====================================================================
+   5. ABOUT SECTION
+   ==================================================================== */
+.about {
+    padding: 80px 20px;
+}
+
+.about-wrap {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+.about-text p {
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+/* ====================================================================
+   6. FEATURED PROJECTS SECTION
+   ==================================================================== */
 .featured {
     padding: 80px 20px;
+}
+
+.featured h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
 }
 
 .featured-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 24px;
+    max-width: var(--container-width);
+    margin: 0 auto;
 }
 
 .project-card {
-    background: #0f172a;
-    padding: 30px;
-    border-radius: 10px;
+    background: rgba(255,255,255,0.03);
+    padding: 18px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-card h3 {
+    color: var(--text-light);
+    margin-top: 8px;
+}
+
+.project-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
 .card-link {
-    color: #38bdf8;
+    color: var(--accent);
     text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-/* CTA */
-.cta {
+.card-link:hover {
+    color: var(--cta);
+}
+
+/* ====================================================================
+   7. CTA HERO SECTION
+   ==================================================================== */
+.cta-hero {
     padding: 80px 20px;
     text-align: center;
+    background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.85)),
+                url("../img/paisajecompu.jpg");
+    background-size: cover;
+    background-position: center;
+    color: var(--text-light);
 }
 
-.cta-container {
+.cta-inner {
     max-width: 700px;
-    margin: auto;
+    margin: 0 auto;
 }
 
-@media (max-width: 900px) {
-    .value-grid,
-    .featured-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-    }
+.cta-inner h2 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 8px rgba(2,6,23,0.6);
 }
 
-/* =====================
-   Image system: .image-card
-   Reusable responsive 16:9 containers with hover and reveal animation
-   ===================== */
+.cta-inner p {
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+/* ====================================================================
+   8. IMAGE CARD SYSTEM - Reusable 16:9 container with hover animation
+   ==================================================================== */
 .image-card {
     width: 100%;
-    max-width: 600px;
+    max-width: 100%;
     aspect-ratio: 16 / 9;
     overflow: hidden;
     border-radius: 14px;
-    background: #0f172a;
+    background: var(--bg-dark);
     box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
     display: block;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .image-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
     display: block;
-}
-
-.image-card:hover img {
-    transform: scale(1.06);
+    transition: transform 0.6s ease;
 }
 
 .image-card:hover {
@@ -245,11 +332,17 @@ body{
     box-shadow: 0 20px 45px rgba(0,0,0,0.6);
 }
 
-/* Reveal animation */
+.image-card:hover img {
+    transform: scale(1.06);
+}
+
+/* ====================================================================
+   9. REVEAL ANIMATION - Elements fade in on scroll
+   ==================================================================== */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
-    transition: 0.8s ease;
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .reveal.active {
@@ -257,11 +350,159 @@ body{
     transform: translateY(0);
 }
 
-/* Helper adjustments for grids using image-cards */
-.service-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:18px; max-width:var(--container-width); margin:20px auto; }
-.service-card{ background:rgba(255,255,255,0.02); padding:14px; border-radius:8px; display:flex; flex-direction:column; gap:12px; align-items:flex-start; }
-.featured-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; max-width:var(--container-width); margin:20px auto; }
-.project-card{ padding:18px; border-radius:8px; background:rgba(255,255,255,0.02); }
+/* ====================================================================
+   10. RESPONSIVE MEDIA QUERIES
+   ==================================================================== */
+
+/* Tablet landscape (1024px and below) */
+@media (max-width: 1024px) {
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .method-wrap,
+    .about-wrap {
+        gap: 24px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+    .service-grid,
+    .featured-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .method-wrap,
+    .about-wrap {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .about-image {
+        flex: none;
+        width: 100%;
+    }
+
+    .methodology,
+    .services,
+    .about,
+    .featured,
+    .cta-hero {
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .featured h2,
+    .services h2 {
+        font-size: 1.6rem;
+    }
+
+    .method-text h2,
+    .about-text h2,
+    .cta-inner h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Mobile small (480px and below) */
+@media (max-width: 480px) {
+    .hero {
+        padding: 60px 12px;
+    }
+
+    .hero h1 {
+        font-size: 1.4rem;
+        margin-bottom: 16px;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+        margin-bottom: 24px;
+    }
+
+    .hero-buttons {
+        gap: 8px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .methodology,
+    .services,
+    .about,
+    .featured,
+    .cta-hero {
+        padding: 60px 12px;
+    }
+
+    .method-wrap,
+    .about-wrap {
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .service-card,
+    .project-card {
+        padding: 14px;
+    }
+
+    .featured h2,
+    .services h2,
+    .method-text h2,
+    .about-text h2,
+    .cta-inner h2 {
+        font-size: 1.3rem;
+        margin-bottom: 24px;
+    }
+
+    .image-card {
+        border-radius: 10px;
+    }
+
+    .cta-inner {
+        padding: 20px;
+    }
+}
+
+/* Accessibility: Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
 
 @media (max-width:900px){
     .image-card{ max-width:100%; }
