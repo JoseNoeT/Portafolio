@@ -11,15 +11,24 @@
 
 <!-- HERO -->
 <section class="hero" role="banner" aria-label="Hero">
-    <div class="hero-container">
-        <h1>Construyo Sistemas Backend Sólidos y Escalables</h1>
-        <p>Backend Engineer especializado en Django, arquitectura limpia y despliegue en producción.</p>
 
-        <div class="hero-buttons">
-            <a href="{% url 'list_projects' %}" class="btn-primary">Ver Proyectos</a>
-            <a href="/contact/" class="btn-secondary">Trabajemos Juntos</a>
-        </div>
+  <!-- Fondo animado (canvas vive aquí) -->
+  <div class="hero-canvas" aria-hidden="true"></div>
+
+  <!-- Overlay oscuro para contraste -->
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <!-- Contenido arriba -->
+  <div class="hero-content">
+    <h1>CONSTRUYO SISTEMAS BACKEND <span>ESCALABLES</span></h1>
+    <p>Backend Engineer especializado en Django, arquitectura limpia y despliegue en producción.</p>
+
+    <div class="hero-buttons">
+      <a href="{% url 'list_projects' %}" class="btn-primary">Ver Proyectos</a>
+      <a href="/contact/" class="btn-secondary">Trabajemos Juntos</a>
     </div>
+  </div>
+
 </section>
 
 <!-- METHODOLOGY -->
@@ -150,4 +159,9 @@
     </div>
 </section>
 
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+<script src="{% static 'js/hero-animation.js' %}"></script>
 {% endblock %}

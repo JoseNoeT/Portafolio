@@ -12,6 +12,9 @@
 </head>
 <body>
 
+<!-- Navigation Overlay (Mobile) -->
+<div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
 <header class="navbar">
     <div class="nav-container">
 
@@ -42,15 +45,20 @@
                 <a href="/contact/" class="btn-primary">Hablemos</a>
             </div>
 
-            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="menu-btn-container">
+              <div class="menu-btn">
+                <input type="checkbox" class="menu-checkbox" id="mobile-menu-toggle">
+                <label for="mobile-menu-toggle" class="menu-label">
+                  <div class="menu-bar"></div>
+                </label>
+              </div>
+            </div>
         </div>
 
     </div>
 </header>
+
+{% block hero %}{% endblock %}
 
 <main class="container content">
         {% block content %}
@@ -103,5 +111,34 @@
 <script src="{% static 'js/home.js' %}" defer></script>
 <script src="{% static 'js/debug.js' %}" defer></script>
 {% block extra_js %}{% endblock %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const menuCheckbox = document.getElementById('mobile-menu-toggle');
+    const navOverlay = document.getElementById('nav-overlay');
+    const navLinks = document.querySelector('.nav-links');
+    
+    function closeMenu() {
+        menuCheckbox.checked = false;
+        navOverlay.setAttribute('aria-hidden', 'true');
+    }
+    
+    menuCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            navOverlay.setAttribute('aria-hidden', 'false');
+        } else {
+            navOverlay.setAttribute('aria-hidden', 'true');
+        }
+    });
+    
+    navOverlay.addEventListener('click', closeMenu);
+    
+    const navItems = document.querySelectorAll('.nav-links a');
+    navItems.forEach(item => {
+        item.addEventListener('click', closeMenu);
+    });
+});
+</script>
+
 </body>
 </html>
