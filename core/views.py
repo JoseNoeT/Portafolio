@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from proyectos.models import Project
+from projects.models import Project
 
 def home(request):
 	projects = Project.objects.all()[:3]  # Últimos 3 proyectos

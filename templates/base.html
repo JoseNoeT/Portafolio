@@ -28,7 +28,7 @@
         <nav class="nav-links" role="navigation" aria-label="Main Navigation">
             <ul>
                 <li><a href="{% url 'home' %}">Inicio</a></li>
-                <li><a href="{% url 'list_projects' %}">Proyectos</a></li>
+                <li><a href="{% url 'projects_list' %}">Proyectos</a></li>
                 <li><a href="{% url 'services' %}">Servicios</a></li>
                 <li><a href="{% url 'metodologia' %}">Metodología</a></li>
                 <li><a href="{% url 'about' %}">Sobre mí</a></li>
@@ -107,38 +107,12 @@
     </div>
 </footer>
 
-<script src="{% static 'js/navbar.js' %}" defer></script>
+
 <script src="{% static 'js/home.js' %}" defer></script>
 <script src="{% static 'js/debug.js' %}" defer></script>
 {% block extra_js %}{% endblock %}
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const menuCheckbox = document.getElementById('mobile-menu-toggle');
-    const navOverlay = document.getElementById('nav-overlay');
-    const navLinks = document.querySelector('.nav-links');
-    
-    function closeMenu() {
-        menuCheckbox.checked = false;
-        navOverlay.setAttribute('aria-hidden', 'true');
-    }
-    
-    menuCheckbox.addEventListener('change', function() {
-        if (this.checked) {
-            navOverlay.setAttribute('aria-hidden', 'false');
-        } else {
-            navOverlay.setAttribute('aria-hidden', 'true');
-        }
-    });
-    
-    navOverlay.addEventListener('click', closeMenu);
-    
-    const navItems = document.querySelectorAll('.nav-links a');
-    navItems.forEach(item => {
-        item.addEventListener('click', closeMenu);
-    });
-});
-</script>
+
 
 </body>
 </html>

@@ -18,7 +18,7 @@ INSTALLED_APPS = [
 
     # Apps locales
     'core',
-    'proyectos',
+    'projects',
 ]
 
 MIDDLEWARE = [

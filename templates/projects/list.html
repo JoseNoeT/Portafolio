@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Projects | Jose Noe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/projects-list.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="projects-hero">
+    <div class="container">
+        <h1>Software Engineering Projects</h1>
+        <p class="subtitle">
+            Selected professional, academic and engineering case studies.
+        </p>
+    </div>
+</section>
+
+<section class="projects-grid-section">
+    <div class="container">
+
+        {% if projects %}
+        <div class="projects-grid">
+
+            {% for project in projects %}
+            <article class="project-card">
+
+                {% if project.image %}
+                <div class="project-image">
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                </div>
+                {% endif %}
+
+                <div class="project-content">
+
+                    <span class="project-badge {{ project.category }}">
+                        {{ project.get_category_display }}
+                    </span>
+
+                    <h2 class="project-title">{{ project.title }}</h2>
+
+                    <p class="project-short">
+                        {{ project.short_description }}
+                    </p>
+
+                    {% if project.technologies %}
+                    <div class="tech-stack">
+                      {% for tech in project.tech_list %}
+                            <span class="tech-chip">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <div class="project-links">
+                        <a href="{% url 'project_detail' project.slug %}" class="btn-outline">
+                            View Case Study →
+                        </a>
+                    </div>
+
+                </div>
+
+            </article>
+            {% endfor %}
+
+        </div>
+        {% else %}
+            <p class="no-projects">No projects available yet.</p>
+        {% endif %}
+
+    </div>
+</section>
+
+{% endblock %}
+
