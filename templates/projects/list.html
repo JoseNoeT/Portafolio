@@ -5,72 +5,156 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/projects-list.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/hero.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<section class="projects-hero">
-    <div class="container">
-        <h1>Software Engineering Projects</h1>
-        <p class="subtitle">
-            Selected professional, academic and engineering case studies.
-        </p>
+<section class="hero projects-hero">
+  <div class="hero-inner">
+    <h1 class="hero-title">MIS PROYECTOS</h1>
+    <p class="hero-subtitle">Soluciones reales. Ingeniería real.</p>
+    <p class="hero-text">Cada proyecto es un caso de estudio documentado.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" id="btn-explore" type="button" aria-label="Explorar proyectos">
+        Explorar proyectos <span class="chev" aria-hidden="true">▾</span>
+      </button>
     </div>
+  </div>
 </section>
 
-<section class="projects-grid-section">
-    <div class="container">
 
-        {% if projects %}
-        <div class="projects-grid">
+<section class="projects-controls" id="projects-controls">
+  <div class="container">
+    <div class="filter-bar" role="tablist" aria-label="Filtros de proyectos">
+      <button class="filter-pill is-active" data-filter="all" type="button">Todos</button>
+      <button class="filter-pill" data-filter="backend" type="button">Backend</button>
+      <button class="filter-pill" data-filter="fullstack" type="button">Fullstack</button>
+      <button class="filter-pill" data-filter="django" type="button">Django</button>
+      <button class="filter-pill" data-filter="experimental" type="button">Experimental</button>
+    </div>
+  </div>
+</section>
 
-            {% for project in projects %}
-            <article class="project-card">
+<section class="projects-section" id="projects-grid">
+  <div class="container">
 
-                {% if project.image %}
-                <div class="project-image">
-                    <img src="{{ project.image.url }}" alt="{{ project.title }}">
-                </div>
-                {% endif %}
+    {% if projects %}
+    <div class="projects-grid">
 
-                <div class="project-content">
+      {% for project in projects %}
+      <article class="project-card"
+               data-tags="{{ project.technologies|default:''|lower }}"
+               data-category="{{ project.category|default:'personal'|lower }}">
 
-                    <span class="project-badge {{ project.category }}">
-                        {{ project.get_category_display }}
-                    </span>
-
-                    <h2 class="project-title">{{ project.title }}</h2>
-
-                    <p class="project-short">
-                        {{ project.short_description }}
-                    </p>
-
-                    {% if project.technologies %}
-                    <div class="tech-stack">
-                      {% for tech in project.tech_list %}
-                            <span class="tech-chip">{{ tech }}</span>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-
-                    <div class="project-links">
-                        <a href="{% url 'project_detail' project.slug %}" class="btn-outline">
-                            View Case Study →
-                        </a>
-                    </div>
-
-                </div>
-
-            </article>
-            {% endfor %}
-
+        <div class="card-media">
+          {% if project.image %}
+            <img src="{{ project.image.url }}" alt="{{ project.title }}">
+          {% else %}
+            <div class="media-placeholder" aria-hidden="true"></div>
+          {% endif %}
         </div>
-        {% else %}
-            <p class="no-projects">No projects available yet.</p>
-        {% endif %}
+
+        <div class="card-body">
+          <h3 class="card-title">{{ project.title }}</h3>
+          <p class="card-desc">{{ project.short_description }}</p>
+
+          {% if project.tech_list %}
+          <div class="chips" aria-label="Tecnologías">
+            {% for tech in project.tech_list %}
+              <span class="chip">{{ tech }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <div class="card-meta">
+            <span class="meta-label">Tipo:</span>
+            <span class="meta-value">{{ project.get_category_display }}</span>
+          </div>
+
+          <div class="card-actions">
+            <a class="btn-outline" href="{% url 'project_detail' project.slug %}">
+              Ver Caso de Estudio
+            </a>
+
+            {% if project.github_url %}
+            <a class="btn-ghost" href="{{ project.github_url }}" target="_blank" rel="noopener">
+              GitHub
+            </a>
+            {% endif %}
+
+            {% if project.live_url %}
+            <a class="btn-ghost" href="{{ project.live_url }}" target="_blank" rel="noopener">
+              Live
+            </a>
+            {% endif %}
+          </div>
+        </div>
+
+      </article>
+      {% endfor %}
 
     </div>
+    {% else %}
+      <p class="no-projects">No projects available yet.</p>
+    {% endif %}
+
+  </div>
+</section>
+
+<section class="process-section">
+  <div class="container">
+    <h2 class="section-title">Cómo construyo soluciones</h2>
+
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-icon">✓</div>
+        <div class="step-text">Analizo el problema real</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">⎔</div>
+        <div class="step-text">Diseño la arquitectura</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">▦</div>
+        <div class="step-text">Desarrollo por fases</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">🧾</div>
+        <div class="step-text">Documento todo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section">
+  <div class="container">
+    <h2 class="section-title">Línea de tiempo</h2>
+
+    <div class="timeline">
+      {% for project in projects %}
+      <div class="timeline-item">
+        <div class="timeline-dot" aria-hidden="true"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">{{ project.created_at|date:"Y" }}</div>
+          <div class="timeline-name">{{ project.title }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="projects-cta">
+  <div class="container cta-inner">
+    <h2>¿Interesado en trabajar conmigo?</h2>
+    <p>Construyo software a medida, presencial o remoto, con enfoque profesional.</p>
+    <a class="btn-primary" href="/contact/">Contactar</a>
+  </div>
 </section>
 
 {% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/projects.js' %}" defer></script>
+{% endblock %}

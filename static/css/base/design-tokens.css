@@ -1,0 +1,53 @@
+:root {
+  /* Paleta de colores visual estilo imagen */
+  --color-bg-primary: #0a192f;
+  --color-bg-secondary: #000a1a;
+  --color-bg-glass: rgba(10, 25, 47, 0.85);
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #dbeafe;
+  --color-text-accent: #38bdf8;
+
+  --color-accent-primary: #2196f3;
+  --color-accent-secondary: #56b3f1;
+  --color-accent-glass: rgba(56,189,248,0.18);
+
+  /* Gradientes intensos */
+  --gradient-primary: linear-gradient(135deg, #2196f3 0%, #38bdf8 100%);
+  --gradient-secondary: linear-gradient(135deg, #0a192f 0%, #000a1a 100%);
+  --gradient-hero: linear-gradient(120deg, #2196f3 0%, #0a192f 100%);
+
+  /* Glassmorphism tokens */
+  --glass-bg: rgba(10, 25, 47, 0.85);
+  --glass-border: 1.5px solid rgba(56,189,248,0.85);
+  --glass-blur: blur(18px);
+  --glass-shadow: 0 8px 32px rgba(56,189,248,0.12);
+
+  /* Border radius */
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* Spacing */
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+
+  /* Typography */
+  --font-family: 'Inter', Arial, sans-serif;
+  --font-h1: clamp(2rem, 3vw, 3rem);
+  --font-h2: clamp(1.6rem, 2.5vw, 2.2rem);
+  --font-h3: clamp(1.2rem, 2vw, 1.6rem);
+  --font-body: 1rem;
+
+  /* Colors */
+  --color-primary: #2563eb;
+  --color-secondary: #64748b;
+  --color-accent: #38bdf8;
+  --color-bg: #f4f6f8;
+  --color-text: #333;
+  --color-muted: #e0e0e0;
+
+  /* Breakpoints */
+  --bp-mobile: 480px;
+  --bp-tablet: 768px;
+  --bp-laptop: 1024px;
+}

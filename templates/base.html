@@ -1,118 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-        {% load static %}
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Portafolio - Jose Noe{% endblock %}</title>
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-        <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-        {% block extra_css %}{% endblock %}
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Jose Noe | Portafolio Backend{% endblock %}</title>
+    <meta name="description" content="Portafolio profesional de Jose Noe, desarrollador backend especializado en Django, APIs y arquitectura de software.">
+    <link rel="icon" type="image/png" href="{% static 'img/logo4.png' %}">
+
+    <!-- BASE SYSTEM -->
+    <link rel="stylesheet" href="{% static 'css/base/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/design-tokens.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/typography.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base/global.css' %}">
+
+    <!-- LAYOUT -->
+    <link rel="stylesheet" href="{% static 'css/layout/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout/footer.css' %}">
+
+    <!-- COMPONENTS -->
+    <link rel="stylesheet" href="{% static 'css/components/buttons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/cards.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/hero.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/glass.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/images.css' %}">
+
+    <!-- PAGE STYLES -->
+    <link rel="stylesheet" href="{% static 'css/pages/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pages/about.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pages/services.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pages/projects.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pages/projects-detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pages/contact.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pages/metodologia.css' %}">
+
+    <!-- RESPONSIVE -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
 
-<!-- Navigation Overlay (Mobile) -->
-<div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+    <!-- MOBILE NAV OVERLAY -->
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
 
-<header class="navbar">
-    <div class="nav-container">
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-container">
 
-        <div class="nav-left">
-            <a href="/" class="nav-logo" aria-label="Inicio - Jose Noe">
-                <span class="nav-logo-mark" aria-hidden="true"></span>
-                <span class="nav-logo-text">Jose Noe</span>
-            </a>
+            <div class="nav-left">
+                <a href="/" class="nav-logo navbar-brand" aria-label="Inicio - Jose Noe">
+                    <img
+                        src="{% static 'img/logo4.png' %}"
+                        alt="Jose Noe"
+                        class="navbar-logo img-card"
+                    >
+                </a>
+            </div>
+
+            <nav class="nav-links" role="navigation" aria-label="Main Navigation">
+                <ul>
+                    <li><a href="{% url 'home' %}">Inicio</a></li>
+                    <li><a href="{% url 'projects_list' %}">Proyectos</a></li>
+                    <li><a href="{% url 'services' %}">Servicios</a></li>
+                    <li><a href="{% url 'metodologia' %}">Metodología</a></li>
+                    <li><a href="{% url 'about' %}">Sobre mí</a></li>
+                    <li><a href="{% url 'contact' %}">Contacto</a></li>
+                </ul>
+
+                <div class="nav-cta-mobile"></div>
+            </nav>
+
+            <div class="nav-right">
+                <div class="nav-cta desktop-only">
+                    <a href="/contact/" class="btn btn-primary" id="navbar-cta">
+                        Hablemos
+                    </a>
+                </div>
+
+                <div class="menu-btn-container">
+                    <div class="menu-btn">
+                        <input
+                            type="checkbox"
+                            class="menu-checkbox"
+                            id="mobile-menu-toggle"
+                        >
+                        <label for="mobile-menu-toggle" class="menu-label">
+                            <div class="menu-bar"></div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
         </div>
+    </header>
 
-        <nav class="nav-links" role="navigation" aria-label="Main Navigation">
-            <ul>
-                <li><a href="{% url 'home' %}">Inicio</a></li>
-                <li><a href="{% url 'projects_list' %}">Proyectos</a></li>
-                <li><a href="{% url 'services' %}">Servicios</a></li>
-                <li><a href="{% url 'metodologia' %}">Metodología</a></li>
-                <li><a href="{% url 'about' %}">Sobre mí</a></li>
-                <li><a href="{% url 'contact' %}">Contacto</a></li>
-            </ul>
+    <!-- HERO -->
+    {% block hero %}{% endblock %}
 
-            <div class="nav-cta-mobile">
-                <a href="/contact/" class="btn-primary">Hablemos</a>
-            </div>
-        </nav>
-
-        <div class="nav-right">
-            <div class="nav-cta desktop-only">
-                <a href="/contact/" class="btn-primary">Hablemos</a>
-            </div>
-
-            <div class="menu-btn-container">
-              <div class="menu-btn">
-                <input type="checkbox" class="menu-checkbox" id="mobile-menu-toggle">
-                <label for="mobile-menu-toggle" class="menu-label">
-                  <div class="menu-bar"></div>
-                </label>
-              </div>
-            </div>
-        </div>
-
-    </div>
-</header>
-
-{% block hero %}{% endblock %}
-
-<main class="container content">
+    <!-- MAIN CONTENT -->
+    <main class="container content">
         {% block content %}
         {% endblock %}
-</main>
+    </main>
 
-<footer class="footer">
-    <div class="footer-container">
+    <!-- FOOTER -->
+    {% include "partials/footer.html" %}
 
-        <!-- Identidad -->
-        <section class="footer-brand">
-            <h3 class="footer-logo">Jose Noe</h3>
-            <p class="footer-tagline">Backend Engineer · Freelancer</p>
-            <p class="footer-mini">Soluciones reales, ingeniería real.</p>
-        </section>
+    <!-- JAVASCRIPT -->
+    <script src="{% static 'js/animations/animations-core.js' %}" defer></script>
+    <script src="{% static 'js/animations/scroll-animations.js' %}" defer></script>
+    <script src="{% static 'js/base.js' %}" defer></script>
+    <script src="{% static 'js/hero-system.js' %}" defer></script>
 
-        <!-- Navegación -->
-        <section class="footer-links">
-            <h4 class="footer-title">Navegación</h4>
-            <nav class="footer-nav">
-                <a href="/">Inicio</a>
-                <a href="/proyectos/">Proyectos</a>
-                <a href="/servicios/">Servicios</a>
-                <a href="/metodologia/">Metodología</a>
-                <a href="/about/">Sobre mí</a>
-                <a href="/contact/">Contacto</a>
-            </nav>
-        </section>
+    {% if APP_DEBUG %}
+    <script src="{% static 'js/dev/debug-images.js' %}" defer></script>
+    {% endif %}
 
-        <!-- Contacto -->
-        <section class="footer-contact">
-            <h4 class="footer-title">Contacto</h4>
-            <div class="footer-contact-links">
-                <a href="mailto:TU_CORREO_AQUI">TU_CORREO_AQUI</a>
-                <a href="https://github.com/TU_USUARIO" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://www.linkedin.com/in/TU_USUARIO" target="_blank" rel="noopener">LinkedIn</a>
-            </div>
-
-            <a class="footer-cta" href="/contact/">Hablemos</a>
-        </section>
-
-    </div>
-
-    <div class="footer-bottom">
-        <p>© 2026 Jose Noe · Backend Developer</p>
-    </div>
-</footer>
-
-
-<script src="{% static 'js/home.js' %}" defer></script>
-<script src="{% static 'js/debug.js' %}" defer></script>
-{% block extra_js %}{% endblock %}
-
-
-
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

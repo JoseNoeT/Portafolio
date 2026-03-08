@@ -8,7 +8,12 @@ def home(request):
 
 def contact(request):
 	"""Página de contacto sencilla."""
-	return render(request, 'contact.html')
+	context = {
+		"hero_heading": "Join Our Exciting Auctions!",
+		"hero_subheading": "Bid now and win amazing products at incredible prices.",
+		"hero_button_text": "Contact Us Now",
+	}
+	return render(request, 'contact.html', context)
 
 
 def about(request):

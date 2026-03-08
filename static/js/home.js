@@ -1,30 +1,40 @@
 // home.js
-// Reveal-on-scroll utility for .reveal elements using Intersection Observer API
+// Home-specific initialization. Global reveal logic lives in animations/scroll-animations.js.
 
-// Mark that JavaScript is enabled
-document.documentElement.classList.add('js-enabled');
+(function (global) {
+    "use strict";
 
-if ('IntersectionObserver' in window) {
-    // Modern browsers: use Intersection Observer
-    const revealElements = document.querySelectorAll(".reveal");
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("active");
-                observer.unobserve(entry.target); // Only trigger once
+    const AppAnimations = global.AppAnimations || {};
+
+    if (!AppAnimations.onReady || !AppAnimations.initHeroParticles) {
+        return;
+    }
+
+    AppAnimations.onReady(() => {
+        let attempts = 0;
+        const maxAttempts = 30;
+
+        function startHero() {
+            const canvasContainer = document.querySelector(".hero-canvas");
+            if (!canvasContainer) return;
+
+            if (!global.p5) {
+                attempts += 1;
+                if (attempts < maxAttempts) {
+                    setTimeout(startHero, 120);
+                }
+                return;
             }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px"
+
+            AppAnimations.initHeroParticles(".hero-canvas", {
+                tickSpeed: 10,
+                baseHue: 200,
+                numPoints: 10,
+                maxTicks: 3000,
+                lineAlpha: 0.2,
+            });
+        }
+
+        startHero();
     });
-    
-    revealElements.forEach((el) => observer.observe(el));
-} else {
-    // Fallback for older browsers: show immediately on DOMContentLoaded
-    document.addEventListener("DOMContentLoaded", () => {
-        const revealElements = document.querySelectorAll(".reveal");
-        revealElements.forEach((el) => el.classList.add("active"));
-    });
-}
+})(window);

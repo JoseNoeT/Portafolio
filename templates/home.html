@@ -4,37 +4,43 @@
 {% block title %}Inicio - Jose Noe{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/home.css' %}">
 {% endblock %}
 
 {% block content %}
 
 <!-- HERO -->
-<section class="hero" role="banner" aria-label="Hero">
-
-  <!-- Fondo animado (canvas vive aquí) -->
-  <div class="hero-canvas" aria-hidden="true"></div>
-
-  <!-- Overlay oscuro para contraste -->
-  <div class="hero-overlay" aria-hidden="true"></div>
-
-  <!-- Contenido arriba -->
-  <div class="hero-content">
-    <h1>CONSTRUYO SISTEMAS BACKEND <span>ESCALABLES</span></h1>
-    <p>Backend Engineer especializado en Django, arquitectura limpia y despliegue en producción.</p>
-
-    <div class="hero-buttons">
-      <a href="{% url 'projects_list' %}" class="btn-primary">Ver Proyectos</a>
-      <a href="/contact/" class="btn-secondary">Trabajemos Juntos</a>
+<section class="hero-home section" role="banner" aria-label="Hero">
+    <div class="hero-canvas" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+        <div class="hero-wrapper container">
+            <div class="hero-image">
+                <img src="{% static 'img/JoseNoe.png' %}" alt="Jose Noe" class="img-card">
+            </div>
+            <div class="hero-text">
+                <h1>
+                    DESARROLLO SOLUCIONES FULLSTACK 
+                    <span>ESCALABLES</span>
+                </h1>
+                <p>
+                    Analista Programador titulado y estudiante de Ingeniería en Informática.
+                    Experiencia en desarrollo web con Django y WordPress, construyendo sistemas
+                    con autenticación, roles y bases de datos relacionales bien estructuradas.
+                </p>
+                <div class="hero-buttons">
+                    <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver Proyectos</a>
+                    <a href="/contact/" class="btn btn-outline">Trabajemos Juntos</a>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-
 </section>
 
 <!-- METHODOLOGY -->
-<section class="methodology">
+<section class="methodology section">
     <div class="container">
-        <div class="method-wrap">
+        <div class="method-wrap grid">
             <div class="method-text">
                 <h2>Ingeniería y Metodología</h2>
                 <p>
@@ -44,10 +50,9 @@
                     Diseño systems con patrones SOLID, realizo code reviews exhaustivos y configuro testing automatizado. Mi objetivo es entregar soluciones robustas que crezcan con tu negocio.
                 </p>
             </div>
-
             <div class="method-image reveal">
                 <div class="image-card">
-                    <img src="{% static 'img/arquitec.jpeg' %}" alt="Arquitectura" />
+                    <img src="{% static 'img/arquitec.jpeg' %}" alt="Arquitectura" class="img-cover" />
                 </div>
             </div>
         </div>
@@ -55,57 +60,50 @@
 </section>
 
 <!-- SERVICES -->
-<section class="services">
+<section class="services section">
     <div class="container">
         <h2>Servicios</h2>
-
-        <div class="service-grid">
-
-            <div class="service-card reveal">
+        <div class="service-grid grid">
+            <div class="service-card card reveal">
                 <div class="image-card">
-                    <img src="{% static 'img/escritorio.jpg' %}" alt="Desarrollo Backend" />
+                    <img src="{% static 'img/escritorio.jpg' %}" alt="Desarrollo Backend" class="img-cover" />
                 </div>
                 <div class="service-body">
                     <h3>Desarrollo Backend</h3>
                     <p>APIs REST escalables, arquitectura limpia y optimización de desempeño con Django.</p>
                 </div>
             </div>
-
-            <div class="service-card reveal">
+            <div class="service-card card reveal">
                 <div class="image-card">
-                    <img src="{% static 'img/azulabstracto.jpg' %}" alt="Arquitectura" />
+                    <img src="{% static 'img/azulabstracto.jpg' %}" alt="Arquitectura" class="img-cover" />
                 </div>
                 <div class="service-body">
                     <h3>Arquitectura de Sistemas</h3>
                     <p>Diseño escalable, patrones SOLID y bases de datos optimizadas para producción.</p>
                 </div>
             </div>
-
-            <div class="service-card reveal">
+            <div class="service-card card reveal">
                 <div class="image-card">
-                    <img src="{% static 'img/campus360.jpg' %}" alt="Deployment" />
+                    <img src="{% static 'img/campus360.jpg' %}" alt="Deployment" class="img-cover" />
                 </div>
                 <div class="service-body">
                     <h3>Despliegue & DevOps</h3>
                     <p>CI/CD, Docker, servidores cloud y monitoreo de aplicaciones en tiempo real.</p>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
 <!-- ABOUT -->
-<section class="about">
+<section class="about section">
     <div class="container">
-        <div class="about-wrap">
-
+        <div class="about-wrap grid">
             <div class="about-image reveal">
                 <div class="image-card">
-                    <img src="{% static 'img/personaCompu.jpg' %}" alt="Sobre mí" />
+                    <img src="{% static 'img/personaCompu.jpg' %}" alt="Sobre mí" class="img-cover" />
                 </div>
             </div>
-
             <div class="about-text">
                 <h2>Sobre mí</h2>
                 <p>
@@ -115,47 +113,43 @@
                     Mi enfoque: escribir código limpio, documentado y listo para producción. Sigo principios SOLID, realizo testing exhaustivo y configuro CI/CD para garantizar calidad.
                 </p>
             </div>
-
         </div>
     </div>
 </section>
 
 <!-- FEATURED PROJECTS -->
-<section class="featured">
+<section class="featured section">
     <div class="container">
         <h2>Proyectos Destacados</h2>
-
-        <div class="featured-grid">
-
+        <div class="featured-grid grid">
             {% if projects %}
                 {% for project in projects %}
-                    <div class="project-card reveal">
+                    <div class="project-card card reveal">
                         {% if project.image %}
                             <div class="image-card">
-                                <img src="{{ project.image.url }}" alt="{{ project.title }}" />
+                                <img src="{{ project.image.url }}" alt="{{ project.title }}" class="img-cover" />
                             </div>
                         {% endif %}
                         <h3>{{ project.title }}</h3>
                         <p>{{ project.description|truncatewords:20 }}</p>
                         {% if project.url %}
-                            <a href="{{ project.url }}" class="card-link" target="_blank">Ver Proyecto →</a>
+                            <a href="{{ project.url }}" class="card-link btn btn-outline" target="_blank">Ver Proyecto →</a>
                         {% endif %}
                     </div>
                 {% endfor %}
             {% else %}
                 <p>No hay proyectos disponibles en este momento.</p>
             {% endif %}
-
         </div>
     </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-hero" role="region" aria-label="Call to Action">
+<section class="cta-hero section" role="region" aria-label="Call to Action">
     <div class="cta-inner">
         <h2>¿Listo para colaborar?</h2>
         <p>Contacta para proyectos o consultas.</p>
-        <a href="{% url 'projects_list' %}" class="btn-primary">Ver proyectos</a>
+        <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver proyectos</a>
     </div>
 </section>
 
@@ -163,5 +157,6 @@
 
 {% block extra_js %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-<script src="{% static 'js/hero-animation.js' %}"></script>
+<script src="{% static 'js/animations/hero.js' %}"></script>
+<script src="{% static 'js/home.js' %}" defer></script>
 {% endblock %}

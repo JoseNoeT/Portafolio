@@ -1,0 +1,175 @@
+/* ====================================================================
+   GLOBAL.CSS
+   Global styles + reset
+   ==================================================================== */
+
+/* ====================================================================
+   1. CSS VARIABLES
+   ==================================================================== */
+
+:root {
+  --primary-color: #56b3f1; /* Azul Zafiro */
+  --secondary-color: #0f172a; /* Azul Oscuro */
+  --text-color: #e5e5e5; /* Blanco Suave */
+  --text-muted: #a0a0a0; /* Gris Claro */
+  --background-light: #f8fafc; /* Azul Claro */
+  --success-color: #38bdf8; /* Azul Claro */
+  --error-color: #f44336; /* Rojo */
+
+  --container-max-width: 1400px;
+
+   /* navbar fallback */
+  --navbar-height: 72px;
+  --navbar-height-mobile: 64px;
+}
+
+/* ====================================================================
+   2. RESET + BOX MODEL
+   ==================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ====================================================================
+   3. HTML + BODY
+   ==================================================================== */
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  padding-top: var(--navbar-height);
+}
+
+@media (max-width: 1024px) {
+  body {
+    padding-top: var(--navbar-height-mobile);
+  }
+}
+
+/* ====================================================================
+   4. TYPOGRAPHY BASE
+   ==================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--primary-color);
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+a:hover {
+  color: var(--success-color);
+}
+
+/* ====================================================================
+   5. BUTTONS BASE
+   ==================================================================== */
+
+button,
+.btn {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+
+  border: none;
+  border-radius: 6px;
+
+  padding: 10px 20px;
+
+  cursor: pointer;
+
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+button:hover,
+.btn:hover {
+  background-color: var(--success-color);
+  transform: scale(1.05);
+}
+
+button.error,
+.btn.error {
+  background-color: var(--error-color);
+}
+
+/* ====================================================================
+   6. IMAGES
+   ==================================================================== */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ====================================================================
+   7. SECTIONS
+   ==================================================================== */
+
+.section-wrapper {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+
+  padding: 40px 20px;
+
+  border-radius: 10px;
+
+  margin-bottom: 20px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* ====================================================================
+   8. CONTAINER SYSTEM
+   ==================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ====================================================================
+   9. RESPONSIVE
+   ==================================================================== */
+
+@media (max-width: 768px) {
+
+  .section-wrapper {
+    padding: 20px 10px;
+  }
+
+  button,
+  .btn {
+    padding: 8px 16px;
+  }
+
+}

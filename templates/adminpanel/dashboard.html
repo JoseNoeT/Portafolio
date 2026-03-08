@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">Admin Dashboard</h1>
+
+    <div style="display: flex; justify-content: flex-end; margin-bottom: 16px;">
+      <a href="{% url 'project_create' %}" class="btn-primary">Crear Proyecto</a>
+    </div>
+    <div class="dashboard-stats" style="display: flex; gap: 24px; margin-bottom: 32px;">
+      <div class="card" style="flex:1;">
+        <h2 class="card-title">Total de proyectos</h2>
+        <p class="body-text">{{ total_projects }}</p>
+      </div>
+      <div class="card" style="flex:1;">
+        <h2 class="card-title">Última actualización</h2>
+        <p class="body-text">
+          {% if last_project_date %}
+            {{ last_project_date|date:"d M Y" }}
+          {% else %}
+            Sin proyectos
+          {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <h2 class="section-title" style="font-size:1.4rem;">Proyectos recientes</h2>
+    <div class="dashboard-table" style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr>
+            <th style="padding:8px;">Título</th>
+            <th style="padding:8px;">Categoría</th>
+            <th style="padding:8px;">Fecha</th>
+            <th style="padding:8px;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for project in recent_projects %}
+          <tr>
+            <td style="padding:8px;">{{ project.title }}</td>
+            <td style="padding:8px;">{{ project.category }}</td>
+            <td style="padding:8px;">{{ project.created_at|date:"d M Y" }}</td>
+            <td style="padding:8px;">
+              <a href="{% url 'project_edit' project.slug %}" class="btn-secondary">Editar</a>
+              <a href="{% url 'project_delete' project.slug %}" class="btn-danger">Eliminar</a>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="4" style="padding:8px;">No hay proyectos recientes.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

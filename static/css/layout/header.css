@@ -1,0 +1,28 @@
+/* header.css - layout helpers for navbar/header */
+.desktop-only {
+    display: none;
+}
+
+.menu-btn-container {
+    display: none;
+}
+
+@media (min-width: 1025px) {
+    .desktop-only {
+        display: inline-flex;
+    }
+
+    .menu-btn-container {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .desktop-only {
+        display: none;
+    }
+
+    .menu-btn-container {
+        display: flex;
+    }
+}

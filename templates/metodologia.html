@@ -5,12 +5,20 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/metodologia.css' %}">
+{% endblock %}
+
+
+{% block hero %}
+{% include "components/hero.html" with title="Metodología" subtitle="Descubre cómo trabajamos para garantizar el éxito de tus proyectos" %}
 {% endblock %}
 
 {% block content %}
+
 <section class="methodology container">
     <h1>Metodología</h1>
     <p>Trabajo por fases: diagnóstico, diseño, implementación y despliegue. Priorizo pruebas, observabilidad y entregas iterativas.</p>
+
     <h2>Fases</h2>
     <ol>
         <li>Análisis y alcance</li>
@@ -18,5 +26,34 @@
         <li>Implementación y pruebas</li>
         <li>Despliegue y monitoreo</li>
     </ol>
+
+    <!-- Nueva sección de Objetivos y Resultados -->
+    <section class="outcomes">
+        <h2>Resultados Esperados</h2>
+        <p>Al trabajar juntos, lograrás soluciones tecnológicas robustas, escalables y optimizadas. Mi enfoque metodológico te permitirá reducir riesgos y garantizar un crecimiento sostenible para tu negocio.</p>
+        <ul>
+            <li><strong>Mayor Eficiencia:</strong> Reducción de tiempos de desarrollo mediante entregas iterativas.</li>
+            <li><strong>Escalabilidad:</strong> Arquitecturas flexibles para crecimiento futuro.</li>
+            <li><strong>Calidad de Código:</strong> Uso de buenas prácticas, testing y revisiones de código para asegurar un producto estable.</li>
+        </ul>
+    </section>
 </section>
+
+<!-- Ingeniería y Metodología: sección detallada con animación de entrada -->
+<section class="section-wrapper reveal container" aria-labelledby="ingenieria-title">
+    <div class="section-text">
+        <h2 id="ingenieria-title">Ingeniería y Metodología</h2>
+        <p>
+            Cada proyecto que desarrollo sigue una metodología rigurosa centrada en arquitectura escalable y código de calidad producción.
+        </p>
+        <p>
+            Diseño sistemas con patrones SOLID, realizo code reviews exhaustivos y configuro testing automatizado. Mi objetivo es entregar soluciones robustas que crezcan con tu negocio.
+        </p>
+    </div>
+  
+    <div class="section-image" aria-hidden="false">
+        <img src="{% static 'img/arquitec.jpeg' %}" alt="Arquitectura">
+    </div>
+</section>
+
 {% endblock %}

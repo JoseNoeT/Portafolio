@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">Crear Proyecto</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn-primary" type="submit">Guardar</button>
+      <a href="{% url 'dashboard' %}" class="btn-secondary">Cancelar</a>
+    </form>
+  </div>
+</section>
+{% endblock %}

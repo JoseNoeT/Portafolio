@@ -1,40 +1,47 @@
 // base.js
-// Global navigation logic (mobile menu, overlay, scroll lock)
+// Global page interactions that rely on shared animation utilities.
 
-document.addEventListener('DOMContentLoaded', function () {
-    const menuCheckbox = document.getElementById('mobile-menu-toggle');
-    const navOverlay = document.getElementById('nav-overlay');
-    const navLinks = document.querySelector('.nav-links');
+(function (global) {
+    "use strict";
 
-    if (!menuCheckbox || !navOverlay || !navLinks) return;
+    const AppAnimations = global.AppAnimations || {};
 
-    function openMenu() {
-        navOverlay.setAttribute('aria-hidden', 'false');
-        navOverlay.classList.add('active');
-        navLinks.classList.add('active');
-        document.body.classList.add('nav-open');
+    if (!AppAnimations.onReady || !AppAnimations.initMobileDrawer) {
+        return;
     }
 
-    function closeMenu() {
-        menuCheckbox.checked = false;
-        navOverlay.setAttribute('aria-hidden', 'true');
-        navOverlay.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.classList.remove('nav-open');
-    }
+    AppAnimations.onReady(() => {
+        AppAnimations.initMobileDrawer({
+            toggleSelector: "#mobile-menu-toggle",
+            panelSelector: ".nav-links",
+            overlaySelector: "#nav-overlay",
+            linkSelector: ".nav-links a",
+            bodyOpenClass: "nav-open",
+            panelOpenClass: "active",
+            overlayOpenClass: "active",
+            closeOnEsc: true,
+            closeOnResize: true,
+            desktopBreakpoint: 1024,
+        });
 
-    menuCheckbox.addEventListener('change', function () {
-        if (this.checked) {
-            openMenu();
-        } else {
-            closeMenu();
+        // CTA text swap on scroll past hero
+        const ctaBtn = document.getElementById("navbar-cta");
+        const hero = document.querySelector(".hero");
+        if (ctaBtn && hero) {
+            let swapped = false;
+            const original = ctaBtn.textContent;
+            const altText = "Agenda una llamada";
+            function onScroll() {
+                const rect = hero.getBoundingClientRect();
+                if (rect.bottom < 0 && !swapped) {
+                    ctaBtn.textContent = altText;
+                    swapped = true;
+                } else if (rect.bottom >= 0 && swapped) {
+                    ctaBtn.textContent = original;
+                    swapped = false;
+                }
+            }
+            window.addEventListener("scroll", onScroll, { passive: true });
         }
     });
-
-    navOverlay.addEventListener('click', closeMenu);
-
-    const navItems = document.querySelectorAll('.nav-links a');
-    navItems.forEach(item => {
-        item.addEventListener('click', closeMenu);
-    });
-});
+})(window);

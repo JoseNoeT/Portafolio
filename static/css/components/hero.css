@@ -1,0 +1,77 @@
+/* Hero System - Reusable Hero Component */
+
+.hero {
+    min-height: 220px;
+    max-height: 420px;
+    height: 38vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e293b 0%, #1e3a8a 100%);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(30,58,138,0.18), 0 1px 8px rgba(30,58,138,0.12);
+    margin: 40px auto 0 auto;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+}
+
+.hero.hero-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-inner {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Hero Title: usa variables del design system */
+.hero-title {
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 18px;
+    text-shadow: 0 0 8px #2563eb, 0 2px 8px #1e3a8a;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    color: #a5b4fc;
+    margin-bottom: 0;
+    text-shadow: 0 0 4px #2563eb;
+}
+
+/* Glass effect overlay */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(15,23,42,0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 0;
+    border-radius: 18px;
+}
+
+@media (max-width: 600px) {
+    .hero {
+        min-height: 180px;
+        max-height: 260px;
+        height: 28vh;
+        border-radius: 12px;
+    }
+    .hero-inner {
+        max-width: 98vw;
+    }
+    .hero-title {
+        font-size: clamp(1.4rem, 7vw, 2.2rem);
+    }
+    .hero-subtitle {
+        font-size: clamp(0.9rem, 4vw, 1.2rem);
+    }
+}

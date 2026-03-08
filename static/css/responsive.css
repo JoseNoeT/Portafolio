@@ -1,0 +1,48 @@
+@media (max-width: var(--bp-laptop)) {
+  .container {
+    padding: var(--spacing-md);
+  }
+  .grid {
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: var(--bp-tablet)) {
+  h1 {
+    font-size: 2rem;
+  }
+  .section {
+    padding: var(--spacing-md) 0;
+  }
+}
+
+@media (max-width: var(--bp-mobile)) {
+  .container {
+    padding: var(--spacing-sm);
+  }
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+  .card,
+  .project-card,
+  .service-card {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Portafolio - Jose Noe{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% block extra_css %}{% endblock %}
+</head>
+<body class="focused-layout">
+
+    {% block content %}{% endblock %}
+
+</body>
+</html>

@@ -7,20 +7,92 @@
 <link rel="stylesheet" href="{% static 'css/about.css' %}">
 {% endblock %}
 
+
+{% block hero %}
+{% include "components/hero.html" with title="Sobre mí" subtitle="Conoce más sobre nuestra misión, visión y valores que nos guían" %}
+{% endblock %}
+
 {% block content %}
-<section class="about container">
-    <h1>Sobre mí</h1>
-    <p>Ingeniero en sistemas con experiencia en backend, arquitecturas limpias y despliegues seguros. Mi enfoque es entregar soluciones reales y mantenibles.</p>
 
-    <h2>Metodología</h2>
-    <ul>
-        <li>Diagnóstico y definición de requerimientos</li>
-        <li>Diseño de arquitectura</li>
-        <li>Implementación iterativa y pruebas</li>
-        <li>Despliegue y monitoreo</li>
-    </ul>
+<section class="about-content container section">
+    <!-- RESUMEN / PROPUESTA DE VALOR -->
+    <div class="about-block card">
+        <h2>Cómo trabajo</h2>
+        <p>
+            Mi enfoque es convertir requerimientos en un sistema claro, robusto y escalable: defino alcance, diseño arquitectura,
+            implemento por iteraciones y dejo todo documentado para que el proyecto sea fácil de mantener por futuros equipos.
+        </p>
+        <div class="about-highlights grid">
+            <div class="about-card card">
+                <h3>Arquitectura</h3>
+                <p>Patrones, modularidad, separación de responsabilidades y crecimiento planificado.</p>
+            </div>
+            <div class="about-card card">
+                <h3>Calidad</h3>
+                <p>Buenas prácticas, revisiones, validaciones y pruebas donde agregan valor.</p>
+            </div>
+            <div class="about-card card">
+                <h3>Entrega</h3>
+                <p>Iteraciones cortas, feedback temprano y despliegue controlado.</p>
+            </div>
+        </div>
+    </div>
 
-    <h2>Stack tecnológico</h2>
-    <p>Django, Python, PostgreSQL, Docker, CI/CD y despliegue en Render.</p>
+    <!-- METODOLOGÍA -->
+    <div class="about-block card">
+        <h2>Metodología</h2>
+        <p>
+            Trabajo por fases para asegurar claridad, control y resultados medibles en cada entrega.
+        </p>
+        <ol class="about-steps">
+            <li>
+                <strong>Diagnóstico & alcance</strong><br>
+                Entiendo el problema, defino objetivos, prioridades y criterios de éxito.
+            </li>
+            <li>
+                <strong>Arquitectura & diseño</strong><br>
+                Modelo datos, defino endpoints/flujo, permisos/roles y estructura del proyecto.
+            </li>
+            <li>
+                <strong>Implementación & pruebas</strong><br>
+                Desarrollo por iteraciones, con validaciones y pruebas donde sean críticas.
+            </li>
+            <li>
+                <strong>Despliegue & monitoreo</strong><br>
+                Entrego una versión estable, con configuración clara y seguimiento de errores.
+            </li>
+        </ol>
+    </div>
+
+    <!-- STACK -->
+    <div class="about-block card">
+        <h2>Stack tecnológico</h2>
+        <p class="about-muted">
+            Backend y web development orientado a producción.
+        </p>
+        <div class="about-tags grid" aria-label="Tecnologías">
+            <span class="tag">Python</span>
+            <span class="tag">Django</span>
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">SQL / Modelado</span>
+            <span class="tag">Docker</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">Render</span>
+        </div>
+    </div>
+
+    <!-- CIERRE / CTA -->
+    <div class="about-cta card">
+        <h2>¿Tienes una idea o un sistema que mejorar?</h2>
+        <p>
+            Si necesitas desarrollo a medida, mantenimiento, mejoras de seguridad o un MVP listo para producción,
+            conversemos y lo aterrizamos en un plan claro.
+        </p>
+        <a class="btn btn-primary" href="/contact/">Hablemos</a>
+    </div>
+
 </section>
+
 {% endblock %}
