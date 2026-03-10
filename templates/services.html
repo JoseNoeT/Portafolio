@@ -4,7 +4,7 @@
 {% block title %}Servicios - Jose Noe{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/services.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/services.css' %}">
 {% endblock %}
 
 {% block hero %}
@@ -12,10 +12,10 @@
 {% endblock %}
 
 {% block content %}
-    <section class="services container section">
+    <section class="services-page section">
         <h1>Servicios Freelance</h1>
         <p>Como desarrollador web freelance, ofrezco soluciones personalizadas para ayudarte a hacer crecer tu negocio. Mis servicios incluyen:</p>
-        <div class="service-list grid">
+        <div class="service-list">
             <article class="service card reveal">
                 <h2>Desarrollo Backend a Medida</h2>
                 <p>APIs RESTful, GraphQL, arquitectura escalable y bases de datos optimizadas para rendimiento y escalabilidad.</p>
@@ -29,7 +29,7 @@
                 <p>Construcción de MVPs listos para producción, integración continua (CI/CD) y despliegue automatizado en plataformas como AWS o Heroku.</p>
             </article>
         </div>
-        <div class="cta card">
+        <div class="services-cta card">
             <h3>¿Listo para llevar tu proyecto al siguiente nivel?</h3>
             <p>Pon en marcha tu idea hoy mismo. ¡Contáctame para trabajar juntos en soluciones web personalizadas!</p>
             <a href="/contact/" class="btn btn-primary">Contáctame</a>

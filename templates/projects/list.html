@@ -4,24 +4,16 @@
 {% block title %}Projects | Jose Noe{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/projects-list.css' %}">
-<link rel="stylesheet" href="{% static 'css/components/hero.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/projects.css' %}">
+{% endblock %}
+
+{% block hero %}
+{% include "components/hero.html" with title="MIS PROYECTOS" subtitle="Soluciones reales. Ingeniería real." %}
 {% endblock %}
 
 {% block content %}
 
-<section class="hero projects-hero">
-  <div class="hero-inner">
-    <h1 class="hero-title">MIS PROYECTOS</h1>
-    <p class="hero-subtitle">Soluciones reales. Ingeniería real.</p>
-    <p class="hero-text">Cada proyecto es un caso de estudio documentado.</p>
-    <div class="hero-actions">
-      <button class="btn-primary" id="btn-explore" type="button" aria-label="Explorar proyectos">
-        Explorar proyectos <span class="chev" aria-hidden="true">▾</span>
-      </button>
-    </div>
-  </div>
-</section>
+
 
 
 <section class="projects-controls" id="projects-controls">
