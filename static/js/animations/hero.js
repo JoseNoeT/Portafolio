@@ -43,7 +43,7 @@
       }
 
       function resizeToHero() {
-        const hero = container.closest(".hero") || container;
+        const hero = container.closest(".hero-home") || container.closest(".hero") || container;
         const rect = hero.getBoundingClientRect();
         p.resizeCanvas(Math.max(1, Math.floor(rect.width)), Math.max(1, Math.floor(rect.height)));
         p.pixelDensity(1);
@@ -97,7 +97,7 @@
       };
 
       p.mouseClicked = function onMouseClicked() {
-        const hero = container.closest(".hero");
+        const hero = container.closest(".hero-home") || container.closest(".hero");
         if (!hero) return;
 
         const rect = hero.getBoundingClientRect();

@@ -1,3 +1,9 @@
+/*
+ HERO COMPONENT
+ Este archivo controla toda la estructura base del Hero.
+ No redefinir .hero en CSS de páginas.
+ Usar modificadores (.hero--home, .hero--custom) si se necesita personalización.
+*/
 /* Hero System - Reusable Hero Component */
 
 .hero {
@@ -16,6 +22,7 @@
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+    padding-top: var(--navbar-height);
 }
 
 .hero.hero-visible {
@@ -23,7 +30,7 @@
     transform: translateY(0);
 }
 
-.hero-inner {
+ .hero .hero-inner {
     width: 100%;
     max-width: 900px;
     text-align: center;
@@ -31,7 +38,7 @@
 }
 
 /* Hero Title: usa variables del design system */
-.hero-title {
+ .hero .hero-title {
     font-size: clamp(2.2rem, 6vw, 3.6rem);
     font-weight: bold;
     color: var(--text-color);
@@ -39,7 +46,7 @@
     text-shadow: 0 0 8px #2563eb, 0 2px 8px #1e3a8a;
 }
 
-.hero-subtitle {
+ .hero .hero-subtitle {
     font-size: clamp(1.1rem, 3vw, 1.6rem);
     color: #a5b4fc;
     margin-bottom: 0;
@@ -64,14 +71,15 @@
         max-height: 260px;
         height: 28vh;
         border-radius: 12px;
+        padding-top: var(--navbar-height-mobile);
     }
-    .hero-inner {
+    .hero .hero-inner {
         max-width: 98vw;
     }
-    .hero-title {
+    .hero .hero-title {
         font-size: clamp(1.4rem, 7vw, 2.2rem);
     }
-    .hero-subtitle {
+    .hero .hero-subtitle {
         font-size: clamp(0.9rem, 4vw, 1.2rem);
     }
 }

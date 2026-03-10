@@ -10,11 +10,11 @@
 {% block content %}
 
 <!-- HERO -->
-<section class="hero-home section" role="banner" aria-label="Hero">
+<section class="hero hero--home section" role="banner" aria-label="Hero">
     <div class="hero-canvas" aria-hidden="true"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
-        <div class="hero-wrapper container">
+        <div class="hero-wrapper">
             <div class="hero-image">
                 <img src="{% static 'img/JoseNoe.png' %}" alt="Jose Noe" class="img-card">
             </div>
@@ -65,7 +65,7 @@
         <h2>Servicios</h2>
         <div class="service-grid grid">
             <div class="service-card card reveal">
-                <div class="image-card">
+        <div class="hero-wrapper">
                     <img src="{% static 'img/escritorio.jpg' %}" alt="Desarrollo Backend" class="img-cover" />
                 </div>
                 <div class="service-body">
@@ -92,7 +92,7 @@
                 </div>
             </div>
         </div>
-    </div>
+        <div class="featured-grid">
 </section>
 
 <!-- ABOUT -->

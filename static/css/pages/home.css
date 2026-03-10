@@ -4,36 +4,40 @@
    Hero + unique sections
    ==================================================================== */
 
-/* ====================================================================
    1. HERO
    ==================================================================== */
 
-.hero-home {
+.hero.hero--home {
   position: relative;
   overflow: hidden;
   width: 100%;
   max-width: 1400px;
   margin: 32px auto;
-  min-height: 60vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 16px;
+  padding: 80px 16px 60px 16px;
+  padding-top: var(--navbar-height);
   text-align: center;
-  background: var(--gradient-hero);
   color: var(--color-text-primary);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 16px 48px rgba(56,189,248,0.18), var(--glass-shadow);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
+  background: linear-gradient(120deg, #0ea5e9 0%, #1e293b 100%);
   transition: background 0.3s ease, box-shadow 0.3s ease;
+  z-index: 10;
 }
+ 
 
 .hero-canvas {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
 }
 
 .hero-canvas canvas {
@@ -47,6 +51,8 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
   background: linear-gradient(
     to bottom,
     rgba(2, 6, 23, 0.55),
@@ -59,6 +65,7 @@
   z-index: 2;
   width: 100%;
   max-width: 1100px;
+  max-height: 100%;
   margin: 0 auto;
   padding: var(--spacing-lg);
   background: var(--glass-bg);
@@ -181,7 +188,7 @@
   background-size: cover;
   background-position: center;
   filter: blur(15px);
-  transform: scale(1.05);
+  transform: scale(1.02);
   z-index: 0;
 }
 
@@ -189,6 +196,7 @@
   position: relative;
   z-index: 1;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -272,6 +280,7 @@
 
 .service-grid {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   align-items: stretch;
@@ -322,6 +331,7 @@
 
 .about-wrap {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -356,10 +366,10 @@
 
 .featured-grid {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   padding: 20px 0;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  overflow-x: hidden;
 }
 
 .project-card {
@@ -372,10 +382,11 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.projects-page .project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
 }
+
 
 .project-card img {
   display: block;
@@ -478,7 +489,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 70px;
+    gap: 40px;
   }
 
   .hero-image {
