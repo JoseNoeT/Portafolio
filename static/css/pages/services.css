@@ -3,85 +3,6 @@
 	 - Ámbito: se aplica dentro de la sección `.services`
 */
 
-:root { --svc-gap: 20px; --svc-radius: 12px; --svc-card-bg: rgba(255,255,255,0.03); --svc-muted: rgba(226,232,240,0.75); --accent-fallback: #38bdf8; }
-
-.services.container{ max-width:1100px; margin:48px auto; padding:28px 20px; color:var(--text); }
-.services.container > h1{ font-size:clamp(1.6rem,2.6vw,2.4rem); margin-bottom:8px; color:var(--text); }
-.services.container > p{ color:var(--text-muted); max-width:70ch; margin-bottom:18px }
-
-/* Grid de tarjetas */
-.service-list{
-	display:grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: var(--svc-gap);
-	align-items: stretch;
-}
-
-@media (max-width: 1024px) {
-	.service-list{ grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 768px) {
-	.service-list{ grid-template-columns: 1fr; }
-}
-
-/* Tarjeta de servicio */
-.service{
-	background: var(--svc-card-bg);
-	padding: clamp(18px,2.4vw,26px);
-	border-radius: var(--svc-radius);
-	border: 1px solid rgba(255,255,255,0.03);
-	box-shadow: 0 8px 24px rgba(2,6,23,0.35);
-	display:flex;flex-direction:column;gap:14px;justify-content:space-between;
-	transition: transform 300ms cubic-bezier(.22,1,.36,1), box-shadow 300ms cubic-bezier(.22,1,.36,1);
-}
-.service:hover{ transform: translateY(-8px); box-shadow: 0 20px 48px rgba(56,189,248,0.08); }
-.service:focus-within{ outline: 2px solid rgba(94,171,255,0.08); outline-offset:4px }
-
-.service h2{ margin:0; color:var(--text-light); font-size:1.05rem }
-.service p{ margin:0; color:var(--text-muted); line-height:1.6 }
-
-/* Botones dentro de cada tarjeta */
-.service .btn{ margin-top:12px; align-self:flex-start }
-.services .btn-primary{
-	background: linear-gradient(180deg,var(--accent, var(--accent-fallback)), rgba(8,145,255,0.85));
-	color: #fff; padding: 10px 16px; border-radius:10px; display:inline-block; text-decoration:none; font-weight:700;
-	box-shadow: 0 8px 28px rgba(37,99,235,0.12);
-	transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
-}
-.services .btn-primary:hover{ transform: translateY(-3px); box-shadow: 0 18px 40px rgba(37,99,235,0.16); opacity:0.98 }
-.services .btn-primary:active{ transform: translateY(-1px); }
-.services .btn-contact{ background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--text-light); padding:10px 14px; border-radius:10px }
-
-/* CTA final */
-.services .cta{ margin-top:36px; padding:24px; border-radius:14px; background: linear-gradient(180deg, rgba(8,20,38,0.6), rgba(5,10,20,0.55)); border:1px solid rgba(255,255,255,0.03); display:flex;flex-direction:column;align-items:center;gap:12px }
-.services .cta h3{ margin:0; color:var(--text); font-size:1.2rem }
-.services .cta p{ margin:0; color:var(--text-muted); max-width:62ch; text-align:center }
-.services .cta .btn-contact{ padding:12px 20px; font-weight:700 }
-
-/* Mobile: CTA and button full width */
-@media (max-width: 480px){
-	.services .cta .btn-contact, .service .btn{ width:100%; text-align:center }
-}
-
-/* Smooth in-page scroll for anchors on this page (enhances 'Ver detalles' anchors) */
-html { scroll-behavior: smooth; }
-
-/* Accessibility: focus styles for keyboard users */
-.service a:focus-visible, .services .cta a:focus-visible{ outline: 3px solid rgba(94,171,255,0.18); outline-offset:4px }
-
-/* Small utility: reduce visual noise on very small screens */
-@media (max-width:360px){ .services.container{ padding:18px 12px } }
-
-/* Hero section for services */
-
-/* --- LIMPIEZA: Se eliminaron definiciones duplicadas de tipografía, botones, cards, espaciado, imágenes y breakpoints. Ahora se usan las clases centralizadas: typography.css, buttons.css, cards.css, layout.css, images.css, responsive.css --- */
-
-/* Mantener solo estilos específicos de layout, hero, efectos visuales, secciones únicas, animaciones, overlays, etc. */
-
-/* Ejemplo: Grid de servicios, CTA, Animaciones, etc. */
-
-/* End of services.css */
 /* ====================================================================
    SERVICES SECTION - Estilo actualizado con enfoque en Freelance
    ==================================================================== */
@@ -114,10 +35,16 @@ html { scroll-behavior: smooth; }
   width: 100%;
 }
 
-.service h2 {
-  color: #56b3f1; /* Azul brillante para el título (Azul Zafiro) */
-  font-size: clamp(2rem, 3vw, 2.5rem);
-  margin-bottom: 16px;
+.services-cta {
+  margin-top: 36px;
+  padding: 24px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(8,20,38,0.6), rgba(5,10,20,0.55));
+  border: 1px solid rgba(255,255,255,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .service p {

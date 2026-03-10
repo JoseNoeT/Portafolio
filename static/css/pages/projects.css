@@ -1,15 +1,3 @@
-/* Projects hero: solo fondo específico */
-.projects-hero {
-  width: 100%;
-  max-width: 1400px;
-  margin-inline: auto;
-}
-
-.hero-actions {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
 
 
 
@@ -67,7 +55,7 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.project-card:hover {
+ .projects-page .project-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 60px rgba(0,0,0,0.45);
 }
@@ -247,4 +235,10 @@
   background: rgba(255,255,255,0.03);
   border-radius: 18px;
   padding: 32px 18px;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
