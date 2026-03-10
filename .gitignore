@@ -31,3 +31,7 @@ media/
 build/
 dist/
 *.egg-info/
+
+# Node
+node_modules/
+package-lock.json

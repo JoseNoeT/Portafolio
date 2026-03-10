@@ -5,14 +5,15 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>{% block title %}Jose Noe | Portafolio Backend{% endblock %}</title>
+
     <meta name="description" content="Portafolio profesional de Jose Noe, desarrollador backend especializado en Django, APIs y arquitectura de software.">
+    <meta name="author" content="Jose Noe">
+
     <link rel="icon" type="image/png" href="{% static 'img/logo4.png' %}">
 
     <!-- BASE SYSTEM -->
-    <link rel="stylesheet" href="{% static 'css/base/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base/design-tokens.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/base/typography.css' %}">
     <link rel="stylesheet" href="{% static 'css/base/global.css' %}">
 
@@ -30,20 +31,14 @@
     <link rel="stylesheet" href="{% static 'css/components/glass.css' %}">
     <link rel="stylesheet" href="{% static 'css/components/images.css' %}">
 
-    <!-- PAGE STYLES -->
-    <link rel="stylesheet" href="{% static 'css/pages/home.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pages/about.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pages/services.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pages/projects.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pages/projects-detail.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pages/contact.css' %}">
-    <link rel="stylesheet" href="{% static 'css/pages/metodologia.css' %}">
-
     <!-- RESPONSIVE -->
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
+    <!-- PAGE SPECIFIC CSS -->
     {% block extra_css %}{% endblock %}
+
 </head>
+
 <body>
 
     <!-- MOBILE NAV OVERLAY -->
@@ -53,16 +48,19 @@
     <header class="navbar">
         <div class="nav-container">
 
+            <!-- LOGO -->
             <div class="nav-left">
-                <a href="/" class="nav-logo navbar-brand" aria-label="Inicio - Jose Noe">
+                <a href="{% url 'home' %}" class="nav-logo navbar-brand" aria-label="Inicio - Jose Noe">
                     <img
                         src="{% static 'img/logo4.png' %}"
                         alt="Jose Noe"
                         class="navbar-logo img-card"
+                        loading="lazy"
                     >
                 </a>
             </div>
 
+            <!-- NAVIGATION -->
             <nav class="nav-links" role="navigation" aria-label="Main Navigation">
                 <ul>
                     <li><a href="{% url 'home' %}">Inicio</a></li>
@@ -73,48 +71,62 @@
                     <li><a href="{% url 'contact' %}">Contacto</a></li>
                 </ul>
 
-                <div class="nav-cta-mobile"></div>
+                <div class="nav-cta-mobile">
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Hablemos</a>
+                </div>
             </nav>
 
+            <!-- RIGHT SIDE -->
             <div class="nav-right">
+
                 <div class="nav-cta desktop-only">
-                    <a href="/contact/" class="btn btn-primary" id="navbar-cta">
+                    <a href="{% url 'contact' %}" class="btn btn-primary" id="navbar-cta">
                         Hablemos
                     </a>
                 </div>
 
+                <!-- MOBILE MENU BUTTON -->
                 <div class="menu-btn-container">
                     <div class="menu-btn">
+
                         <input
                             type="checkbox"
                             class="menu-checkbox"
                             id="mobile-menu-toggle"
+                            aria-label="Toggle navigation menu"
                         >
+
                         <label for="mobile-menu-toggle" class="menu-label">
                             <div class="menu-bar"></div>
                         </label>
+
                     </div>
                 </div>
+
             </div>
 
         </div>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO BLOCK -->
     {% block hero %}{% endblock %}
 
     <!-- MAIN CONTENT -->
     <main class="container content">
+
         {% block content %}
         {% endblock %}
+
     </main>
 
     <!-- FOOTER -->
     {% include "partials/footer.html" %}
 
     <!-- JAVASCRIPT -->
+
     <script src="{% static 'js/animations/animations-core.js' %}" defer></script>
     <script src="{% static 'js/animations/scroll-animations.js' %}" defer></script>
+
     <script src="{% static 'js/base.js' %}" defer></script>
     <script src="{% static 'js/hero-system.js' %}" defer></script>
 
@@ -122,6 +134,8 @@
     <script src="{% static 'js/dev/debug-images.js' %}" defer></script>
     {% endif %}
 
+    <!-- PAGE SPECIFIC JS -->
     {% block extra_js %}{% endblock %}
+
 </body>
 </html>
