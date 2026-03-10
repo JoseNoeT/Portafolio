@@ -1,53 +1,127 @@
+/* ====================================================================
+   DESIGN TOKENS
+   Variables globales del sistema de diseño
+   ==================================================================== */
+
 :root {
-  /* Paleta de colores visual estilo imagen */
+
+  /* ================================================================
+     BACKGROUNDS
+     ================================================================ */
+
   --color-bg-primary: #0a192f;
   --color-bg-secondary: #000a1a;
   --color-bg-glass: rgba(10, 25, 47, 0.85);
+
+  /* ================================================================
+     TEXT COLORS
+     ================================================================ */
 
   --color-text-primary: #ffffff;
   --color-text-secondary: #dbeafe;
   --color-text-accent: #38bdf8;
 
+  --text-muted: #a0a0a0;
+
+  /* ================================================================
+     ACCENT COLORS
+     ================================================================ */
+
   --color-accent-primary: #2196f3;
   --color-accent-secondary: #56b3f1;
-  --color-accent-glass: rgba(56,189,248,0.18);
+  --color-accent-glass: rgba(56, 189, 248, 0.18);
 
-  /* Gradientes intensos */
+  /* ================================================================
+     STATUS COLORS
+     ================================================================ */
+
+  --success-color: #38bdf8;
+  --error-color: #f44336;
+
+  /* ================================================================
+     GRADIENTS
+     ================================================================ */
+
   --gradient-primary: linear-gradient(135deg, #2196f3 0%, #38bdf8 100%);
   --gradient-secondary: linear-gradient(135deg, #0a192f 0%, #000a1a 100%);
   --gradient-hero: linear-gradient(120deg, #2196f3 0%, #0a192f 100%);
 
-  /* Glassmorphism tokens */
+  /* ================================================================
+     GLASS EFFECT
+     ================================================================ */
+
   --glass-bg: rgba(10, 25, 47, 0.85);
-  --glass-border: 1.5px solid rgba(56,189,248,0.85);
+  --glass-border: 1.5px solid rgba(56, 189, 248, 0.85);
   --glass-blur: blur(18px);
-  --glass-shadow: 0 8px 32px rgba(56,189,248,0.12);
+  --glass-shadow: 0 8px 32px rgba(56, 189, 248, 0.12);
 
-  /* Border radius */
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  /* ================================================================
+     TYPOGRAPHY
+     ================================================================ */
 
-  /* Spacing */
-  --spacing-md: 16px;
-  --spacing-lg: 32px;
-
-  /* Typography */
   --font-family: 'Inter', Arial, sans-serif;
+
+  --font-size-base: 1rem;
+  --line-height-base: 1.6;
+
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
   --font-h1: clamp(2rem, 3vw, 3rem);
   --font-h2: clamp(1.6rem, 2.5vw, 2.2rem);
   --font-h3: clamp(1.2rem, 2vw, 1.6rem);
   --font-body: 1rem;
 
-  /* Colors */
-  --color-primary: #2563eb;
-  --color-secondary: #64748b;
-  --color-accent: #38bdf8;
-  --color-bg: #f4f6f8;
-  --color-text: #333;
-  --color-muted: #e0e0e0;
+  /* ================================================================
+     SPACING
+     ================================================================ */
 
-  /* Breakpoints */
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+
+  /* ================================================================
+     BORDER RADIUS
+     ================================================================ */
+
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* ================================================================
+     NAVBAR
+     ================================================================ */
+
+  --navbar-height: 72px;
+  --navbar-height-mobile: 64px;
+
+  --navbar-logo-slot-width: 200px;
+  --navbar-logo-slot-width-mobile: 90px;
+
+  --navbar-logo-slot-height: 48px;
+  --navbar-logo-slot-height-mobile: 40px;
+
+  --navbar-bg: rgba(15, 23, 42, 0.98);
+  --navbar-bg-mobile: rgba(15, 23, 42, 0.98);
+
+  --navbar-border: rgba(56, 189, 248, 0.12);
+  --navbar-shadow: 0 2px 16px rgba(56, 189, 248, 0.08);
+
+  --navbar-link: #e5e5e5;
+  --navbar-link-hover: #38bdf8;
+  --navbar-link-active: #2196f3;
+  --navbar-link-muted: #a0a0a0;
+
+  /* ================================================================
+     LAYOUT
+     ================================================================ */
+
+  --container-max-width: 1400px;
+
+  /* ================================================================
+     BREAKPOINTS
+     ================================================================ */
+
   --bp-mobile: 480px;
   --bp-tablet: 768px;
-  --bp-laptop: 1024px;
+  --bp-desktop: 1024px;
+
 }

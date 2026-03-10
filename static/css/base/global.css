@@ -1,68 +1,48 @@
 /* ====================================================================
    GLOBAL.CSS
-   Global styles + reset
    ==================================================================== */
 
-/* ====================================================================
-   1. CSS VARIABLES
-   ==================================================================== */
-
-:root {
-  --primary-color: #56b3f1; /* Azul Zafiro */
-  --secondary-color: #0f172a; /* Azul Oscuro */
-  --text-color: #e5e5e5; /* Blanco Suave */
-  --text-muted: #a0a0a0; /* Gris Claro */
-  --background-light: #f8fafc; /* Azul Claro */
-  --success-color: #38bdf8; /* Azul Claro */
-  --error-color: #f44336; /* Rojo */
-
-  --container-max-width: 1400px;
-
-   /* navbar fallback */
-  --navbar-height: 72px;
-  --navbar-height-mobile: 64px;
-}
+@import url('./design-tokens.css');
 
 /* ====================================================================
-   2. RESET + BOX MODEL
    ==================================================================== */
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* ====================================================================
-   3. HTML + BODY
+   2. HTML + BODY
    ==================================================================== */
 
 html,
 body {
   width: 100%;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  padding-top: var(--navbar-height);
+  overflow-x: hidden;
 }
 
 @media (max-width: 1024px) {
-  body {
-    padding-top: var(--navbar-height-mobile);
-  }
+  
 }
 
 /* ====================================================================
-   4. TYPOGRAPHY BASE
+   3. TYPOGRAPHY
    ==================================================================== */
 
 h1,
@@ -71,46 +51,40 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
-  color: var(--primary-color);
+  color: var(--color-accent-primary);
 }
 
 p {
-  margin: 0 0 1rem;
+  margin-bottom: 1rem;
 }
 
 a {
-  color: var(--primary-color);
+  color: var(--color-accent-primary);
   text-decoration: none;
   transition: color 0.25s ease;
 }
 
 a:hover {
-  color: var(--success-color);
+  color: var(--color-text-accent);
 }
 
 /* ====================================================================
-   5. BUTTONS BASE
+   4. BUTTONS
    ==================================================================== */
 
 button,
 .btn {
-  background-color: var(--primary-color);
-  color: var(--text-color);
-
+  background: var(--gradient-primary);
+  color: var(--color-text-primary);
   border: none;
-  border-radius: 6px;
-
+  border-radius: var(--radius-md);
   padding: 10px 20px;
-
   cursor: pointer;
-
-  transition: background-color 0.25s ease, transform 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
 button:hover,
 .btn:hover {
-  background-color: var(--success-color);
   transform: scale(1.05);
 }
 
@@ -120,7 +94,7 @@ button.error,
 }
 
 /* ====================================================================
-   6. IMAGES
+   5. IMAGES
    ==================================================================== */
 
 img {
@@ -130,24 +104,20 @@ img {
 }
 
 /* ====================================================================
-   7. SECTIONS
+   6. SECTIONS
    ==================================================================== */
 
 .section-wrapper {
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   padding: 40px 20px;
-
-  border-radius: 10px;
-
+  border-radius: var(--radius-md);
   margin-bottom: 20px;
-
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: var(--glass-shadow);
 }
 
 /* ====================================================================
-   8. CONTAINER SYSTEM
+   7. CONTAINER
    ==================================================================== */
 
 .container {
@@ -158,11 +128,10 @@ img {
 }
 
 /* ====================================================================
-   9. RESPONSIVE
+   8. RESPONSIVE
    ==================================================================== */
 
 @media (max-width: 768px) {
-
   .section-wrapper {
     padding: 20px 10px;
   }
@@ -171,5 +140,4 @@ img {
   .btn {
     padding: 8px 16px;
   }
-
 }

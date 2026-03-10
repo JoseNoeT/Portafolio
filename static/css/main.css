@@ -1,9 +1,0 @@
-/* main.css - Import all modular CSS files */
-@import url('./base/reset.css');
-@import url('./base/typography.css');
-@import url('./components/buttons.css');
-@import url('./components/cards.css');
-@import url('./components/forms.css');
-@import url('./layout/header.css');
-@import url('./layout/footer.css');
-@import url('./navbar.css');

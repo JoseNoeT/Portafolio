@@ -1,62 +1,13 @@
 /* typography.css - design tokens and global text defaults */
-:root {
-    --bg: #0f172a;
-    --bg-dark: #0f172a;
-    --text: #e2e8f0;
-    --text-light: #e6eef8;
-    --text-muted: #cbd5e1;
-    --accent: #38bdf8;
-    --cta-start: #2563eb;
-    --cta-end: #1e40af;
-    --max-width: 1200px;
-    --container-width: 1100px;
-    --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
 
-    /* backward-compatible aliases for legacy pages */
-    --primary-color: #2563eb;
-    --secondary-color: #0b1120;
-    --secondary-color-hover: #111b33;
-    --text-color: #e2e8f0;
-    --link-color: #38bdf8;
-    --success-color: #22c55e;
-    --border-color: rgba(148, 163, 184, 0.25);
-    --background-light: rgba(15, 23, 42, 0.65);
-}
 
-body {
-    background-color: #0b1120;
-    color: var(--text);
-    font-family: "Inter", sans-serif;
-    line-height: 1.5;
-    padding-top: 80px;
-}
 
 .focused-layout {
     padding-top: 0;
 }
 
-     --color-bg: #0b1120; /* Added background color */
-     --color-text: var(--text); /* Added text color */
-     --font-family: "Inter", sans-serif; /* Added font family */
-     --font-body: 1rem; /* Added font size for body */
-     --font-h1: 2.25rem; /* Added font size for h1 */
-     --font-h2: 1.875rem; /* Added font size for h2 */
-     --font-h3: 1.5rem; /* Added font size for h3 */
-     --spacing-xs: 0.25rem; /* Added spacing for xs */
-     --spacing-sm: 0.5rem; /* Added spacing for sm */
-     --spacing-md: 1rem; /* Added spacing for md */
-     --spacing-lg: 1.5rem; /* Added spacing for lg */
-     --spacing-xl: 2rem; /* Added spacing for xl */
-     --title-delay: 0ms; /* Added title delay */
-     --text-muted: #cbd5e1; /* Added muted text color */
-     --text-light: #e6eef8; /* Added light text color */
-     --text-color: #e2e8f0; /* Added text color */
-     --link-color: #38bdf8; /* Added link color */
-     --success-color: #22c55e; /* Added success color */
-     --border-color: rgba(148, 163, 184, 0.25); /* Added border color */
-     --background-light: rgba(15, 23, 42, 0.65); /* Added background light */
 .container {
-    max-width: var(--max-width);
+    max-width: 1200px;
     margin: auto;
     padding: 20px;
 }
