@@ -1,7 +1,6 @@
 /* Modern SaaS Portfolio Footer - Glassmorphism, Gradients, Responsive */
 .footer {
 	width: 100%;
-	box-sizing: border-box;
 	overflow-x: hidden;
 	padding: 80px 20px 40px;
 	background: linear-gradient(135deg, #0f172a, #0a2540, #0b1f3a);
@@ -12,7 +11,6 @@
 	max-width: 1200px;
 	margin: auto;
 	width: 100%;
-	box-sizing: border-box;
 	display: grid;
 	grid-template-columns: 1.2fr 1fr 1fr 1.5fr;
 	gap: 40px;

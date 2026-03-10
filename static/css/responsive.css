@@ -35,7 +35,7 @@
   .footer-container {
     grid-template-columns: 1fr 1fr;
     width: 100%;
-    box-sizing: border-box;
+    
   }
 }
 
@@ -43,6 +43,6 @@
   .footer-container {
     grid-template-columns: 1fr;
     width: 100%;
-    box-sizing: border-box;
+   
   }
 }
