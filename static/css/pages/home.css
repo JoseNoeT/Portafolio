@@ -22,8 +22,6 @@
   color: var(--color-text-primary);
   border-radius: var(--radius-xl);
   box-shadow: 0 16px 48px rgba(56,189,248,0.18), var(--glass-shadow);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
   background: linear-gradient(120deg, #0ea5e9 0%, #1e293b 100%);
   transition: background 0.3s ease, box-shadow 0.3s ease;
   z-index: 10;

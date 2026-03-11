@@ -16,13 +16,22 @@
   right:0;
   height:var(--navbar-height);
   width:100%;
-  background:var(--glass-bg);
+  background:var(--navbar-bg);
   color:var(--color-text-primary);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
   border-bottom:var(--glass-border);
   z-index:1000;
-  overflow-x:hidden;
+}
+
+/* Blur visual via pseudo — evita que .navbar cree containing block
+   que atrape a hijos position:fixed (drawer, overlay) */
+.navbar::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--glass-bg);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  z-index:-1;
 }
 
 .nav-container{
@@ -245,7 +254,6 @@
 
 .navbar{
 height:var(--navbar-height-mobile);
-overflow:visible;
 z-index:2000;
 }
 
@@ -304,16 +312,21 @@ overflow-y:auto;
 
 transform:translateX(100%);
 opacity:0;
+visibility:hidden;
+pointer-events:none;
 
 z-index:2000;
 
-transition:transform .36s ease,opacity .36s ease;
+transition:transform .36s ease,opacity .36s ease,visibility 0s .36s;
 }
 
 .nav-links.active{
 transform:translateX(0);
 opacity:1;
+visibility:visible;
+pointer-events:auto;
 animation:drawerIn .36s ease both;
+transition:transform .36s ease,opacity .36s ease,visibility 0s 0s;
 }
 
 .nav-links ul{

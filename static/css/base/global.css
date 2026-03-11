@@ -19,6 +19,14 @@
    2. HTML + BODY
    ==================================================================== */
 
+/* --- Scrollbar oculto, scroll funcional --- */
+html {
+  scrollbar-width: none;               /* Firefox */
+}
+html::-webkit-scrollbar {
+  display: none;                        /* Chrome / Edge / Safari */
+}
+
 html,
 body {
   width: 100%;
