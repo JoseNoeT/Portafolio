@@ -18,18 +18,43 @@
                 <img src="{% static 'img/JoseNoe.png' %}" alt="Jose Noe" class="img-card">
             </div>
             <div class="hero-text">
+                <span class="hero-eyebrow">Desarrollador Backend &amp; Fullstack</span>
                 <h1>
-                    DESARROLLO SOLUCIONES FULLSTACK 
-                    <span>ESCALABLES</span>
+                    Construyo soluciones web
+                    <span>escalables</span>
                 </h1>
                 <p>
                     Analista Programador titulado y estudiante de Ingeniería en Informática.
                     Experiencia en desarrollo web con Django y WordPress, construyendo sistemas
                     con autenticación, roles y bases de datos relacionales bien estructuradas.
                 </p>
+                <div class="hero-tags">
+                    <span class="hero-tag">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        Django
+                    </span>
+                    <span class="hero-tag">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        WordPress
+                    </span>
+                    <span class="hero-tag">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        Autenticación
+                    </span>
+                    <span class="hero-tag">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                        Bases de Datos
+                    </span>
+                </div>
                 <div class="hero-buttons">
-                    <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver Proyectos</a>
-                    <a href="/contact/" class="btn btn-outline">Trabajemos Juntos</a>
+                    <a href="{% url 'projects_list' %}" class="btn btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        Ver Proyectos
+                    </a>
+                    <a href="/contact/" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        Trabajemos Juntos
+                    </a>
                 </div>
             </div>
         </div>
