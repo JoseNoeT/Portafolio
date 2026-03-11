@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="{% static 'css/pages/home.css' %}">
 {% endblock %}
 
-{% block content %}
-
-<!-- HERO -->
-<section class="hero hero--home section" role="banner" aria-label="Hero">
+{% block hero %}
+<!-- HERO HOME - fuera del container para full-width -->
+<section class="hero hero--home" role="banner" aria-label="Hero">
     <div class="hero-canvas" aria-hidden="true"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
@@ -36,6 +35,9 @@
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block content %}
 
 <!-- METHODOLOGY -->
 <section class="methodology section">

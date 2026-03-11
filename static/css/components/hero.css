@@ -54,7 +54,8 @@
 }
 
 /* Glass effect overlay */
-.hero::before {
+/* Glass overlay only for generic hero, not hero--home */
+.hero:not(.hero--home)::before {
     content: "";
     position: absolute;
     inset: 0;
