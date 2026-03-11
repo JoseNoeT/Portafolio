@@ -8,11 +8,11 @@
   function createHeroParticles({
     container,
     tickSpeed = 10,
-    baseHue = 200,
+    baseHue = 180,
     numPoints = 10,
     maxTicks = 3000,
     strokeWeight = 1.5,
-    lineAlpha = 0.2,
+    lineAlpha = 0.01,
   } = {}) {
     if (!container || !global.p5) return null;
 
@@ -26,7 +26,7 @@
           y,
           dx: p.cos(angle),
           dy: p.sin(angle),
-          color: p.color((p.random(35) + baseHue) % 360, 85, 100, lineAlpha),
+          color: p.color((p.random(100) + baseHue) % 360, 100, 100, lineAlpha),
           neighbor: null,
         };
       }
@@ -66,15 +66,14 @@
         });
 
         p.clear();
-        p.background(10);
+        p.background(0);
       }
 
       p.setup = function setup() {
         const c = p.createCanvas(10, 10);
         c.parent(container);
 
-        // Normalize alpha channel to 0..1 so line opacity stays visible.
-        p.colorMode(p.HSB, 360, 100, 100, 1);
+        p.colorMode(p.HSB);
         p.blendMode(p.ADD);
         p.strokeWeight(strokeWeight);
 

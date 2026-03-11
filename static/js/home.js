@@ -28,10 +28,11 @@
 
             AppAnimations.initHeroParticles(".hero-canvas", {
                 tickSpeed: 10,
-                baseHue: 200,
+                baseHue: 180,
                 numPoints: 10,
                 maxTicks: 3000,
-                lineAlpha: 0.2,
+                strokeWeight: 1.5,
+                lineAlpha: 0.01,
             });
         }
 
