@@ -4,7 +4,7 @@ from projects.models import Project
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = "adminpanel/dashboard.html"
-    login_url = "/dashboard/login/"
+    login_url = "/admin/login/"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

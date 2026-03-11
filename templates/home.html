@@ -62,82 +62,104 @@
 </section>
 {% endblock %}
 
-{% block content %}
 
+
+{% block content %}
 <!-- METHODOLOGY -->
 <section class="methodology section">
     <div class="container">
         <div class="method-wrap grid">
             <div class="method-text">
-                <h2>Ingeniería y Metodología</h2>
+                <h2>Desarrollo con estructura, aprendizaje y propósito</h2>
                 <p>
-                    Cada proyecto que desarrollo sigue una metodología rigurosa centrada en arquitectura escalable y código de calidad producción.
+                    Cada proyecto que realizo parte por entender bien el problema. Me interesa organizar la información, definir una base clara y avanzar de forma ordenada para construir soluciones web con sentido.
                 </p>
                 <p>
-                    Diseño systems con patrones SOLID, realizo code reviews exhaustivos y configuro testing automatizado. Mi objetivo es entregar soluciones robustas que crezcan con tu negocio.
+                    Trabajo con una metodología que prioriza la claridad, la documentación y la mejora continua. Busco que cada proyecto no solo funcione, sino que también refleje una forma de trabajo seria, adaptable y pensada para crecer.
                 </p>
             </div>
             <div class="method-image reveal">
                 <div class="image-card">
-                    <img src="{% static 'img/arquitec.jpeg' %}" alt="Arquitectura" class="img-cover" />
+                    <img src="{% static 'img/arquitec.jpeg' %}" alt="Metodología de desarrollo y proceso de trabajo" class="img-cover" />
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+
 <!-- SERVICES -->
-<section class="services section">
+<section class="services section" id="services">
     <div class="container">
-        <h2>Servicios</h2>
+        <span class="hero-eyebrow reveal">Servicios</span>
+
+        <h2 class="reveal">Soluciones web con enfoque estructurado</h2>
+
+        <p class="section-subtitle reveal">
+            Desarrollo, mejora e implementación de soluciones web pensadas para funcionar bien, adaptarse a nuevas necesidades y mantener una base clara de trabajo.
+        </p>
+
         <div class="service-grid grid">
-            <div class="service-card card reveal">
-        <div class="hero-wrapper">
-                    <img src="{% static 'img/escritorio.jpg' %}" alt="Desarrollo Backend" class="img-cover" />
+            <article class="service-card card reveal">
+                <div class="hero-wrapper">
+                    <img src="{% static 'img/escritorio.jpg' %}" alt="Desarrollo backend con Django y lógica de negocio" class="img-cover" />
                 </div>
                 <div class="service-body">
-                    <h3>Desarrollo Backend</h3>
-                    <p>APIs REST escalables, arquitectura limpia y optimización de desempeño con Django.</p>
+                    <h3>Desarrollo backend</h3>
+                    <p>
+                        Construcción de soluciones con Django, autenticación, roles, lógica de negocio y conexión con bases de datos para proyectos que necesitan estructura y funcionamiento real.
+                    </p>
                 </div>
-            </div>
-            <div class="service-card card reveal">
+            </article>
+
+            <article class="service-card card reveal">
                 <div class="image-card">
-                    <img src="{% static 'img/azulabstracto.jpg' %}" alt="Arquitectura" class="img-cover" />
+                    <img src="{% static 'img/azulabstracto.jpg' %}" alt="Estructura de sistemas e integración de funcionalidades" class="img-cover" />
                 </div>
                 <div class="service-body">
-                    <h3>Arquitectura de Sistemas</h3>
-                    <p>Diseño escalable, patrones SOLID y bases de datos optimizadas para producción.</p>
+                    <h3>Estructura e integración</h3>
+                    <p>
+                        Organización de funcionalidades, conexión con APIs y construcción de bases sólidas para que cada proyecto avance con claridad, orden y posibilidad de crecimiento.
+                    </p>
                 </div>
-            </div>
-            <div class="service-card card reveal">
+            </article>
+
+            <article class="service-card card reveal">
                 <div class="image-card">
-                    <img src="{% static 'img/campus360.jpg' %}" alt="Deployment" class="img-cover" />
+                    <img src="{% static 'img/campus360.jpg' %}" alt="Implementación y mejora de proyectos web" class="img-cover" />
                 </div>
                 <div class="service-body">
-                    <h3>Despliegue & DevOps</h3>
-                    <p>CI/CD, Docker, servidores cloud y monitoreo de aplicaciones en tiempo real.</p>
+                    <h3>Implementación y mejora</h3>
+                    <p>
+                        Apoyo en ajustes, evolución de interfaces, mejoras funcionales y puesta en marcha de proyectos web que necesitan una implementación más clara, cuidada y profesional.
+                    </p>
                 </div>
-            </div>
+            </article>
         </div>
-        <div class="featured-grid">
+    </div>
 </section>
 
 <!-- ABOUT -->
-<section class="about section">
+<section class="about section" id="about">
     <div class="container">
         <div class="about-wrap grid">
             <div class="about-image reveal">
                 <div class="image-card">
-                    <img src="{% static 'img/personaCompu.jpg' %}" alt="Sobre mí" class="img-cover" />
+                    <img src="{% static 'img/personaCompu.jpg' %}" alt="Perfil profesional de Jose Noe como desarrollador web" class="img-cover" />
                 </div>
             </div>
+
             <div class="about-text">
-                <h2>Sobre mí</h2>
-                <p>
-                    Soy ingeniero en sistemas especializado en desarrollo backend con Django. Con más de 3 años de experiencia, he construido arquitecturas escalables, APIs robustas y sistemas de despliegue automatizado.
+                <span class="hero-eyebrow reveal">Sobre mí</span>
+
+                <h2 class="reveal">Una base técnica en crecimiento, con enfoque claro</h2>
+
+                <p class="reveal">
+                    Soy Analista Programador titulado y estudiante de Informática con mención en Desarrollo de Software. Me interesa seguir construyendo experiencia en desarrollo web, fortaleciendo una base técnica orientada a backend, estructura de sistemas y soluciones funcionales pensadas para proyectos reales.
                 </p>
-                <p>
-                    Mi enfoque: escribir código limpio, documentado y listo para producción. Sigo principios SOLID, realizo testing exhaustivo y configuro CI/CD para garantizar calidad.
+
+                <p class="reveal">
+                    Mi forma de trabajar combina aprendizaje continuo, organización y compromiso con cada proyecto. Busco aportar con claridad, adaptarme a equipos de trabajo y seguir creciendo como desarrollador a través de desafíos que me permitan aplicar tecnología con sentido.
                 </p>
             </div>
         </div>
@@ -145,27 +167,40 @@
 </section>
 
 <!-- FEATURED PROJECTS -->
-<section class="featured section">
+<section class="featured section" id="projects">
     <div class="container">
-        <h2>Proyectos Destacados</h2>
+        <span class="hero-eyebrow reveal">Proyectos</span>
+
+        <h2 class="reveal">Proyectos que reflejan proceso, solución y crecimiento</h2>
+
+        <p class="section-subtitle reveal">
+            Una selección de trabajos donde he aplicado desarrollo web, estructura de sistemas y resolución de problemas con tecnologías como Django, React, bases de datos y autenticación orientada a proyectos reales.
+        </p>
+
         <div class="featured-grid grid">
             {% if projects %}
                 {% for project in projects %}
-                    <div class="project-card card reveal">
+                    <article class="project-card card reveal">
                         {% if project.image %}
                             <div class="image-card">
                                 <img src="{{ project.image.url }}" alt="{{ project.title }}" class="img-cover" />
                             </div>
                         {% endif %}
-                        <h3>{{ project.title }}</h3>
-                        <p>{{ project.description|truncatewords:20 }}</p>
-                        {% if project.url %}
-                            <a href="{{ project.url }}" class="card-link btn btn-outline" target="_blank">Ver Proyecto →</a>
-                        {% endif %}
-                    </div>
+
+                        <div class="project-body">
+                            <h3>{{ project.title }}</h3>
+                            <p>{{ project.description|truncatewords:20 }}</p>
+
+                            {% if project.url %}
+                                <a href="{{ project.url }}" class="card-link btn btn-outline" target="_blank" rel="noopener noreferrer">
+                                    Ver proyecto
+                                </a>
+                            {% endif %}
+                        </div>
+                    </article>
                 {% endfor %}
             {% else %}
-                <p>No hay proyectos disponibles en este momento.</p>
+                <p class="section-empty-state reveal">No hay proyectos disponibles en este momento.</p>
             {% endif %}
         </div>
     </div>
@@ -174,9 +209,18 @@
 <!-- CTA -->
 <section class="cta-hero section" role="region" aria-label="Call to Action">
     <div class="cta-inner">
-        <h2>¿Listo para colaborar?</h2>
-        <p>Contacta para proyectos o consultas.</p>
-        <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver proyectos</a>
+        <span class="hero-eyebrow reveal">Hablemos</span>
+
+        <h2 class="reveal">Disponible para nuevas oportunidades y proyectos</h2>
+
+        <p class="reveal">
+            Si estás buscando un perfil para sumarse a un equipo, desarrollar una solución web o conversar sobre una idea, aquí puedes conocer mejor mi trabajo y dar el siguiente paso.
+        </p>
+
+        <div class="cta-actions reveal">
+            <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver proyectos</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline">Contactar</a>
+        </div>
     </div>
 </section>
 
