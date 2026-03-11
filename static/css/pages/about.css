@@ -1,8 +1,8 @@
 /* about.css - styles specific to about.html */
 
-.about.container{ max-width:1100px; margin:40px auto; padding:20px; color:#e6eef8; }
+.about.container{ max-width:1100px; margin:40px auto; padding:20px; color:var(--color-text-primary); }
 .about h1{ font-size:2rem; margin-bottom:12px; }
-.about h2{ margin-top:18px; color:#cbd5e1; }
+.about h2{ margin-top:18px; color:var(--color-text-secondary); }
 .about ul{ margin-left:18px; }
 
 @media (max-width: 768px) {
@@ -21,20 +21,23 @@
 .methodology.container {
   margin-top: 40px;
   padding: 28px 20px;
-  background-color: var(--background-light); /* Fondo claro */
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
 }
 
 .methodology h2 {
-  color: var(--primary-color); /* Títulos de las fases en azul brillante */
+  color: var(--color-accent-primary);
   font-size: clamp(1.8rem, 2.8vw, 2.4rem);
   margin-bottom: 16px;
 }
 
 .methodology ul {
   margin-left: 18px;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   line-height: 1.8;
 }
 
@@ -46,10 +49,11 @@
 }
 
 .stack-tags .tag {
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 20px;
+  background: rgba(44, 168, 243, 0.12);
+  color: var(--color-accent-primary);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(44, 168, 243, 0.25);
   font-size: 0.9rem;
 }
 
@@ -57,36 +61,39 @@
 .about-cta {
   margin-top: 40px;
   padding: 24px;
-  background: linear-gradient(180deg, rgba(8, 20, 38, 0.6), rgba(5, 10, 20, 0.55));
-  border-radius: 12px;
-  box-shadow: 0 6px 15px var(--shadow-dark);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
   text-align: center;
 }
 
 .about-cta h2 {
-  color: var(--primary-color); /* Azul brillante */
+  color: var(--color-accent-primary);
   margin-bottom: 16px;
 }
 
 .about-cta p {
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin-bottom: 20px;
 }
 
 .about-cta .btn-primary {
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 12px 24px;
-  border-radius: 10px;
+  background: var(--gradient-primary);
+  color: var(--color-text-primary);
+  padding: 14px 28px;
+  border-radius: 18px;
   font-weight: bold;
   text-decoration: none;
-  box-shadow: 0 6px 15px var(--shadow-dark);
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 10px 24px rgba(44, 168, 243, 0.22);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-cta .btn-primary:hover {
-  background-color: var(--success-color);
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(44, 168, 243, 0.30);
 }
 
 /* Animations */
@@ -148,24 +155,27 @@
 
 /* Section Styles */
 .section-wrapper {
-    background-color: var(--background-light);
-    color: var(--text-color);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    color: var(--color-text-primary);
     padding: 50px 30px;
-    border-radius: 10px;
+    border-radius: var(--radius-lg);
     margin-bottom: 30px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--color-border-soft);
+    box-shadow: var(--glass-shadow);
     animation: fadeIn 1.5s ease-in-out;
 }
 
 .section-wrapper h2 {
-    color: var(--primary-color);
+    color: var(--color-accent-primary);
     font-size: 2rem;
     margin-bottom: 20px;
     animation: slideInFromBottom 1.2s ease-out;
 }
 
 .section-wrapper p {
-    color: var(--text-muted);
+    color: var(--color-text-secondary);
     font-size: 1.2rem;
     margin-bottom: 20px;
     animation: fadeIn 1.5s ease-in-out;

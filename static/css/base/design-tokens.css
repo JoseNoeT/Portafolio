@@ -1,6 +1,7 @@
 /* ====================================================================
    DESIGN TOKENS
    Variables globales del sistema de diseño
+   Basado en: docs/guiaVisuallSitioi.md
    ==================================================================== */
 
 :root {
@@ -9,27 +10,37 @@
      BACKGROUNDS
      ================================================================ */
 
-  --color-bg-primary: #0a192f;
-  --color-bg-secondary: #000a1a;
-  --color-bg-glass: rgba(10, 25, 47, 0.85);
+  --color-bg-primary: #071027;
+  --color-bg-secondary: #0F2549;
+  --color-bg-tertiary: #1A5E95;
+  --color-surface-dark: #10213F;
+  --color-surface-glass: rgba(7, 16, 39, 0.58);
 
   /* ================================================================
      TEXT COLORS
      ================================================================ */
 
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #dbeafe;
-  --color-text-accent: #38bdf8;
-
-  --text-muted: #a0a0a0;
+  --color-text-primary: #F0F1F2;
+  --color-text-secondary: #C9D4E3;
+  --color-text-accent: #38BDF8;
+  --color-text-muted: #9B9A9B;
+  --text-muted: #9B9A9B;
 
   /* ================================================================
      ACCENT COLORS
      ================================================================ */
 
-  --color-accent-primary: #2196f3;
-  --color-accent-secondary: #56b3f1;
-  --color-accent-glass: rgba(56, 189, 248, 0.18);
+  --color-accent-primary: #2CA8F3;
+  --color-accent-secondary: #38BDF8;
+  --color-accent-strong: #2196F3;
+  --color-accent-glass: rgba(44, 168, 243, 0.12);
+
+  /* ================================================================
+     BORDERS & TRANSPARENCY
+     ================================================================ */
+
+  --color-border-soft: rgba(255, 255, 255, 0.10);
+  --color-border-accent: rgba(44, 168, 243, 0.55);
 
   /* ================================================================
      STATUS COLORS
@@ -42,18 +53,19 @@
      GRADIENTS
      ================================================================ */
 
-  --gradient-primary: linear-gradient(135deg, #2196f3 0%, #38bdf8 100%);
-  --gradient-secondary: linear-gradient(135deg, #0a192f 0%, #000a1a 100%);
-  --gradient-hero: linear-gradient(120deg, #2196f3 0%, #0a192f 100%);
+  --gradient-primary: linear-gradient(135deg, #2196F3 0%, #38BDF8 100%);
+  --gradient-secondary: linear-gradient(135deg, #071027 0%, #0F2549 100%);
+  --gradient-hero: linear-gradient(135deg, #071027 0%, #0F2549 55%, #071027 100%);
 
   /* ================================================================
      GLASS EFFECT
      ================================================================ */
 
-  --glass-bg: rgba(10, 25, 47, 0.85);
-  --glass-border: 1.5px solid rgba(56, 189, 248, 0.85);
-  --glass-blur: blur(18px);
-  --glass-shadow: 0 8px 32px rgba(56, 189, 248, 0.12);
+  --glass-bg: rgba(7, 16, 39, 0.58);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.10);
+  --glass-border-hover: 1px solid rgba(44, 168, 243, 0.55);
+  --glass-blur: blur(14px);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(44, 168, 243, 0.06) inset;
 
   /* ================================================================
      TYPOGRAPHY
@@ -83,8 +95,11 @@
      BORDER RADIUS
      ================================================================ */
 
+  --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
 
   /* ================================================================
      NAVBAR
@@ -99,16 +114,16 @@
   --navbar-logo-slot-height: 48px;
   --navbar-logo-slot-height-mobile: 40px;
 
-  --navbar-bg: rgba(15, 23, 42, 0.98);
-  --navbar-bg-mobile: rgba(15, 23, 42, 0.98);
+  --navbar-bg: rgba(7, 16, 39, 0.58);
+  --navbar-bg-mobile: rgba(7, 16, 39, 0.80);
 
-  --navbar-border: rgba(56, 189, 248, 0.12);
-  --navbar-shadow: 0 2px 16px rgba(56, 189, 248, 0.08);
+  --navbar-border: rgba(255, 255, 255, 0.10);
+  --navbar-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
 
-  --navbar-link: #e5e5e5;
-  --navbar-link-hover: #38bdf8;
-  --navbar-link-active: #2196f3;
-  --navbar-link-muted: #a0a0a0;
+  --navbar-link: #C9D4E3;
+  --navbar-link-hover: #2CA8F3;
+  --navbar-link-active: #2196F3;
+  --navbar-link-muted: #9B9A9B;
 
   /* ================================================================
      LAYOUT

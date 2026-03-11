@@ -2,8 +2,8 @@
 
 /* Page background for focused layout */
 .focused-layout {
-  background: #0b1220;
-  color: #e6eef8;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
 .detail-wrapper {

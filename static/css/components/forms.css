@@ -15,7 +15,7 @@ select {
 input:focus,
 textarea:focus,
 select:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    border-color: var(--color-accent-primary);
+    box-shadow: 0 0 0 3px rgba(44, 168, 243, 0.15);
     outline: none;
 }

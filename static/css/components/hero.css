@@ -13,9 +13,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #1e293b 0%, #1e3a8a 100%);
-    border-radius: 18px;
-    box-shadow: 0 8px 32px rgba(30,58,138,0.18), 0 1px 8px rgba(30,58,138,0.12);
+    background: var(--gradient-hero);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--glass-shadow);
     margin: 40px auto 0 auto;
     position: relative;
     overflow: hidden;
@@ -43,14 +43,14 @@
     font-weight: bold;
     color: var(--text-color);
     margin-bottom: 18px;
-    text-shadow: 0 0 8px #2563eb, 0 2px 8px #1e3a8a;
+    text-shadow: 0 0 8px rgba(44, 168, 243, 0.4), 0 2px 8px rgba(15, 37, 73, 0.6);
 }
 
  .hero .hero-subtitle {
     font-size: clamp(1.1rem, 3vw, 1.6rem);
-    color: #a5b4fc;
+    color: var(--color-text-secondary);
     margin-bottom: 0;
-    text-shadow: 0 0 4px #2563eb;
+    text-shadow: 0 0 4px rgba(44, 168, 243, 0.3);
 }
 
 /* Glass effect overlay */

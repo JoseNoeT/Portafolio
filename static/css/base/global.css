@@ -34,7 +34,7 @@ body {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
 
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
 
   -webkit-font-smoothing: antialiased;
@@ -59,11 +59,12 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--color-accent-primary);
+  color: var(--color-text-primary);
 }
 
 p {
   margin-bottom: 1rem;
+  color: var(--color-text-secondary);
 }
 
 a {
@@ -73,7 +74,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-text-accent);
+  color: var(--color-accent-secondary);
 }
 
 /* ====================================================================
@@ -85,15 +86,16 @@ button,
   background: var(--gradient-primary);
   color: var(--color-text-primary);
   border: none;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   padding: 10px 20px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 button:hover,
 .btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(44, 168, 243, 0.22);
 }
 
 button.error,
@@ -116,11 +118,14 @@ img {
    ==================================================================== */
 
 .section-wrapper {
-  background-color: var(--color-bg-primary);
+  background: var(--glass-bg);
   color: var(--color-text-primary);
   padding: 40px 20px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xl);
   margin-bottom: 20px;
+  border: var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   box-shadow: var(--glass-shadow);
 }
 

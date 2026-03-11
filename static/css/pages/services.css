@@ -9,8 +9,8 @@
 
 .services {
   padding: 60px 20px;
-  background-color: #1a2330; /* Fondo oscuro, moderno */
-  color: #e5e5e5; /* Texto claro para el contraste */
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,21 +26,26 @@
 }
 
 .service {
-  background-color: #0f172a; /* Fondo oscuro para cada servicio */
+  background: var(--glass-bg);
   padding: 20px;
-  border-radius: 10px; /* Bordes redondeados */
-  box-shadow: 0 4px 12px rgba(56,189,248,0.15); /* Sombra sutil */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
-  max-width: 600px; /* Control de ancho */
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-soft);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 600px;
   width: 100%;
 }
 
 .services-cta {
   margin-top: 36px;
   padding: 24px;
-  border-radius: 14px;
-  background: linear-gradient(180deg, rgba(8,20,38,0.6), rgba(5,10,20,0.55));
-  border: 1px solid rgba(255,255,255,0.03);
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--color-border-soft);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,14 +53,14 @@
 }
 
 .service p {
-  color: rgba(251, 252, 253, 0.85);
+  color: var(--color-text-secondary);
   font-size: clamp(1rem, 1.2vw, 1.1rem);
   line-height: 1.6;
 }
 
 .service:hover {
-  transform: translateY(-10px); /* Efecto de elevación al pasar el ratón */
-  box-shadow: 0 8px 25px rgba(56,189,248,0.25); /* Aumenta la sombra al hacer hover */
+  transform: translateY(-6px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.40);
 }
 
 /* ====================================================================
@@ -90,27 +95,28 @@
 
 .cta h3 {
   font-size: clamp(2rem, 3vw, 2.5rem);
-  color: #56b3f1; /* Azul brillante */
+  color: var(--color-accent-primary);
   margin-bottom: 16px;
 }
 
 .cta p {
   font-size: 1.2rem;
-  color: rgba(251, 252, 253, 0.85);
+  color: var(--color-text-secondary);
   margin-bottom: 20px;
 }
 
 .cta .btn-primary {
-  background-color: #56b3f1; /* Azul brillante */
-  color: white;
+  background: var(--gradient-primary);
+  color: var(--color-text-primary);
   padding: 15px 30px;
   text-transform: uppercase;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 18px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cta .btn-primary:hover {
-  background-color: #0f172a; /* Fondo oscuro en hover */
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(44, 168, 243, 0.25);
 }
