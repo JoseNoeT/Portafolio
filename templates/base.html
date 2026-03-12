@@ -71,19 +71,23 @@
                     <li><a href="{% url 'contact' %}">Contacto</a></li>
                 </ul>
 
+                {% if user.is_authenticated and user.is_staff %}
                 <div class="nav-cta-mobile">
-                    <a href="{% url 'contact' %}" class="btn btn-primary">Hablemos</a>
+                    <a href="{% url 'dashboard' %}" class="btn btn-secondary">Dashboard</a>
                 </div>
+                {% endif %}
             </nav>
 
             <!-- RIGHT SIDE -->
             <div class="nav-right">
 
+                {% if user.is_authenticated and user.is_staff %}
                 <div class="nav-cta desktop-only">
-                    <a href="{% url 'contact' %}" class="btn btn-primary" id="navbar-cta">
-                        Hablemos
+                    <a href="{% url 'dashboard' %}" class="btn btn-secondary" id="navbar-admin">
+                        Dashboard
                     </a>
                 </div>
+                {% endif %}
 
                 <!-- MOBILE MENU BUTTON -->
                 <div class="menu-btn-container">

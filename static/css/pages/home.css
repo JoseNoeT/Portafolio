@@ -245,15 +245,7 @@
    2. METHODOLOGY SECTION
    ==================================================================== */
 
-/* ====================================================================
-   2. METHODOLOGY SECTION - OPCIÓN 1
-   Glass horizontal equilibrado
-   ==================================================================== */
-/* ====================================================================
-   2. METHODOLOGY SECTION - HERO STYLE / OPCIÓN 4 AJUSTADA AL SISTEMA
-   ==================================================================== */
-
-.method-section {
+.methodology.section {
   position: relative;
   overflow: hidden;
   padding: 44px 0;
@@ -271,7 +263,7 @@
   z-index: 0;
 }
 
-.method-section::after {
+.methodology.section::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -392,10 +384,6 @@
   }
 }
 
-/* =============================================================/* ====================================================================
-   3. HOME SECTIONS SHARED STYLE
-   Ajuste visual cabecera servicios
-   ==================================================================== */
 /* ====================================================================
    3. SERVICES SECTION
    ==================================================================== */
@@ -414,7 +402,10 @@
   z-index: 1;
 }
 
-.services .hero-eyebrow {
+.services .hero-eyebrow,
+.about-text .hero-eyebrow,
+.featured .hero-eyebrow,
+.cta-hero .hero-eyebrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -613,10 +604,6 @@
    5. ABOUT
    ==================================================================== */
 
-/* ====================================================================
-   5. ABOUT
-   ==================================================================== */
-
 .about.section {
   position: relative;
   padding: 64px 20px 76px;
@@ -688,22 +675,6 @@
   flex: 1 1 460px;
   max-width: 680px;
   text-align: left;
-}
-
-.about-text .hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 18px;
-  padding: 12px 24px;
-  border-radius: 999px;
-  background: rgba(44, 168, 243, 0.08);
-  border: 1px solid rgba(44, 168, 243, 0.25);
-  color: #2CA8F3;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
 }
 
 .about-text h2 {
@@ -793,10 +764,6 @@
    6. FEATURED PROJECTS
    ==================================================================== */
 
-/* ====================================================================
-   6. FEATURED PROJECTS
-   ==================================================================== */
-
 .featured.section {
   position: relative;
   padding: 60px 20px 80px;
@@ -809,22 +776,6 @@
 .featured.section .container {
   position: relative;
   z-index: 1;
-}
-
-.featured .hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 18px;
-  padding: 12px 24px;
-  border-radius: 999px;
-  background: rgba(44, 168, 243, 0.08);
-  border: 1px solid rgba(44, 168, 243, 0.25);
-  color: #2CA8F3;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
 }
 
 .featured h2 {
@@ -1074,10 +1025,6 @@
    7. CTA
    ==================================================================== */
 
-/* ====================================================================
-   7. CTA HERO / HOME FINAL CTA
-   ==================================================================== */
-
 .cta-hero.section {
   position: relative;
   padding: 64px 20px 84px;
@@ -1112,22 +1059,6 @@
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.35),
     0 0 0 1px rgba(44, 168, 243, 0.06) inset;
-}
-
-.cta-hero .hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 18px;
-  padding: 12px 24px;
-  border-radius: 999px;
-  background: rgba(44, 168, 243, 0.08);
-  border: 1px solid rgba(44, 168, 243, 0.25);
-  color: #2CA8F3;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
 }
 
 .cta-hero h2 {
@@ -1338,7 +1269,6 @@
   }
 
   .method-wrap,
-  .service-grid,
   .about-wrap {
     flex-direction: column;
   }
@@ -1366,15 +1296,13 @@
    11. SCROLLBAR HIDE
    ==================================================================== */
 
-body,
-.hero-home,
+.hero--home,
 .hero-content {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-body::-webkit-scrollbar,
-.hero-home::-webkit-scrollbar,
+.hero--home::-webkit-scrollbar,
 .hero-content::-webkit-scrollbar {
   display: none;
 }

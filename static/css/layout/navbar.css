@@ -59,6 +59,30 @@
   gap:12px;
 }
 
+.nav-cta{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+#navbar-admin{
+  padding:8px 16px;
+  font-size:.85rem;
+  border-radius:10px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  color:var(--color-text-secondary);
+  transition:background .2s,color .2s;
+  text-decoration:none;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+#navbar-admin:hover{
+  background:rgba(255,255,255,.12);
+  color:var(--color-text-primary);
+}
+
 
 /* =========================================================
    LOGO
@@ -107,6 +131,10 @@
   display:flex;
   align-items:center;
   gap:20px;
+}
+
+.nav-cta-mobile{
+  display:none;
 }
 
 .nav-links ul{
@@ -360,6 +388,7 @@ transform:translateX(6px);
 }
 
 .nav-cta-mobile{
+display:block;
 margin-top:auto;
 padding-top:24px;
 border-top:1px solid rgba(255,255,255,.06);
@@ -384,6 +413,28 @@ transition:transform 260ms ease,box-shadow 420ms ease;
 .nav-cta-mobile .btn-primary:hover{
 transform:translateY(-3px);
 box-shadow:0 16px 40px rgba(44, 168, 243, 0.30);
+}
+
+.nav-cta-mobile .btn-secondary{
+display:block;
+width:100%;
+max-width:280px;
+margin:0 auto;
+padding:12px 24px;
+text-align:center;
+border-radius:18px;
+border:1px solid rgba(255,255,255,.10);
+background:rgba(255,255,255,.06);
+color:var(--color-text-secondary);
+font-weight:600;
+font-size:.9rem;
+text-decoration:none;
+transition:background .2s,color .2s;
+}
+
+.nav-cta-mobile .btn-secondary:hover{
+background:rgba(255,255,255,.12);
+color:var(--color-text-primary);
 }
 
 }

@@ -63,3 +63,9 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def tech_list(self):
+        if self.technologies:
+            return [t.strip() for t in self.technologies.split(',') if t.strip()]
+        return []

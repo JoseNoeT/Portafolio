@@ -1,10 +1,12 @@
-<section class="hero hero-page">
-    <div class="hero-inner">
-        <h1 class="hero-title">
-            {{ title }}
-        </h1>
-        <p class="hero-subtitle">
-            {{ subtitle }}
-        </p>
+<section class="hero hero-page hero--enhanced" role="banner" aria-label="Hero">
+    <div class="hero-page__overlay" aria-hidden="true"></div>
+    <div class="hero-page__panel">
+        {% if eyebrow %}
+        <span class="hero-page__eyebrow">{{ eyebrow }}</span>
+        {% endif %}
+        <h1 class="hero-page__title">{{ title }}</h1>
+        {% if subtitle %}
+        <p class="hero-page__subtitle">{{ subtitle }}</p>
+        {% endif %}
     </div>
 </section>
