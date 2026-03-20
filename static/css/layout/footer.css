@@ -47,6 +47,46 @@
 	color: var(--color-accent-primary);
 }
 
+.footer .footer-links .btn.btn-primary,
+.footer .btn-footer {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px 16px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.10);
+	color: var(--color-text-secondary);
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 0.85rem;
+	line-height: 1.2;
+	white-space: nowrap;
+	box-shadow: none;
+	transition: background .2s, color .2s;
+	cursor: pointer;
+}
+
+.footer .footer-links .btn.btn-primary:hover,
+.footer .footer-links .btn.btn-primary:focus-visible,
+.footer .btn-footer:hover,
+.footer .btn-footer:focus-visible {
+	background: rgba(255, 255, 255, 0.12);
+	color: var(--color-text-primary);
+	transform: none;
+	box-shadow: none;
+	outline: none;
+}
+
+.footer .footer-links .btn.btn-primary {
+	margin-top: 2px;
+}
+
+.footer .btn-footer {
+	align-self: flex-start;
+	margin-top: 4px;
+}
+
 .footer-contact-form {
 	display: flex;
 	flex-direction: column;
