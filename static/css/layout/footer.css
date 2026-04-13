@@ -8,7 +8,7 @@
 	backdrop-filter: var(--glass-blur);
 	-webkit-backdrop-filter: var(--glass-blur);
 	border-top: 1px solid var(--color-border-soft);
-	box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25);
+	box-shadow: 0 -8px 30px var(--color-shadow-base);
 }
 
 .footer-container {
@@ -54,8 +54,8 @@
 	justify-content: center;
 	padding: 8px 16px;
 	border-radius: 10px;
-	background: rgba(255, 255, 255, 0.06);
-	border: 1px solid rgba(255, 255, 255, 0.10);
+	background: var(--color-surface-subtle);
+	border: 1px solid var(--color-border-soft);
 	color: var(--color-text-secondary);
 	text-decoration: none;
 	font-weight: 600;
@@ -71,7 +71,7 @@
 .footer .footer-links .btn.btn-primary:focus-visible,
 .footer .btn-footer:hover,
 .footer .btn-footer:focus-visible {
-	background: rgba(255, 255, 255, 0.12);
+	background: var(--color-surface-subtle-hover);
 	color: var(--color-text-primary);
 	transform: none;
 	box-shadow: none;
@@ -95,11 +95,11 @@
 
 .footer-contact-form input,
 .footer-contact-form textarea {
-	background: rgba(255,255,255,0.05);
-	border: 1px solid rgba(255,255,255,0.1);
+	background: var(--color-input-bg);
+	border: 1px solid var(--color-border-soft);
 	padding: 12px;
 	border-radius: 10px;
-	color: white;
+	color: var(--color-text-primary);
 }
 
 /* Social icons */
@@ -116,7 +116,7 @@
 	width: 40px;
 	height: 40px;
 	border-radius: var(--radius-sm);
-	background: rgba(255,255,255,0.06);
+	background: var(--color-surface-subtle);
 	border: 1px solid var(--color-border-soft);
 	color: var(--color-text-muted);
 	transition: color .25s ease, background .25s ease, transform .2s ease;
@@ -124,6 +124,6 @@
 
 .footer-social a:hover {
 	color: var(--color-accent-primary);
-	background: rgba(44,168,243,0.10);
+	background: var(--color-accent-glass);
 	transform: translateY(-2px);
 }

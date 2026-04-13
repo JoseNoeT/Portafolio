@@ -41,6 +41,10 @@
 
   --color-border-soft: rgba(255, 255, 255, 0.10);
   --color-border-accent: rgba(44, 168, 243, 0.55);
+  --color-border-accent-strong: rgba(44, 168, 243, 0.80);
+  --color-border-accent-soft: rgba(44, 168, 243, 0.25);
+  --color-accent-glow: rgba(44, 168, 243, 0.22);
+  --color-accent-glow-strong: rgba(44, 168, 243, 0.30);
 
   /* ================================================================
      SURFACES & CARDS
@@ -48,8 +52,12 @@
 
   --color-bg-card: rgba(7, 16, 39, 0.58);
   --color-input-bg: rgba(255, 255, 255, 0.02);
+  --color-surface-subtle: rgba(255, 255, 255, 0.06);
+  --color-surface-subtle-hover: rgba(255, 255, 255, 0.12);
   --color-shadow-base: rgba(0, 0, 0, 0.35);
   --color-overlay: rgba(7, 16, 39, 0.60);
+  --color-hero-overlay-start: rgba(2, 6, 23, 0.32);
+  --color-hero-overlay-end: rgba(2, 6, 23, 0.68);
   --color-btn-text: #F0F1F2;
   --color-focus-ring: rgba(44, 168, 243, 0.15);
 
@@ -67,6 +75,7 @@
   --gradient-primary: linear-gradient(135deg, #2196F3 0%, #38BDF8 100%);
   --gradient-secondary: linear-gradient(135deg, #071027 0%, #0F2549 100%);
   --gradient-hero: linear-gradient(135deg, #071027 0%, #0F2549 55%, #071027 100%);
+  --gradient-section-overlay: linear-gradient(135deg, rgba(7,16,39,0.88) 0%, rgba(15,37,73,0.78) 55%, rgba(7,16,39,0.9) 100%);
 
   /* ================================================================
      GLASS EFFECT
@@ -150,6 +159,25 @@
   --bp-tablet: 768px;
   --bp-desktop: 1024px;
 
+  /* ================================================================
+     SECTION SYSTEM
+     ================================================================ */
+
+  --section-py:       clamp(48px, 8vw, 80px);
+  --section-py-sm:    clamp(32px, 5vw, 48px);
+  --section-py-lg:    clamp(64px, 10vw, 112px);
+
+  --color-bg-alt:     rgba(255, 255, 255, 0.02);
+  --color-bg-accent:  rgba(44, 168, 243, 0.04);
+
+  --color-eyebrow:    var(--color-accent-primary);
+  --color-stat-value: var(--color-text-primary);
+  --color-stat-label: var(--color-text-muted);
+
+  --timeline-line:    var(--color-border-soft);
+  --timeline-dot:     var(--color-accent-primary);
+  --timeline-dot-ring: var(--color-accent-glow);
+
 }
 
 
@@ -183,12 +211,20 @@
   /* ── BORDERS ────────────────────────────────────────────── */
   --color-border-soft:   rgba(0, 0, 0, 0.08);
   --color-border-accent: rgba(16, 185, 129, 0.50);
+  --color-border-accent-strong: rgba(16, 185, 129, 0.70);
+  --color-border-accent-soft: rgba(16, 185, 129, 0.25);
+  --color-accent-glow: rgba(16, 185, 129, 0.22);
+  --color-accent-glow-strong: rgba(16, 185, 129, 0.30);
 
   /* ── SURFACES & CARDS ───────────────────────────────────── */
   --color-bg-card:      rgba(255, 255, 255, 0.82);
   --color-input-bg:     rgba(255, 255, 255, 0.92);
+  --color-surface-subtle: rgba(0, 0, 0, 0.04);
+  --color-surface-subtle-hover: rgba(0, 0, 0, 0.08);
   --color-shadow-base:  rgba(0, 0, 0, 0.06);
   --color-overlay:      rgba(240, 253, 244, 0.60);
+  --color-hero-overlay-start: rgba(240, 253, 244, 0.10);
+  --color-hero-overlay-end: rgba(240, 253, 244, 0.35);
   --color-btn-text:     #FFFFFF;
   --color-focus-ring:   rgba(16, 185, 129, 0.20);
 
@@ -200,6 +236,7 @@
   --gradient-primary:   linear-gradient(135deg, #10B981 0%, #14B8A6 100%);
   --gradient-secondary: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
   --gradient-hero:      linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 55%, #F0FDF4 100%);
+  --gradient-section-overlay: linear-gradient(135deg, rgba(240,253,244,0.88) 0%, rgba(236,253,245,0.78) 55%, rgba(240,253,244,0.9) 100%);
 
   /* ── GLASS ──────────────────────────────────────────────── */
   --glass-bg:           rgba(255, 255, 255, 0.72);
@@ -217,5 +254,15 @@
   --navbar-link-hover:  #10B981;
   --navbar-link-active: #059669;
   --navbar-link-muted:  #6B7280;
+
+  /* ── SECTION SYSTEM ──────────────────────────────────── */
+  --color-bg-alt:     rgba(0, 0, 0, 0.02);
+  --color-bg-accent:  rgba(16, 185, 129, 0.04);
+  --color-eyebrow:    var(--color-accent-primary);
+  --color-stat-value: var(--color-text-primary);
+  --color-stat-label: var(--color-text-muted);
+  --timeline-line:    var(--color-border-soft);
+  --timeline-dot:     var(--color-accent-primary);
+  --timeline-dot-ring: var(--color-accent-glow);
 
 }

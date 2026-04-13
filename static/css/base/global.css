@@ -2,7 +2,7 @@
    GLOBAL.CSS
    ==================================================================== */
 
-@import url('./design-tokens.css');
+/* design-tokens.css is loaded via <link> in base.html */
 
 /* ====================================================================
    ==================================================================== */
@@ -84,7 +84,7 @@ a:hover {
 button,
 .btn {
   background: var(--gradient-primary);
-  color: var(--color-text-primary);
+  color: var(--color-btn-text);
   border: none;
   border-radius: var(--radius-sm);
   padding: 10px 20px;
@@ -95,7 +95,7 @@ button,
 button:hover,
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(44, 168, 243, 0.22);
+  box-shadow: 0 8px 24px var(--color-accent-glow);
 }
 
 button.error,

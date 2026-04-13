@@ -12,34 +12,60 @@
 {% endblock %}
 
 {% block content %}
-    <section class="services-page section">
-        <h1>Servicios</h1>
-        <p>Esta pagina esta pensada para personas, equipos o proyectos que ya tienen una idea en marcha y necesitan avanzar con una base tecnica mas clara, funcional y mantenible.</p>
-        <div class="service-list">
-            <article class="service card reveal">
-                <h2>Desarrollo backend</h2>
-                <p>Implementacion de funcionalidades, logica de negocio, autenticacion, roles y conexion con bases de datos para proyectos que necesitan una estructura funcional mas solida.</p>
+
+<!-- SERVICES GRID -->
+<section class="section-shell" id="services-list">
+    <div class="container">
+        <div class="feature-grid">
+            <article class="feature-card reveal">
+                <div class="feature-card__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <h3 class="feature-card__title">Desarrollo backend</h3>
+                <p class="feature-card__text">Implementación de funcionalidades, lógica de negocio, autenticación, roles y conexión con bases de datos para proyectos que necesitan una estructura funcional más sólida.</p>
             </article>
-            <article class="service card reveal">
-                <h2>Estructura e integracion</h2>
-                <p>Organizacion de componentes, flujos y conexiones entre partes del sistema para dar mas claridad tecnica y permitir un crecimiento mas ordenado del proyecto.</p>
+
+            <article class="feature-card reveal">
+                <div class="feature-card__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h8"/><path d="M12 8v8"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+                </div>
+                <h3 class="feature-card__title">Estructura e integración</h3>
+                <p class="feature-card__text">Organización de componentes, flujos y conexiones entre partes del sistema para dar más claridad técnica y permitir un crecimiento más ordenado del proyecto.</p>
             </article>
-            <article class="service card reveal">
-                <h2>Mejora de proyectos web</h2>
-                <p>Apoyo en ajustes visuales, funcionales y estructurales para mejorar proyectos existentes y llevarlos a un nivel mas claro, estable y profesional.</p>
+
+            <article class="feature-card reveal">
+                <div class="feature-card__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L9 18l-5-5"/></svg>
+                </div>
+                <h3 class="feature-card__title">Mejora de proyectos web</h3>
+                <p class="feature-card__text">Apoyo en ajustes visuales, funcionales y estructurales para mejorar proyectos existentes y llevarlos a un nivel más claro, estable y profesional.</p>
             </article>
         </div>
-        <div class="services-cta card">
-            <h3>Enfoque de trabajo</h3>
-            <p>Mi enfoque prioriza entender la necesidad real del proyecto, ordenar la solucion y trabajar sobre una base tecnica que permita crecer con mayor claridad.</p>
+    </div>
+</section>
+
+<!-- APPROACH -->
+<section class="section-shell section-shell--alt">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title reveal">Enfoque de trabajo</h2>
+            <p class="section-desc reveal">Mi enfoque prioriza entender la necesidad real del proyecto, ordenar la solución y trabajar sobre una base técnica que permita crecer con mayor claridad.</p>
         </div>
-        <div class="services-cta card">
-            <h3>¿Tienes un proyecto que necesita mas estructura o una mejor implementacion?</h3>
-            <p>Puedo ayudarte a revisar una idea, mejorar una base existente o avanzar en una solucion web con una logica mas clara y profesional.</p>
-            <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section-shell section-shell--accent">
+    <div class="container">
+        <div class="cta-band cta-band--accent">
+            <h2 class="cta-band__title reveal">¿Tienes un proyecto que necesita más estructura o una mejor implementación?</h2>
+            <p class="cta-band__text reveal">Puedo ayudarte a revisar una idea, mejorar una base existente o avanzar en una solución web con una lógica más clara y profesional.</p>
+            <div class="cta-band__actions reveal">
                 <a href="{% url 'contact' %}" class="btn btn-primary">Contactar</a>
                 <a href="{% url 'projects_list' %}" class="btn btn-outline">Ver proyectos</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 {% endblock %}

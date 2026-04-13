@@ -15,42 +15,76 @@
 
 {% block content %}
 
-<section class="methodology container">
-    <h1>Más que desarrollar, busco dar forma a una solución bien pensada</h1>
-    <p>Mi enfoque parte por comprender el problema antes de ejecutar. Eso me permite ordenar mejor la información, definir prioridades y trabajar sobre una estructura que tenga sentido técnico y también utilidad real para el proyecto.</p>
-
-    <p>Busco que cada etapa aporte claridad: desde la organización inicial hasta la implementación, procurando que la solución no solo funcione, sino que también pueda mantenerse y evolucionar con mayor facilidad.</p>
-
-    <h2>Fases</h2>
-    <ol>
-        <li><strong>Entender la necesidad</strong><br>Antes de desarrollar, identifico qué necesita realmente el proyecto, qué problema busca resolver y qué base requiere para avanzar con más claridad.</li>
-        <li><strong>Ordenar la solución</strong><br>Defino una estructura inicial que ayude a organizar la información, las funcionalidades y la lógica general del sistema.</li>
-        <li><strong>Desarrollar con criterio</strong><br>Implemento procurando mantener claridad en el código, coherencia en la base técnica y enfoque en el objetivo real del proyecto.</li>
-        <li><strong>Revisar y mejorar</strong><br>Evalúo lo construido para detectar ajustes, fortalecer la solución y dejar una base más consistente para crecer o continuar.</li>
-    </ol>
-
-    <!-- Nueva sección de Objetivos y Resultados -->
-    <section class="outcomes">
-        <h2>Por qué esta forma de trabajo aporta valor</h2>
-        <p>Trabajar con más estructura desde el inicio ayuda a reducir confusión, mejorar la claridad técnica y facilitar que el proyecto avance sobre una base más ordenada. Eso hace que el desarrollo tenga más sentido, más coherencia y mejor proyección.</p>
-    </section>
-</section>
-
-<!-- Ingeniería y Metodología: sección detallada con animación de entrada -->
-<section class="section-wrapper reveal container" aria-labelledby="ingenieria-title">
-    <div class="section-text">
-        <h2 id="ingenieria-title">¿Quieres ver cómo esta forma de trabajo se refleja en proyectos reales?</h2>
-        <p>
-            Puedes revisar mis proyectos para ver cómo aplico esta lógica en la práctica, o escribirme directamente si quieres conversar sobre una idea o necesidad concreta.
-        </p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;">
-            <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver proyectos</a>
-            <a href="{% url 'contact' %}" class="btn btn-outline">Contactar</a>
+<!-- INTRO -->
+<section class="section-shell">
+    <div class="container">
+        <div class="section-header section-header--left">
+            <h2 class="section-title reveal">Más que desarrollar, busco dar forma a una solución bien pensada</h2>
+            <p class="section-desc reveal" style="margin-left:0">
+                Mi enfoque parte por comprender el problema antes de ejecutar. Eso me permite ordenar mejor la información, definir prioridades y trabajar sobre una estructura que tenga sentido técnico y también utilidad real para el proyecto.
+            </p>
+            <p class="section-desc reveal" style="margin-left:0">
+                Busco que cada etapa aporte claridad: desde la organización inicial hasta la implementación, procurando que la solución no solo funcione, sino que también pueda mantenerse y evolucionar con mayor facilidad.
+            </p>
         </div>
     </div>
-  
-    <div class="section-image" aria-hidden="false">
-        <img src="{% static 'img/arquitec.jpeg' %}" alt="Arquitectura">
+</section>
+
+<!-- PHASES — step list -->
+<section class="section-shell section-shell--alt">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title reveal">Fases</h2>
+        </div>
+        <ol class="step-list">
+            <li class="step-list__item reveal">
+                <span class="step-list__title">Entender la necesidad</span>
+                <span class="step-list__text">Antes de desarrollar, identifico qué necesita realmente el proyecto, qué problema busca resolver y qué base requiere para avanzar con más claridad.</span>
+            </li>
+            <li class="step-list__item reveal">
+                <span class="step-list__title">Ordenar la solución</span>
+                <span class="step-list__text">Defino una estructura inicial que ayude a organizar la información, las funcionalidades y la lógica general del sistema.</span>
+            </li>
+            <li class="step-list__item reveal">
+                <span class="step-list__title">Desarrollar con criterio</span>
+                <span class="step-list__text">Implemento procurando mantener claridad en el código, coherencia en la base técnica y enfoque en el objetivo real del proyecto.</span>
+            </li>
+            <li class="step-list__item reveal">
+                <span class="step-list__title">Revisar y mejorar</span>
+                <span class="step-list__text">Evalúo lo construido para detectar ajustes, fortalecer la solución y dejar una base más consistente para crecer o continuar.</span>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<!-- VALUE -->
+<section class="section-shell">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title reveal">Por qué esta forma de trabajo aporta valor</h2>
+            <p class="section-desc reveal">Trabajar con más estructura desde el inicio ayuda a reducir confusión, mejorar la claridad técnica y facilitar que el proyecto avance sobre una base más ordenada. Eso hace que el desarrollo tenga más sentido, más coherencia y mejor proyección.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA — split with image -->
+<section class="section-shell section-shell--accent">
+    <div class="container">
+        <div class="split-section">
+            <div class="split-section__content">
+                <h2 class="split-section__title reveal">¿Quieres ver cómo esta forma de trabajo se refleja en proyectos reales?</h2>
+                <p class="split-section__text reveal">
+                    Puedes revisar mis proyectos para ver cómo aplico esta lógica en la práctica, o escribirme directamente si quieres conversar sobre una idea o necesidad concreta.
+                </p>
+                <div class="cta-band__actions reveal">
+                    <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver proyectos</a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline">Contactar</a>
+                </div>
+            </div>
+            <div class="split-section__visual reveal">
+                <img src="{% static 'img/arquitec.jpeg' %}" alt="Arquitectura" />
+            </div>
+        </div>
     </div>
 </section>
 

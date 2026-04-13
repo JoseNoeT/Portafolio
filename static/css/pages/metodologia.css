@@ -1,91 +1,6 @@
 /* metodologia.css */
-/* Usa tokens globales definidos en global.css */
-
-/* =========================
-   LINKS
-========================= */
-
-a {
-  color: var(--color-accent-primary);
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: var(--color-accent-secondary);
-}
-
-
-/* =========================
-   BUTTONS
-========================= */
-
-button,
-.btn {
-  background: var(--gradient-primary);
-  color: var(--color-text-primary);
-  border: none;
-  padding: 12px 24px;
-  border-radius: var(--radius-md);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: var(--glass-shadow);
-}
-
-button:hover,
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: var(--glass-shadow);
-}
-
-button.error,
-.btn.error {
-  background: var(--error-color);
-}
-
-
-/* =========================
-   HERO SECTION
-========================= */
-
-
-/* =========================
-   SECTION WRAPPER
-========================= */
-
-.section-wrapper {
-  background: var(--glass-bg);
-  color: var(--color-text-primary);
-  padding: 50px 30px;
-  border-radius: var(--radius-lg);
-  margin-bottom: 30px;
-  box-shadow: var(--glass-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.section-wrapper:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--glass-shadow);
-}
-
-
-/* =========================
-   SECTION TEXT
-========================= */
-
-.section-wrapper h2 {
-  color: var(--color-accent-primary);
-  font-size: clamp(1.6rem, 2.5vw, 2rem);
-  margin-bottom: 12px;
-}
-
-.section-wrapper p {
-  color: var(--color-text-secondary);
-  font-size: var(--font-body);
-  margin-bottom: 20px;
-}
+/* Page-specific styles for metodologia.html */
+/* Button system and links handled by buttons.css and global.css */
 
 
 /* =========================
@@ -102,8 +17,7 @@ button.error,
 }
 
 .section-image img:hover {
-  transform: scale(1.05);
-  box-shadow: var(--glass-shadow);
+  transform: scale(1.03);
 }
 
 
@@ -112,44 +26,8 @@ button.error,
 ========================= */
 
 @media (max-width: 768px) {
-
-  .section-wrapper {
-    padding: 30px 15px;
-  }
-
-  button,
-  .btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-
-  h1,
-  h2,
-  h3 {
-    font-size: 1.5rem;
-  }
-
   .section-image img {
     max-width: 100%;
     height: auto;
   }
-
-  .cta .btn-contact {
-    width: 100%;
-    text-align: center;
-  }
-
-}
-
-
-/* =========================
-   SMALL DEVICES
-========================= */
-
-@media (max-width: 360px) {
-
-  .services.container {
-    padding: 18px 12px;
-  }
-
 }

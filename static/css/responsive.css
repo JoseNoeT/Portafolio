@@ -20,13 +20,9 @@
   .container {
     padding: var(--spacing-sm);
   }
-  .btn {
-    width: 100%;
-    text-align: center;
-  }
+  /* Full-width buttons on mobile: use .btn-block, not a global override */
   .card,
-  .project-card,
-  .service-card {
+  .project-card {
     padding: var(--spacing-md);
   }
 }

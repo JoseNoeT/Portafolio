@@ -10,97 +10,136 @@
 
 {% block content %}
 
-<section class="hero" id="project-detail-hero">
+<!-- HERO — project title band -->
+<section class="hero hero--detail" id="project-detail-hero">
   <canvas class="hero-canvas" width="900" height="220" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;"></canvas>
+  <div class="hero-overlay" aria-hidden="true"></div>
   <div class="container hero-inner">
+    <a href="{% url 'projects_list' %}" class="btn btn-ghost btn-sm detail-back">← Proyectos</a>
     <h1 class="hero-title">{{ project.title }}</h1>
+    {% if project.short_description %}
     <p class="hero-subtitle">{{ project.short_description }}</p>
+    {% endif %}
+    <div class="detail-chips">
+      {% if project.get_category_display %}
+      <span class="detail-chip">{{ project.get_category_display }}</span>
+      {% endif %}
+      <span class="detail-chip">{{ project.created_at|date:"M Y" }}</span>
+    </div>
   </div>
-  <div class="hero-gridlines" aria-hidden="true"></div>
 </section>
 
-<div class="detail-wrapper">
-    <div class="detail-container">
+<!-- COVER IMAGE -->
+{% if project.image %}
+<section class="section-shell section-shell--compact" aria-label="Vista previa del proyecto">
+  <div class="container">
+    <div class="detail-cover">
+      <button type="button" class="cover-trigger" id="open-image-modal" aria-label="Ampliar imagen del proyecto">
+        <img src="{{ project.image.url }}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
+      </button>
+      <p class="cover-caption">Haz clic en la imagen para ampliarla</p>
+    </div>
+  </div>
+</section>
+{% endif %}
 
-        <header class="detail-header">
-            <a href="{% url 'projects_list' %}" class="back-link">← Volver a proyectos</a>
-        </header>
+<!-- MAIN CONTENT -->
+<section class="section-shell">
+  <div class="container">
+    <div class="detail-layout">
 
-        {% if project.image %}
-        <section class="detail-cover" aria-label="Vista previa del proyecto">
-            <button type="button" class="cover-trigger" id="open-image-modal" aria-label="Ampliar imagen del proyecto">
-                <img src="{{ project.image.url }}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
-            </button>
-            <p class="cover-caption">Haz clic en la imagen para ampliarla.</p>
-        </section>
+      <main class="detail-main">
+
+        <div class="detail-section">
+          <span class="section-eyebrow">Resumen</span>
+          <h2 class="detail-section__title">Resumen ejecutivo</h2>
+          <p class="detail-section__text">{{ project.description }}</p>
+        </div>
+
+        <div class="detail-section">
+          <span class="section-eyebrow">Stack</span>
+          <h2 class="detail-section__title">Tecnologías utilizadas</h2>
+          <p class="detail-section__text">{{ project.technologies|default:"Tecnologías no especificadas." }}</p>
+        </div>
+
+        {% if project.live_url or project.github_url %}
+        <div class="detail-section">
+          <span class="section-eyebrow">Enlaces</span>
+          <h2 class="detail-section__title">Acceso al proyecto</h2>
+          <div class="detail-actions">
+            {% if project.live_url %}
+            <a href="{{ project.live_url }}" target="_blank" rel="noopener" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Ver demo en vivo
+            </a>
+            {% endif %}
+            {% if project.github_url %}
+            <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn btn-outline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              Repositorio GitHub
+            </a>
+            {% endif %}
+          </div>
+        </div>
         {% endif %}
 
-        <div class="detail-layout">
+      </main>
 
-            <main class="detail-main">
+      <aside class="detail-sidebar">
+        <div class="sidebar-card">
+          <h3 class="sidebar-card__heading">Detalles del proyecto</h3>
 
-                <section class="detail-section">
-                    <h2>Resumen ejecutivo</h2>
-                    <p>{{ project.description }}</p>
-                </section>
+          <div class="meta-block">
+            <span class="meta-block__label">Fecha</span>
+            <span class="meta-block__value">{{ project.created_at|date:"d M Y" }}</span>
+          </div>
 
-                <section class="detail-section">
-                    <h2>Tecnologías utilizadas</h2>
-                    <p>{{ project.technologies|default:"Tecnologías no especificadas." }}</p>
-                </section>
+          <div class="meta-block">
+            <span class="meta-block__label">Stack</span>
+            <span class="meta-block__value">{{ project.technologies|default:"No especificado" }}</span>
+          </div>
 
-                <section class="detail-section">
-                    <h2>Enlaces del proyecto</h2>
-                    {% if project.live_url or project.github_url %}
-                        {% if project.live_url %}
-                            <p><a href="{{ project.live_url }}" target="_blank" rel="noopener">Ver demo en vivo</a></p>
-                        {% endif %}
-                        {% if project.github_url %}
-                            <p><a href="{{ project.github_url }}" target="_blank" rel="noopener">Ver repositorio en GitHub</a></p>
-                        {% endif %}
-                    {% else %}
-                        <p>Los enlaces externos de este proyecto no están disponibles públicamente.</p>
-                    {% endif %}
-                </section>
+          <div class="meta-block">
+            <span class="meta-block__label">Categoría</span>
+            <span class="meta-block__value">{{ project.get_category_display }}</span>
+          </div>
 
-            </main>
-
-            <aside class="detail-sidebar">
-
-                <div class="meta-block">
-                    <h3>Fecha</h3>
-                    <p>{{ project.created_at|date:"d M Y" }}</p>
-                </div>
-
-                <div class="meta-block">
-                    <h3>Stack</h3>
-                    <p>{{ project.technologies|default:"No especificado" }}</p>
-                </div>
-
-                <div class="meta-block">
-                    <h3>Tipo</h3>
-                    <p>{{ project.get_category_display }}</p>
-                </div>
-
-                <div class="meta-actions">
-                    {% if project.live_url %}
-                    <a href="{{ project.live_url }}" target="_blank" rel="noopener" class="btn-outline">Demo</a>
-                    {% endif %}
-                    {% if project.github_url %}
-                    <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn-outline">GitHub</a>
-                    {% endif %}
-                </div>
-
-            </aside>
-
+          {% if project.live_url or project.github_url %}
+          <div class="sidebar-actions">
+            {% if project.live_url %}
+            <a href="{{ project.live_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm btn-block">Demo</a>
+            {% endif %}
+            {% if project.github_url %}
+            <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm btn-block">GitHub</a>
+            {% endif %}
+          </div>
+          {% endif %}
         </div>
-    </div>
-</div>
+      </aside>
 
+    </div>
+  </div>
+</section>
+
+<!-- CTA — back to projects -->
+<section class="section-shell section-shell--accent">
+  <div class="container">
+    <div class="cta-band">
+      <h2 class="cta-band__title">¿Quieres ver más proyectos?</h2>
+      <p class="cta-band__text">Explora otros casos de estudio o ponte en contacto para colaborar.</p>
+      <div class="cta-band__actions">
+        <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver todos los proyectos</a>
+        <a href="{% url 'contact' %}" class="btn btn-outline">Contactar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE MODAL -->
 {% if project.image %}
 <div class="image-modal" id="image-modal" aria-hidden="true" role="dialog" aria-label="Imagen ampliada del proyecto">
-        <button type="button" class="image-modal-close" id="close-image-modal" aria-label="Cerrar imagen">×</button>
-        <img src="{{ project.image.url }}" alt="Imagen ampliada del proyecto {{ project.title }}" class="image-modal-content">
+    <button type="button" class="image-modal-close" id="close-image-modal" aria-label="Cerrar imagen">×</button>
+    <img src="{{ project.image.url }}" alt="Imagen ampliada del proyecto {{ project.title }}" class="image-modal-content">
 </div>
 {% endif %}
 

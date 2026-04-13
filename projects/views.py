@@ -36,6 +36,12 @@ def project_detail(request, slug):
     return render(request, "projects/detail.html", {"project": project})
 
 
+def project_modal(request, slug):
+    """Return compact HTML fragment for the project detail modal."""
+    project = get_object_or_404(Project, slug=slug)
+    return render(request, "projects/_modal_content.html", {"project": project})
+
+
 # ---------------------------------------------------------------------------
 # Admin CRUD views (staff only)
 # ---------------------------------------------------------------------------

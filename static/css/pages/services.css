@@ -1,122 +1,14 @@
-/* services.css - Modern layout, responsive cards and CTA for Services page
-	 - Diseño limpio y profesional para un portafolio técnico
-	 - Ámbito: se aplica dentro de la sección `.services`
-*/
+/* services.css - Services page specific styles */
+/* Section system handled by sections.css, buttons by buttons.css */
 
-/* ====================================================================
-   SERVICES SECTION - Estilo actualizado con enfoque en Freelance
-   ==================================================================== */
-
-.services {
+.services-page {
   padding: 60px 20px;
-  background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
 }
 
-.service-list {
-  display: flex;
-  flex-direction: column; /* Disposición vertical de los servicios */
-  gap: 40px; /* Espacio entre los servicios */
-  align-items: center;
-}
-
-.service {
-  background: var(--glass-bg);
-  padding: 20px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border-soft);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: var(--glass-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 600px;
-  width: 100%;
-}
-
-.services-cta {
-  margin-top: 36px;
-  padding: 24px;
-  border-radius: var(--radius-lg);
-  background: var(--glass-bg);
-  border: 1px solid var(--color-border-soft);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.service p {
+.services-page p {
   color: var(--color-text-secondary);
   font-size: clamp(1rem, 1.2vw, 1.1rem);
   line-height: 1.6;
-}
-
-.service:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.40);
-}
-
-/* ====================================================================
-   Animación de aparición suave (reveal)
-   ==================================================================== */
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px); /* Los servicios comienzan desde abajo */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0); /* Llega a su posición final */
-  }
-}
-
-/* Aplica animación a los servicios cuando entren en la vista */
-.service.reveal {
-  opacity: 0;
-  animation: fadeInUp 1s forwards; /* Animación de desvanecimiento y movimiento */
-}
-
-/* ====================================================================
-   Llamada a la acción (CTA) - Botón de contacto
-   ==================================================================== */
-
-.cta {
-  margin-top: 40px;
-  text-align: center;
-}
-
-.cta h3 {
-  font-size: clamp(2rem, 3vw, 2.5rem);
-  color: var(--color-accent-primary);
-  margin-bottom: 16px;
-}
-
-.cta p {
-  font-size: 1.2rem;
-  color: var(--color-text-secondary);
-  margin-bottom: 20px;
-}
-
-.cta .btn-primary {
-  background: var(--gradient-primary);
-  color: var(--color-text-primary);
-  padding: 15px 30px;
-  text-transform: uppercase;
-  font-weight: bold;
-  border-radius: 18px;
-  text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cta .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 36px rgba(44, 168, 243, 0.25);
 }

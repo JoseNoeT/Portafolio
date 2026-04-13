@@ -1,0 +1,473 @@
+/* ====================================================================
+   SECTION SYSTEM
+   Reusable section shells, headers, layouts and content patterns.
+   Compatible with dark/light theme via design-tokens.
+   ==================================================================== */
+
+
+/* ====================================================================
+   SECTION SHELL — universal wrapper
+   ==================================================================== */
+
+.section-shell {
+  position: relative;
+  padding: var(--section-py) 0;
+}
+
+.section-shell > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Variants ──────────────────────────────────── */
+
+.section-shell--compact {
+  padding: var(--section-py-sm) 0;
+}
+
+.section-shell--lg {
+  padding: var(--section-py-lg) 0;
+}
+
+/* Alternating subtle background for visual rhythm */
+.section-shell--alt {
+  background: var(--color-bg-alt);
+}
+
+/* Accent tint for CTA / highlight sections */
+.section-shell--accent {
+  background: var(--color-bg-accent);
+}
+
+
+/* ====================================================================
+   SECTION HEADER — eyebrow + title + description group
+   ==================================================================== */
+
+.section-header {
+  max-width: 720px;
+  margin: 0 auto clamp(32px, 4vw, 48px);
+  text-align: center;
+}
+
+.section-header--left {
+  text-align: left;
+  margin-left: 0;
+}
+
+/* ── Eyebrow ──────────────────────────────────── */
+
+.section-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-eyebrow);
+  background: var(--color-accent-glass);
+  border: 1px solid var(--color-border-accent-soft);
+}
+
+/* ── Title ──────────────────────────────────── */
+
+.section-title {
+  margin: 0 0 12px;
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+/* ── Description ──────────────────────────────── */
+
+.section-desc {
+  max-width: 60ch;
+  margin: 0 auto;
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.section-header--left .section-desc {
+  margin-left: 0;
+}
+
+
+/* ====================================================================
+   FEATURE GRID — auto-fit card grid
+   ==================================================================== */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+}
+
+/* ====================================================================
+   FEATURE CARD
+   ==================================================================== */
+
+.feature-card {
+  position: relative;
+  padding: clamp(24px, 3vw, 32px);
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--color-border-soft);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px var(--color-shadow-base);
+}
+
+.feature-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-glass);
+  border: 1px solid var(--color-border-accent-soft);
+  color: var(--color-accent-primary);
+  font-size: 1.25rem;
+}
+
+.feature-card__title {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.feature-card__text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+/* ── Highlight variant ─────────────────────────── */
+
+.feature-card--highlight {
+  border-color: var(--color-border-accent-soft);
+  background: var(--color-bg-accent);
+}
+
+
+/* ====================================================================
+   SPLIT SECTION — text + visual side by side
+   ==================================================================== */
+
+.split-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+}
+
+.split-section--reverse {
+  direction: rtl;
+}
+
+.split-section--reverse > * {
+  direction: ltr;
+}
+
+.split-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.split-section__title {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+.split-section__text {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.split-section__visual {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border-soft);
+}
+
+.split-section__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .split-section {
+    grid-template-columns: 1fr;
+  }
+
+  .split-section--reverse {
+    direction: ltr;
+  }
+
+  .split-section__visual {
+    order: -1;
+  }
+}
+
+
+/* ====================================================================
+   CTA BAND — strong conversion section
+   ==================================================================== */
+
+.cta-band {
+  padding: clamp(40px, 6vw, 64px) clamp(24px, 4vw, 48px);
+  border-radius: var(--radius-xl);
+  background: var(--glass-bg);
+  border: 1px solid var(--color-border-soft);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  text-align: center;
+}
+
+.cta-band__title {
+  margin: 0 0 12px;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  text-wrap: balance;
+}
+
+.cta-band__text {
+  max-width: 56ch;
+  margin: 0 auto 24px;
+  font-size: clamp(0.95rem, 1.2vw, 1.06rem);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.cta-band__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Accent CTA band ─────────────────────────── */
+
+.cta-band--accent {
+  border-color: var(--color-border-accent-soft);
+  background: var(--color-bg-accent);
+}
+
+
+/* ====================================================================
+   STATS ROW — metrics / highlights
+   ==================================================================== */
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  text-align: center;
+}
+
+.stat-item {
+  padding: clamp(20px, 2.5vw, 28px) 16px;
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--color-border-soft);
+}
+
+.stat-item__value {
+  display: block;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-stat-value);
+}
+
+.stat-item__label {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--color-stat-label);
+}
+
+
+/* ====================================================================
+   TIMELINE
+   ==================================================================== */
+
+.timeline {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-left: 24px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--timeline-line);
+}
+
+.timeline-step {
+  position: relative;
+  padding: 0 0 32px 24px;
+}
+
+.timeline-step::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--timeline-dot);
+  box-shadow: 0 0 0 5px var(--timeline-dot-ring);
+}
+
+.timeline-step__title {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.timeline-step__text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+.timeline-step__meta {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+
+/* ====================================================================
+   BENTO GRID — asymmetric layout
+   ==================================================================== */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.bento-grid > :first-child {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-grid > :first-child {
+    grid-column: span 1;
+  }
+}
+
+
+/* ====================================================================
+   STEP LIST — numbered process steps
+   ==================================================================== */
+
+.step-list {
+  list-style: none;
+  counter-reset: step-counter;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.step-list__item {
+  counter-increment: step-counter;
+  position: relative;
+  padding-left: 56px;
+}
+
+.step-list__item::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-accent-primary);
+  background: var(--color-accent-glass);
+  border: 1px solid var(--color-border-accent-soft);
+}
+
+.step-list__title {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.step-list__text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+
+/* ====================================================================
+   TAG LIST — tech badges
+   ==================================================================== */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-list__item {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent-primary);
+  background: var(--color-accent-glass);
+  border: 1px solid var(--color-border-accent-soft);
+}

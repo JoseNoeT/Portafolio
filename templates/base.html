@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     {% load static %}
+    <script>
+      (function(){
+        var t=localStorage.getItem('portfolio-theme');
+        if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);
+      })();
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +20,7 @@
     <link rel="icon" type="image/png" href="{% static 'img/logo4.png' %}">
 
     <!-- BASE SYSTEM -->
+    <link rel="stylesheet" href="{% static 'css/base/design-tokens.css' %}">
     <link rel="stylesheet" href="{% static 'css/base/typography.css' %}">
     <link rel="stylesheet" href="{% static 'css/base/global.css' %}">
 
@@ -28,7 +35,8 @@
     <link rel="stylesheet" href="{% static 'css/components/cards.css' %}">
     <link rel="stylesheet" href="{% static 'css/components/forms.css' %}">
     <link rel="stylesheet" href="{% static 'css/components/hero.css' %}">
-    <link rel="stylesheet" href="{% static 'css/components/glass.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/sections.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/glass.css' %}">>
     <link rel="stylesheet" href="{% static 'css/components/images.css' %}">
 
     <!-- RESPONSIVE -->

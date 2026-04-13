@@ -65,18 +65,18 @@
           </div>
 
           <div class="card-actions">
-            <a class="btn-outline" href="{% url 'project_detail' project.slug %}">
+            <a class="btn btn-outline btn-sm" href="{% url 'project_detail' project.slug %}" data-modal-url="{% url 'project_modal' project.slug %}">
               Ver caso de estudio
             </a>
 
             {% if project.github_url %}
-            <a class="btn-ghost" href="{{ project.github_url }}" target="_blank" rel="noopener">
+            <a class="btn btn-ghost btn-sm" href="{{ project.github_url }}" target="_blank" rel="noopener">
               GitHub
             </a>
             {% endif %}
 
             {% if project.live_url %}
-            <a class="btn-ghost" href="{{ project.live_url }}" target="_blank" rel="noopener">
+            <a class="btn btn-ghost btn-sm" href="{{ project.live_url }}" target="_blank" rel="noopener">
               Demo
             </a>
             {% endif %}
@@ -94,59 +94,77 @@
   </div>
 </section>
 
-<section class="process-section">
+<!-- PROCESS -->
+<section class="section-shell section-shell--alt">
   <div class="container">
-    <h2 class="section-title">Cómo construyo soluciones</h2>
+    <div class="section-header">
+      <h2 class="section-title reveal">Cómo construyo soluciones</h2>
+    </div>
 
-    <div class="process-steps">
-      <div class="step">
-        <div class="step-icon">✓</div>
-        <div class="step-text">Analizo el problema real</div>
+    <div class="stats-row">
+      <div class="stat-item reveal">
+        <span class="stat-item__value">✓</span>
+        <span class="stat-item__label">Analizo el problema real</span>
       </div>
-      <div class="step">
-        <div class="step-icon">⎔</div>
-        <div class="step-text">Diseño la arquitectura</div>
+      <div class="stat-item reveal">
+        <span class="stat-item__value">⎔</span>
+        <span class="stat-item__label">Diseño la arquitectura</span>
       </div>
-      <div class="step">
-        <div class="step-icon">▦</div>
-        <div class="step-text">Desarrollo por fases</div>
+      <div class="stat-item reveal">
+        <span class="stat-item__value">▦</span>
+        <span class="stat-item__label">Desarrollo por fases</span>
       </div>
-      <div class="step">
-        <div class="step-icon">🧾</div>
-        <div class="step-text">Documento todo</div>
+      <div class="stat-item reveal">
+        <span class="stat-item__value">📄</span>
+        <span class="stat-item__label">Documento todo</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="timeline-section">
+<!-- TIMELINE -->
+<section class="section-shell">
   <div class="container">
-    <h2 class="section-title">Línea de tiempo</h2>
+    <div class="section-header">
+      <h2 class="section-title reveal">Línea de tiempo</h2>
+    </div>
 
     <div class="timeline">
       {% for project in projects %}
-      <div class="timeline-item">
-        <div class="timeline-dot" aria-hidden="true"></div>
-        <div class="timeline-content">
-          <div class="timeline-year">{{ project.created_at|date:"Y" }}</div>
-          <div class="timeline-name">{{ project.title }}</div>
-        </div>
+      <div class="timeline-step reveal">
+        <span class="timeline-step__title">{{ project.title }}</span>
+        <span class="timeline-step__meta">{{ project.created_at|date:"Y" }}</span>
       </div>
       {% endfor %}
     </div>
   </div>
 </section>
 
-<section class="projects-cta">
-  <div class="container cta-inner">
-    <h2>¿Interesado en trabajar conmigo?</h2>
-    <p>Construyo software a medida, presencial o remoto, con enfoque profesional.</p>
-    <a class="btn-primary" href="{% url 'contact' %}">Contactar</a>
+<!-- CTA -->
+<section class="section-shell section-shell--accent">
+  <div class="container">
+    <div class="cta-band cta-band--accent">
+      <h2 class="cta-band__title reveal">¿Interesado en trabajar conmigo?</h2>
+      <p class="cta-band__text reveal">Construyo software a medida, presencial o remoto, con enfoque profesional.</p>
+      <div class="cta-band__actions reveal">
+        <a class="btn btn-primary" href="{% url 'contact' %}">Contactar</a>
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- PROJECT MODAL -->
+<dialog class="pm-dialog" id="project-modal" aria-labelledby="project-modal-title">
+  <div class="pm-dialog__inner" id="project-modal-content">
+    <div class="pm-loading" aria-label="Cargando">
+      <span class="pm-spinner"></span>
+    </div>
+  </div>
+</dialog>
 
 {% endblock %}
 
 {% block extra_js %}
 <script src="{% static 'js/projects.js' %}" defer></script>
+<script src="{% static 'js/project-modal.js' %}" defer></script>
 {% endblock %}

@@ -1,0 +1,91 @@
+{% load static %}
+{# Modal project detail — editorial version rendered inside <dialog> via fetch #}
+
+<header class="pm-header">
+    <div class="pm-header__info">
+        <div class="pm-chips">
+            {% if project.get_category_display %}
+            <span class="detail-chip">{{ project.get_category_display }}</span>
+            {% endif %}
+            <span class="detail-chip">{{ project.created_at|date:"M Y" }}</span>
+        </div>
+        <h2 class="pm-title" id="project-modal-title">{{ project.title }}</h2>
+        {% if project.short_description %}
+        <p class="pm-subtitle">{{ project.short_description }}</p>
+        {% endif %}
+    </div>
+    <button type="button" class="pm-close" aria-label="Cerrar" data-close-modal>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+</header>
+
+{# ── Media block (future: video / gallery) ── #}
+{% if project.image %}
+<div class="pm-media">
+    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="pm-media__img" loading="lazy">
+</div>
+{% endif %}
+
+<div class="pm-body">
+
+    {# ── Resumen ejecutivo ── #}
+    <section class="pm-section">
+        <span class="pm-section__eyebrow">Resumen</span>
+        <h3 class="pm-section__title">Resumen ejecutivo</h3>
+        <p class="pm-section__text">{{ project.description }}</p>
+    </section>
+
+    {# ── Stack tecnológico ── #}
+    {% if project.technologies %}
+    <section class="pm-section">
+        <span class="pm-section__eyebrow">Stack</span>
+        <h3 class="pm-section__title">Tecnologías utilizadas</h3>
+        <div class="pm-tags">
+            {% for tech in project.tech_list %}
+            <span class="pm-tag">{{ tech }}</span>
+            {% endfor %}
+        </div>
+        <p class="pm-tech-desc">{{ project.technologies }}</p>
+    </section>
+    {% endif %}
+
+    {# ── Metadata grid ── #}
+    <section class="pm-section pm-section--no-border">
+        <span class="pm-section__eyebrow">Detalles</span>
+        <div class="pm-meta-grid">
+            <div class="pm-meta">
+                <span class="pm-meta__label">Categoría</span>
+                <span class="pm-meta__value">{{ project.get_category_display }}</span>
+            </div>
+            <div class="pm-meta">
+                <span class="pm-meta__label">Fecha</span>
+                <span class="pm-meta__value">{{ project.created_at|date:"d M Y" }}</span>
+            </div>
+            {% if project.live_url %}
+            <div class="pm-meta">
+                <span class="pm-meta__label">Estado</span>
+                <span class="pm-meta__value">En línea</span>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+</div>
+
+<footer class="pm-actions">
+    {% if project.live_url %}
+    <a href="{{ project.live_url }}" target="_blank" rel="noopener" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Ver demo en vivo
+    </a>
+    {% endif %}
+    {% if project.github_url %}
+    <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        Repositorio GitHub
+    </a>
+    {% endif %}
+    <a href="{% url 'project_detail' project.slug %}" class="btn btn-ghost">
+        Ver página completa →
+    </a>
+</footer>

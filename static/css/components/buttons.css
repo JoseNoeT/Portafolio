@@ -1,88 +1,289 @@
-/* buttons.css - shared button system aligned with visual guide */
-.btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 18px 34px;
-    border-radius: 18px;
-    border: none;
-    background: var(--gradient-primary);
-    color: var(--color-text-primary);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.95rem;
-    box-shadow: 0 10px 24px rgba(44, 168, 243, 0.22);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    cursor: pointer;
-}
+/* ====================================================================
+   BUTTON SYSTEM
+   Hierarchy: primary > secondary > outline > ghost > subtle
+   Sizing:    sm · (default md) · lg
+   States:    hover · focus-visible · active · disabled
+   Theme:     dark (default) + light via [data-theme="light"]
+   ==================================================================== */
 
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 36px rgba(44, 168, 243, 0.30);
-}
 
-.btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 18px 34px;
-    border-radius: 18px;
-    border: 2px solid rgba(44, 168, 243, 0.8);
-    background: transparent;
-    color: var(--color-accent-primary);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.95rem;
-    transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-    cursor: pointer;
-}
+/* ====================================================================
+   BASE
+   ==================================================================== */
 
-.btn-secondary:hover {
-    background: var(--gradient-primary);
-    color: var(--color-text-primary);
-    border-color: var(--color-accent-secondary);
-    transform: translateY(-2px);
-}
-
-/* Base button styles */
 .btn {
-    display: inline-block;
-    padding: 14px 32px;
-    border-radius: 18px;
-    font-weight: 700;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    background: var(--gradient-primary);
-    color: var(--color-text-primary);
-    box-shadow: 0 10px 24px rgba(44, 168, 243, 0.22);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease;
 }
 
-/* Variants */
-.btn-primary {
-    background: var(--gradient-primary);
-    color: var(--color-text-primary);
+.btn svg {
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
 }
 
-.btn-outline {
-    background: transparent;
-    color: var(--color-accent-primary);
-    border: 2px solid rgba(44, 168, 243, 0.8);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+
+/* ====================================================================
+   PRIMARY — highest emphasis
+   ==================================================================== */
+
+.btn-primary,
+.btn.btn-primary {
+  background: var(--gradient-primary);
+  color: var(--color-btn-text);
+  border-color: transparent;
+  box-shadow: 0 8px 24px var(--color-accent-glow);
 }
 
-/* States */
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 36px rgba(44, 168, 243, 0.30);
+.btn-primary:hover,
+.btn.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--color-accent-glow-strong);
 }
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 14px 36px rgba(44, 168, 243, 0.30);
+
+.btn-primary:active,
+.btn.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px var(--color-accent-glow);
 }
-.btn-outline:hover {
-    background: var(--gradient-primary);
-    color: var(--color-text-primary);
-    border-color: var(--color-accent-secondary);
+
+
+/* ====================================================================
+   SECONDARY — medium emphasis, solid background
+   ==================================================================== */
+
+.btn-secondary,
+.btn.btn-secondary {
+  background: var(--color-accent-glass);
+  color: var(--color-accent-primary);
+  border-color: var(--color-border-accent-strong);
+  box-shadow: none;
+}
+
+.btn-secondary:hover,
+.btn.btn-secondary:hover {
+  background: var(--gradient-primary);
+  color: var(--color-btn-text);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--color-accent-glow);
+}
+
+.btn-secondary:active,
+.btn.btn-secondary:active {
+  transform: translateY(0);
+}
+
+
+/* ====================================================================
+   OUTLINE — medium-low emphasis
+   ==================================================================== */
+
+.btn-outline,
+.btn.btn-outline {
+  background: transparent;
+  color: var(--color-accent-primary);
+  border-color: var(--color-border-accent);
+  box-shadow: none;
+}
+
+.btn-outline:hover,
+.btn.btn-outline:hover {
+  background: var(--color-accent-glass);
+  border-color: var(--color-border-accent-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px var(--color-accent-glow);
+}
+
+.btn-outline:active,
+.btn.btn-outline:active {
+  transform: translateY(0);
+}
+
+
+/* ====================================================================
+   GHOST — low emphasis, very subtle
+   ==================================================================== */
+
+.btn-ghost,
+.btn.btn-ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+  border-color: var(--color-border-soft);
+  box-shadow: none;
+}
+
+.btn-ghost:hover,
+.btn.btn-ghost:hover {
+  background: var(--color-surface-subtle);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-soft);
+  transform: translateY(-1px);
+}
+
+.btn-ghost:active,
+.btn.btn-ghost:active {
+  transform: translateY(0);
+  background: var(--color-surface-subtle-hover);
+}
+
+
+/* ====================================================================
+   SUBTLE — text-only, minimal footprint
+   ==================================================================== */
+
+.btn-subtle,
+.btn.btn-subtle {
+  background: transparent;
+  color: var(--color-accent-primary);
+  border-color: transparent;
+  padding-left: 4px;
+  padding-right: 4px;
+  box-shadow: none;
+}
+
+.btn-subtle:hover,
+.btn.btn-subtle:hover {
+  color: var(--color-accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transform: none;
+}
+
+
+/* ====================================================================
+   SIZING
+   ==================================================================== */
+
+.btn-sm {
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  gap: 6px;
+}
+
+.btn-lg {
+  padding: 16px 36px;
+  font-size: 1.05rem;
+  border-radius: 20px;
+  gap: 10px;
+}
+
+
+/* ====================================================================
+   STATES
+   ==================================================================== */
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px var(--color-focus-ring);
+}
+
+.btn[disabled],
+.btn.is-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* ====================================================================
+   ICON-ONLY
+   ==================================================================== */
+
+.btn-icon {
+  padding: 10px;
+  border-radius: var(--radius-md);
+}
+
+.btn-icon.btn-sm {
+  padding: 7px;
+}
+
+.btn-icon.btn-lg {
+  padding: 14px;
+}
+
+
+/* ====================================================================
+   FULL WIDTH
+   ==================================================================== */
+
+.btn-block {
+  width: 100%;
+}
+
+
+/* ====================================================================
+   LIGHT THEME OVERRIDES
+   ==================================================================== */
+
+[data-theme="light"] .btn-primary,
+[data-theme="light"] .btn.btn-primary {
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.18);
+}
+
+[data-theme="light"] .btn-primary:hover,
+[data-theme="light"] .btn.btn-primary:hover {
+  box-shadow: 0 12px 32px rgba(16, 185, 129, 0.25);
+}
+
+[data-theme="light"] .btn-outline,
+[data-theme="light"] .btn.btn-outline {
+  color: var(--color-accent-strong);
+}
+
+[data-theme="light"] .btn-ghost,
+[data-theme="light"] .btn.btn-ghost {
+  color: var(--color-text-secondary);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .btn-ghost:hover,
+[data-theme="light"] .btn.btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--color-text-primary);
+}
+
+[data-theme="light"] .btn-outline:hover,
+[data-theme="light"] .btn.btn-outline:hover {
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.15);
+}
+
+
+/* ====================================================================
+   RESPONSIVE
+   ==================================================================== */
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 11px 22px;
+    font-size: 0.9rem;
+  }
+
+  .btn-lg {
+    padding: 14px 28px;
+    font-size: 0.98rem;
+  }
 }

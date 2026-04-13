@@ -16,6 +16,25 @@
   } = {}) {
     if (!container || !global.p5) return null;
 
+    var darkPalette = {
+      baseHue: baseHue, hueRange: 100,
+      saturation: 100, brightness: 100,
+      lineAlpha: lineAlpha,
+      blend: 'ADD',
+    };
+    var lightPalette = {
+      baseHue: 130, hueRange: 70,
+      saturation: 55, brightness: 70,
+      lineAlpha: 0.02,
+      blend: 'BLEND',
+    };
+
+    function getPalette() {
+      var t = document.documentElement.getAttribute('data-theme') || 'dark';
+      return t === 'light' ? lightPalette : darkPalette;
+    }
+
+    var palette = getPalette();
     let points = [];
     let ticks = 0;
 
@@ -26,7 +45,10 @@
           y,
           dx: p.cos(angle),
           dy: p.sin(angle),
-          color: p.color((p.random(100) + baseHue) % 360, 100, 100, lineAlpha),
+          color: p.color(
+            (p.random(palette.hueRange) + palette.baseHue) % 360,
+            palette.saturation, palette.brightness, palette.lineAlpha
+          ),
           neighbor: null,
         };
       }
@@ -50,6 +72,7 @@
       }
 
       function initSketch() {
+        palette = getPalette();
         points = [];
         ticks = 0;
 
@@ -65,8 +88,14 @@
           point.neighbor = points[neighborIndex];
         });
 
-        p.clear();
-        p.background(0);
+        if (palette.blend === 'ADD') {
+          p.blendMode(p.ADD);
+          p.clear();
+          p.background(0);
+        } else {
+          p.blendMode(p.BLEND);
+          p.clear();
+        }
       }
 
       p.setup = function setup() {
@@ -114,6 +143,15 @@
 
     const instance = new global.p5(sketch);
 
+    var themeObserver = new MutationObserver(function () {
+      if (instance && typeof instance._restartSketch === 'function') {
+        instance._restartSketch();
+      }
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true, attributeFilter: ['data-theme'],
+    });
+
     return {
       restart() {
         if (instance && typeof instance._restartSketch === "function") {
@@ -121,6 +159,7 @@
         }
       },
       destroy() {
+        themeObserver.disconnect();
         if (instance && typeof instance.remove === "function") {
           instance.remove();
         }

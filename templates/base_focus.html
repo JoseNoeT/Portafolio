@@ -1,14 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
         {% load static %}
+        <script>
+          (function(){
+            var t=localStorage.getItem('portfolio-theme');
+            if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);
+          })();
+        </script>
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Portafolio - Jose Noe{% endblock %}</title>
 
+        <!-- BASE SYSTEM -->
+        <link rel="stylesheet" href="{% static 'css/base/design-tokens.css' %}">
         <link rel="stylesheet" href="{% static 'css/base/typography.css' %}">
         <link rel="stylesheet" href="{% static 'css/base/global.css' %}">
+
+        <!-- LAYOUT -->
+        <link rel="stylesheet" href="{% static 'css/layout/layout.css' %}">
+
+        <!-- COMPONENTS -->
         <link rel="stylesheet" href="{% static 'css/components/buttons.css' %}">
+        <link rel="stylesheet" href="{% static 'css/components/sections.css' %}">
 
         {% block extra_css %}{% endblock %}
 </head>
@@ -16,6 +31,7 @@
 
     {% block content %}{% endblock %}
 
+    <script src="{% static 'js/hero-system.js' %}" defer></script>
     {% block extra_js %}{% endblock %}
 
 </body>
