@@ -43,6 +43,17 @@
   --color-border-accent: rgba(44, 168, 243, 0.55);
 
   /* ================================================================
+     SURFACES & CARDS
+     ================================================================ */
+
+  --color-bg-card: rgba(7, 16, 39, 0.58);
+  --color-input-bg: rgba(255, 255, 255, 0.02);
+  --color-shadow-base: rgba(0, 0, 0, 0.35);
+  --color-overlay: rgba(7, 16, 39, 0.60);
+  --color-btn-text: #F0F1F2;
+  --color-focus-ring: rgba(44, 168, 243, 0.15);
+
+  /* ================================================================
      STATUS COLORS
      ================================================================ */
 
@@ -138,5 +149,73 @@
   --bp-mobile: 480px;
   --bp-tablet: 768px;
   --bp-desktop: 1024px;
+
+}
+
+
+/* ====================================================================
+   LIGHT THEME — Bosque Esmeralda
+   Activado vía  <html data-theme="light">
+   ==================================================================== */
+
+:root[data-theme="light"] {
+
+  /* ── BACKGROUNDS ─────────────────────────────────────────── */
+  --color-bg-primary:    #F0FDF4;
+  --color-bg-secondary:  #ECFDF5;
+  --color-bg-tertiary:   #D1FAE5;
+  --color-surface-dark:  #064E3B;
+  --color-surface-glass: rgba(255, 255, 255, 0.72);
+
+  /* ── TEXT ────────────────────────────────────────────────── */
+  --color-text-primary:   #064E3B;
+  --color-text-secondary: #374151;
+  --color-text-accent:    #10B981;
+  --color-text-muted:     #4B5563;
+  --text-muted:           #4B5563;
+
+  /* ── ACCENTS ────────────────────────────────────────────── */
+  --color-accent-primary:   #10B981;
+  --color-accent-secondary: #14B8A6;
+  --color-accent-strong:    #059669;
+  --color-accent-glass:     rgba(16, 185, 129, 0.10);
+
+  /* ── BORDERS ────────────────────────────────────────────── */
+  --color-border-soft:   rgba(0, 0, 0, 0.08);
+  --color-border-accent: rgba(16, 185, 129, 0.50);
+
+  /* ── SURFACES & CARDS ───────────────────────────────────── */
+  --color-bg-card:      rgba(255, 255, 255, 0.82);
+  --color-input-bg:     rgba(255, 255, 255, 0.92);
+  --color-shadow-base:  rgba(0, 0, 0, 0.06);
+  --color-overlay:      rgba(240, 253, 244, 0.60);
+  --color-btn-text:     #FFFFFF;
+  --color-focus-ring:   rgba(16, 185, 129, 0.20);
+
+  /* ── STATUS ─────────────────────────────────────────────── */
+  --success-color: #10B981;
+  --error-color:   #EF4444;
+
+  /* ── GRADIENTS ──────────────────────────────────────────── */
+  --gradient-primary:   linear-gradient(135deg, #10B981 0%, #14B8A6 100%);
+  --gradient-secondary: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
+  --gradient-hero:      linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 55%, #F0FDF4 100%);
+
+  /* ── GLASS ──────────────────────────────────────────────── */
+  --glass-bg:           rgba(255, 255, 255, 0.72);
+  --glass-border:       1px solid rgba(0, 0, 0, 0.06);
+  --glass-border-hover: 1px solid rgba(16, 185, 129, 0.45);
+  --glass-blur:         blur(14px);
+  --glass-shadow:       0 10px 30px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(16, 185, 129, 0.06) inset;
+
+  /* ── NAVBAR ─────────────────────────────────────────────── */
+  --navbar-bg:          rgba(255, 255, 255, 0.78);
+  --navbar-bg-mobile:   rgba(255, 255, 255, 0.92);
+  --navbar-border:      rgba(0, 0, 0, 0.06);
+  --navbar-shadow:      0 4px 24px rgba(0, 0, 0, 0.06);
+  --navbar-link:        #374151;
+  --navbar-link-hover:  #10B981;
+  --navbar-link-active: #059669;
+  --navbar-link-muted:  #6B7280;
 
 }
