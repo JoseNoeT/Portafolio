@@ -4,12 +4,12 @@
 {% block title %}Sobre mí - Jose Noe{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/about.css' %}">
 {% endblock %}
 
 
 {% block hero %}
-{% include "components/hero.html" with eyebrow="Sobre mí" title="Una base técnica en crecimiento" subtitle="Analista Programador con enfoque en desarrollo web, backend y soluciones funcionales." %}
+{% include "components/hero.html" with eyebrow="Sobre mí" title="Un perfil técnico en crecimiento, con foco en proyectos reales" subtitle="Soy Jose Noe, Analista Programador titulado y estudiante de Ingeniería en Informática. Estoy construyendo mi camino en desarrollo web con foco en backend, estructura de sistemas y soluciones funcionales pensadas para necesidades reales." %}
 {% endblock %}
 
 {% block content %}
@@ -17,58 +17,56 @@
 <section class="about-content container section">
     <!-- RESUMEN / PROPUESTA DE VALOR -->
     <div class="about-block card">
-        <h2>Cómo trabajo</h2>
+        <h2>Una base construida con aprendizaje, orden y criterio técnico</h2>
         <p>
-            Mi enfoque es convertir requerimientos en un sistema claro, robusto y escalable: defino alcance, diseño arquitectura,
-            implemento por iteraciones y dejo todo documentado para que el proyecto sea fácil de mantener por futuros equipos.
+            Me interesa seguir desarrollándome en proyectos donde la tecnología no solo se implemente, sino que también tenga una base clara, lógica y preparada para evolucionar. Por eso me atraen especialmente los entornos donde puedo aportar en desarrollo web, organización técnica y construcción de soluciones funcionales.
+        </p>
+        <p>
+            Busco crecer en espacios donde pueda aprender, aportar con responsabilidad y seguir fortaleciendo una forma de trabajo orientada a la claridad, la adaptación y la mejora continua.
         </p>
         <div class="about-highlights grid">
             <div class="about-card card">
-                <h3>Arquitectura</h3>
-                <p>Patrones, modularidad, separación de responsabilidades y crecimiento planificado.</p>
+                <h3>Aprendizaje continuo</h3>
+                <p>Me interesa crecer en proyectos que me permitan fortalecer criterio técnico, comprensión de sistemas y capacidad de ejecución.</p>
             </div>
             <div class="about-card card">
-                <h3>Calidad</h3>
-                <p>Buenas prácticas, revisiones, validaciones y pruebas donde agregan valor.</p>
+                <h3>Orden y claridad</h3>
+                <p>Valoro avanzar por etapas, organizar bien la solución y trabajar sobre una base técnica que tenga coherencia.</p>
             </div>
             <div class="about-card card">
-                <h3>Entrega</h3>
-                <p>Iteraciones cortas, feedback temprano y despliegue controlado.</p>
+                <h3>Compromiso con proyectos reales</h3>
+                <p>Me motiva participar en soluciones que respondan a necesidades concretas y aporten valor de forma funcional y profesional.</p>
             </div>
         </div>
     </div>
 
     <!-- METODOLOGÍA -->
     <div class="about-block card">
-        <h2>Metodología</h2>
+        <h2>Qué tipo de valor busco aportar</h2>
         <p>
-            Trabajo por fases para asegurar claridad, control y resultados medibles en cada entrega.
+            Me interesa aportar en proyectos que necesiten más estructura, mejor base funcional y una ejecución técnica más ordenada. Valoro el trabajo bien pensado, la capacidad de adaptación y el compromiso con construir soluciones que realmente respondan a una necesidad.
         </p>
         <ol class="about-steps">
             <li>
-                <strong>Diagnóstico & alcance</strong><br>
-                Entiendo el problema, defino objetivos, prioridades y criterios de éxito.
+                <strong>Interés por backend y lógica funcional</strong><br>
+                Me atrae trabajar en la parte del proyecto donde la estructura, la lógica y el funcionamiento técnico hacen una diferencia real.
             </li>
             <li>
-                <strong>Arquitectura & diseño</strong><br>
-                Modelo datos, defino endpoints/flujo, permisos/roles y estructura del proyecto.
+                <strong>Capacidad de adaptación</strong><br>
+                Busco integrarme a contextos distintos, aprender rápido y aportar con una mirada ordenada según la necesidad del proyecto.
             </li>
             <li>
-                <strong>Implementación & pruebas</strong><br>
-                Desarrollo por iteraciones, con validaciones y pruebas donde sean críticas.
-            </li>
-            <li>
-                <strong>Despliegue & monitoreo</strong><br>
-                Entrego una versión estable, con configuración clara y seguimiento de errores.
+                <strong>Ejecución con criterio</strong><br>
+                Me interesa que lo que se construya tenga sentido técnico, sea mantenible y pueda crecer con una base más sólida.
             </li>
         </ol>
     </div>
 
     <!-- STACK -->
     <div class="about-block card">
-        <h2>Stack tecnológico</h2>
+        <h2>Hacia dónde quiero seguir creciendo</h2>
         <p class="about-muted">
-            Backend y web development orientado a producción.
+            Quiero seguir participando en proyectos donde pueda combinar desarrollo, estructura y resolución de problemas, fortaleciendo una base profesional cada vez más sólida y útil para equipos, productos y soluciones reales.
         </p>
         <div class="about-tags grid" aria-label="Tecnologías">
             <span class="tag">Python</span>
@@ -85,12 +83,14 @@
 
     <!-- CIERRE / CTA -->
     <div class="about-cta card">
-        <h2>¿Tienes una idea o un sistema que mejorar?</h2>
+        <h2>¿Quieres conocer mejor mi trabajo o ver cómo lo aplico en proyectos concretos?</h2>
         <p>
-            Si necesitas desarrollo a medida, mantenimiento, mejoras de seguridad o un MVP listo para producción,
-            conversemos y lo aterrizamos en un plan claro.
+            Puedes revisar mis proyectos para ver mi enfoque en la práctica, o escribirme directamente para conversar sobre una oportunidad o colaboración.
         </p>
-        <a class="btn btn-primary" href="/contact/">Hablemos</a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+            <a class="btn btn-primary" href="{% url 'projects_list' %}">Ver proyectos</a>
+            <a class="btn btn-outline" href="{% url 'contact' %}">Contactar</a>
+        </div>
     </div>
 
 </section>

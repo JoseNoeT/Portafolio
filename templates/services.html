@@ -8,31 +8,38 @@
 {% endblock %}
 
 {% block hero %}
-    {% include "components/hero.html" with eyebrow="Servicios" title="Soluciones web con enfoque estructurado" subtitle="Desarrollo, mejora e implementación de soluciones pensadas para funcionar bien y seguir creciendo." %}
+    {% include "components/hero.html" with eyebrow="Servicios" title="Soluciones web con una base mas clara, funcional y preparada para crecer" subtitle="Puedo aportar en desarrollo, mejora e implementacion de proyectos web que necesiten mas estructura, logica funcional y una ejecucion tecnica mas ordenada." %}
 {% endblock %}
 
 {% block content %}
     <section class="services-page section">
-        <h1>Servicios Freelance</h1>
-        <p>Como desarrollador web freelance, ofrezco soluciones personalizadas para ayudarte a hacer crecer tu negocio. Mis servicios incluyen:</p>
+        <h1>Servicios</h1>
+        <p>Esta pagina esta pensada para personas, equipos o proyectos que ya tienen una idea en marcha y necesitan avanzar con una base tecnica mas clara, funcional y mantenible.</p>
         <div class="service-list">
             <article class="service card reveal">
-                <h2>Desarrollo Backend a Medida</h2>
-                <p>APIs RESTful, GraphQL, arquitectura escalable y bases de datos optimizadas para rendimiento y escalabilidad.</p>
+                <h2>Desarrollo backend</h2>
+                <p>Implementacion de funcionalidades, logica de negocio, autenticacion, roles y conexion con bases de datos para proyectos que necesitan una estructura funcional mas solida.</p>
             </article>
             <article class="service card reveal">
-                <h2>Consultoría Técnica</h2>
-                <p>Revisión de código, diseño arquitectónico, auditorías de seguridad y planes de mejora para optimizar tu infraestructura.</p>
+                <h2>Estructura e integracion</h2>
+                <p>Organizacion de componentes, flujos y conexiones entre partes del sistema para dar mas claridad tecnica y permitir un crecimiento mas ordenado del proyecto.</p>
             </article>
             <article class="service card reveal">
-                <h2>Desarrollo de MVPs & Despliegue</h2>
-                <p>Construcción de MVPs listos para producción, integración continua (CI/CD) y despliegue automatizado en plataformas como AWS o Heroku.</p>
+                <h2>Mejora de proyectos web</h2>
+                <p>Apoyo en ajustes visuales, funcionales y estructurales para mejorar proyectos existentes y llevarlos a un nivel mas claro, estable y profesional.</p>
             </article>
         </div>
         <div class="services-cta card">
-            <h3>¿Listo para llevar tu proyecto al siguiente nivel?</h3>
-            <p>Pon en marcha tu idea hoy mismo. ¡Contáctame para trabajar juntos en soluciones web personalizadas!</p>
-            <a href="/contact/" class="btn btn-primary">Contáctame</a>
+            <h3>Enfoque de trabajo</h3>
+            <p>Mi enfoque prioriza entender la necesidad real del proyecto, ordenar la solucion y trabajar sobre una base tecnica que permita crecer con mayor claridad.</p>
+        </div>
+        <div class="services-cta card">
+            <h3>¿Tienes un proyecto que necesita mas estructura o una mejor implementacion?</h3>
+            <p>Puedo ayudarte a revisar una idea, mejorar una base existente o avanzar en una solucion web con una logica mas clara y profesional.</p>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+                <a href="{% url 'contact' %}" class="btn btn-primary">Contactar</a>
+                <a href="{% url 'projects_list' %}" class="btn btn-outline">Ver proyectos</a>
+            </div>
         </div>
     </section>
 {% endblock %}

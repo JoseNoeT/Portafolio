@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Projects | Jose Noe{% endblock %}
+{% block title %}Proyectos | Jose Noe{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/pages/projects.css' %}">
@@ -49,7 +49,7 @@
 
         <div class="card-body">
           <h3 class="card-title">{{ project.title }}</h3>
-          <p class="card-desc">{{ project.short_description }}</p>
+          <p class="card-desc">{{ project.short_description|default:"Proyecto desarrollado con enfoque en calidad y mantenibilidad." }}</p>
 
           {% if project.tech_list %}
           <div class="chips" aria-label="Tecnologías">
@@ -66,7 +66,7 @@
 
           <div class="card-actions">
             <a class="btn-outline" href="{% url 'project_detail' project.slug %}">
-              Ver Caso de Estudio
+              Ver caso de estudio
             </a>
 
             {% if project.github_url %}
@@ -77,7 +77,7 @@
 
             {% if project.live_url %}
             <a class="btn-ghost" href="{{ project.live_url }}" target="_blank" rel="noopener">
-              Live
+              Demo
             </a>
             {% endif %}
           </div>
@@ -88,7 +88,7 @@
 
     </div>
     {% else %}
-      <p class="no-projects">No projects available yet.</p>
+      <p class="no-projects">No hay proyectos publicados por el momento.</p>
     {% endif %}
 
   </div>
@@ -141,7 +141,7 @@
   <div class="container cta-inner">
     <h2>¿Interesado en trabajar conmigo?</h2>
     <p>Construyo software a medida, presencial o remoto, con enfoque profesional.</p>
-    <a class="btn-primary" href="/contact/">Contactar</a>
+    <a class="btn-primary" href="{% url 'contact' %}">Contactar</a>
   </div>
 </section>
 

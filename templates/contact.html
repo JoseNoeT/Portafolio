@@ -4,49 +4,61 @@
 {% block title %}Contacto - Jose Noe{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/contact.css' %}">
 {% endblock %}
 
 
 {% block hero %}
-{% include "components/hero.html" with eyebrow="Contacto" title="Hablemos sobre tu próximo proyecto" subtitle="Disponible para colaboraciones, consultas técnicas y nuevas oportunidades." %}
+{% include "components/hero.html" with eyebrow="Contacto" title="Conversemos sobre una oportunidad, una colaboración o una idea de proyecto" subtitle="Si quieres contactarme por una oportunidad laboral, una colaboración o una necesidad relacionada con desarrollo web, aquí tienes una forma clara de hacerlo." %}
 {% endblock %}
 
 {% block content %}
 
 <section class="contact-methods container section">
-    <h2>Métodos de Contacto</h2>
+    <h2>¿En qué tipo de casos puedes escribirme?</h2>
     <ul>
-        <li><strong>Correo Electrónico:</strong> <a href="mailto:contacto@ejemplo.com">contacto@ejemplo.com</a></li>
-        <li><strong>Ubicación:</strong> Santiago, Chile</li>
-        <li><strong>Modalidad:</strong> Remoto / Híbrido / Presencial</li>
+        <li>Oportunidades laborales en desarrollo</li>
+        <li>Colaboración en proyectos web</li>
+        <li>Mejora o implementación de soluciones existentes</li>
+        <li>Consultas relacionadas con backend, estructura o desarrollo funcional</li>
     </ul>
 </section>
 
 <section class="contact-links container section">
-    <h2>Encuéntrame en</h2>
+    <h2>Canales de contacto</h2>
+    <p>Puedes escribirme por los medios disponibles aquí. La idea es facilitar un contacto directo, claro y alineado con el tipo de oportunidad o proyecto.</p>
     <ul>
-        <li><a href="https://github.com/tuusuario" target="_blank">GitHub</a></li>
-        <li><a href="https://linkedin.com/in/tuusuario" target="_blank">LinkedIn</a></li>
+        <li><strong>Correo Electrónico:</strong> <a href="mailto:jmnt2012@gmail.com">jmnt2012@gmail.com</a></li>
+        <li><strong>Teléfono:</strong> <a href="tel:+56930387145">+56 9 30387145</a></li>
+        <li><strong>Ubicación:</strong> Santiago, Chile</li>
+        <li><strong>Modalidad:</strong> Remoto / Híbrido / Presencial</li>
+        <li><a href="https://github.com/JoseNoeT" target="_blank" rel="noopener">GitHub</a></li>
     </ul>
 </section>
 
 <div class="contact-flex container grid">
     <section class="contact-form section" id="contact-section">
-        <h2>Formulario de Contacto</h2>
-        <form action="/send-message/" method="post">
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
-
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
-
-            <label for="message">Mensaje:</label>
-            <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
-
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
-        <p class="contact-note">La información enviada será utilizada únicamente para responder este mensaje.</p>
+        <h2>Disponibilidad</h2>
+        <div class="card" style="padding:1rem;">
+            <p>Actualmente estoy abierto a oportunidades donde pueda aportar con desarrollo web, backend y soluciones estructuradas. Si me escribes por un motivo claro, podré responder con mayor contexto y rapidez.</p>
+        </div>
+        <div class="card" style="padding:1rem; margin-top:1rem;">
+            <h3>Contacto directo</h3>
+            <p>Por ahora, el contacto directo está disponible a través de los canales visibles en esta página.</p>
+            <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+                <a href="mailto:jmnt2012@gmail.com" class="btn btn-primary">Enviar correo</a>
+                <a href="https://github.com/JoseNoeT" target="_blank" rel="noopener" class="btn btn-outline">Ver GitHub</a>
+            </div>
+        </div>
+        <div class="card" style="padding:1rem; margin-top:1rem;">
+            <h3>¿Prefieres conocer primero mi trabajo antes de escribirme?</h3>
+            <p>Puedes revisar mis proyectos para entender mejor mi enfoque y luego contactarme con más contexto sobre tu oportunidad o necesidad.</p>
+            <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+                <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver proyectos</a>
+                <a href="{% url 'home' %}" class="btn btn-outline">Volver al inicio</a>
+            </div>
+        </div>
+        <p class="contact-note">Tiempo estimado de respuesta: 24 a 48 horas hábiles.</p>
     </section>
     <!-- Mapa de Santiago de Chile -->
     <div class="contact-map">

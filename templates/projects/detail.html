@@ -4,7 +4,7 @@
 {% block title %}{{ project.title }} - Caso de Estudio{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/projects-detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/projects-detail.css' %}">
 <link rel="stylesheet" href="{% static 'css/components/hero.css' %}">
 {% endblock %}
 
@@ -23,8 +23,17 @@
     <div class="detail-container">
 
         <header class="detail-header">
-            <a href="/projects/" class="back-link">← Volver a proyectos</a>
+            <a href="{% url 'projects_list' %}" class="back-link">← Volver a proyectos</a>
         </header>
+
+        {% if project.image %}
+        <section class="detail-cover" aria-label="Vista previa del proyecto">
+            <button type="button" class="cover-trigger" id="open-image-modal" aria-label="Ampliar imagen del proyecto">
+                <img src="{{ project.image.url }}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
+            </button>
+            <p class="cover-caption">Haz clic en la imagen para ampliarla.</p>
+        </section>
+        {% endif %}
 
         <div class="detail-layout">
 
@@ -36,30 +45,36 @@
                 </section>
 
                 <section class="detail-section">
-                    <h2>Arquitectura</h2>
-                    <p>{{ project.architecture|default:"Pendiente de documentación." }}</p>
+                    <h2>Tecnologías utilizadas</h2>
+                    <p>{{ project.technologies|default:"Tecnologías no especificadas." }}</p>
                 </section>
 
                 <section class="detail-section">
-                    <h2>Decisiones técnicas</h2>
-                    <p>{{ project.decisions|default:"Pendiente." }}</p>
+                    <h2>Enlaces del proyecto</h2>
+                    {% if project.live_url or project.github_url %}
+                        {% if project.live_url %}
+                            <p><a href="{{ project.live_url }}" target="_blank" rel="noopener">Ver demo en vivo</a></p>
+                        {% endif %}
+                        {% if project.github_url %}
+                            <p><a href="{{ project.github_url }}" target="_blank" rel="noopener">Ver repositorio en GitHub</a></p>
+                        {% endif %}
+                    {% else %}
+                        <p>Los enlaces externos de este proyecto no están disponibles públicamente.</p>
+                    {% endif %}
                 </section>
 
             </main>
-{% block extra_js %}
-<script src="{% static 'js/hero-animation.js' %}"></script>
-{% endblock %}
 
             <aside class="detail-sidebar">
 
                 <div class="meta-block">
-                    <h3>Rol</h3>
-                    <p>{{ project.role|default:"Backend Engineer" }}</p>
+                    <h3>Fecha</h3>
+                    <p>{{ project.created_at|date:"d M Y" }}</p>
                 </div>
 
                 <div class="meta-block">
                     <h3>Stack</h3>
-                    <p>{{ project.technologies }}</p>
+                    <p>{{ project.technologies|default:"No especificado" }}</p>
                 </div>
 
                 <div class="meta-block">
@@ -68,8 +83,11 @@
                 </div>
 
                 <div class="meta-actions">
+                    {% if project.live_url %}
+                    <a href="{{ project.live_url }}" target="_blank" rel="noopener" class="btn-outline">Demo</a>
+                    {% endif %}
                     {% if project.github_url %}
-                    <a href="{{ project.github_url }}" target="_blank" class="btn-outline">GitHub</a>
+                    <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn-outline">GitHub</a>
                     {% endif %}
                 </div>
 
@@ -79,4 +97,53 @@
     </div>
 </div>
 
+{% if project.image %}
+<div class="image-modal" id="image-modal" aria-hidden="true" role="dialog" aria-label="Imagen ampliada del proyecto">
+        <button type="button" class="image-modal-close" id="close-image-modal" aria-label="Cerrar imagen">×</button>
+        <img src="{{ project.image.url }}" alt="Imagen ampliada del proyecto {{ project.title }}" class="image-modal-content">
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/hero-animation.js' %}"></script>
+{% if project.image %}
+<script>
+    (function () {
+        var openBtn = document.getElementById("open-image-modal");
+        var closeBtn = document.getElementById("close-image-modal");
+        var modal = document.getElementById("image-modal");
+
+        if (!openBtn || !closeBtn || !modal) return;
+
+        function openModal() {
+            modal.classList.add("is-open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            modal.classList.remove("is-open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+        }
+
+        openBtn.addEventListener("click", openModal);
+        closeBtn.addEventListener("click", closeModal);
+
+        modal.addEventListener("click", function (event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && modal.classList.contains("is-open")) {
+                closeModal();
+            }
+        });
+    })();
+</script>
+{% endif %}
 {% endblock %}

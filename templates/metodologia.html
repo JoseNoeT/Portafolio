@@ -4,51 +4,49 @@
 {% block title %}Metodología - Jose Noe{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/about.css' %}">
-<link rel="stylesheet" href="{% static 'css/metodologia.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/metodologia.css' %}">
 {% endblock %}
 
 
 {% block hero %}
-{% include "components/hero.html" with eyebrow="Proceso" title="Metodología de trabajo" subtitle="Cómo organizo, desarrollo y documento cada proyecto con claridad y estructura." %}
+{% include "components/hero.html" with eyebrow="Metodología" title="Una forma de trabajo enfocada en claridad, estructura y evolución del proyecto" subtitle="Me interesa abordar cada proyecto entendiendo primero su necesidad real. A partir de eso, organizo la solución, defino una base clara y avanzo de forma ordenada para construir resultados más funcionales, mantenibles y preparados para crecer." %}
 {% endblock %}
 
 {% block content %}
 
 <section class="methodology container">
-    <h1>Metodología</h1>
-    <p>Trabajo por fases: diagnóstico, diseño, implementación y despliegue. Priorizo pruebas, observabilidad y entregas iterativas.</p>
+    <h1>Más que desarrollar, busco dar forma a una solución bien pensada</h1>
+    <p>Mi enfoque parte por comprender el problema antes de ejecutar. Eso me permite ordenar mejor la información, definir prioridades y trabajar sobre una estructura que tenga sentido técnico y también utilidad real para el proyecto.</p>
+
+    <p>Busco que cada etapa aporte claridad: desde la organización inicial hasta la implementación, procurando que la solución no solo funcione, sino que también pueda mantenerse y evolucionar con mayor facilidad.</p>
 
     <h2>Fases</h2>
     <ol>
-        <li>Análisis y alcance</li>
-        <li>Arquitectura y diseño</li>
-        <li>Implementación y pruebas</li>
-        <li>Despliegue y monitoreo</li>
+        <li><strong>Entender la necesidad</strong><br>Antes de desarrollar, identifico qué necesita realmente el proyecto, qué problema busca resolver y qué base requiere para avanzar con más claridad.</li>
+        <li><strong>Ordenar la solución</strong><br>Defino una estructura inicial que ayude a organizar la información, las funcionalidades y la lógica general del sistema.</li>
+        <li><strong>Desarrollar con criterio</strong><br>Implemento procurando mantener claridad en el código, coherencia en la base técnica y enfoque en el objetivo real del proyecto.</li>
+        <li><strong>Revisar y mejorar</strong><br>Evalúo lo construido para detectar ajustes, fortalecer la solución y dejar una base más consistente para crecer o continuar.</li>
     </ol>
 
     <!-- Nueva sección de Objetivos y Resultados -->
     <section class="outcomes">
-        <h2>Resultados Esperados</h2>
-        <p>Al trabajar juntos, lograrás soluciones tecnológicas robustas, escalables y optimizadas. Mi enfoque metodológico te permitirá reducir riesgos y garantizar un crecimiento sostenible para tu negocio.</p>
-        <ul>
-            <li><strong>Mayor Eficiencia:</strong> Reducción de tiempos de desarrollo mediante entregas iterativas.</li>
-            <li><strong>Escalabilidad:</strong> Arquitecturas flexibles para crecimiento futuro.</li>
-            <li><strong>Calidad de Código:</strong> Uso de buenas prácticas, testing y revisiones de código para asegurar un producto estable.</li>
-        </ul>
+        <h2>Por qué esta forma de trabajo aporta valor</h2>
+        <p>Trabajar con más estructura desde el inicio ayuda a reducir confusión, mejorar la claridad técnica y facilitar que el proyecto avance sobre una base más ordenada. Eso hace que el desarrollo tenga más sentido, más coherencia y mejor proyección.</p>
     </section>
 </section>
 
 <!-- Ingeniería y Metodología: sección detallada con animación de entrada -->
 <section class="section-wrapper reveal container" aria-labelledby="ingenieria-title">
     <div class="section-text">
-        <h2 id="ingenieria-title">Ingeniería y Metodología</h2>
+        <h2 id="ingenieria-title">¿Quieres ver cómo esta forma de trabajo se refleja en proyectos reales?</h2>
         <p>
-            Cada proyecto que desarrollo sigue una metodología rigurosa centrada en arquitectura escalable y código de calidad producción.
+            Puedes revisar mis proyectos para ver cómo aplico esta lógica en la práctica, o escribirme directamente si quieres conversar sobre una idea o necesidad concreta.
         </p>
-        <p>
-            Diseño sistemas con patrones SOLID, realizo code reviews exhaustivos y configuro testing automatizado. Mi objetivo es entregar soluciones robustas que crezcan con tu negocio.
-        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;">
+            <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver proyectos</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline">Contactar</a>
+        </div>
     </div>
   
     <div class="section-image" aria-hidden="false">
