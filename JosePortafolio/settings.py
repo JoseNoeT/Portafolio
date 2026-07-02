@@ -113,20 +113,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Use local SQLite when DEBUG, otherwise use DATABASE_URL via dj-database-url
-if DEBUG:
+# Database configuration:
+# - If DATABASE_URL env var exists, use it (Postgres on Render).
+# - Otherwise fall back to SQLite (so Render Free can use local sqlite file).
+db_url = os.getenv('DATABASE_URL', '') or ''
+if db_url.strip():
+    DATABASES = {
+        'default': dj_database_url.config(default=db_url, conn_max_age=600)
+    }
+else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
-    }
-else:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=os.getenv('DATABASE_URL', ''),
-            conn_max_age=600
-        )
     }
 
 STATIC_URL = '/static/'
