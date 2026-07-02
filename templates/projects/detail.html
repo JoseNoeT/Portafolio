@@ -30,12 +30,16 @@
 </section>
 
 <!-- COVER IMAGE -->
-{% if project.image %}
+{% if project.static_image_path or project.image %}
 <section class="section-shell section-shell--compact" aria-label="Vista previa del proyecto">
   <div class="container">
     <div class="detail-cover">
       <button type="button" class="cover-trigger" id="open-image-modal" aria-label="Ampliar imagen del proyecto">
-        <img src="{{ project.image.url }}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
+        {% if project.static_image_path %}
+          <img src="{% static project.static_image_path %}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
+        {% else %}
+          <img src="{{ project.image.url }}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
+        {% endif %}
       </button>
       <p class="cover-caption">Haz clic en la imagen para ampliarla</p>
     </div>

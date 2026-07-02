@@ -20,9 +20,13 @@
 </header>
 
 {# ── Media block (future: video / gallery) ── #}
-{% if project.image %}
+{% if project.static_image_path or project.image %}
 <div class="pm-media">
-    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="pm-media__img" loading="lazy">
+    {% if project.static_image_path %}
+        <img src="{% static project.static_image_path %}" alt="{{ project.title }}" class="pm-media__img" loading="lazy">
+    {% else %}
+        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="pm-media__img" loading="lazy">
+    {% endif %}
 </div>
 {% endif %}
 

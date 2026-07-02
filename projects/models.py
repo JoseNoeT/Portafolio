@@ -56,9 +56,20 @@ class Project(models.Model):
     class Meta:
         ordering = ['-created_at']
 
+    def _generate_unique_slug(self):
+        base_slug = slugify(self.title) or 'project'
+        slug = base_slug
+        counter = 2
+
+        while Project.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+            slug = f"{base_slug}-{counter}"
+            counter += 1
+
+        return slug
+
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            self.slug = self._generate_unique_slug()
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -69,3 +80,23 @@ class Project(models.Model):
         if self.technologies:
             return [t.strip() for t in self.technologies.split(',') if t.strip()]
         return []
+
+    @property
+    def static_image_path(self):
+        """Return a static image path for seeded projects based on slug.
+
+        Returns None when no static fallback is defined.
+        """
+        if not self.slug:
+            return None
+
+        mapping = {
+            'portafolio': 'img/projects/portafolio.png',
+            'ferramas': 'img/projects/ferramas.jpg',
+            'campus360': 'img/projects/campus360.jpg',
+            'bot-trading-cuantitativo': 'img/projects/bot-trading-cuantitativo.jpg',
+            'tiendabot': 'img/projects/tiendabot.jpg',
+            'voxylibro': 'img/projects/voxylibro.jpg',
+        }
+
+        return mapping.get(self.slug)

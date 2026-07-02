@@ -123,26 +123,11 @@ class Command(BaseCommand):
                         )
                         created += 1
                         self.stdout.write(self.style.SUCCESS(f'Created project: {title}'))
-                    # Handle image assignment: copy from static/img/projects to MEDIA_ROOT/projects
-                    image_filename = repo.get('image_filename')
-                    if image_filename:
-                        static_src = os.path.join(settings.BASE_DIR, 'static', 'img', 'projects', image_filename)
-                        media_dir = os.path.join(getattr(settings, 'MEDIA_ROOT', os.path.join(settings.BASE_DIR, 'media')), 'projects')
-                        os.makedirs(media_dir, exist_ok=True)
-                        dest_path = os.path.join(media_dir, image_filename)
-
-                        if os.path.exists(static_src):
-                            try:
-                                # Copy only if destination missing to preserve idempotence
-                                if not os.path.exists(dest_path):
-                                    shutil.copy2(static_src, dest_path)
-                                # Assign image field to point to media/projects/<filename>
-                                project.image.name = f'projects/{image_filename}'
-                                project.save()
-                            except Exception as exc:
-                                self.stderr.write(self.style.ERROR(f'Failed copying image for {title}: {exc}'))
-                        else:
-                            self.stdout.write(self.style.WARNING(f'Image not found in static path: {static_src} — skipping image for {title}'))
+                    # NOTE: images for seeded projects are served from static files (static/img/projects/).
+                    # Do NOT copy into MEDIA_ROOT or assign to ImageField to avoid /media/ dependency in production.
+                    # If an admin uploads a custom image via the admin, it will still be used because templates
+                    # prefer the static fallback and then the ImageField.
+                    pass
             except Exception as exc:
                 failed += 1
                 self.stderr.write(self.style.ERROR(f'Failed project {title}: {exc}'))

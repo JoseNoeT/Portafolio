@@ -40,7 +40,9 @@
                data-category="{{ project.category|default:'personal'|lower }}">
 
         <div class="card-media">
-          {% if project.image %}
+          {% if project.static_image_path %}
+            <img src="{% static project.static_image_path %}" alt="{{ project.title }}">
+          {% elif project.image %}
             <img src="{{ project.image.url }}" alt="{{ project.title }}">
           {% else %}
             <div class="media-placeholder" aria-hidden="true"></div>
