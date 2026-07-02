@@ -1,6 +1,10 @@
 from django.core.management.base import BaseCommand
 from django.utils.text import slugify
 from django.db import transaction
+from django.conf import settings
+import os
+import shutil
+
 from projects.models import Project
 
 
@@ -13,6 +17,7 @@ REPOS = [
         'category': 'personal',
         'technologies': 'Python, Django, HTML, CSS, JavaScript',
         'live_url': '',
+        'image_filename': 'portafolio.png',
     },
     {
         'title': 'Ferramas',
@@ -22,6 +27,7 @@ REPOS = [
         'category': 'academic',
         'technologies': 'Python, Django, HTML, CSS, JavaScript',
         'live_url': '',
+        'image_filename': 'ferramas.jpg',
     },
     {
         'title': 'Campus360',
@@ -31,6 +37,7 @@ REPOS = [
         'category': 'academic',
         'technologies': 'Python, Web',
         'live_url': '',
+        'image_filename': 'campus360.jpg',
     },
     {
         'title': 'bot-trading-cuantitativo',
@@ -40,6 +47,7 @@ REPOS = [
         'category': 'engineering',
         'technologies': 'Python',
         'live_url': '',
+        'image_filename': 'bot-trading-cuantitativo.jpg',
     },
     {
         'title': 'TiendaBot',
@@ -49,6 +57,7 @@ REPOS = [
         'category': 'personal',
         'technologies': 'Python, Web',
         'live_url': '',
+        'image_filename': 'tiendabot.jpg',
     },
     {
         'title': 'VoxyLibro',
@@ -58,6 +67,7 @@ REPOS = [
         'category': 'personal',
         'technologies': 'Python, Web',
         'live_url': '',
+        'image_filename': 'voxylibro.jpg',
     },
 ]
 
@@ -113,6 +123,26 @@ class Command(BaseCommand):
                         )
                         created += 1
                         self.stdout.write(self.style.SUCCESS(f'Created project: {title}'))
+                    # Handle image assignment: copy from static/img/projects to MEDIA_ROOT/projects
+                    image_filename = repo.get('image_filename')
+                    if image_filename:
+                        static_src = os.path.join(settings.BASE_DIR, 'static', 'img', 'projects', image_filename)
+                        media_dir = os.path.join(getattr(settings, 'MEDIA_ROOT', os.path.join(settings.BASE_DIR, 'media')), 'projects')
+                        os.makedirs(media_dir, exist_ok=True)
+                        dest_path = os.path.join(media_dir, image_filename)
+
+                        if os.path.exists(static_src):
+                            try:
+                                # Copy only if destination missing to preserve idempotence
+                                if not os.path.exists(dest_path):
+                                    shutil.copy2(static_src, dest_path)
+                                # Assign image field to point to media/projects/<filename>
+                                project.image.name = f'projects/{image_filename}'
+                                project.save()
+                            except Exception as exc:
+                                self.stderr.write(self.style.ERROR(f'Failed copying image for {title}: {exc}'))
+                        else:
+                            self.stdout.write(self.style.WARNING(f'Image not found in static path: {static_src} — skipping image for {title}'))
             except Exception as exc:
                 failed += 1
                 self.stderr.write(self.style.ERROR(f'Failed project {title}: {exc}'))
