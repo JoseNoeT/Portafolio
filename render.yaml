@@ -13,6 +13,12 @@ services:
         value: "josenoet.onrender.com"
       - key: CSRF_TRUSTED_ORIGINS
         value: "https://josenoet.onrender.com"
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: "admin"
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: "jmnt2012@gmail.com"
+      - key: DJANGO_SUPERUSER_PASSWORD
+        sync: false
       - key: CLOUDINARY_URL
         sync: false
       - key: PYTHON_VERSION
