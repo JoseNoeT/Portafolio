@@ -1,12 +1,17 @@
 # Virtual environment
 venv/
+.venv/
+env/
 
 # Python cache
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.mypy_cache/
 
 # macOS
 .DS_Store
+Thumbs.db
 
 # Database files
 *.sqlite3
@@ -19,9 +24,16 @@ media/
 # Environment variables
 .env
 .env.*
+!.env.example
+
+# Local env and Render files
+.env.local
+.render
 
 # Logs
 *.log
+*.tmp
+*.temp
 
 # Editor directories
 .vscode/

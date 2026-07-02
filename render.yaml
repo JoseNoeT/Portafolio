@@ -1,13 +1,26 @@
 services:
   - type: web
-    name: jose-portafolio
-    env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn JosePortafolio.wsgi:application"
+    name: josenoet
+    runtime: python
+    buildCommand: bash build.sh
+    startCommand: gunicorn JosePortafolio.wsgi:application
     envVars:
       - key: SECRET_KEY
-        generateValue: true
+        sync: false
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
-        value: "jose-portafolio.onrender.com"
+        value: "josenoet.onrender.com"
+      - key: CSRF_TRUSTED_ORIGINS
+        value: "https://josenoet.onrender.com"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: joseportafolio-db
+          property: connectionString
+      - key: CLOUDINARY_URL
+        sync: false
+      - key: PYTHON_VERSION
+        value: "3.11.5"
+
+databases:
+  - name: joseportafolio-db
