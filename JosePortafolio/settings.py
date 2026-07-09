@@ -53,8 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'cloudinary_storage',
+    'django.contrib.staticfiles',
     'cloudinary',
     'rest_framework',
 
@@ -144,18 +144,28 @@ STORAGES = {
         ),
     },
     'staticfiles': {
-        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+        'BACKEND': (
+            'whitenoise.storage.CompressedManifestStaticFilesStorage'
+            if not DEBUG
+            else 'django.contrib.staticfiles.storage.StaticFilesStorage'
+        ),
     },
 }
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# Static files storage: use WhiteNoise manifest storage in production
-if not DEBUG:
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-else:
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# Fail-fast in production when Cloudinary is not configured.
+# We rely on `STORAGES['default']` (Django 5.2+) to select the media backend.
+if not DEBUG and not CLOUDINARY_URL:
+    raise ImproperlyConfigured(
+        'CLOUDINARY_URL is required in production for media uploads.'
+    )
+
+# Static files storage is configured via `STORAGES['staticfiles']`.
+# Backwards compatibility: some third-party code (e.g. cloudinary_storage.collectstatic)
+# expects `STATICFILES_STORAGE` to be defined. Mirror the value from `STORAGES`.
+STATICFILES_STORAGE = STORAGES['staticfiles']['BACKEND']
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard'
@@ -200,21 +210,18 @@ else:
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
 
-
-    # Logging: ensure Render (and other hosts) emit Django 500 tracebacks to stdout
-    LOGGING = {
-        "version": 1,
-        "disable_existing_loggers": False,
-        "handlers": {
-            "console": {
-                "class": "logging.StreamHandler",
-            },
+# Logging: ensure Render and other hosts emit Django 500 tracebacks to stdout
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {"class": "logging.StreamHandler"},
+    },
+    "loggers": {
+        "django.request": {
+            "handlers": ["console"],
+            "level": "ERROR",
+            "propagate": False,
         },
-        "loggers": {
-            "django.request": {
-                "handlers": ["console"],
-                "level": "ERROR",
-                "propagate": False,
-            },
-        },
-    }
+    },
+}

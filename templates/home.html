@@ -175,9 +175,9 @@
                                         <article class="feature-card reveal">
                                                 <div class="card-media">
                                                     {% if project.image %}
-                                                        <img src="{{ project.image.url }}" alt="{{ project.title }}" onerror="this.onerror=null;this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';">
+                                                        <img src="{{ project.image.url }}" alt="{{ project.title }}" onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';">
                                                     {% elif project.static_image_path %}
-                                                        <img src="{% static project.static_image_path %}" alt="{{ project.title }}" onerror="this.onerror=null;this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';">
+                                                        <img src="{% static project.static_image_path %}" alt="{{ project.title }}" onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';">
                                                     {% else %}
                                                         <div class="media-placeholder" aria-hidden="true"></div>
                                                     {% endif %}
