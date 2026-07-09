@@ -1,4 +1,5 @@
 from io import BytesIO
+import base64
 
 from django.contrib.auth import get_user_model
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -108,3 +109,64 @@ class ProjectAdminCRUDTests(TestCase):
         # oversize must not create the project and should re-render form (200)
         self.assertEqual(resp2.status_code, 200)
         self.assertFalse(Project.objects.filter(title='ImageTest2').exists())
+
+    def test_staff_can_upload_and_replace_image_and_see_in_home_and_list(self):
+        self.client.force_login(self.staff)
+        create_url = reverse('project_create')
+
+        # Try to build a valid PNG using Pillow; fallback to a base64 1x1 PNG
+        try:
+            from PIL import Image
+            bio = BytesIO()
+            Image.new('RGBA', (1, 1), (255, 0, 0, 0)).save(bio, format='PNG')
+            png_1x1 = bio.getvalue()
+        except Exception:
+            png_1x1 = base64.b64decode(
+                b'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII='
+            )
+        small_png = SimpleUploadedFile('small.png', png_1x1, content_type='image/png')
+        data = {
+            'title': 'ImageFlow',
+            'short_description': 'short',
+            'description': 'desc',
+            'category': 'personal',
+            'image': small_png,
+        }
+        resp = self.client.post(create_url, data, follow=True)
+        self.assertEqual(resp.status_code, 200)
+        self.assertTrue(Project.objects.filter(title='ImageFlow').exists(), msg=resp.content.decode())
+
+        proj = Project.objects.get(title='ImageFlow')
+        # Image saved on model
+        self.assertTrue(proj.image and proj.image.name)
+
+        # Appears on public listing with image tag
+        resp_list = self.client.get(reverse('projects_list'))
+        self.assertContains(resp_list, 'ImageFlow')
+        self.assertContains(resp_list, 'img')
+
+        # Appears on Home (first 3 projects)
+        resp_home = self.client.get(reverse('home'))
+        self.assertContains(resp_home, 'ImageFlow')
+        # Project image URL should be rendered in home template
+        self.assertIn(proj.image.url, resp_home.content.decode())
+
+        # Edit: replace image
+        edit_url = reverse('project_edit', kwargs={'slug': proj.slug})
+        new_png = SimpleUploadedFile('small2.png', png_1x1, content_type='image/png')
+        resp_edit = self.client.post(edit_url, {
+            'title': proj.title,
+            'short_description': proj.short_description,
+            'description': proj.description,
+            'category': proj.category,
+            'image': new_png,
+        }, follow=True)
+        self.assertEqual(resp_edit.status_code, 200)
+        proj.refresh_from_db()
+        self.assertIn('small2', proj.image.name)
+
+        # Delete
+        delete_url = reverse('project_delete', kwargs={'slug': proj.slug})
+        resp_delete = self.client.post(delete_url, follow=True)
+        self.assertEqual(resp_delete.status_code, 200)
+        self.assertFalse(Project.objects.filter(pk=proj.pk).exists())

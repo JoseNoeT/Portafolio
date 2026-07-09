@@ -171,20 +171,24 @@
 
         <div class="feature-grid">
             {% if projects %}
-                {% for project in projects %}
-                    <article class="feature-card reveal">
-                        {% if project.image %}
-                            <div class="split-section__visual" style="margin-bottom:16px">
-                                <img src="{{ project.image.url }}" alt="{{ project.title }}" />
-                            </div>
-                        {% endif %}
-                        <h3 class="feature-card__title">{{ project.title }}</h3>
-                        <p class="feature-card__text">{{ project.description|truncatewords:20 }}</p>
-                        <a href="{% url 'project_detail' project.slug %}" class="btn btn-outline btn-sm" style="margin-top:12px">
-                            Ver caso de estudio
-                        </a>
-                    </article>
-                {% endfor %}
+                                {% for project in projects %}
+                                        <article class="feature-card reveal">
+                                                <div class="card-media">
+                                                    {% if project.static_image_path %}
+                                                        <img src="{% static project.static_image_path %}" alt="{{ project.title }}">
+                                                    {% elif project.image %}
+                                                        <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                                                    {% else %}
+                                                        <div class="media-placeholder" aria-hidden="true"></div>
+                                                    {% endif %}
+                                                </div>
+                                                <h3 class="feature-card__title">{{ project.title }}</h3>
+                                                <p class="feature-card__text">{{ project.description|truncatewords:20 }}</p>
+                                                <a href="{% url 'project_detail' project.slug %}" class="btn btn-outline btn-sm" style="margin-top:12px">
+                                                        Ver caso de estudio
+                                                </a>
+                                        </article>
+                                {% endfor %}
             {% else %}
                 <p class="section-desc reveal">No hay proyectos disponibles en este momento.</p>
             {% endif %}
