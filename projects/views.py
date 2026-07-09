@@ -1,11 +1,18 @@
 from functools import wraps
+import logging
 
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import ProjectForm
 from .models import Project
+from analytics.services import track_project_view
+import os
+
+
+logger = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
@@ -16,9 +23,12 @@ def staff_required(view_func):
     """Allow access only to active staff users."""
     @wraps(view_func)
     @login_required
-    @user_passes_test(lambda u: u.is_active and u.is_staff)
-    def wrapper(*args, **kwargs):
-        return view_func(*args, **kwargs)
+    def wrapper(request, *args, **kwargs):
+        user = request.user
+        if not (user and user.is_active and user.is_staff):
+            raise PermissionDenied
+        return view_func(request, *args, **kwargs)
+
     return wrapper
 
 
@@ -33,12 +43,20 @@ def list_projects(request):
 
 def project_detail(request, slug):
     project = get_object_or_404(Project, slug=slug)
+    try:
+        track_project_view(request, project)
+    except Exception:
+        logger.exception('Project analytics tracking failed')
     return render(request, "projects/detail.html", {"project": project})
 
 
 def project_modal(request, slug):
     """Return compact HTML fragment for the project detail modal."""
     project = get_object_or_404(Project, slug=slug)
+    try:
+        track_project_view(request, project)
+    except Exception:
+        logger.exception('Project analytics tracking failed')
     return render(request, "projects/_modal_content.html", {"project": project})
 
 

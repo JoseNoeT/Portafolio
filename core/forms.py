@@ -42,13 +42,13 @@ class SiteSettingsForm(forms.ModelForm):
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100, required=True)
-    email = forms.EmailField(required=True)
-    subject = forms.CharField(max_length=150, required=True)
+    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'placeholder': 'tu@correo.com', 'class': 'form-input'}))
+    subject = forms.CharField(max_length=150, required=True, widget=forms.TextInput(attrs={'placeholder': 'Asunto', 'class': 'form-input'}))
     message = forms.CharField(
         required=True,
         min_length=20,
         max_length=2000,
-        widget=forms.Textarea(attrs={"rows": 6}),
+        widget=forms.Textarea(attrs={"rows": 6, 'placeholder': 'Escribe tu mensaje aquí...', 'class': 'form-textarea'}),
     )
     honeypot = forms.CharField(required=False, widget=forms.HiddenInput)
 

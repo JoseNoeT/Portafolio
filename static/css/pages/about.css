@@ -5,7 +5,7 @@
   max-width: 1100px;
   margin: 40px auto;
   padding: 20px;
-  color: var(--color-text-primary);
+  color: var(--color-body);
 }
 
 @media (max-width: 768px) {

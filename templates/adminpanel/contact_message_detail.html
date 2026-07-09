@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Detalle mensaje | Admin{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="dash">
+  <div class="container" style="max-width: 920px;">
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Detalle del mensaje</h2>
+        <a href="{% url 'adminpanel_contact_messages' %}" class="link-accent">Volver a mensajes</a>
+      </div>
+
+      {% if messages %}
+      <div style="display:grid;gap:10px;margin-bottom:16px;">
+        {% for message in messages %}
+        <div class="proj-desc">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <p><strong>Nombre:</strong> {{ message_obj.name }}</p>
+      <p><strong>Email:</strong> <a href="mailto:{{ message_obj.email }}">{{ message_obj.email }}</a></p>
+      <p><strong>Asunto:</strong> {{ message_obj.subject }}</p>
+      <p><strong>Fecha:</strong> {{ message_obj.created_at|date:"d M Y H:i" }}</p>
+      <p><strong>Lectura:</strong>
+        {% if message_obj.is_read %}Leído{% else %}No leído{% endif %}
+      </p>
+      <p><strong>Respuesta:</strong>
+        {% if message_obj.is_replied %}Respondido{% else %}Pendiente{% endif %}
+      </p>
+
+      <div class="feature-card" style="margin:16px 0;padding:16px;">
+        <p style="white-space:pre-wrap;margin:0;">{{ message_obj.message }}</p>
+      </div>
+
+      <div style="display:flex;gap:10px;">
+        <a href="mailto:{{ message_obj.email }}?subject=Re:%20{{ message_obj.subject|urlencode }}" class="btn-ghost btn-sm">Responder por email</a>
+        {% if not message_obj.is_read %}
+        <form method="post" action="{% url 'adminpanel_contact_message_read' message_obj.pk %}">
+          {% csrf_token %}
+          <button type="submit" class="btn-ghost btn-sm">Marcar como leído</button>
+        </form>
+        {% endif %}
+        {% if not message_obj.is_replied %}
+        <form method="post" action="{% url 'adminpanel_contact_message_replied' message_obj.pk %}">
+          {% csrf_token %}
+          <button type="submit" class="btn-primary btn-sm">Marcar como respondido</button>
+        </form>
+        {% endif %}
+        <a href="{% url 'adminpanel_contact_messages' %}" class="btn-ghost btn-sm">Volver a mensajes</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

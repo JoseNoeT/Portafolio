@@ -1,5 +1,91 @@
-/* typography.css - design tokens and global text defaults */
+/* typography.css - semantic text system + global text defaults */
 
+
+/* ====================================================================
+   HEADING HIERARCHY
+   ==================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+h1 { font-size: var(--font-h1); }
+h2 { font-size: var(--font-h2); }
+h3 { font-size: var(--font-h3); }
+
+
+/* ====================================================================
+   SEMANTIC TEXT CLASSES
+   ==================================================================== */
+
+/* ── Headings ── */
+
+.text-heading {
+  color: var(--color-heading);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.text-heading-accent {
+  color: var(--color-heading-accent);
+}
+
+.text-subheading {
+  color: var(--color-subheading);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* ── Body text ── */
+
+.text-body {
+  color: var(--color-body);
+  line-height: 1.75;
+}
+
+.text-body-strong {
+  color: var(--color-body-strong);
+  font-weight: 600;
+}
+
+/* ── Labels & metadata ── */
+
+.text-label {
+  color: var(--color-label);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.text-caption {
+  color: var(--color-caption);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* ── Inline emphasis ── */
+
+strong, b {
+  color: var(--color-body-strong);
+  font-weight: 700;
+}
+
+small {
+  color: var(--color-caption);
+  font-size: 0.85rem;
+}
+
+mark {
+  background: var(--color-accent-glass);
+  color: var(--color-heading-accent);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
 
 
 .focused-layout {

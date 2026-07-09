@@ -126,7 +126,7 @@
 .btn-ghost,
 .btn.btn-ghost {
   background: transparent;
-  color: var(--color-text-secondary);
+  color: var(--color-body);
   border-color: var(--color-border-soft);
   box-shadow: none;
 }
@@ -134,7 +134,7 @@
 .btn-ghost:hover,
 .btn.btn-ghost:hover {
   background: var(--color-surface-subtle);
-  color: var(--color-text-primary);
+  color: var(--color-heading);
   border-color: var(--color-border-soft);
   transform: translateY(-1px);
 }
@@ -256,14 +256,14 @@
 
 [data-theme="light"] .btn-ghost,
 [data-theme="light"] .btn.btn-ghost {
-  color: var(--color-text-secondary);
+  color: var(--color-body);
   border-color: rgba(0, 0, 0, 0.08);
 }
 
 [data-theme="light"] .btn-ghost:hover,
 [data-theme="light"] .btn.btn-ghost:hover {
   background: rgba(0, 0, 0, 0.04);
-  color: var(--color-text-primary);
+  color: var(--color-heading);
 }
 
 [data-theme="light"] .btn-outline:hover,

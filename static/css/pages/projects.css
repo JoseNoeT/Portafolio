@@ -21,7 +21,7 @@
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border-soft);
   background: var(--color-surface-subtle);
-  color: var(--color-text-secondary);
+  color: var(--color-body);
   cursor: pointer;
   font-size: 0.88rem;
   font-weight: 600;
@@ -85,12 +85,12 @@
 .card-title {
   margin: 0 0 8px;
   font-size: 1.15rem;
-  color: var(--color-text-primary);
+  color: var(--color-heading);
 }
 
 .card-desc {
   margin: 0 0 14px;
-  color: var(--color-text-secondary);
+  color: var(--color-body);
   line-height: 1.5;
 }
 
@@ -107,7 +107,7 @@
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border-soft);
   background: var(--color-surface-subtle);
-  color: var(--color-text-secondary);
+  color: var(--color-body);
 }
 
 .card-meta {
@@ -115,7 +115,7 @@
   gap: 8px;
   align-items: baseline;
   margin-bottom: 14px;
-  color: var(--color-text-muted);
+  color: var(--color-caption);
   font-size: 0.9rem;
 }
 
@@ -127,7 +127,7 @@
 
 .no-projects {
   text-align: center;
-  color: var(--color-text-muted);
+  color: var(--color-caption);
   padding: 40px 0;
 }
 
@@ -230,7 +230,7 @@ dialog.pm-dialog[data-theme="light"]::backdrop {
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  color: var(--color-text-primary);
+  color: var(--color-heading);
   margin: 0 0 6px;
   outline: none;
 }
@@ -238,7 +238,7 @@ dialog.pm-dialog[data-theme="light"]::backdrop {
 .pm-subtitle {
   font-size: clamp(0.92rem, 1.2vw, 1.02rem);
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: var(--color-body);
   margin: 0;
 }
 
@@ -252,7 +252,7 @@ dialog.pm-dialog[data-theme="light"]::backdrop {
   border-radius: 50%;
   border: 1px solid var(--color-border-soft);
   background: var(--color-surface-subtle);
-  color: var(--color-text-secondary);
+  color: var(--color-body);
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
@@ -260,7 +260,7 @@ dialog.pm-dialog[data-theme="light"]::backdrop {
 .pm-close:hover {
   background: var(--color-accent-glass);
   border-color: var(--color-accent-primary);
-  color: var(--color-text-primary);
+  color: var(--color-heading);
 }
 
 .pm-close:focus-visible {
@@ -318,7 +318,7 @@ dialog.pm-dialog[data-theme="light"]::backdrop {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-eyebrow, var(--color-accent-primary));
+  color: var(--color-label, var(--color-accent-primary));
   margin: 0 0 10px;
 }
 
@@ -327,7 +327,7 @@ dialog.pm-dialog[data-theme="light"]::backdrop {
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  color: var(--color-text-primary);
+  color: var(--color-heading);
   margin: 0 0 14px;
 }
 
@@ -344,7 +344,7 @@ dialog.pm-dialog[data-theme="light"]::backdrop {
 .pm-section__text {
   font-size: clamp(0.95rem, 1.15vw, 1.04rem);
   line-height: 1.78;
-  color: var(--color-text-secondary);
+  color: var(--color-body);
   margin: 0;
   max-width: 62ch;
 }
@@ -352,7 +352,7 @@ dialog.pm-dialog[data-theme="light"]::backdrop {
 .pm-tech-desc {
   font-size: 0.88rem;
   line-height: 1.6;
-  color: var(--color-text-muted);
+  color: var(--color-caption);
   margin: 12px 0 0;
 }
 
@@ -372,7 +372,7 @@ dialog.pm-dialog[data-theme="light"]::backdrop {
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border-accent-soft);
   background: var(--color-accent-glass);
-  color: var(--color-eyebrow);
+  color: var(--color-label);
 }
 
 
@@ -403,12 +403,12 @@ dialog.pm-dialog[data-theme="light"]::backdrop {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-accent-primary);
+  color: var(--color-label);
 }
 
 .pm-meta__value {
   font-size: 0.92rem;
-  color: var(--color-text-primary);
+  color: var(--color-body-strong);
 }
 
 

@@ -27,6 +27,18 @@
   --text-muted: #9B9A9B;
 
   /* ================================================================
+     SEMANTIC TYPOGRAPHY — role-based text colors
+     ================================================================ */
+
+  --color-heading:        #F0F1F2;
+  --color-heading-accent: #38BDF8;
+  --color-subheading:     #C9D4E3;
+  --color-body:           #B0BDD0;
+  --color-body-strong:    #E2E8F0;
+  --color-label:          #2CA8F3;
+  --color-caption:        #7B8BA3;
+
+  /* ================================================================
      ACCENT COLORS
      ================================================================ */
 
@@ -201,6 +213,15 @@
   --color-text-accent:    #10B981;
   --color-text-muted:     #4B5563;
   --text-muted:           #4B5563;
+
+  /* ── SEMANTIC TYPOGRAPHY ────────────────────────────────── */
+  --color-heading:        #064E3B;
+  --color-heading-accent: #059669;
+  --color-subheading:     #1F4D3A;
+  --color-body:           #374151;
+  --color-body-strong:    #1F2937;
+  --color-label:          #059669;
+  --color-caption:        #6B7280;
 
   /* ── ACCENTS ────────────────────────────────────────────── */
   --color-accent-primary:   #10B981;

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Configuración | Admin{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="dash">
+  <div class="container" style="max-width: 920px;">
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Configuración general</h2>
+        <a href="{% url 'dashboard' %}" class="link-accent">Volver al dashboard</a>
+      </div>
+
+      {% if messages %}
+      <div style="display:grid;gap:10px;margin-bottom:16px;">
+        {% for message in messages %}
+        <div class="proj-desc">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div style="display:flex;gap:12px;margin-top:14px;">
+          <button type="submit" class="btn-primary btn-sm">Guardar cambios</button>
+          <a href="{% url 'dashboard' %}" class="btn-ghost btn-sm">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

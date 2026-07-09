@@ -19,6 +19,10 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from core.views import not_found, server_error
+
+handler404 = not_found
+handler500 = server_error
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +33,7 @@ urlpatterns = [
 
     path('', include('core.urls')),
     path('projects/', include('projects.urls')),
+    path('api/projects/', include('projects.api.urls')),
     path('adminpanel/', include('adminpanel.urls')),
 ]
 

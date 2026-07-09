@@ -1,14 +1,414 @@
-/* services.css - Services page specific styles */
-/* Section system handled by sections.css, buttons by buttons.css */
+/* services.css — Services page scoped styles (all under .services-page) */
+
+/* ── Base ──────────────────────────────────────────────────────────── */
 
 .services-page {
-  padding: 60px 20px;
-  color: var(--color-text-primary);
-  text-align: center;
+  position: relative;
 }
 
-.services-page p {
-  color: var(--color-text-secondary);
-  font-size: clamp(1rem, 1.2vw, 1.1rem);
-  line-height: 1.6;
+.services-page .section-shell {
+  padding: clamp(56px, 7vw, 88px) 0;
+  overflow: clip;
+}
+
+/* ── Offer header ──────────────────────────────────────────────────── */
+
+.services-offer__header {
+  margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+.services-offer__title {
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.18;
+  color: var(--color-heading, #ddf1ff);
+  margin: 0 0 14px;
+  text-wrap: pretty;
+}
+
+.services-offer__lead {
+  font-size: clamp(1rem, 1.35vw, 1.1rem);
+  line-height: 1.68;
+  color: var(--color-body, #9abdd6);
+  max-width: 60ch;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* ── CSS-only carousel ─────────────────────────────────────────────── */
+
+.services-carousel {
+  display: flex;
+  gap: clamp(16px, 2vw, 24px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+  /* subtle scrollbar on mobile */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.28) transparent;
+}
+
+.services-carousel::-webkit-scrollbar {
+  height: 4px;
+}
+
+.services-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.services-carousel::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.28);
+  border-radius: 2px;
+}
+
+/* on desktop expand to fill container, no scroll */
+@media (min-width: 900px) {
+  .services-carousel {
+    overflow-x: visible;
+    scrollbar-width: none;
+  }
+
+  .services-carousel::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ── Carousel card ─────────────────────────────────────────────────── */
+
+.services-carousel__card {
+  flex: 0 0 clamp(270px, 31vw, 340px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  background: rgba(18, 36, 64, 0.88);
+  border: 1px solid rgba(56, 189, 248, 0.26);
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.40),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+}
+
+/* desktop: equal width, fill the row */
+@media (min-width: 900px) {
+  .services-carousel__card {
+    flex: 1 1 0;
+  }
+}
+
+.services-carousel__card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.52);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.46),
+    0 0 0 1px rgba(56, 189, 248, 0.16) inset,
+    0 0 22px rgba(56, 189, 248, 0.10);
+}
+
+.services-carousel__body {
+  padding: clamp(18px, 2.2vw, 26px) clamp(18px, 2.2vw, 26px) 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.services-carousel__icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.24);
+  border-radius: var(--radius-md, 8px);
+  color: #38bdf8;
+  flex-shrink: 0;
+}
+
+.services-carousel__title {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-heading, #ddf1ff);
+  margin: 0;
+}
+
+.services-carousel__text {
+  font-size: clamp(0.875rem, 1.05vw, 0.94rem);
+  line-height: 1.66;
+  color: var(--color-body, #9abdd6);
+  margin: 0;
+  flex-grow: 1;
+  text-wrap: pretty;
+}
+
+/* image zone — bottom of card, controlled height */
+.services-carousel__media {
+  height: clamp(160px, 18vw, 210px);
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid rgba(56, 189, 248, 0.16);
+}
+
+.services-carousel__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(8, 18, 36, 0.54) 0%, transparent 55%);
+}
+
+.services-carousel__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.services-carousel__card:hover .services-carousel__image {
+  transform: scale(1.04);
+}
+
+/* ── Editorial split — text left / serv1 right ─────────────────────── */
+
+.services-split__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.services-split__content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.services-split__title {
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 800;
+  line-height: 1.22;
+  color: var(--color-heading, #ddf1ff);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.services-split__text {
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.74;
+  color: var(--color-body, #9abdd6);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.services-split__visual {
+  min-width: 0;
+}
+
+/* image is contained — not full-width giant */
+.services-split__image {
+  width: 100%;
+  height: clamp(280px, 30vw, 360px);
+  object-fit: cover;
+  border-radius: var(--radius-xl, 16px);
+  border: 1px solid rgba(56, 189, 248, 0.24);
+  box-shadow:
+    0 16px 44px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+/* ── Approach — steps left / serv5 right ───────────────────────────── */
+
+.services-approach__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.services-approach__content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.services-approach__title {
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 800;
+  line-height: 1.22;
+  color: var(--color-heading, #ddf1ff);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.services-approach__lead {
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.72;
+  color: var(--color-body, #9abdd6);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.services-approach__steps {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.services-approach__step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid rgba(56, 189, 248, 0.24);
+  background: rgba(18, 36, 64, 0.84);
+  color: var(--color-body-strong, #c8e0f5);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.services-approach__badge {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #b6f0ff 0%, #38bdf8 60%, #0ea5e9 100%);
+  color: #01111f;
+  font-size: 0.85rem;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.36);
+  flex-shrink: 0;
+}
+
+.services-approach__step-text {
+  min-width: 0;
+}
+
+/* serv5 — contained card, doesn't compete with split above */
+.services-approach__figure {
+  min-width: 0;
+  margin: 0;
+  max-width: 380px;
+  width: 100%;
+  justify-self: center;
+}
+
+.services-approach__image {
+  width: 100%;
+  height: clamp(240px, 28vw, 360px);
+  object-fit: cover;
+  border-radius: var(--radius-xl, 16px);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.40),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+/* ── CTA ────────────────────────────────────────────────────────────── */
+
+.services-cta__band {
+  max-width: 880px;
+  margin-inline: auto;
+  padding: clamp(40px, 5.5vw, 64px) clamp(24px, 4vw, 52px);
+  border: 1px solid rgba(56, 189, 248, 0.38);
+  border-radius: var(--radius-xl, 16px);
+  text-align: center;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(56, 189, 248, 0.16), transparent 46%),
+    radial-gradient(circle at 92% 100%, rgba(14, 165, 233, 0.10), transparent 42%),
+    linear-gradient(155deg, rgba(10, 24, 48, 0.92) 0%, rgba(4, 12, 28, 0.96) 100%);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.52),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 0 44px rgba(56, 189, 248, 0.08);
+}
+
+.services-cta__title {
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  font-weight: 800;
+  line-height: 1.24;
+  color: var(--color-heading, #ddf1ff);
+  max-width: 26ch;
+  margin: 0 auto 16px;
+  text-wrap: pretty;
+}
+
+.services-cta__text {
+  font-size: clamp(0.9rem, 1.2vw, 1.02rem);
+  line-height: 1.68;
+  color: var(--color-body, #9abdd6);
+  max-width: 56ch;
+  margin: 0 auto 28px;
+  text-wrap: pretty;
+}
+
+.services-cta__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .services-split__layout,
+  .services-approach__layout {
+    grid-template-columns: 1fr;
+    gap: clamp(24px, 5vw, 36px);
+  }
+
+  /* image stacks below text on tablet */
+  .services-split__image,
+  .services-approach__image {
+    height: clamp(200px, 44vw, 320px);
+  }
+
+  .services-approach__figure {
+    max-width: 100%;
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-page .section-shell {
+    padding: clamp(40px, 10vw, 60px) 0;
+  }
+
+  /* show ~1 card + peek of next */
+  .services-carousel__card {
+    flex: 0 0 min(82vw, 300px);
+  }
+
+  .services-cta__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .services-approach__step {
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-page * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }

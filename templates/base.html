@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="{% static 'css/components/forms.css' %}">
     <link rel="stylesheet" href="{% static 'css/components/hero.css' %}">
     <link rel="stylesheet" href="{% static 'css/components/sections.css' %}">
-    <link rel="stylesheet" href="{% static 'css/components/glass.css' %}">>
+    <link rel="stylesheet" href="{% static 'css/components/glass.css' %}">
     <link rel="stylesheet" href="{% static 'css/components/images.css' %}">
 
     <!-- RESPONSIVE -->
@@ -93,6 +93,12 @@
                 <div class="nav-cta desktop-only">
                     <a href="{% url 'dashboard' %}" class="btn btn-secondary" id="navbar-admin">
                         Dashboard
+                    </a>
+                </div>
+                {% else %}
+                <div class="nav-cta desktop-only">
+                    <a href="{% url 'login' %}" class="btn btn-secondary" id="navbar-admin">
+                        Admin
                     </a>
                 </div>
                 {% endif %}

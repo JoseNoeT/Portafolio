@@ -66,7 +66,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-eyebrow);
+  color: var(--color-label);
   background: var(--color-accent-glass);
   border: 1px solid var(--color-border-accent-soft);
 }
@@ -79,7 +79,7 @@
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.15;
-  color: var(--color-text-primary);
+  color: var(--color-heading);
   text-wrap: balance;
 }
 
@@ -90,7 +90,7 @@
   margin: 0 auto;
   font-size: clamp(0.95rem, 1.2vw, 1.08rem);
   line-height: 1.7;
-  color: var(--color-text-secondary);
+  color: var(--color-body);
 }
 
 .section-header--left .section-desc {
@@ -147,14 +147,14 @@
   margin: 0 0 8px;
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-heading);
 }
 
 .feature-card__text {
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.65;
-  color: var(--color-text-secondary);
+  color: var(--color-body);
 }
 
 /* ── Highlight variant ─────────────────────────── */
@@ -196,14 +196,14 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  color: var(--color-text-primary);
+  color: var(--color-heading);
 }
 
 .split-section__text {
   margin: 0;
   font-size: clamp(0.95rem, 1.1vw, 1.05rem);
   line-height: 1.7;
-  color: var(--color-text-secondary);
+  color: var(--color-body);
 }
 
 .split-section__visual {
@@ -254,7 +254,7 @@
   font-size: clamp(1.5rem, 3vw, 2.2rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--color-text-primary);
+  color: var(--color-heading);
   text-wrap: balance;
 }
 
@@ -263,7 +263,7 @@
   margin: 0 auto 24px;
   font-size: clamp(0.95rem, 1.2vw, 1.06rem);
   line-height: 1.7;
-  color: var(--color-text-secondary);
+  color: var(--color-body);
 }
 
 .cta-band__actions {
@@ -357,21 +357,21 @@
   margin: 0 0 6px;
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-heading);
 }
 
 .timeline-step__text {
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.65;
-  color: var(--color-text-secondary);
+  color: var(--color-body);
 }
 
 .timeline-step__meta {
   display: block;
   margin-top: 4px;
   font-size: 0.82rem;
-  color: var(--color-text-muted);
+  color: var(--color-caption);
 }
 
 
@@ -441,14 +441,14 @@
   margin: 0 0 4px;
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-heading);
 }
 
 .step-list__text {
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.65;
-  color: var(--color-text-secondary);
+  color: var(--color-body);
 }
 
 

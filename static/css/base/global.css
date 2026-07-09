@@ -35,7 +35,7 @@ body {
   line-height: var(--line-height-base);
 
   background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
+  color: var(--color-body);
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -59,12 +59,13 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--color-text-primary);
+  color: var(--color-heading);
 }
 
 p {
   margin-bottom: 1rem;
-  color: var(--color-text-secondary);
+  color: var(--color-body);
+  line-height: 1.75;
 }
 
 a {
@@ -119,7 +120,7 @@ img {
 
 .section-wrapper {
   background: var(--glass-bg);
-  color: var(--color-text-primary);
+  color: var(--color-body);
   padding: 40px 20px;
   border-radius: var(--radius-xl);
   margin-bottom: 20px;

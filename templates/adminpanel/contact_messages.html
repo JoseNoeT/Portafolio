@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Mensajes | Admin{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="dash">
+  <div class="container">
+    <div class="panel panel--wide">
+      <div class="panel-head">
+        <h2>Mensajes de contacto</h2>
+        <a href="{% url 'dashboard' %}" class="link-accent">Volver al dashboard</a>
+      </div>
+
+      <p class="proj-desc" style="margin-bottom:14px;">Totales: {{ total_messages }} | No leídos: {{ unread_messages }}</p>
+
+      <div class="table-wrap">
+        <table class="dtable">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Asunto</th>
+              <th>Lectura</th>
+              <th>Respuesta</th>
+              <th class="th-actions">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for m in messages_list %}
+            <tr>
+              <td class="td-date">{{ m.created_at|date:"d M Y H:i" }}</td>
+              <td>{{ m.name }}</td>
+              <td>{{ m.email }}</td>
+              <td>{{ m.subject|truncatewords:8 }}</td>
+              <td>{% if m.is_read %}Leído{% else %}No leído{% endif %}</td>
+              <td>{% if m.is_replied %}Respondido{% else %}Pendiente{% endif %}</td>
+              <td>
+                <div class="row-actions">
+                  <a class="btn-icon" href="{% url 'adminpanel_contact_message_detail' m.pk %}" title="Ver" aria-label="Ver">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </a>
+                  <form method="post" action="{% url 'adminpanel_contact_message_read' m.pk %}">
+                    {% csrf_token %}
+                    <button class="btn-icon" type="submit" title="Marcar leído" aria-label="Marcar leído">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    </button>
+                  </form>
+                  <form method="post" action="{% url 'adminpanel_contact_message_replied' m.pk %}">
+                    {% csrf_token %}
+                    <button class="btn-icon" type="submit" title="Marcar respondido" aria-label="Marcar respondido">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-9 9 9"/><path d="M9 22V12h6v10"/></svg>
+                    </button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="7" class="table-empty">No hay mensajes recibidos.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

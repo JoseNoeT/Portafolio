@@ -4,7 +4,6 @@
 {% block title %}Metodología - Jose Noe{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/pages/about.css' %}">
 <link rel="stylesheet" href="{% static 'css/pages/metodologia.css' %}">
 {% endblock %}
 
@@ -15,77 +14,170 @@
 
 {% block content %}
 
-<!-- INTRO -->
-<section class="section-shell">
-    <div class="container">
-        <div class="section-header section-header--left">
-            <h2 class="section-title reveal">Más que desarrollar, busco dar forma a una solución bien pensada</h2>
-            <p class="section-desc reveal" style="margin-left:0">
-                Mi enfoque parte por comprender el problema antes de ejecutar. Eso me permite ordenar mejor la información, definir prioridades y trabajar sobre una estructura que tenga sentido técnico y también utilidad real para el proyecto.
-            </p>
-            <p class="section-desc reveal" style="margin-left:0">
-                Busco que cada etapa aporte claridad: desde la organización inicial hasta la implementación, procurando que la solución no solo funcione, sino que también pueda mantenerse y evolucionar con mayor facilidad.
-            </p>
-        </div>
-    </div>
-</section>
+<div class="metodologia-page">
 
-<!-- PHASES — step list -->
-<section class="section-shell section-shell--alt">
+  <!-- 1. ANÁLISIS / INTRO ─────────────────────────────────────────── -->
+  <section class="method-section method-split">
     <div class="container">
-        <div class="section-header">
-            <h2 class="section-title reveal">Fases</h2>
+      <div class="method-split__inner">
+
+        <div class="method-split__content">
+          <p class="method-eyebrow">Análisis</p>
+          <h2 class="method-section__title">Más que desarrollar, busco dar forma a una solución bien pensada</h2>
+          <p class="method-section__text">Antes de escribir código, necesito entender qué problema debe resolver el proyecto. Esa claridad permite ordenar la información, definir prioridades y construir sobre una base técnica más coherente.</p>
+          <p class="method-section__text">Mi objetivo es que cada decisión tenga sentido: desde la estructura inicial hasta la implementación final.</p>
         </div>
-        <ol class="step-list">
-            <li class="step-list__item reveal">
-                <span class="step-list__title">Entender la necesidad</span>
-                <span class="step-list__text">Antes de desarrollar, identifico qué necesita realmente el proyecto, qué problema busca resolver y qué base requiere para avanzar con más claridad.</span>
-            </li>
-            <li class="step-list__item reveal">
-                <span class="step-list__title">Ordenar la solución</span>
-                <span class="step-list__text">Defino una estructura inicial que ayude a organizar la información, las funcionalidades y la lógica general del sistema.</span>
-            </li>
-            <li class="step-list__item reveal">
-                <span class="step-list__title">Desarrollar con criterio</span>
-                <span class="step-list__text">Implemento procurando mantener claridad en el código, coherencia en la base técnica y enfoque en el objetivo real del proyecto.</span>
-            </li>
-            <li class="step-list__item reveal">
-                <span class="step-list__title">Revisar y mejorar</span>
-                <span class="step-list__text">Evalúo lo construido para detectar ajustes, fortalecer la solución y dejar una base más consistente para crecer o continuar.</span>
-            </li>
+
+        <div class="method-split__visual">
+          <div class="method-image-card">
+            <img src="{% static 'img/metodologia/metod1.png' %}" alt="Análisis y organización de la solución" loading="lazy">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. FASES ─────────────────────────────────────────────────────── -->
+  <section class="method-section method-phases">
+    <div class="container">
+
+      <header class="method-section__header">
+        <p class="method-eyebrow">Proceso</p>
+        <h2 class="method-section__title">Fases de trabajo</h2>
+        <p class="method-section__lead">Trabajo por etapas para mantener claridad, reducir improvisación y avanzar con una base técnica más sólida.</p>
+      </header>
+
+      <div class="method-phases__grid">
+
+        <ol class="method-phases__list">
+          <li class="method-phase-card">
+            <span class="method-phase-card__number" aria-hidden="true">1</span>
+            <div class="method-phase-card__body">
+              <h3 class="method-phase-card__title">Entender la necesidad</h3>
+              <p class="method-phase-card__text">Identifico qué necesita realmente el proyecto, qué problema busca resolver y qué base requiere para avanzar.</p>
+            </div>
+          </li>
+          <li class="method-phase-card">
+            <span class="method-phase-card__number" aria-hidden="true">2</span>
+            <div class="method-phase-card__body">
+              <h3 class="method-phase-card__title">Ordenar la solución</h3>
+              <p class="method-phase-card__text">Defino una estructura inicial para organizar información, funcionalidades y lógica del sistema.</p>
+            </div>
+          </li>
+          <li class="method-phase-card">
+            <span class="method-phase-card__number" aria-hidden="true">3</span>
+            <div class="method-phase-card__body">
+              <h3 class="method-phase-card__title">Desarrollar con criterio</h3>
+              <p class="method-phase-card__text">Implemento procurando claridad en el código, coherencia técnica y enfoque en el objetivo real.</p>
+            </div>
+          </li>
+          <li class="method-phase-card">
+            <span class="method-phase-card__number" aria-hidden="true">4</span>
+            <div class="method-phase-card__body">
+              <h3 class="method-phase-card__title">Revisar y mejorar</h3>
+              <p class="method-phase-card__text">Evalúo lo construido, detecto ajustes y dejo una base más consistente para crecer.</p>
+            </div>
+          </li>
         </ol>
-    </div>
-</section>
 
-<!-- VALUE -->
-<section class="section-shell">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title reveal">Por qué esta forma de trabajo aporta valor</h2>
-            <p class="section-desc reveal">Trabajar con más estructura desde el inicio ayuda a reducir confusión, mejorar la claridad técnica y facilitar que el proyecto avance sobre una base más ordenada. Eso hace que el desarrollo tenga más sentido, más coherencia y mejor proyección.</p>
+        <div class="method-split__visual method-phases__visual">
+          <div class="method-image-card">
+            <img src="{% static 'img/metodologia/metod2.png' %}" alt="Fases del proceso de trabajo" loading="lazy">
+          </div>
         </div>
-    </div>
-</section>
 
-<!-- CTA — split with image -->
-<section class="section-shell section-shell--accent">
-    <div class="container">
-        <div class="split-section">
-            <div class="split-section__content">
-                <h2 class="split-section__title reveal">¿Quieres ver cómo esta forma de trabajo se refleja en proyectos reales?</h2>
-                <p class="split-section__text reveal">
-                    Puedes revisar mis proyectos para ver cómo aplico esta lógica en la práctica, o escribirme directamente si quieres conversar sobre una idea o necesidad concreta.
-                </p>
-                <div class="cta-band__actions reveal">
-                    <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver proyectos</a>
-                    <a href="{% url 'contact' %}" class="btn btn-outline">Contactar</a>
-                </div>
-            </div>
-            <div class="split-section__visual reveal">
-                <img src="{% static 'img/arquitec.jpeg' %}" alt="Arquitectura" />
-            </div>
-        </div>
+      </div>
     </div>
-</section>
+  </section>
+
+  <!-- 3. VALOR + BENEFICIOS ────────────────────────────────────────── -->
+  <section class="method-section method-value">
+    <div class="container">
+      <div class="method-split__inner">
+
+        <div class="method-split__content">
+          <p class="method-eyebrow">Valor aportado</p>
+          <h2 class="method-section__title">Por qué esta forma de trabajo aporta valor</h2>
+          <p class="method-section__text">Trabajar con estructura desde el inicio ayuda a reducir confusión, mejorar la claridad técnica y facilitar que el proyecto pueda mantenerse o crecer. Para un equipo, esto significa una base más comprensible. Para un cliente, una solución más clara y confiable.</p>
+
+          <div class="method-benefits">
+            <article class="method-benefit-card">
+              <strong class="method-benefit-card__title">Menos improvisación</strong>
+              <p class="method-benefit-card__text">Cada paso tiene una intención definida desde el inicio.</p>
+            </article>
+            <article class="method-benefit-card">
+              <strong class="method-benefit-card__title">Mejor mantenimiento</strong>
+              <p class="method-benefit-card__text">La estructura ordenada facilita entender y modificar el proyecto.</p>
+            </article>
+            <article class="method-benefit-card">
+              <strong class="method-benefit-card__title">Mayor claridad técnica</strong>
+              <p class="method-benefit-card__text">El código refleja decisiones razonadas, no soluciones improvisadas.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="method-split__visual">
+          <div class="method-image-card">
+            <img src="{% static 'img/metodologia/metod3.png' %}" alt="Valor del proceso estructurado" loading="lazy">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. SECCIÓN RECLUTADOR ────────────────────────────────────────── -->
+  <section class="method-section method-recruiter">
+    <div class="container">
+
+      <header class="method-section__header method-section__header--center">
+        <p class="method-eyebrow">Para reclutadores</p>
+        <h2 class="method-section__title">Qué demuestra esta metodología</h2>
+      </header>
+
+      <div class="method-recruiter-grid">
+        <article class="method-recruiter__card">
+          <span class="method-recruiter__number">01</span>
+          <h3 class="method-recruiter__title">Capacidad para analizar antes de ejecutar</h3>
+          <p class="method-recruiter__text">No me lanzo a escribir código sin entender el problema real. Prefiero dedicar tiempo a comprender antes de construir.</p>
+        </article>
+        <article class="method-recruiter__card">
+          <span class="method-recruiter__number">02</span>
+          <h3 class="method-recruiter__title">Orden para estructurar soluciones</h3>
+          <p class="method-recruiter__text">Organizo la información y las funcionalidades antes de implementar, lo que reduce decisiones improvisadas durante el desarrollo.</p>
+        </article>
+        <article class="method-recruiter__card">
+          <span class="method-recruiter__number">03</span>
+          <h3 class="method-recruiter__title">Criterio técnico para construir y mantener</h3>
+          <p class="method-recruiter__text">Busco que lo que construyo pueda leerse, modificarse y crecer. No solo que funcione en el momento.</p>
+        </article>
+        <article class="method-recruiter__card">
+          <span class="method-recruiter__number">04</span>
+          <h3 class="method-recruiter__title">Mentalidad de mejora continua</h3>
+          <p class="method-recruiter__text">Reviso lo hecho, aprendo de lo que no funcionó y aplico eso al siguiente paso. El proceso no termina con la entrega.</p>
+        </article>
+      </div>
+
+      <p class="method-recruiter__footer">Esta forma de trabajo busca mostrar no solo herramientas, sino criterio profesional para participar en proyectos reales.</p>
+
+    </div>
+  </section>
+
+  <!-- 5. CTA ───────────────────────────────────────────────────────── -->
+  <section class="method-section method-cta">
+    <div class="container">
+      <div class="method-cta__band">
+        <h2 class="method-cta__title">¿Quieres ver cómo esta forma de trabajo se refleja en proyectos reales?</h2>
+        <p class="method-cta__text">Puedes revisar mis proyectos para ver cómo aplico esta lógica en la práctica, o escribirme directamente si quieres conversar sobre una idea o necesidad concreta.</p>
+        <div class="method-cta__actions">
+          <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver proyectos</a>
+          <a href="{% url 'contact' %}" class="btn btn-outline">Contactar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
 
 {% endblock %}

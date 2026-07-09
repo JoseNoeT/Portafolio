@@ -1,0 +1,39 @@
+{% extends "base_focus.html" %}
+{% load static %}
+
+{% block title %}404 | Página no encontrada{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/components/hero.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/projects-detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="hero hero--detail" style="min-height:100vh;display:flex;align-items:center;overflow:hidden;">
+  <canvas class="hero-canvas" width="900" height="220" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;"></canvas>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="container hero-inner" style="position:relative;z-index:1;text-align:center;max-width:860px;">
+    <div class="detail-chips" style="justify-content:center;margin-bottom:18px;">
+      <span class="detail-chip">Error 404</span>
+      <span class="detail-chip">Ruta no disponible</span>
+    </div>
+    <h1 class="hero-title">La página que buscas no existe</h1>
+    <p class="hero-subtitle" style="max-width:700px;margin:0 auto;">
+      Puede que el enlace esté roto, la URL haya cambiado o el contenido ya no esté disponible.
+    </p>
+
+    <div class="cta-band" style="margin-top:28px;">
+      <p class="cta-band__text">Vuelve al inicio, revisa tus proyectos o usa la vista previa para validar esta página durante desarrollo.</p>
+      <div class="cta-band__actions" style="justify-content:center;">
+        <a href="{% url 'home' %}" class="btn btn-primary">Volver al inicio</a>
+        <a href="{% url 'projects_list' %}" class="btn btn-outline">Ver proyectos</a>
+        <a href="{% url 'preview_500' %}" class="btn btn-ghost">Preview 500</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/hero-animation.js' %}"></script>
+{% endblock %}

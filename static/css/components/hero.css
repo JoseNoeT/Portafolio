@@ -220,7 +220,7 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
 
-    color: var(--color-text-accent);
+    color: var(--color-label);
     background: var(--color-accent-glass);
     border: 1px solid rgba(87, 201, 255, 0.24);
 
@@ -235,7 +235,7 @@
     font-weight: 800;
     letter-spacing: -0.04em;
     line-height: 1.05;
-    color: var(--color-text-primary);
+    color: var(--color-heading);
     text-wrap: balance;
     text-shadow:
         0 2px 16px rgba(0, 0, 0, 0.34);
@@ -250,7 +250,7 @@
     margin: 0 auto;
     font-size: clamp(0.98rem, 1.4vw, 1.10rem);
     line-height: 1.72;
-    color: var(--color-text-secondary);
+    color: var(--color-body);
     text-wrap: pretty;
     text-shadow:
         0 1px 10px rgba(0, 0, 0, 0.24);

@@ -10,10 +10,49 @@
   var inner  = document.getElementById("project-modal-content");
   if (!dialog || !inner) return;
 
-  var loadingHTML =
-    '<div class="pm-loading" aria-label="Cargando"><span class="pm-spinner"></span></div>';
   var trigger = null; // element that opened the modal, for focus return
   var cache   = {};   // url → html cache
+
+  function renderLoadingState() {
+    var loading = document.createElement("div");
+    loading.className = "pm-loading";
+    loading.setAttribute("aria-label", "Cargando");
+
+    var spinner = document.createElement("span");
+    spinner.className = "pm-spinner";
+    loading.appendChild(spinner);
+
+    inner.replaceChildren(loading);
+  }
+
+  function sanitizeAndInject(html) {
+    var template = document.createElement("template");
+    template.innerHTML = html;
+
+    // Defensive cleanup for injected fragments.
+    var scripts = template.content.querySelectorAll("script");
+    for (var i = 0; i < scripts.length; i++) {
+      scripts[i].remove();
+    }
+
+    var nodesWithHandlers = template.content.querySelectorAll("*");
+    for (var j = 0; j < nodesWithHandlers.length; j++) {
+      var node = nodesWithHandlers[j];
+      var attrs = Array.from(node.attributes || []);
+      for (var k = 0; k < attrs.length; k++) {
+        var attrName = attrs[k].name.toLowerCase();
+        var attrValue = attrs[k].value;
+        if (attrName.indexOf("on") === 0) {
+          node.removeAttribute(attrs[k].name);
+        }
+        if ((attrName === "href" || attrName === "src") && /^\s*javascript:/i.test(attrValue)) {
+          node.removeAttribute(attrs[k].name);
+        }
+      }
+    }
+
+    inner.replaceChildren(template.content.cloneNode(true));
+  }
 
   // ── Open ──────────────────────────────────────
 
@@ -22,7 +61,7 @@
     var theme = document.documentElement.getAttribute("data-theme") || "dark";
     dialog.setAttribute("data-theme", theme);
 
-    inner.innerHTML = loadingHTML;
+    renderLoadingState();
     dialog.showModal();
     document.body.style.overflow = "hidden";
 
@@ -50,7 +89,7 @@
   }
 
   function inject(html) {
-    inner.innerHTML = html;
+    sanitizeAndInject(html);
     // Wire close buttons inside the injected content
     var closeBtns = inner.querySelectorAll("[data-close-modal]");
     for (var i = 0; i < closeBtns.length; i++) {

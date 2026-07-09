@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.core.exceptions import PermissionDenied
 from django.db.models import Count
 from django.db.models.functions import TruncDate
 from django.shortcuts import get_object_or_404, redirect, render
@@ -122,8 +123,9 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
 
 
 @login_required
-@user_passes_test(_staff_check)
 def analytics_dashboard(request):
+    if not _staff_check(request.user):
+        raise PermissionDenied
     now = timezone.now()
     seven_days_ago = now - timezone.timedelta(days=7)
 
@@ -164,8 +166,9 @@ def analytics_dashboard(request):
 
 
 @login_required
-@user_passes_test(_staff_check)
 def settings_view(request):
+    if not _staff_check(request.user):
+        raise PermissionDenied
     site_settings = SiteSettings.get_solo()
 
     if request.method == 'POST':
@@ -181,8 +184,9 @@ def settings_view(request):
 
 
 @login_required
-@user_passes_test(_staff_check)
 def contact_messages_view(request):
+    if not _staff_check(request.user):
+        raise PermissionDenied
     all_messages = ContactMessage.objects.all().order_by('-created_at')
 
     return render(
@@ -197,8 +201,9 @@ def contact_messages_view(request):
 
 
 @login_required
-@user_passes_test(_staff_check)
 def contact_message_detail_view(request, pk):
+    if not _staff_check(request.user):
+        raise PermissionDenied
     message_obj = get_object_or_404(ContactMessage, pk=pk)
 
     if not message_obj.is_read:
@@ -215,9 +220,10 @@ def contact_message_detail_view(request, pk):
 
 
 @login_required
-@user_passes_test(_staff_check)
 @require_POST
 def mark_contact_message_read(request, pk):
+    if not _staff_check(request.user):
+        raise PermissionDenied
     message_obj = get_object_or_404(ContactMessage, pk=pk)
     message_obj.is_read = True
     message_obj.save(update_fields=['is_read'])
@@ -227,9 +233,10 @@ def mark_contact_message_read(request, pk):
 
 
 @login_required
-@user_passes_test(_staff_check)
 @require_POST
 def mark_contact_message_replied(request, pk):
+    if not _staff_check(request.user):
+        raise PermissionDenied
     message_obj = get_object_or_404(ContactMessage, pk=pk)
     message_obj.is_replied = True
 
