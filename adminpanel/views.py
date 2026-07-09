@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import PermissionDenied
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.db.models.functions import TruncDate
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
@@ -35,7 +35,21 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         recent = list(projects[:6])
         last_project = recent[0] if recent else None
 
-        with_image = projects.exclude(image='').count()
+        # Compute image presence giving priority to uploaded images (project.image)
+        # and using static fallbacks (`static_image_path` property) when available.
+        # Note: `static_image_path` is a @property on the model (not a DB field),
+        # so we must inspect it in Python for projects lacking an uploaded image.
+        uploaded_image_count = projects.exclude(Q(image__isnull=True) | Q(image='')).count()
+        no_uploaded_qs = projects.filter(Q(image__isnull=True) | Q(image=''))
+        static_fallback_count = 0
+        for p in no_uploaded_qs:
+            try:
+                if getattr(p, 'static_image_path', None):
+                    static_fallback_count += 1
+            except Exception:
+                continue
+
+        with_image = uploaded_image_count + static_fallback_count
         without_image = total - with_image
         with_github = projects.exclude(github_url='').count()
         with_live = projects.exclude(live_url='').count()
@@ -104,6 +118,7 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
             'last_project_date': last_project.created_at if last_project else None,
             'with_image': with_image,
             'without_image': without_image,
+            'image_percentage': round((with_image / total) * 100) if total else 0,
             'with_github': with_github,
             'with_live': with_live,
             'categories': categories,
