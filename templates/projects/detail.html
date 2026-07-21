@@ -30,15 +30,15 @@
 </section>
 
 <!-- COVER IMAGE -->
-{% if project.static_image_path or project.image %}
+{% if project.image or project.static_image_path %}
 <section class="section-shell section-shell--compact" aria-label="Vista previa del proyecto">
   <div class="container">
     <div class="detail-cover">
       <button type="button" class="cover-trigger" id="open-image-modal" aria-label="Ampliar imagen del proyecto">
-        {% if project.static_image_path %}
-          <img src="{% static project.static_image_path %}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
-        {% else %}
+        {% if project.image %}
           <img src="{{ project.image.url }}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
+        {% else %}
+          <img src="{% static project.static_image_path %}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
         {% endif %}
       </button>
       <p class="cover-caption">Haz clic en la imagen para ampliarla</p>
@@ -140,10 +140,14 @@
 </section>
 
 <!-- IMAGE MODAL -->
-{% if project.image %}
+{% if project.image or project.static_image_path %}
 <div class="image-modal" id="image-modal" aria-hidden="true" role="dialog" aria-label="Imagen ampliada del proyecto">
     <button type="button" class="image-modal-close" id="close-image-modal" aria-label="Cerrar imagen">×</button>
+    {% if project.image %}
     <img src="{{ project.image.url }}" alt="Imagen ampliada del proyecto {{ project.title }}" class="image-modal-content">
+    {% else %}
+    <img src="{% static project.static_image_path %}" alt="Imagen ampliada del proyecto {{ project.title }}" class="image-modal-content">
+    {% endif %}
 </div>
 {% endif %}
 
@@ -151,7 +155,7 @@
 
 {% block extra_js %}
 <script src="{% static 'js/hero-animation.js' %}"></script>
-{% if project.image %}
+{% if project.image or project.static_image_path %}
 <script>
     (function () {
         var openBtn = document.getElementById("open-image-modal");

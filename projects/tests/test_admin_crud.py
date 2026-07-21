@@ -3,6 +3,7 @@ import base64
 
 from django.contrib.auth import get_user_model
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.templatetags.static import static
 from django.test import TestCase
 from django.urls import reverse
 
@@ -170,3 +171,48 @@ class ProjectAdminCRUDTests(TestCase):
         resp_delete = self.client.post(delete_url, follow=True)
         self.assertEqual(resp_delete.status_code, 200)
         self.assertFalse(Project.objects.filter(pk=proj.pk).exists())
+
+    def test_detail_uses_uploaded_image_before_static_fallback(self):
+        proj = Project.objects.create(
+            title='ImagePriorityProject',
+            slug='ferramas',
+            short_description='short',
+            description='desc',
+            category='personal',
+        )
+
+        try:
+            from PIL import Image
+            bio = BytesIO()
+            Image.new('RGBA', (1, 1), (255, 0, 0, 0)).save(bio, format='PNG')
+            png_1x1 = bio.getvalue()
+        except Exception:
+            png_1x1 = base64.b64decode(
+                b'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII='
+            )
+
+        proj.image.save('priority.png', SimpleUploadedFile('priority.png', png_1x1, content_type='image/png'), save=True)
+
+        resp_detail = self.client.get(reverse('project_detail', kwargs={'slug': proj.slug}))
+        self.assertEqual(resp_detail.status_code, 200)
+
+        content = resp_detail.content.decode()
+        self.assertIn(proj.image.url, content)
+        self.assertEqual(content.count(proj.image.url), 2)
+        self.assertNotIn(static(proj.static_image_path), content)
+
+    def test_detail_uses_static_fallback_when_no_uploaded_image_exists(self):
+        proj = Project.objects.create(
+            title='StaticFallbackProject',
+            slug='portafolio',
+            short_description='short',
+            description='desc',
+            category='personal',
+        )
+
+        resp_detail = self.client.get(reverse('project_detail', kwargs={'slug': proj.slug}))
+        self.assertEqual(resp_detail.status_code, 200)
+
+        content = resp_detail.content.decode()
+        self.assertIn(static(proj.static_image_path), content)
+        self.assertEqual(content.count(static(proj.static_image_path)), 2)
