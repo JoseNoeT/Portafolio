@@ -151,12 +151,9 @@ STORAGES = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# Fail-fast in production when Cloudinary is not configured.
-# We rely on `STORAGES['default']` (Django 5.2+) to select the media backend.
-if not DEBUG and not CLOUDINARY_URL:
-    raise ImproperlyConfigured(
-        'CLOUDINARY_URL is required in production for media uploads.'
-    )
+# We rely on `STORAGES['default']` (Django 5.2+) to select the media backend:
+# - Cloudinary when `CLOUDINARY_URL` is present.
+# - FileSystemStorage when `CLOUDINARY_URL` is missing.
 
 # Static files storage is configured via `STORAGES['staticfiles']`.
 # Backwards compatibility: some third-party code (e.g. cloudinary_storage.collectstatic)

@@ -1,0 +1,25 @@
+{% csrf_token %}
+
+{% if form.non_field_errors %}
+<div class="form-errors">
+  {{ form.non_field_errors }}
+</div>
+{% endif %}
+
+<p>{{ form.title.label_tag }} {{ form.title }} {{ form.title.errors }}</p>
+<p>{{ form.short_description.label_tag }} {{ form.short_description }} {{ form.short_description.errors }}</p>
+<p>{{ form.description.label_tag }} {{ form.description }} {{ form.description.errors }}</p>
+<p>{{ form.category.label_tag }} {{ form.category }} {{ form.category.errors }}</p>
+<p>{{ form.technologies.label_tag }} {{ form.technologies }} {{ form.technologies.errors }}</p>
+
+<div>
+  <p>{{ form.github_url.label_tag }} {{ form.github_url }} {{ form.github_url.errors }}</p>
+  <p>{{ form.live_url.label_tag }} {{ form.live_url }} {{ form.live_url.errors }}</p>
+  <p>{{ form.demo_video_url.label_tag }} {{ form.demo_video_url }} {{ form.demo_video_url.errors }}</p>
+  <small>Acepta enlaces de YouTube, Vimeo o Loom.</small>
+</div>
+
+<p>
+  {{ form.image.label_tag }} {{ form.image }} {{ form.image.errors }}
+  {% if form.image.help_text %}<small>{{ form.image.help_text }}</small>{% endif %}
+</p>

@@ -15,6 +15,7 @@ class ProjectForm(forms.ModelForm):
             'technologies',
             'github_url',
             'live_url',
+            'demo_video_url',
             'image',
         ]
         labels = {
@@ -25,6 +26,7 @@ class ProjectForm(forms.ModelForm):
             'technologies': 'Tecnologías',
             'github_url': 'URL de GitHub',
             'live_url': 'URL del demo',
+            'demo_video_url': 'Demostración en video',
             'image': 'Imagen',
         }
         help_texts = {
@@ -32,6 +34,7 @@ class ProjectForm(forms.ModelForm):
             'image': 'Imagen opcional del proyecto (jpg, jpeg, png o gif, máximo 5MB).',
             'github_url': 'Enlace opcional al repositorio del proyecto.',
             'live_url': 'Enlace opcional a la demo en línea.',
+            'demo_video_url': 'Admite enlaces de YouTube, Vimeo o Loom.',
         }
         widgets = {
             'description': forms.Textarea(attrs={'rows': 6}),

@@ -7,20 +7,133 @@
 
 {% block content %}
 <section class="dash">
-  <div class="container" style="max-width: 720px;">
-    <a href="{% url 'dashboard' %}" class="link-accent" style="display:inline-flex;align-items:center;gap:6px;margin-bottom:20px;">
+  <div class="container project-editor-shell">
+    <a href="{% url 'dashboard' %}" class="link-accent project-editor-back">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
       Volver al dashboard
     </a>
-    <div class="panel">
+    <div class="panel project-editor-panel">
       <div class="panel-head">
-        <h2>Crear proyecto</h2>
+        <div>
+          <h2>Crear proyecto</h2>
+          <p class="project-editor-intro">Completa la información necesaria para publicar un nuevo proyecto en tu portafolio.</p>
+        </div>
       </div>
-      <form method="post" enctype="multipart/form-data">
+      <div class="project-editor-tabs" aria-label="Navegación del editor">
+        <span class="project-editor-tab project-editor-tab--active">General</span>
+        <span class="project-editor-tab">Multimedia</span>
+        <span class="project-editor-tab project-editor-tab--disabled">Próximamente</span>
+      </div>
+      <form method="post" enctype="multipart/form-data" class="project-editor-form">
         {% csrf_token %}
-        {{ form.as_p }}
-        <div style="display:flex;gap:10px;margin-top:18px;">
-          <button class="btn-primary btn-sm" type="submit">Guardar</button>
+
+        {% if form.non_field_errors %}
+        <div class="project-editor-alert">
+          {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <section class="project-editor-section">
+          <div class="project-editor-section-head">
+            <h3>Información general</h3>
+          </div>
+          <div class="project-editor-grid">
+            <div class="project-editor-field project-editor-field--full">
+              {{ form.title.label_tag }}
+              {{ form.title }}
+              {{ form.title.errors }}
+            </div>
+
+            <div class="project-editor-field project-editor-field--full">
+              {{ form.short_description.label_tag }}
+              {{ form.short_description }}
+              {{ form.short_description.errors }}
+            </div>
+
+            <div class="project-editor-field project-editor-field--full">
+              {{ form.description.label_tag }}
+              {{ form.description }}
+              {{ form.description.errors }}
+            </div>
+
+            <div class="project-editor-field">
+              {{ form.category.label_tag }}
+              {{ form.category }}
+              {{ form.category.errors }}
+            </div>
+
+            <div class="project-editor-field">
+              {{ form.technologies.label_tag }}
+              {{ form.technologies }}
+              {{ form.technologies.errors }}
+              {% if form.technologies.help_text %}
+              <small class="project-editor-help">{{ form.technologies.help_text }}</small>
+              {% endif %}
+            </div>
+          </div>
+        </section>
+
+        <section class="project-editor-section">
+          <div class="project-editor-section-head">
+            <h3>Enlaces</h3>
+            <p>Agrega enlaces que permitan revisar el código, probar el proyecto o ver una demostración.</p>
+          </div>
+          <div class="project-editor-grid">
+            <div class="project-editor-field project-editor-field--full">
+              {{ form.github_url.label_tag }}
+              {{ form.github_url }}
+              {{ form.github_url.errors }}
+              {% if form.github_url.help_text %}
+              <small class="project-editor-help">{{ form.github_url.help_text }}</small>
+              {% endif %}
+            </div>
+
+            <div class="project-editor-field">
+              {{ form.live_url.label_tag }}
+              {{ form.live_url }}
+              {{ form.live_url.errors }}
+              {% if form.live_url.help_text %}
+              <small class="project-editor-help">{{ form.live_url.help_text }}</small>
+              {% endif %}
+            </div>
+
+            <div class="project-editor-field">
+              {{ form.demo_video_url.label_tag }}
+              {{ form.demo_video_url }}
+              {{ form.demo_video_url.errors }}
+              {% if form.demo_video_url.help_text %}
+              <small class="project-editor-help">{{ form.demo_video_url.help_text }}</small>
+              {% endif %}
+            </div>
+          </div>
+        </section>
+
+        <section class="project-editor-section project-editor-section--media">
+          <div class="project-editor-section-head">
+            <h3>Multimedia</h3>
+            <p>Prepara los recursos visuales del proyecto desde una sección dedicada y lista para futuras ampliaciones.</p>
+          </div>
+          <div class="project-editor-field project-editor-field--full">
+            {{ form.image.label_tag }}
+            {{ form.image }}
+            {{ form.image.errors }}
+            {% if form.image.help_text %}
+            <small class="project-editor-help">{{ form.image.help_text }}</small>
+            {% endif %}
+          </div>
+        </section>
+
+        <section class="project-editor-section project-editor-section--disabled" aria-disabled="true">
+          <div class="project-editor-section-head">
+            <h3>Próximamente</h3>
+          </div>
+          <div class="project-editor-placeholder">
+            Este módulo estará disponible en futuras versiones del panel.
+          </div>
+        </section>
+
+        <div class="project-editor-actions">
+          <button class="btn-primary btn-sm" type="submit">Guardar proyecto</button>
           <a href="{% url 'dashboard' %}" class="btn-ghost btn-sm">Cancelar</a>
         </div>
       </form>

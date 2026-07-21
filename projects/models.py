@@ -40,6 +40,7 @@ class Project(models.Model):
 
     github_url = models.URLField(blank=True)
     live_url = models.URLField(blank=True)
+    demo_video_url = models.URLField(blank=True)
 
     image = models.ImageField(
         upload_to="projects/",
@@ -100,3 +101,17 @@ class Project(models.Model):
         }
 
         return mapping.get(self.slug)
+
+
+class ProjectImage(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='gallery')
+    image = models.ImageField(upload_to='projects/gallery/')
+    title = models.CharField(max_length=200, blank=True)
+    order = models.PositiveSmallIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', 'created_at']
+
+    def __str__(self):
+        return self.title or f'Image {self.pk} - {self.project.title}'
