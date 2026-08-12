@@ -121,6 +121,14 @@
             <small class="project-editor-help">{{ form.image.help_text }}</small>
             {% endif %}
           </div>
+          <div class="project-editor-field project-editor-field--full">
+            {{ form.gallery_images.label_tag }}
+            {{ form.gallery_images }}
+            {{ form.gallery_images.errors }}
+            {% if form.gallery_images.help_text %}
+            <small class="project-editor-help">{{ form.gallery_images.help_text }}</small>
+            {% endif %}
+          </div>
         </section>
 
         <section class="project-editor-section project-editor-section--disabled" aria-disabled="true">

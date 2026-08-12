@@ -4,15 +4,32 @@ import logging
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+from django.db import transaction
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import ProjectForm
-from .models import Project
+from .models import Project, ProjectImage
 from analytics.services import track_project_view
 import os
 
 
 logger = logging.getLogger(__name__)
+
+
+def _save_project_gallery(project, images):
+    if not images:
+        return
+
+    last_image = project.gallery.order_by('-order', '-created_at').first()
+    next_order = (last_image.order + 1) if last_image else 0
+
+    for offset, image in enumerate(images):
+        ProjectImage.objects.create(
+            project=project,
+            image=image,
+            title='',
+            order=next_order + offset,
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -42,7 +59,7 @@ def list_projects(request):
 
 
 def project_detail(request, slug):
-    project = get_object_or_404(Project, slug=slug)
+    project = get_object_or_404(Project.objects.prefetch_related('gallery'), slug=slug)
     try:
         track_project_view(request, project)
     except Exception:
@@ -69,7 +86,9 @@ def create_project(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            with transaction.atomic():
+                project = form.save()
+                _save_project_gallery(project, form.cleaned_data.get('gallery_images'))
             messages.success(request, "Proyecto creado correctamente.")
             return redirect('dashboard')
     else:
@@ -83,12 +102,27 @@ def edit_project(request, slug):
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
-            form.save()
+            with transaction.atomic():
+                project = form.save()
+                _save_project_gallery(project, form.cleaned_data.get('gallery_images'))
             messages.success(request, "Proyecto actualizado correctamente.")
             return redirect('dashboard')
     else:
         form = ProjectForm(instance=project)
     return render(request, "projects/edit.html", {"form": form, "project": project})
+
+
+@staff_required
+def delete_project_image(request, slug, image_id):
+    project = get_object_or_404(Project, slug=slug)
+    image = get_object_or_404(ProjectImage, pk=image_id, project=project)
+
+    if request.method != 'POST':
+        raise PermissionDenied
+
+    image.delete()
+    messages.success(request, "Imagen eliminada correctamente.")
+    return redirect('project_edit', slug=project.slug)
 
 
 @staff_required

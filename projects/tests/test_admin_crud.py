@@ -7,7 +7,7 @@ from django.templatetags.static import static
 from django.test import TestCase
 from django.urls import reverse
 
-from projects.models import Project
+from projects.models import Project, ProjectImage
 
 
 User = get_user_model()
@@ -216,3 +216,110 @@ class ProjectAdminCRUDTests(TestCase):
         content = resp_detail.content.decode()
         self.assertIn(static(proj.static_image_path), content)
         self.assertEqual(content.count(static(proj.static_image_path)), 2)
+
+    def test_staff_can_create_project_with_multiple_gallery_images(self):
+        self.client.force_login(self.staff)
+        create_url = reverse('project_create')
+
+        try:
+            from PIL import Image
+            bio = BytesIO()
+            Image.new('RGBA', (1, 1), (255, 0, 0, 0)).save(bio, format='PNG')
+            png_1x1 = bio.getvalue()
+        except Exception:
+            png_1x1 = base64.b64decode(
+                b'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII='
+            )
+
+        data = {
+            'title': 'Gallery Create',
+            'short_description': 'short',
+            'description': 'desc',
+            'category': 'personal',
+            'gallery_images': [
+                SimpleUploadedFile('gallery-1.png', png_1x1, content_type='image/png'),
+                SimpleUploadedFile('gallery-2.png', png_1x1, content_type='image/png'),
+            ],
+        }
+
+        response = self.client.post(create_url, data, follow=True)
+        self.assertEqual(response.status_code, 200)
+
+        project = Project.objects.get(title='Gallery Create')
+        gallery = list(project.gallery.all())
+
+        self.assertEqual(len(gallery), 2)
+        self.assertEqual([image.order for image in gallery], [0, 1])
+        self.assertTrue(all(image.image.name for image in gallery))
+
+    def test_staff_can_delete_gallery_image(self):
+        self.client.force_login(self.staff)
+
+        project = Project.objects.create(
+            title='Gallery Delete',
+            short_description='short',
+            description='desc',
+            category='personal',
+        )
+
+        try:
+            from PIL import Image
+            bio = BytesIO()
+            Image.new('RGBA', (1, 1), (255, 0, 0, 0)).save(bio, format='PNG')
+            png_1x1 = bio.getvalue()
+        except Exception:
+            png_1x1 = base64.b64decode(
+                b'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII='
+            )
+
+        gallery_image = ProjectImage.objects.create(
+            project=project,
+            image=SimpleUploadedFile('delete-me.png', png_1x1, content_type='image/png'),
+            order=0,
+        )
+
+        delete_url = reverse('project_image_delete', kwargs={'slug': project.slug, 'image_id': gallery_image.pk})
+        response = self.client.post(delete_url, follow=True)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(ProjectImage.objects.filter(pk=gallery_image.pk).exists())
+
+    def test_detail_renders_gallery_in_order(self):
+        project = Project.objects.create(
+            title='Gallery Detail',
+            short_description='short',
+            description='desc',
+            category='personal',
+        )
+
+        try:
+            from PIL import Image
+            bio = BytesIO()
+            Image.new('RGBA', (1, 1), (255, 0, 0, 0)).save(bio, format='PNG')
+            png_1x1 = bio.getvalue()
+        except Exception:
+            png_1x1 = base64.b64decode(
+                b'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII='
+            )
+
+        second = ProjectImage.objects.create(
+            project=project,
+            title='Segunda',
+            image=SimpleUploadedFile('second.png', png_1x1, content_type='image/png'),
+            order=2,
+        )
+        first = ProjectImage.objects.create(
+            project=project,
+            title='Primera',
+            image=SimpleUploadedFile('first.png', png_1x1, content_type='image/png'),
+            order=1,
+        )
+
+        response = self.client.get(reverse('project_detail', kwargs={'slug': project.slug}))
+        self.assertEqual(response.status_code, 200)
+
+        content = response.content.decode()
+        self.assertIn('Galería del proyecto', content)
+        self.assertIn(first.image.url, content)
+        self.assertIn(second.image.url, content)
+        self.assertLess(content.index(first.image.url), content.index(second.image.url))

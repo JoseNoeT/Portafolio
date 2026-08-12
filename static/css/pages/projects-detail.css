@@ -11,8 +11,8 @@
 .hero--detail {
   position: relative;
   overflow: hidden;
-  padding: clamp(48px, 8vh, 80px) 24px clamp(40px, 6vh, 64px);
-  text-align: center;
+  padding: clamp(22px, 4vh, 36px) 24px clamp(16px, 3vh, 24px);
+  text-align: left;
   background: var(--gradient-hero);
 }
 
@@ -31,7 +31,7 @@
 .hero--detail .hero-inner {
   position: relative;
   z-index: 2;
-  max-width: 820px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .detail-back {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .hero--detail .hero-title {
@@ -56,17 +56,17 @@
 }
 
 .hero--detail .hero-subtitle {
-  max-width: 600px;
-  margin: 0 auto 20px;
+  max-width: 680px;
+  margin: 0 0 12px;
   font-size: clamp(1rem, 1.4vw, 1.15rem);
-  line-height: 1.7;
+  line-height: 1.65;
   color: var(--color-body);
 }
 
 .detail-chips {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
 }
 
@@ -86,12 +86,26 @@
 
 
 /* ====================================================================
-   2. COVER IMAGE
+   2. OVERVIEW — cover plus project card
    ==================================================================== */
 
+.detail-overview-shell {
+  margin-top: -24px;
+}
+
+.detail-overview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.8fr);
+  gap: clamp(18px, 2.6vw, 26px);
+  align-items: start;
+}
+
 .detail-cover {
-  max-width: 900px;
-  margin: 0 auto;
+  min-width: 0;
+}
+
+.detail-cover--hero {
+  margin: 0;
 }
 
 .cover-trigger {
@@ -118,30 +132,27 @@
 
 .cover-image {
   width: 100%;
-  height: clamp(220px, 42vw, 440px);
+  height: clamp(260px, 35vw, 460px);
   object-fit: cover;
   border-radius: calc(var(--radius-lg) - 4px);
   display: block;
 }
 
 .cover-caption {
-  margin-top: 10px;
+  margin-top: 8px;
   font-size: 0.82rem;
   color: var(--color-caption);
-  text-align: center;
+  text-align: left;
   opacity: 0.7;
 }
 
 
 /* ====================================================================
-   3. DETAIL LAYOUT — 2-column editorial grid
+   3. CASE STUDY STORY
    ==================================================================== */
 
-.detail-layout {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: clamp(32px, 4vw, 60px);
-  align-items: start;
+.detail-story-shell {
+  padding-top: clamp(12px, 2vw, 20px);
 }
 
 
@@ -153,10 +164,18 @@
   color: var(--color-body);
 }
 
+.detail-story {
+  max-width: 960px;
+}
+
 .detail-section {
-  margin-bottom: clamp(36px, 4vw, 52px);
-  padding-bottom: clamp(36px, 4vw, 52px);
+  margin-bottom: clamp(22px, 3vw, 30px);
+  padding-bottom: clamp(22px, 3vw, 30px);
   border-bottom: 1px solid var(--color-border-soft);
+}
+
+.detail-section--lead {
+  padding-top: 0;
 }
 
 .detail-section:last-child {
@@ -175,14 +194,14 @@
   letter-spacing: -0.02em;
   line-height: 1.2;
   color: var(--color-heading);
-  margin: 0 0 16px;
+  margin: 0 0 12px;
 }
 
 .detail-section__text {
   font-size: clamp(0.98rem, 1.2vw, 1.08rem);
-  line-height: 1.82;
+  line-height: 1.72;
   color: var(--color-body);
-  max-width: 65ch;
+  max-width: 72ch;
   margin: 0;
 }
 
@@ -194,28 +213,60 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 8px;
+  margin-top: 4px;
+}
+
+.detail-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.detail-gallery-card {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.detail-gallery-image {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.detail-gallery-caption {
+  padding: 12px 14px;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 
 /* ====================================================================
-   5. SIDEBAR — sticky metadata card
+   5. PROJECT CARD
    ==================================================================== */
 
 .detail-sidebar {
-  position: sticky;
-  top: 32px;
   height: fit-content;
 }
 
+.detail-sidebar--overview {
+  position: relative;
+}
+
 .sidebar-card {
-  padding: clamp(24px, 3vw, 32px);
+  padding: clamp(20px, 2.5vw, 26px);
   border-radius: var(--radius-lg);
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--color-border-soft);
   box-shadow: var(--glass-shadow);
+  min-height: 100%;
 }
 
 .sidebar-card__heading {
@@ -224,16 +275,32 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-label);
-  margin: 0 0 24px;
-  padding-bottom: 12px;
+  margin: 0 0 18px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--color-border-soft);
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 14px;
+  margin-bottom: 16px;
 }
 
 .meta-block {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
+}
+
+.meta-grid .meta-block {
+  margin-bottom: 0;
+}
+
+.meta-block--stack {
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border-soft);
 }
 
 .meta-block:last-of-type {
@@ -258,8 +325,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 24px;
-  padding-top: 20px;
+  margin-top: 18px;
+  padding-top: 16px;
   border-top: 1px solid var(--color-border-soft);
 }
 
@@ -332,8 +399,12 @@
    ==================================================================== */
 
 @media (max-width: 900px) {
-  .detail-layout {
+  .detail-overview-grid {
     grid-template-columns: 1fr;
+  }
+
+  .detail-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .detail-sidebar {
@@ -352,11 +423,11 @@
 
 @media (max-width: 600px) {
   .hero--detail {
-    padding: clamp(80px, 12vh, 120px) 16px clamp(32px, 6vh, 56px);
+    padding: clamp(56px, 8vh, 72px) 16px 16px;
   }
 
-  .detail-cover {
-    max-width: 100%;
+  .detail-overview-shell {
+    margin-top: -8px;
   }
 
   .cover-trigger {
@@ -367,8 +438,21 @@
     height: clamp(180px, 52vw, 300px);
   }
 
+  .detail-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .detail-gallery-image {
+    height: clamp(180px, 48vw, 220px);
+  }
+
   .detail-actions {
     flex-direction: column;
+  }
+
+  .meta-grid {
+    grid-template-columns: 1fr;
   }
 }
 

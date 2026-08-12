@@ -29,99 +29,116 @@
   </div>
 </section>
 
-<!-- COVER IMAGE -->
-{% if project.image or project.static_image_path %}
-<section class="section-shell section-shell--compact" aria-label="Vista previa del proyecto">
+<!-- OVERVIEW -->
+<section class="section-shell section-shell--compact detail-overview-shell" aria-label="Vista general del proyecto">
   <div class="container">
-    <div class="detail-cover">
-      <button type="button" class="cover-trigger" id="open-image-modal" aria-label="Ampliar imagen del proyecto">
-        {% if project.image %}
-          <img src="{{ project.image.url }}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
-        {% else %}
-          <img src="{% static project.static_image_path %}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
-        {% endif %}
-      </button>
-      <p class="cover-caption">Haz clic en la imagen para ampliarla</p>
-    </div>
-  </div>
-</section>
-{% endif %}
+    <div class="detail-overview-grid">
+      {% if project.image or project.static_image_path %}
+      <div class="detail-cover detail-cover--hero">
+        <button type="button" class="cover-trigger" id="open-image-modal" aria-label="Ampliar imagen del proyecto">
+          {% if project.image %}
+            <img src="{{ project.image.url }}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
+          {% else %}
+            <img src="{% static project.static_image_path %}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
+          {% endif %}
+        </button>
+        <p class="cover-caption">Haz clic en la imagen para ampliarla</p>
+      </div>
+      {% endif %}
 
-<!-- MAIN CONTENT -->
-<section class="section-shell">
-  <div class="container">
-    <div class="detail-layout">
-
-      <main class="detail-main">
-
-        <div class="detail-section">
-          <span class="section-eyebrow">Resumen</span>
-          <h2 class="detail-section__title">Resumen ejecutivo</h2>
-          <p class="detail-section__text">{{ project.description }}</p>
-        </div>
-
-        <div class="detail-section">
-          <span class="section-eyebrow">Stack</span>
-          <h2 class="detail-section__title">Tecnologías utilizadas</h2>
-          <p class="detail-section__text">{{ project.technologies|default:"Tecnologías no especificadas." }}</p>
-        </div>
-
-        {% if project.live_url or project.github_url %}
-        <div class="detail-section">
-          <span class="section-eyebrow">Enlaces</span>
-          <h2 class="detail-section__title">Acceso al proyecto</h2>
-          <div class="detail-actions">
-            {% if project.live_url %}
-            <a href="{{ project.live_url }}" target="_blank" rel="noopener" class="btn btn-primary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Ver demo en vivo
-            </a>
-            {% endif %}
-            {% if project.github_url %}
-            <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn btn-outline">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              Repositorio GitHub
-            </a>
-            {% endif %}
-          </div>
-        </div>
-        {% endif %}
-
-      </main>
-
-      <aside class="detail-sidebar">
+      <aside class="detail-sidebar detail-sidebar--overview">
         <div class="sidebar-card">
-          <h3 class="sidebar-card__heading">Detalles del proyecto</h3>
+          <h3 class="sidebar-card__heading">Ficha del proyecto</h3>
 
-          <div class="meta-block">
-            <span class="meta-block__label">Fecha</span>
-            <span class="meta-block__value">{{ project.created_at|date:"d M Y" }}</span>
+          <div class="meta-grid">
+            <div class="meta-block">
+              <span class="meta-block__label">Fecha</span>
+              <span class="meta-block__value">{{ project.created_at|date:"d M Y" }}</span>
+            </div>
+
+            <div class="meta-block">
+              <span class="meta-block__label">Categoría</span>
+              <span class="meta-block__value">{{ project.get_category_display }}</span>
+            </div>
           </div>
 
-          <div class="meta-block">
-            <span class="meta-block__label">Stack</span>
+          <div class="meta-block meta-block--stack">
+            <span class="meta-block__label">Tecnologías</span>
             <span class="meta-block__value">{{ project.technologies|default:"No especificado" }}</span>
-          </div>
-
-          <div class="meta-block">
-            <span class="meta-block__label">Categoría</span>
-            <span class="meta-block__value">{{ project.get_category_display }}</span>
           </div>
 
           {% if project.live_url or project.github_url %}
           <div class="sidebar-actions">
             {% if project.live_url %}
-            <a href="{{ project.live_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm btn-block">Demo</a>
+            <a href="{{ project.live_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm btn-block">Ver demo</a>
             {% endif %}
             {% if project.github_url %}
-            <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm btn-block">GitHub</a>
+            <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm btn-block">Repositorio</a>
             {% endif %}
           </div>
           {% endif %}
         </div>
       </aside>
-
     </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="section-shell detail-story-shell">
+  <div class="container">
+    <main class="detail-main detail-story">
+
+      <div class="detail-section detail-section--lead">
+        <span class="section-eyebrow">Resumen</span>
+        <h2 class="detail-section__title">Resumen ejecutivo</h2>
+        <p class="detail-section__text">{{ project.description }}</p>
+      </div>
+
+      <div class="detail-section">
+        <span class="section-eyebrow">Stack</span>
+        <h2 class="detail-section__title">Tecnologías utilizadas</h2>
+        <p class="detail-section__text">{{ project.technologies|default:"Tecnologías no especificadas." }}</p>
+      </div>
+
+      {% if project.gallery.all %}
+      <div class="detail-section detail-section--gallery">
+        <span class="section-eyebrow">Galería</span>
+        <h2 class="detail-section__title">Galería del proyecto</h2>
+        <div class="detail-gallery-grid">
+          {% for gallery_image in project.gallery.all %}
+          <figure class="detail-gallery-card">
+            <img src="{{ gallery_image.image.url }}" alt="{{ gallery_image.title|default:project.title }}" class="detail-gallery-image">
+            {% if gallery_image.title %}
+            <figcaption class="detail-gallery-caption">{{ gallery_image.title }}</figcaption>
+            {% endif %}
+          </figure>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if project.live_url or project.github_url %}
+      <div class="detail-section detail-section--links">
+        <span class="section-eyebrow">Enlaces</span>
+        <h2 class="detail-section__title">Acceso al proyecto</h2>
+        <div class="detail-actions">
+          {% if project.live_url %}
+          <a href="{{ project.live_url }}" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Ver demo en vivo
+          </a>
+          {% endif %}
+          {% if project.github_url %}
+          <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Repositorio GitHub
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+    </main>
   </div>
 </section>
 

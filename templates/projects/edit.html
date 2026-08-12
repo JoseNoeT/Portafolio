@@ -114,13 +114,6 @@
             <p>Prepara los recursos visuales del proyecto desde una sección dedicada y lista para futuras ampliaciones.</p>
           </div>
 
-          {% if project.image %}
-          <div class="project-editor-preview-card">
-            <span class="project-editor-preview-label">Imagen actual</span>
-            <img src="{{ project.image.url }}" alt="Imagen actual del proyecto" class="project-editor-preview-image">
-          </div>
-          {% endif %}
-
           <div class="project-editor-field project-editor-field--full">
             {{ form.image.label_tag }}
             {{ form.image }}
@@ -129,6 +122,40 @@
             <small class="project-editor-help">{{ form.image.help_text }}</small>
             {% endif %}
           </div>
+
+          {% if project.image %}
+          <div class="project-editor-preview-card">
+            <span class="project-editor-preview-label">Imagen actual</span>
+            <img src="{{ project.image.url }}" alt="Imagen actual del proyecto" class="project-editor-preview-image">
+          </div>
+          {% endif %}
+
+          <div class="project-editor-field project-editor-field--full">
+            {{ form.gallery_images.label_tag }}
+            {{ form.gallery_images }}
+            {{ form.gallery_images.errors }}
+            {% if form.gallery_images.help_text %}
+            <small class="project-editor-help">{{ form.gallery_images.help_text }}</small>
+            {% endif %}
+          </div>
+
+          {% if project.gallery.all %}
+          <div class="project-editor-field project-editor-field--full">
+            <label>Galería actual</label>
+            <div class="project-editor-grid">
+              {% for gallery_image in project.gallery.all %}
+              <div class="project-editor-preview-card">
+                <span class="project-editor-preview-label">Orden {{ gallery_image.order }}</span>
+                <img src="{{ gallery_image.image.url }}" alt="Imagen de galería {{ forloop.counter }} de {{ project.title }}" class="project-editor-preview-image">
+                <form method="post" action="{% url 'project_image_delete' project.slug gallery_image.id %}" style="margin-top:12px;">
+                  {% csrf_token %}
+                  <button type="submit" class="btn-ghost btn-sm">Eliminar imagen</button>
+                </form>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
         </section>
 
         <section class="project-editor-section project-editor-section--disabled" aria-disabled="true">

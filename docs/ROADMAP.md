@@ -25,7 +25,7 @@ Tareas:
 - [ ] Render funcionando.
 - [ ] Documentación actualizada.
 - [ ] Commit.
-
+Estado: ✅ Completado
 ---
 
 # Sprint 2 - Multimedia
