@@ -98,3 +98,57 @@ class AnalyticsIntegrationTests(TestCase):
         self.client.login(username='staffanalytics', password='admin1234')
         response = self.client.get(reverse('adminpanel_analytics'))
         self.assertEqual(response.status_code, 200)
+
+def test_robots_txt_is_not_tracked(self):
+    self.client.get('/robots.txt')
+    self.assertEqual(PageView.objects.count(), 0)
+
+
+def test_known_bot_is_not_tracked(self):
+    self.client.get(
+        '/',
+        HTTP_USER_AGENT='Mozilla/5.0 Googlebot/2.1'
+    )
+    self.assertEqual(PageView.objects.count(), 0)
+
+
+def test_regular_browser_is_tracked(self):
+    self.client.get(
+        '/',
+        HTTP_USER_AGENT=(
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+            'AppleWebKit/537.36 Chrome/151.0 Safari/537.36'
+        )
+    )
+    self.assertEqual(PageView.objects.count(), 1)
+class AnalyticsFilteringTests(TestCase):
+    def test_robots_txt_is_not_tracked(self):
+        self.client.get('/robots.txt')
+        self.assertEqual(PageView.objects.count(), 0)
+
+    def test_known_bot_is_not_tracked(self):
+        self.client.get(
+            '/',
+            HTTP_USER_AGENT='Mozilla/5.0 Googlebot/2.1'
+        )
+        self.assertEqual(PageView.objects.count(), 0)
+
+    def test_regular_browser_is_tracked(self):
+        self.client.get(
+            '/',
+            HTTP_USER_AGENT=(
+                'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                'AppleWebKit/537.36 Chrome/151.0 Safari/537.36'
+            )
+        )
+        self.assertEqual(PageView.objects.count(), 1)
+
+class AnalyticsStatusCodeTests(TestCase):
+    def test_404_is_not_tracked(self):
+        response = self.client.get(
+            '/ruta-que-no-existe-analytics-v2/',
+            HTTP_USER_AGENT='Mozilla/5.0 Chrome/151.0'
+        )
+
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(PageView.objects.count(), 0)
