@@ -1,7 +1,8 @@
 ﻿{% extends "base.html" %}
 {% load static %}
+{% load analytics_extras %}
 
-{% block title %}Analytics | Admin{% endblock %}
+{% block title %}Actividad del portafolio | Admin{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
@@ -9,6 +10,12 @@
 <style>
   .analytics-wrap {
     overflow-x: hidden;
+  }
+
+  .analytics-intro {
+    max-width: 760px;
+    margin-top: 6px;
+    opacity: 0.78;
   }
 
   .analytics-summary {
@@ -28,7 +35,7 @@
   .analytics-card__label {
     margin: 0 0 8px;
     font-size: 0.9rem;
-    opacity: 0.72;
+    opacity: 0.76;
   }
 
   .analytics-card__value {
@@ -38,18 +45,35 @@
     line-height: 1;
   }
 
+  .analytics-card__level {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 600;
+  }
+
   .analytics-card__help {
-    margin: 8px 0 0;
-    font-size: 0.8rem;
-    opacity: 0.62;
+    margin: 9px 0 0;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    opacity: 0.68;
   }
 
   .analytics-section {
-    margin-top: 28px;
+    margin-top: 30px;
   }
 
   .analytics-section h3 {
-    margin: 0 0 12px;
+    margin: 0 0 5px;
+  }
+
+  .analytics-section__help {
+    margin: 0 0 14px;
+    font-size: 0.86rem;
+    opacity: 0.67;
   }
 
   .analytics-table-wrap {
@@ -69,6 +93,12 @@
     white-space: nowrap;
   }
 
+  .analytics-note {
+    margin-top: 14px;
+    font-size: 0.8rem;
+    opacity: 0.58;
+  }
+
   @media (max-width: 900px) {
     .analytics-summary {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -77,7 +107,7 @@
 
   @media (max-width: 768px) {
     .analytics-table {
-      min-width: 640px;
+      min-width: 560px;
     }
   }
 
@@ -96,9 +126,11 @@
 
       <div class="panel-head">
         <div>
-          <h2>Analytics del portafolio</h2>
-          <p>
-            Rendimiento de los últimos 7 días y actividad general del portafolio.
+          <h2>Actividad del portafolio</h2>
+          <p class="analytics-intro">
+            Aquí puedes ver cuántas visitas recibe tu portafolio,
+            cuánto lo exploran y qué acciones muestran interés real
+            en tus proyectos durante los últimos 7 días.
           </p>
         </div>
 
@@ -107,107 +139,248 @@
         </a>
       </div>
 
+
+      <!-- ACTIVIDAD GENERAL -->
       <div class="analytics-summary">
 
         <article class="analytics-card">
-          <p class="analytics-card__label">Visitantes únicos</p>
+          <p class="analytics-card__label">Visitantes diferentes</p>
+
           <p class="analytics-card__value">
             {{ unique_visitors }}
           </p>
+
           <p class="analytics-card__help">
-            Visitantes anónimos distintos en los últimos 7 días.
+            Cantidad aproximada de visitantes distintos detectados
+            durante los últimos 7 días.
           </p>
         </article>
 
+
         <article class="analytics-card">
-          <p class="analytics-card__label">Sesiones</p>
+          <p class="analytics-card__label">Visitas al portafolio</p>
+
           <p class="analytics-card__value">
             {{ total_sessions }}
           </p>
+
           <p class="analytics-card__help">
-            Sesiones de navegación detectadas en los últimos 7 días.
+            Cantidad de recorridos realizados por los visitantes.
+            Una misma persona puede volver en otro momento y generar
+            una nueva visita.
           </p>
         </article>
 
+
         <article class="analytics-card">
-          <p class="analytics-card__label">Páginas vistas</p>
+          <p class="analytics-card__label">Páginas exploradas</p>
+
           <p class="analytics-card__value">
             {{ total_pageviews }}
           </p>
+
           <p class="analytics-card__help">
-            Cargas de páginas públicas válidas.
+            Total de páginas del portafolio que fueron abiertas
+            durante esas visitas.
           </p>
         </article>
 
+
         <article class="analytics-card">
-          <p class="analytics-card__label">Páginas por sesión</p>
+          <p class="analytics-card__label">Páginas vistas por visita</p>
+
           <p class="analytics-card__value">
             {{ pages_per_session }}
           </p>
-          <p class="analytics-card__help">
-            Profundidad promedio de navegación.
-          </p>
+
+          {% if pages_per_session < 2 %}
+            <span class="analytics-card__level">
+              Exploración baja
+            </span>
+            <p class="analytics-card__help">
+              En promedio se revisan menos de 2 páginas por visita.
+              La mayoría de las visitas no profundiza mucho en el contenido.
+            </p>
+
+          {% elif pages_per_session < 3 %}
+            <span class="analytics-card__level">
+              Exploración moderada
+            </span>
+            <p class="analytics-card__help">
+              Los visitantes suelen revisar entre 2 y 3 páginas.
+              Existe interés por explorar más allá de una sola página.
+            </p>
+
+          {% elif pages_per_session < 4 %}
+            <span class="analytics-card__level">
+              Exploración buena
+            </span>
+            <p class="analytics-card__help">
+              Los visitantes recorren varias partes del portafolio
+              durante una misma visita.
+            </p>
+
+          {% else %}
+            <span class="analytics-card__level">
+              Exploración alta
+            </span>
+            <p class="analytics-card__help">
+              En promedio se exploran 4 o más páginas por visita.
+              Los visitantes están recorriendo varias partes del portafolio.
+            </p>
+          {% endif %}
         </article>
 
       </div>
 
+
+      <!-- INTERÉS -->
       <section class="analytics-section">
-        <h3>Conversiones · últimos 7 días</h3>
+
+        <h3>Interés generado · últimos 7 días</h3>
+
+        <p class="analytics-section__help">
+          Estas acciones indican que un visitante hizo algo más que
+          simplemente mirar una página.
+        </p>
 
         <div class="analytics-summary">
 
           <article class="analytics-card">
-            <p class="analytics-card__label">Clics en GitHub</p>
+            <p class="analytics-card__label">
+              Interés en revisar el código
+            </p>
+
             <p class="analytics-card__value">
               {{ github_clicks }}
             </p>
+
             <p class="analytics-card__help">
-              Personas que salieron del portafolio para revisar código.
+              Cantidad de veces que se abrió GitHub desde un proyecto
+              del portafolio.
             </p>
           </article>
 
+
           <article class="analytics-card">
-            <p class="analytics-card__label">Clics en Demo</p>
+            <p class="analytics-card__label">
+              Interés en probar un proyecto
+            </p>
+
             <p class="analytics-card__value">
               {{ demo_clicks }}
             </p>
+
             <p class="analytics-card__help">
-              Aperturas de demostraciones o proyectos desplegados.
+              Cantidad de veces que se abrió una demostración o proyecto
+              desplegado.
             </p>
           </article>
 
+
           <article class="analytics-card">
-            <p class="analytics-card__label">Acciones de conversión</p>
+            <p class="analytics-card__label">
+              Acciones de interés
+            </p>
+
             <p class="analytics-card__value">
               {{ total_conversions }}
             </p>
+
             <p class="analytics-card__help">
-              Total de acciones de interés registradas.
+              Total de acciones importantes realizadas desde el portafolio,
+              como revisar código o probar una demostración.
             </p>
           </article>
 
+
           <article class="analytics-card">
-            <p class="analytics-card__label">Conversión por sesión</p>
+            <p class="analytics-card__label">
+              Visitas que mostraron interés
+            </p>
+
             <p class="analytics-card__value">
               {{ conversion_rate }}%
             </p>
-            <p class="analytics-card__help">
-              Acciones registradas respecto de las sesiones.
-            </p>
+
+            {% if conversion_rate == 0 %}
+              <span class="analytics-card__level">
+                Sin acciones todavía
+              </span>
+
+              <p class="analytics-card__help">
+                Ninguna visita registrada realizó todavía una acción
+                de interés.
+              </p>
+
+            {% elif conversion_rate < 10 %}
+              <span class="analytics-card__level">
+                Interés bajo
+              </span>
+
+              <p class="analytics-card__help">
+                Menos del 10% de las visitas realizó una acción de interés.
+              </p>
+
+            {% elif conversion_rate < 25 %}
+              <span class="analytics-card__level">
+                Interés moderado
+              </span>
+
+              <p class="analytics-card__help">
+                Entre el 10% y el 25% de las visitas realizó alguna
+                acción de interés.
+              </p>
+
+            {% elif conversion_rate < 50 %}
+              <span class="analytics-card__level">
+                Interés bueno
+              </span>
+
+              <p class="analytics-card__help">
+                Aproximadamente entre una de cada cuatro y una de cada dos
+                visitas realizó una acción de interés.
+              </p>
+
+            {% else %}
+              <span class="analytics-card__level">
+                Interés alto
+              </span>
+
+              <p class="analytics-card__help">
+                Al menos la mitad de las visitas realizó una acción
+                de interés.
+              </p>
+            {% endif %}
           </article>
 
         </div>
+
+        <p class="analytics-note">
+          Los niveles mostrados son una referencia interna para facilitar
+          la lectura. Cuando exista más historial podremos comparar estos
+          resultados con el rendimiento habitual de tu propio portafolio.
+        </p>
+
       </section>
 
+
+      <!-- ACTIVIDAD POR DÍA -->
       <section class="analytics-section">
-        <h3>Visitas por día · últimos 7 días</h3>
+
+        <h3>Actividad por día</h3>
+
+        <p class="analytics-section__help">
+          Muestra cuántas páginas del portafolio fueron exploradas cada día.
+        </p>
 
         <div class="table-wrap analytics-table-wrap">
           <table class="dtable analytics-table">
+
             <thead>
               <tr>
                 <th>Día</th>
-                <th>Páginas vistas</th>
+                <th>Páginas exploradas</th>
               </tr>
             </thead>
 
@@ -217,63 +390,88 @@
                 <td>{{ row.day }}</td>
                 <td>{{ row.total }}</td>
               </tr>
+
               {% empty %}
               <tr>
                 <td colspan="2" class="table-empty">
-                  Sin datos de visitas.
+                  Todavía no hay actividad registrada.
                 </td>
               </tr>
               {% endfor %}
             </tbody>
+
           </table>
         </div>
+
       </section>
 
+
+      <!-- PÁGINAS -->
       <section class="analytics-section">
-        <h3>Páginas más vistas</h3>
+
+        <h3>Páginas más exploradas</h3>
+
+        <p class="analytics-section__help">
+          Permite identificar qué partes del portafolio reciben más atención.
+        </p>
 
         <div class="table-wrap analytics-table-wrap">
           <table class="dtable analytics-table">
+
             <thead>
               <tr>
-                <th>Ruta</th>
-                <th>Vistas</th>
+                <th>Página visitada</th>
+                <th>Veces abierta</th>
               </tr>
             </thead>
 
             <tbody>
               {% for row in top_pages %}
               <tr>
+
                 <td
                   class="analytics-cell-truncate"
-                  title="{{ row.path }}"
+                  title="{{ row.path|analytics_page_name }}"
                 >
-                  {{ row.path }}
+                  {{ row.path|analytics_page_name }}
                 </td>
 
                 <td>{{ row.total }}</td>
+
               </tr>
+
               {% empty %}
               <tr>
                 <td colspan="2" class="table-empty">
-                  Sin datos.
+                  Todavía no hay páginas visitadas.
                 </td>
               </tr>
               {% endfor %}
             </tbody>
+
           </table>
         </div>
+
       </section>
 
+
+      <!-- PROYECTOS -->
       <section class="analytics-section">
-        <h3>Proyectos más vistos</h3>
+
+        <h3>Proyectos que más interesaron</h3>
+
+        <p class="analytics-section__help">
+          Muestra cuántas veces se abrió cada proyecto para conocer
+          cuáles están llamando más la atención.
+        </p>
 
         <div class="table-wrap analytics-table-wrap">
           <table class="dtable analytics-table">
+
             <thead>
               <tr>
                 <th>Proyecto</th>
-                <th>Vistas</th>
+                <th>Veces visto</th>
               </tr>
             </thead>
 
@@ -283,69 +481,82 @@
                 <td>{{ row.project__title }}</td>
                 <td>{{ row.total }}</td>
               </tr>
+
               {% empty %}
               <tr>
                 <td colspan="2" class="table-empty">
-                  Sin datos.
+                  Todavía no hay proyectos vistos.
                 </td>
               </tr>
               {% endfor %}
             </tbody>
+
           </table>
         </div>
+
       </section>
 
+
+      <!-- ÚLTIMA ACTIVIDAD -->
       <section class="analytics-section">
-        <h3>Últimas visitas</h3>
+
+        <h3>Actividad reciente</h3>
+
+        <p class="analytics-section__help">
+          Muestra las páginas visitadas recientemente y desde qué parte
+          llegó cada visita.
+        </p>
 
         <div class="table-wrap analytics-table-wrap">
           <table class="dtable analytics-table">
+
             <thead>
               <tr>
                 <th>Fecha</th>
-                <th>Ruta</th>
-                <th>Método</th>
-                <th>Referrer</th>
+                <th>Página visitada</th>
+                <th>Venía desde</th>
               </tr>
             </thead>
 
             <tbody>
               {% for v in latest_visits %}
               <tr>
+
                 <td>
                   {{ v.created_at|date:"d M Y H:i" }}
                 </td>
 
                 <td
                   class="analytics-cell-truncate"
-                  title="{{ v.path }}"
+                  title="{{ v.path|analytics_page_name }}"
                 >
-                  {{ v.path }}
+                  {{ v.path|analytics_page_name }}
                 </td>
-
-                <td>{{ v.method }}</td>
 
                 <td
                   class="analytics-cell-truncate"
-                  title="{{ v.referrer|default:'—' }}"
+                  title="{{ v.referrer|analytics_source_name }}"
                 >
-                  {{ v.referrer|default:'—' }}
+                  {{ v.referrer|analytics_source_name }}
                 </td>
+
               </tr>
+
               {% empty %}
               <tr>
-                <td colspan="4" class="table-empty">
-                  Sin visitas registradas.
+                <td colspan="3" class="table-empty">
+                  Todavía no hay actividad reciente.
                 </td>
               </tr>
               {% endfor %}
             </tbody>
+
           </table>
         </div>
+
       </section>
 
     </div>
   </div>
 </section>
 {% endblock %}
-
