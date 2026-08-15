@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 {% load static %}
 
 {% block title %}Proyectos | Jose Noe{% endblock %}
@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block hero %}
-{% include "components/hero.html" with eyebrow="Portafolio" title="Proyectos que reflejan proceso y solución" subtitle="Selección de trabajos donde aplico desarrollo web, estructura y resolución de necesidades reales." %}
+{% include "components/hero.html" with eyebrow="Portafolio" title="Proyectos que reflejan proceso y soluciÃ³n" subtitle="SelecciÃ³n de trabajos donde aplico desarrollo web, estructura y resoluciÃ³n de necesidades reales." %}
 {% endblock %}
 
 {% block content %}
@@ -54,7 +54,7 @@
           <p class="card-desc">{{ project.short_description|default:"Proyecto desarrollado con enfoque en calidad y mantenibilidad." }}</p>
 
           {% if project.tech_list %}
-          <div class="chips" aria-label="Tecnologías">
+          <div class="chips" aria-label="TecnologÃ­as">
             {% for tech in project.tech_list %}
               <span class="chip">{{ tech }}</span>
             {% endfor %}
@@ -72,13 +72,13 @@
             </a>
 
             {% if project.github_url %}
-            <a class="btn btn-ghost btn-sm" href="{{ project.github_url }}" target="_blank" rel="noopener">
+            <a class="btn btn-ghost btn-sm" href="{% url 'analytics:outbound_event' 'github_click' project.slug %}" target="_blank" rel="noopener">
               GitHub
             </a>
             {% endif %}
 
             {% if project.live_url %}
-            <a class="btn btn-ghost btn-sm" href="{{ project.live_url }}" target="_blank" rel="noopener">
+            <a class="btn btn-ghost btn-sm" href="{% url 'analytics:outbound_event' 'demo_click' project.slug %}" target="_blank" rel="noopener">
               Demo
             </a>
             {% endif %}
@@ -100,24 +100,24 @@
 <section class="section-shell section-shell--alt">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title reveal">Cómo construyo soluciones</h2>
+      <h2 class="section-title reveal">CÃ³mo construyo soluciones</h2>
     </div>
 
     <div class="stats-row">
       <div class="stat-item reveal">
-        <span class="stat-item__value">✓</span>
+        <span class="stat-item__value">âœ“</span>
         <span class="stat-item__label">Analizo el problema real</span>
       </div>
       <div class="stat-item reveal">
-        <span class="stat-item__value">⎔</span>
-        <span class="stat-item__label">Diseño la arquitectura</span>
+        <span class="stat-item__value">âŽ”</span>
+        <span class="stat-item__label">DiseÃ±o la arquitectura</span>
       </div>
       <div class="stat-item reveal">
-        <span class="stat-item__value">▦</span>
+        <span class="stat-item__value">â–¦</span>
         <span class="stat-item__label">Desarrollo por fases</span>
       </div>
       <div class="stat-item reveal">
-        <span class="stat-item__value">📄</span>
+        <span class="stat-item__value">ðŸ“„</span>
         <span class="stat-item__label">Documento todo</span>
       </div>
     </div>
@@ -128,7 +128,7 @@
 <section class="section-shell">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title reveal">Línea de tiempo</h2>
+      <h2 class="section-title reveal">LÃ­nea de tiempo</h2>
     </div>
 
     <div class="timeline">
@@ -146,7 +146,7 @@
 <section class="section-shell section-shell--accent">
   <div class="container">
     <div class="cta-band cta-band--accent">
-      <h2 class="cta-band__title reveal">¿Interesado en trabajar conmigo?</h2>
+      <h2 class="cta-band__title reveal">Â¿Interesado en trabajar conmigo?</h2>
       <p class="cta-band__text reveal">Construyo software a medida, presencial o remoto, con enfoque profesional.</p>
       <div class="cta-band__actions reveal">
         <a class="btn btn-primary" href="{% url 'contact' %}">Contactar</a>

@@ -1,4 +1,4 @@
-{% extends "base_focus.html" %}
+﻿{% extends "base_focus.html" %}
 {% load static %}
 
 {% block title %}{{ project.title }} - Caso de Estudio{% endblock %}
@@ -10,12 +10,12 @@
 
 {% block content %}
 
-<!-- HERO — project title band -->
+<!-- HERO â€” project title band -->
 <section class="hero hero--detail" id="project-detail-hero">
   <canvas class="hero-canvas" width="900" height="220" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;"></canvas>
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="container hero-inner">
-    <a href="{% url 'projects_list' %}" class="btn btn-ghost btn-sm detail-back">← Proyectos</a>
+    <a href="{% url 'projects_list' %}" class="btn btn-ghost btn-sm detail-back">â† Proyectos</a>
     <h1 class="hero-title">{{ project.title }}</h1>
     {% if project.short_description %}
     <p class="hero-subtitle">{{ project.short_description }}</p>
@@ -62,8 +62,8 @@
 
         <div class="detail-section">
           <span class="section-eyebrow">Stack</span>
-          <h2 class="detail-section__title">Tecnologías utilizadas</h2>
-          <p class="detail-section__text">{{ project.technologies|default:"Tecnologías no especificadas." }}</p>
+          <h2 class="detail-section__title">TecnologÃ­as utilizadas</h2>
+          <p class="detail-section__text">{{ project.technologies|default:"TecnologÃ­as no especificadas." }}</p>
         </div>
 
         {% if project.live_url or project.github_url %}
@@ -72,13 +72,13 @@
           <h2 class="detail-section__title">Acceso al proyecto</h2>
           <div class="detail-actions">
             {% if project.live_url %}
-            <a href="{{ project.live_url }}" target="_blank" rel="noopener" class="btn btn-primary">
+            <a href="{% url 'analytics:outbound_event' 'demo_click' project.slug %}" target="_blank" rel="noopener" class="btn btn-primary">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               Ver demo en vivo
             </a>
             {% endif %}
             {% if project.github_url %}
-            <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn btn-outline">
+            <a href="{% url 'analytics:outbound_event' 'github_click' project.slug %}" target="_blank" rel="noopener" class="btn btn-outline">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
               Repositorio GitHub
             </a>
@@ -104,17 +104,17 @@
           </div>
 
           <div class="meta-block">
-            <span class="meta-block__label">Categoría</span>
+            <span class="meta-block__label">CategorÃ­a</span>
             <span class="meta-block__value">{{ project.get_category_display }}</span>
           </div>
 
           {% if project.live_url or project.github_url %}
           <div class="sidebar-actions">
             {% if project.live_url %}
-            <a href="{{ project.live_url }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm btn-block">Demo</a>
+            <a href="{% url 'analytics:outbound_event' 'demo_click' project.slug %}" target="_blank" rel="noopener" class="btn btn-primary btn-sm btn-block">Demo</a>
             {% endif %}
             {% if project.github_url %}
-            <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn btn-outline btn-sm btn-block">GitHub</a>
+            <a href="{% url 'analytics:outbound_event' 'github_click' project.slug %}" target="_blank" rel="noopener" class="btn btn-outline btn-sm btn-block">GitHub</a>
             {% endif %}
           </div>
           {% endif %}
@@ -125,11 +125,11 @@
   </div>
 </section>
 
-<!-- CTA — back to projects -->
+<!-- CTA â€” back to projects -->
 <section class="section-shell section-shell--accent">
   <div class="container">
     <div class="cta-band">
-      <h2 class="cta-band__title">¿Quieres ver más proyectos?</h2>
+      <h2 class="cta-band__title">Â¿Quieres ver mÃ¡s proyectos?</h2>
       <p class="cta-band__text">Explora otros casos de estudio o ponte en contacto para colaborar.</p>
       <div class="cta-band__actions">
         <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver todos los proyectos</a>
@@ -142,7 +142,7 @@
 <!-- IMAGE MODAL -->
 {% if project.image or project.static_image_path %}
 <div class="image-modal" id="image-modal" aria-hidden="true" role="dialog" aria-label="Imagen ampliada del proyecto">
-    <button type="button" class="image-modal-close" id="close-image-modal" aria-label="Cerrar imagen">×</button>
+    <button type="button" class="image-modal-close" id="close-image-modal" aria-label="Cerrar imagen">Ã—</button>
     {% if project.image %}
     <img src="{{ project.image.url }}" alt="Imagen ampliada del proyecto {{ project.title }}" class="image-modal-content">
     {% else %}
@@ -194,3 +194,4 @@
 </script>
 {% endif %}
 {% endblock %}
+
