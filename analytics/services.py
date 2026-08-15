@@ -7,6 +7,7 @@ from analytics.models import PageView, ProjectView
 
 
 IGNORED_ANALYTICS_PREFIXES = (
+    '/analytics/',
     '/static/',
     '/media/',
     '/admin/',
@@ -220,3 +221,4 @@ def track_project_view(request, project):
         visitor_hash=visitor_hash,
         session_hash=session_hash,
     )
+

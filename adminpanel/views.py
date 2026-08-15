@@ -10,7 +10,7 @@ import logging
 from django.views.decorators.http import require_POST
 from django.views.generic import TemplateView
 
-from analytics.models import ProjectView
+from analytics.models import AnalyticsEvent, ProjectView
 from analytics.services import get_visible_pageviews_queryset
 from core.forms import SiteSettingsForm
 from core.models import ContactMessage, SiteSettings
@@ -150,7 +150,6 @@ def analytics_dashboard(request):
         created_at__gte=seven_days_ago
     )
 
-    # Métricas principales de los últimos 7 días
     total_pageviews = recent_pageviews.count()
 
     unique_visitors = (
@@ -201,6 +200,35 @@ def analytics_dashboard(request):
 
     latest_visits = pageviews.order_by('-created_at')[:10]
 
+    recent_events = AnalyticsEvent.objects.filter(
+        created_at__gte=seven_days_ago
+    )
+
+    github_clicks = recent_events.filter(
+        event_type='github_click'
+    ).count()
+
+    demo_clicks = recent_events.filter(
+        event_type='demo_click'
+    ).count()
+
+    total_conversions = recent_events.count()
+
+    converted_sessions = (
+        recent_events
+        .exclude(session_hash__isnull=True)
+        .exclude(session_hash='')
+        .values('session_hash')
+        .distinct()
+        .count()
+    )
+
+    conversion_rate = (
+        round((converted_sessions / total_sessions) * 100, 1)
+        if total_sessions
+        else 0
+    )
+
     return render(
         request,
         'adminpanel/analytics.html',
@@ -213,6 +241,10 @@ def analytics_dashboard(request):
             'top_pages': top_pages,
             'top_projects': top_projects,
             'latest_visits': latest_visits,
+            'github_clicks': github_clicks,
+            'demo_clicks': demo_clicks,
+            'total_conversions': total_conversions,
+            'conversion_rate': conversion_rate,
         },
     )
 
@@ -299,3 +331,5 @@ def mark_contact_message_replied(request, pk):
 
     messages.success(request, 'Mensaje marcado como respondido.')
     return redirect('adminpanel_contact_message_detail', pk=pk)
+
+
