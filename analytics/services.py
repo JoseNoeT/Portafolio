@@ -1,6 +1,7 @@
 ﻿import hashlib
 
 from django.db.models import Q
+from django.utils import timezone
 
 from analytics.models import PageView, ProjectView
 
@@ -51,6 +52,8 @@ BOT_USER_AGENT_MARKERS = (
     'wget/',
 )
 
+SESSION_TIMEOUT_MINUTES = 30
+
 
 def get_client_ip(request):
     forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR', '')
@@ -63,6 +66,42 @@ def get_client_ip(request):
 def hash_value(value):
     normalized = (value or '').strip().encode('utf-8')
     return hashlib.sha256(normalized).hexdigest()
+
+
+def get_request_identity(request):
+    ip_hash = hash_value(get_client_ip(request))
+    user_agent_hash = hash_value(
+        request.META.get('HTTP_USER_AGENT', '')
+    )
+
+    visitor_hash = hash_value(
+        f'{ip_hash}:{user_agent_hash}'
+    )
+
+    return ip_hash, user_agent_hash, visitor_hash
+
+
+def get_session_hash(visitor_hash):
+    cutoff = timezone.now() - timezone.timedelta(
+        minutes=SESSION_TIMEOUT_MINUTES
+    )
+
+    latest_view = (
+        PageView.objects
+        .filter(
+            visitor_hash=visitor_hash,
+            created_at__gte=cutoff,
+        )
+        .order_by('-created_at')
+        .first()
+    )
+
+    if latest_view and latest_view.session_hash:
+        return latest_view.session_hash
+
+    return hash_value(
+        f'{visitor_hash}:{timezone.now().isoformat()}'
+    )
 
 
 def is_bot_request(request):
@@ -146,6 +185,11 @@ def track_page_view(request, page_title=''):
     if not should_track_request(request):
         return
 
+    ip_hash, user_agent_hash, visitor_hash = get_request_identity(
+        request
+    )
+    session_hash = get_session_hash(visitor_hash)
+
     PageView.objects.create(
         path=(request.path or '')[:255],
         page_title=(page_title or '')[:255],
@@ -153,10 +197,10 @@ def track_page_view(request, page_title=''):
         referrer=(
             request.META.get('HTTP_REFERER', '') or ''
         )[:500],
-        user_agent_hash=hash_value(
-            request.META.get('HTTP_USER_AGENT', '')
-        ),
-        ip_hash=hash_value(get_client_ip(request)),
+        ip_hash=ip_hash,
+        user_agent_hash=user_agent_hash,
+        visitor_hash=visitor_hash,
+        session_hash=session_hash,
     )
 
 
@@ -164,11 +208,15 @@ def track_project_view(request, project):
     if not should_track_request(request):
         return
 
+    ip_hash, user_agent_hash, visitor_hash = get_request_identity(
+        request
+    )
+    session_hash = get_session_hash(visitor_hash)
+
     ProjectView.objects.create(
         project=project,
-        ip_hash=hash_value(get_client_ip(request)),
-        user_agent_hash=hash_value(
-            request.META.get('HTTP_USER_AGENT', '')
-        ),
+        ip_hash=ip_hash,
+        user_agent_hash=user_agent_hash,
+        visitor_hash=visitor_hash,
+        session_hash=session_hash,
     )
-

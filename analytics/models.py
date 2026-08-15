@@ -1,4 +1,4 @@
-from django.db import models
+﻿from django.db import models
 
 
 class PageView(models.Model):
@@ -8,6 +8,18 @@ class PageView(models.Model):
     referrer = models.CharField(max_length=500, blank=True)
     user_agent_hash = models.CharField(max_length=64)
     ip_hash = models.CharField(max_length=64)
+    visitor_hash = models.CharField(
+        max_length=64,
+        null=True,
+        blank=True,
+        db_index=True,
+    )
+    session_hash = models.CharField(
+        max_length=64,
+        null=True,
+        blank=True,
+        db_index=True,
+    )
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
     class Meta:
@@ -15,13 +27,30 @@ class PageView(models.Model):
 
 
 class ProjectView(models.Model):
-    project = models.ForeignKey('projects.Project', on_delete=models.CASCADE, related_name='analytics_views')
+    project = models.ForeignKey(
+        'projects.Project',
+        on_delete=models.CASCADE,
+        related_name='analytics_views',
+    )
     ip_hash = models.CharField(max_length=64)
     user_agent_hash = models.CharField(max_length=64)
+    visitor_hash = models.CharField(
+        max_length=64,
+        null=True,
+        blank=True,
+        db_index=True,
+    )
+    session_hash = models.CharField(
+        max_length=64,
+        null=True,
+        blank=True,
+        db_index=True,
+    )
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
     class Meta:
         ordering = ['-created_at']
+
 
 class AnalyticsEvent(models.Model):
     EVENT_TYPES = [
@@ -51,6 +80,18 @@ class AnalyticsEvent(models.Model):
     referrer = models.CharField(max_length=500, blank=True)
     ip_hash = models.CharField(max_length=64)
     user_agent_hash = models.CharField(max_length=64)
+    visitor_hash = models.CharField(
+        max_length=64,
+        null=True,
+        blank=True,
+        db_index=True,
+    )
+    session_hash = models.CharField(
+        max_length=64,
+        null=True,
+        blank=True,
+        db_index=True,
+    )
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
     class Meta:
