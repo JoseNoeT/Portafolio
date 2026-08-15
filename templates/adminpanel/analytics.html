@@ -152,6 +152,54 @@
       </div>
 
       <section class="analytics-section">
+        <h3>Conversiones · últimos 7 días</h3>
+
+        <div class="analytics-summary">
+
+          <article class="analytics-card">
+            <p class="analytics-card__label">Clics en GitHub</p>
+            <p class="analytics-card__value">
+              {{ github_clicks }}
+            </p>
+            <p class="analytics-card__help">
+              Personas que salieron del portafolio para revisar código.
+            </p>
+          </article>
+
+          <article class="analytics-card">
+            <p class="analytics-card__label">Clics en Demo</p>
+            <p class="analytics-card__value">
+              {{ demo_clicks }}
+            </p>
+            <p class="analytics-card__help">
+              Aperturas de demostraciones o proyectos desplegados.
+            </p>
+          </article>
+
+          <article class="analytics-card">
+            <p class="analytics-card__label">Acciones de conversión</p>
+            <p class="analytics-card__value">
+              {{ total_conversions }}
+            </p>
+            <p class="analytics-card__help">
+              Total de acciones de interés registradas.
+            </p>
+          </article>
+
+          <article class="analytics-card">
+            <p class="analytics-card__label">Conversión por sesión</p>
+            <p class="analytics-card__value">
+              {{ conversion_rate }}%
+            </p>
+            <p class="analytics-card__help">
+              Acciones registradas respecto de las sesiones.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="analytics-section">
         <h3>Visitas por día · últimos 7 días</h3>
 
         <div class="table-wrap analytics-table-wrap">
@@ -300,3 +348,4 @@
   </div>
 </section>
 {% endblock %}
+
