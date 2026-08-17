@@ -1,87 +1,85 @@
-﻿document.addEventListener("DOMContentLoaded", function () {
-    const viewport = document.querySelector(".home-project-carousel");
-    const track = document.querySelector(".home-project-track");
+document.addEventListener("DOMContentLoaded", function () {
+    const viewport = document.querySelector("[data-home-project-carousel]");
 
-    if (!viewport || !track) return;
+    if (!viewport) return;
 
-    const originals = Array.from(
+    const track = viewport.querySelector(".home-project-track");
+    const previousButton = viewport.querySelector("[data-carousel-prev]");
+    const nextButton = viewport.querySelector("[data-carousel-next]");
+
+    if (!track) return;
+
+    const cards = Array.from(
         track.querySelectorAll(".feature-card")
     );
 
-    if (originals.length < 2) return;
+    if (!cards.length) return;
 
-    originals.forEach(function (card) {
-        const clone = card.cloneNode(true);
+    function getStep() {
+        if (cards.length < 2) {
+            return cards[0].getBoundingClientRect().width;
+        }
 
-        clone.classList.add("carousel-clone");
-        clone.setAttribute("aria-hidden", "true");
-
-        track.appendChild(clone);
-    });
-
-    const firstOriginal = originals[0];
-    const firstClone = track.querySelector(".carousel-clone");
-
-    let position = 0;
-    let previousTime = null;
-    let paused = false;
-
-    const speed = 28;
-
-    function loopDistance() {
         return (
-            firstClone.offsetLeft -
-            firstOriginal.offsetLeft
+            cards[1].offsetLeft -
+            cards[0].offsetLeft
         );
     }
 
-    function animate(time) {
-        if (previousTime === null) {
-            previousTime = time;
+    function updateControls() {
+        const maxScroll =
+            track.scrollWidth -
+            track.clientWidth;
+
+        const tolerance = 4;
+
+        if (previousButton) {
+            previousButton.disabled =
+                track.scrollLeft <= tolerance;
         }
 
-        const delta = Math.min(
-            time - previousTime,
-            40
-        ) / 1000;
-
-        previousTime = time;
-
-        if (!paused) {
-            position += speed * delta;
-
-            const distance = loopDistance();
-
-            if (
-                distance > 0 &&
-                position >= distance
-            ) {
-                position -= distance;
-            }
-
-            track.style.transform =
-                "translate3d(" +
-                (-position) +
-                "px, 0, 0)";
+        if (nextButton) {
+            nextButton.disabled =
+                track.scrollLeft >=
+                maxScroll - tolerance;
         }
-
-        requestAnimationFrame(animate);
     }
 
-    viewport.addEventListener(
-        "mouseenter",
-        function () {
-            paused = true;
-        }
+    function move(direction) {
+        track.scrollBy({
+            left: getStep() * direction,
+            behavior: "smooth"
+        });
+    }
+
+    if (previousButton) {
+        previousButton.addEventListener(
+            "click",
+            function () {
+                move(-1);
+            }
+        );
+    }
+
+    if (nextButton) {
+        nextButton.addEventListener(
+            "click",
+            function () {
+                move(1);
+            }
+        );
+    }
+
+    track.addEventListener(
+        "scroll",
+        updateControls,
+        { passive: true }
     );
 
-    viewport.addEventListener(
-        "mouseleave",
-        function () {
-            paused = false;
-            previousTime = null;
-        }
+    window.addEventListener(
+        "resize",
+        updateControls
     );
 
-    requestAnimationFrame(animate);
+    updateControls();
 });
