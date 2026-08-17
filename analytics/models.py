@@ -1,4 +1,4 @@
-﻿from django.db import models
+from django.db import models
 
 
 class PageView(models.Model):
@@ -60,6 +60,7 @@ class AnalyticsEvent(models.Model):
         ('email_click', 'Email click'),
         ('phone_click', 'Phone click'),
         ('linkedin_click', 'LinkedIn click'),
+        ('whatsapp_click', 'WhatsApp click'),
         ('cv_download', 'CV download'),
         ('contact_submit', 'Contact submit'),
     ]

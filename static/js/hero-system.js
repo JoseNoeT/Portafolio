@@ -10,11 +10,6 @@
 
         hero.dataset.heroAnimated = 'true';
         hero.classList.add('hero-visible');
-
-        var title = hero.querySelector('.hero-page__title');
-        if (title) {
-            title.classList.add('is-animated');
-        }
     }
 
     function initHeroVisibility() {

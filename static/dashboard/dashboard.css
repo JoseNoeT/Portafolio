@@ -6,7 +6,7 @@
 /* ── LAYOUT ────────────────────────────────────────────────── */
 .dash {
   position: relative;
-  padding: calc(var(--navbar-height, 72px) + 32px) 20px 80px;
+  padding: calc(var(--navbar-height, 72px) + 18px) 20px 24px;
   background: var(--gradient-hero);
   color: var(--color-text-primary);
   min-height: 100vh;
@@ -30,7 +30,7 @@
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  margin-bottom: 12px;
 }
 .dash-eyebrow {
   display: inline-block;
@@ -106,15 +106,15 @@
 .dash-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 28px;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 .stat-card {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 20px;
-  border-radius: 18px;
+  padding: 14px 16px;
+  border-radius: 14px;
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
@@ -162,13 +162,13 @@
 
 /* ── PANELS ────────────────────────────────────────────────── */
 .panel {
-  border-radius: 20px;
+  border-radius: 16px;
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--color-border-soft);
   box-shadow: 0 4px 20px var(--color-shadow-base);
-  padding: 24px;
+  padding: 18px;
 }
 .panel-head {
   display: flex;
@@ -209,7 +209,7 @@
 .table-wrap {
   overflow-x: auto;
   margin: 0 -24px -24px;
-  padding: 0 24px 24px;
+  padding: 0 18px 14px;
 }
 .dtable {
   width: 100%;
@@ -218,7 +218,7 @@
 }
 .dtable thead th {
   text-align: left;
-  padding: 12px 10px;
+  padding: 9px 10px;
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--color-text-muted);
@@ -228,7 +228,7 @@
 }
 .th-actions { text-align: center; }
 .dtable tbody td {
-  padding: 14px 10px;
+  padding: 9px 10px;
   vertical-align: middle;
   border-bottom: 1px solid var(--color-surface-subtle);
   font-size: 0.9rem;
@@ -443,6 +443,67 @@
   transform: translateX(4px);
 }
 
+
+
+/* ============================================================
+   ADMIN PANEL — DESKTOP
+   ============================================================ */
+
+.dash .stat-card,
+.dash .panel,
+.dash .qa-card {
+  border: 1px solid rgba(86, 176, 255, 0.22);
+}
+
+.dash .stat-card,
+.dash .panel {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.015),
+    0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.panel--activity-admin {
+  margin-top: 12px;
+}
+
+.admin-overview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 22px;
+  align-items: start;
+}
+
+.admin-activity h3,
+.admin-actions h3 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+.admin-top-projects {
+  margin-top: 12px;
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.qa-card {
+  justify-content: center;
+  padding: 9px 10px;
+  text-align: center;
+}
+
+.qa-card:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .admin-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
 /* ── PROJECT EDITOR ────────────────────────────────────────── */
 .project-editor-shell {
   max-width: 860px;

@@ -5,6 +5,12 @@ from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.shortcuts import redirect, render
 from projects.models import Project
+from analytics.models import AnalyticsEvent
+from analytics.services import (
+    get_request_identity,
+    get_session_hash,
+    is_bot_request,
+)
 
 from .forms import ContactForm
 from .models import ContactMessage, SiteSettings
@@ -14,8 +20,8 @@ logger = logging.getLogger(__name__)
 
 
 def home(request):
-	projects = Project.objects.all()[:3]  # Últimos 3 proyectos
-	return render(request, 'home.html', {'projects': projects})
+    projects = Project.objects.all().order_by('-updated_at')
+    return render(request, 'home.html', {'projects': projects})
 
 
 def contact(request):
@@ -38,6 +44,47 @@ def contact(request):
 				message=message,
 				source='contact_form',
 			)
+
+			# Registrar contacto v?lido recibido y almacenado.
+			user = getattr(request, 'user', None)
+
+			should_record_submit = not (
+			        (
+			                user
+			                and user.is_authenticated
+			                and user.is_staff
+			        )
+			        or is_bot_request(request)
+			)
+
+			if should_record_submit:
+			        (
+			                ip_hash,
+			                user_agent_hash,
+			                visitor_hash,
+			        ) = get_request_identity(request)
+
+			        session_hash = get_session_hash(
+			                visitor_hash
+			        )
+
+			        AnalyticsEvent.objects.create(
+			                event_type='contact_submit',
+			                path=request.path[:255],
+			                project=None,
+			                referrer=(
+			                        request.META.get(
+			                                'HTTP_REFERER',
+			                                '',
+			                        )
+			                        or ''
+			                )[:500],
+			                ip_hash=ip_hash,
+			                user_agent_hash=user_agent_hash,
+			                visitor_hash=visitor_hash,
+			                session_hash=session_hash,
+			        )
+
 
 			email_body = (
 				f"Nombre: {name}\n"
