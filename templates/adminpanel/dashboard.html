@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Dashboard | Admin{% endblock %}
+{% block title %}Panel de administración | Jose Noe{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
@@ -11,331 +11,262 @@
 <section class="dash">
   <div class="container">
 
-    {# ── TOP BAR ─────────────────────────────────────────────── #}
-    <div class="dash-topbar">
+    <!-- CABECERA -->
+    <header class="dash-topbar">
       <div>
         <span class="dash-eyebrow">Panel de administración</span>
-        <h1 class="dash-heading">Bienvenido, {{ user.get_short_name|default:user.username }}</h1>
+        <h1 class="dash-heading">Hola, Jose</h1>
+        <p class="text-muted">
+          Revisa el estado de tu portafolio y administra su contenido.
+        </p>
       </div>
+
       <div class="dash-topbar-actions">
-        <a href="{% url 'project_create' %}" class="btn-primary btn-sm">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Nuevo proyecto
+        <a href="{% url 'projects_list' %}" class="btn-ghost btn-sm">
+          Ver portafolio
         </a>
-        <a href="{% url 'adminpanel_settings' %}" class="btn-ghost btn-sm">Configuración</a>
-        <a href="{% url 'adminpanel_contact_messages' %}" class="btn-ghost btn-sm">Mensajes</a>
-        <a href="{% url 'adminpanel_analytics' %}" class="btn-ghost btn-sm">Analytics</a>
-        <form method="post" action="{% url 'logout' %}" style="margin:0;">
+
+        <form method="post" action="{% url 'logout' %}">
           {% csrf_token %}
           <button type="submit" class="btn-ghost btn-sm">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
             Salir
           </button>
         </form>
       </div>
-    </div>
+    </header>
 
-    {# ── STAT CARDS ──────────────────────────────────────────── #}
+
+    <!-- RESUMEN -->
     <div class="dash-stats">
+
       <article class="stat-card">
-        <div class="stat-icon stat-icon--blue">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        </div>
-        <div class="stat-body">
-          <span class="stat-label">Proyectos totales</span>
-          <span class="stat-value">{{ total_projects }}</span>
+        <div>
+          <span class="stat-label">Proyectos publicados</span>
+          <strong class="stat-value">{{ total_projects }}</strong>
         </div>
       </article>
 
       <article class="stat-card">
-        <div class="stat-icon stat-icon--green">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        </div>
-        <div class="stat-body">
-          <span class="stat-label">Con imagen</span>
-          <span class="stat-value">{{ with_image }}<span class="stat-sub">/{{ total_projects }}</span></span>
-        </div>
-      </article>
-
-      <article class="stat-card">
-        <div class="stat-icon stat-icon--purple">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        </div>
-        <div class="stat-body">
-          <span class="stat-label">Con GitHub</span>
-          <span class="stat-value">{{ with_github }}<span class="stat-sub">/{{ total_projects }}</span></span>
-        </div>
-      </article>
-
-      <article class="stat-card">
-        <div class="stat-icon stat-icon--amber">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <div class="stat-body">
-          <span class="stat-label">Últimos 30 días</span>
-          <span class="stat-value">{{ recent_count }}</span>
-        </div>
-      </article>
-
-      <article class="stat-card">
-        <div class="stat-icon stat-icon--blue">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </div>
-        <div class="stat-body">
-          <span class="stat-label">Mensajes totales</span>
-          <span class="stat-value">{{ total_messages }}</span>
-        </div>
-      </article>
-
-      <article class="stat-card">
-        <div class="stat-icon stat-icon--green">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        </div>
-        <div class="stat-body">
-          <span class="stat-label">Mensajes no leídos</span>
-          <span class="stat-value">{{ unread_messages }}</span>
-        </div>
-      </article>
-
-      <article class="stat-card">
-        <div class="stat-icon stat-icon--purple">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>
-        </div>
-        <div class="stat-body">
+        <div>
           <span class="stat-label">Visitas hoy</span>
-          <span class="stat-value">{{ visits_today }}</span>
+          <strong class="stat-value">{{ visits_today }}</strong>
         </div>
       </article>
 
       <article class="stat-card">
-        <div class="stat-icon stat-icon--amber">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>
-        </div>
-        <div class="stat-body">
-          <span class="stat-label">Visitas 7 días</span>
-          <span class="stat-value">{{ visits_7_days }}</span>
+        <div>
+          <span class="stat-label">Visitas en 30 días</span>
+          <strong class="stat-value">{{ visits_30_days }}</strong>
         </div>
       </article>
 
       <article class="stat-card">
-        <div class="stat-icon stat-icon--blue">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        </div>
-        <div class="stat-body">
-          <span class="stat-label">Visitas 30 días</span>
-          <span class="stat-value">{{ visits_30_days }}</span>
+        <div>
+          <span class="stat-label">Mensajes nuevos</span>
+          <strong class="stat-value">{{ unread_messages }}</strong>
         </div>
       </article>
+
     </div>
 
-    {# ── MAIN GRID ───────────────────────────────────────────── #}
-    <div class="dash-grid">
 
-      {# ── PROJECT TABLE ── #}
-      <div class="panel panel--wide">
-        <div class="panel-head">
-          <h2>Proyectos recientes</h2>
-          <a href="{% url 'project_create' %}" class="link-accent">+ Agregar</a>
-        </div>
+    <!-- PROYECTOS -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Tus proyectos</h2>
 
-        <div class="table-wrap">
-          <table class="dtable">
-            <thead>
-              <tr>
-                <th>Proyecto</th>
-                <th>Categoría</th>
-                <th>Links</th>
-                <th>Fecha</th>
-                <th class="th-actions">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for p in recent_projects %}
-              <tr>
-                <td>
-                  <div class="proj-cell">
-                    {% if p.image %}
-                    <img src="{{ p.image.url }}" alt="" class="proj-thumb" loading="lazy" onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';">
-                    {% elif p.static_image_path %}
-                    <img src="{% static p.static_image_path %}" alt="" class="proj-thumb" loading="lazy" onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';">
-                    {% else %}
-                    <span class="proj-thumb proj-thumb--empty">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                    </span>
-                    {% endif %}
-                    <div>
-                      <span class="proj-name">{{ p.title }}</span>
-                      <span class="proj-desc">{{ p.short_description|truncatewords:8 }}</span>
-                    </div>
-                  </div>
-                </td>
-                <td><span class="badge badge--{{ p.category }}">{{ p.get_category_display }}</span></td>
-                <td>
-                  <div class="link-icons">
-                    {% if p.github_url %}
-                    <a href="{{ p.github_url }}" target="_blank" rel="noopener" class="link-icon" title="GitHub">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61a3.18 3.18 0 0 0-1.33-1.76c-1.09-.74.08-.73.08-.73a2.52 2.52 0 0 1 1.84 1.24 2.56 2.56 0 0 0 3.5 1 2.56 2.56 0 0 1 .76-1.6c-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 0 1 1.24-3.22 4.3 4.3 0 0 1 .12-3.18s1-.32 3.3 1.23a11.38 11.38 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23a4.3 4.3 0 0 1 .12 3.18 4.64 4.64 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92a2.87 2.87 0 0 1 .82 2.23v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg>
-                    </a>
-                    {% endif %}
-                    {% if p.live_url %}
-                    <a href="{{ p.live_url }}" target="_blank" rel="noopener" class="link-icon" title="Demo">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    </a>
-                    {% endif %}
-                    {% if not p.github_url and not p.live_url %}
-                    <span class="text-muted">—</span>
-                    {% endif %}
-                  </div>
-                </td>
-                <td class="td-date">{{ p.created_at|date:"d M Y" }}</td>
-                <td>
-                  <div class="row-actions">
-                    <a href="{% url 'project_edit' p.slug %}" class="btn-icon" title="Editar">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                    </a>
-                    <a href="{% url 'project_delete' p.slug %}" class="btn-icon btn-icon--danger" title="Eliminar">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-                    </a>
-                  </div>
-                </td>
-              </tr>
-              {% empty %}
-              <tr>
-                <td colspan="5" class="table-empty">
-                  <div class="empty-state">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                    <p>No hay proyectos todavía</p>
-                    <a href="{% url 'project_create' %}" class="btn-primary btn-sm">Crear el primero</a>
-                  </div>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
+        <a href="{% url 'project_create' %}" class="btn-primary btn-sm">
+          + Nuevo proyecto
+        </a>
       </div>
 
-      {# ── SIDEBAR ── #}
-      <div class="dash-sidebar">
+      <div class="table-wrap">
+        <table class="dtable">
+          <thead>
+            <tr>
+              <th>Proyecto</th>
+              <th>Tipo</th>
+              <th>Estado</th>
+              <th class="th-actions">Acción</th>
+            </tr>
+          </thead>
 
-        {# Image health #}
-        <div class="panel">
-          <div class="panel-head">
-            <h2>Estado de imágenes</h2>
-          </div>
-          <div class="img-health">
-            <div class="img-bar">
-              {% if total_projects > 0 %}
-              <div class="img-bar-fill" style="width:{% widthratio with_image total_projects 100 %}%"></div>
-              {% endif %}
-            </div>
-            <div class="img-health-legend">
-              <span class="legend-dot legend-dot--ok"></span>
-              <span>{{ with_image }} con imagen</span>
-              <span class="legend-dot legend-dot--miss"></span>
-              <span>{{ without_image }} sin imagen</span>
-            </div>
-            {% if without_image > 0 %}
-            <p class="img-health-tip">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              {{ without_image }} proyecto{{ without_image|pluralize }} necesita{{ without_image|pluralize:"n" }} imagen para verse bien en el portafolio.
-            </p>
+          <tbody>
+            {% for p in recent_projects %}
+            <tr>
+
+              <td>
+                <div class="proj-cell">
+
+                  {% if p.image %}
+                    <img
+                      src="{{ p.image.url }}"
+                      alt=""
+                      class="proj-thumb"
+                      loading="lazy"
+                    >
+                  {% elif p.static_image_path %}
+                    <img
+                      src="{% static p.static_image_path %}"
+                      alt=""
+                      class="proj-thumb"
+                      loading="lazy"
+                    >
+                  {% else %}
+                    <span class="proj-thumb proj-thumb--empty">—</span>
+                  {% endif %}
+
+                  <span class="proj-name">{{ p.title }}</span>
+                </div>
+              </td>
+
+              <td>
+                <span class="badge badge--{{ p.category }}">
+                  {% if p.category == "academic" %}
+  Académico
+{% elif p.category == "professional" %}
+  Profesional
+{% elif p.category == "personal" %}
+  Personal
+{% else %}
+  {{ p.get_category_display }}
+{% endif %}
+                </span>
+              </td>
+
+              <td>
+                {% if p.image or p.static_image_path %}
+                  <span>Completo</span>
+                {% else %}
+                  <span>Falta imagen</span>
+                {% endif %}
+              </td>
+
+              <td class="th-actions">
+                <a
+                  href="{% url 'project_edit' p.slug %}"
+                  class="link-accent"
+                >
+                  Editar
+                </a>
+              </td>
+
+            </tr>
+
+            {% empty %}
+            <tr>
+              <td colspan="4" class="table-empty">
+                Aún no has publicado proyectos.
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      {% if without_image %}
+        <p class="text-muted">
+          {{ without_image }}
+          proyecto{{ without_image|pluralize }}
+          necesita{{ without_image|pluralize:"n" }}
+          una imagen.
+        </p>
+      {% endif %}
+    </section>
+
+
+    <!-- ACTIVIDAD Y ADMINISTRACIÓN -->
+<section class="panel panel--activity-admin">
+
+  <div class="panel-head">
+    <h2>Actividad</h2>
+
+    <a href="{% url 'adminpanel_analytics' %}" class="link-accent">
+      Ver estadísticas
+    </a>
+  </div>
+
+  <div class="admin-overview-grid">
+
+    <div class="admin-activity">
+      <h3>Páginas más visitadas</h3>
+
+      <ul class="cat-list">
+        {% for p in top_pages %}
+        <li class="cat-item">
+          <span>
+            {% if p.path == "/" %}
+              Inicio
+            {% elif p.path == "/projects/" %}
+              Proyectos
+            {% elif p.path == "/contact/" %}
+              Contacto
+            {% elif p.path == "/metodologia/" %}
+              Metodología
+            {% elif p.path == "/about/" %}
+              Sobre mí
+            {% elif p.path == "/servicios/" %}
+              Servicios
+            {% else %}
+              {{ p.path }}
             {% endif %}
-          </div>
-        </div>
+          </span>
 
-        {# Categories #}
-        <div class="panel">
-          <div class="panel-head">
-            <h2>Por categoría</h2>
-          </div>
-          <ul class="cat-list">
-            {% for cat in categories %}
-            <li class="cat-item">
-              <span class="badge badge--{{ cat.category }}">{{ cat.category|capfirst }}</span>
-              <span class="cat-count">{{ cat.count }}</span>
-            </li>
-            {% empty %}
-            <li class="cat-item text-muted">Sin categorías</li>
-            {% endfor %}
-          </ul>
-        </div>
+          <strong class="cat-count">{{ p.total }}</strong>
+        </li>
 
-        {# Quick actions #}
-        <div class="panel">
-          <div class="panel-head">
-            <h2>Acciones rápidas</h2>
-          </div>
-          <div class="quick-actions">
-            <a href="{% url 'project_create' %}" class="qa-card">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              <span>Nuevo proyecto</span>
-            </a>
-            <a href="{% url 'projects_list' %}" class="qa-card">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <span>Ver portafolio</span>
-            </a>
-            <a href="{% url 'home' %}" class="qa-card">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              <span>Ir al inicio</span>
-            </a>
-            <a href="{% url 'adminpanel_settings' %}" class="qa-card">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-              <span>Configurar sitio</span>
-            </a>
-            <a href="{% url 'adminpanel_contact_messages' %}" class="qa-card">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v12H5.17L4 17.17V4z"/></svg>
-              <span>Ver mensajes</span>
-            </a>
-            <a href="{% url 'adminpanel_analytics' %}" class="qa-card">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 17 9 11 13 15 21 7"/></svg>
-              <span>Analytics completo</span>
-            </a>
-          </div>
-        </div>
+        {% empty %}
+        <li class="text-muted">
+          Aún no hay visitas registradas.
+        </li>
+        {% endfor %}
+      </ul>
 
-        <div class="panel">
-          <div class="panel-head">
-            <h2>Páginas más vistas</h2>
-          </div>
-          <ul class="cat-list">
-            {% for p in top_pages %}
-            <li class="cat-item"><span>{{ p.path }}</span><span class="cat-count">{{ p.total }}</span></li>
-            {% empty %}
-            <li class="cat-item text-muted">Sin datos</li>
-            {% endfor %}
-          </ul>
-        </div>
+      {% if top_projects %}
+      <div class="admin-top-projects">
+        <h3>Proyectos más visitados</h3>
 
-        <div class="panel">
-          <div class="panel-head">
-            <h2>Proyectos más vistos</h2>
-          </div>
-          <ul class="cat-list">
-            {% for p in top_projects %}
-            <li class="cat-item"><span>{{ p.project__title }}</span><span class="cat-count">{{ p.total }}</span></li>
-            {% empty %}
-            <li class="cat-item text-muted">Sin datos</li>
-            {% endfor %}
-          </ul>
-        </div>
-
-        <div class="panel">
-          <div class="panel-head">
-            <h2>Últimas visitas</h2>
-          </div>
-          <ul class="cat-list">
-            {% for v in latest_visits %}
-            <li class="cat-item"><span>{{ v.path }}</span><span class="cat-count">{{ v.created_at|date:"d/m H:i" }}</span></li>
-            {% empty %}
-            <li class="cat-item text-muted">Sin visitas</li>
-            {% endfor %}
-          </ul>
-        </div>
-
+        <ul class="cat-list">
+          {% for p in top_projects %}
+          <li class="cat-item">
+            <span>{{ p.project__title }}</span>
+            <strong class="cat-count">{{ p.total }}</strong>
+          </li>
+          {% endfor %}
+        </ul>
       </div>
-
+      {% endif %}
     </div>
+
+
+    <div class="admin-actions">
+      <h3>Administrar</h3>
+
+      <div class="quick-actions">
+        <a href="{% url 'project_create' %}" class="qa-card">
+          Nuevo proyecto
+        </a>
+
+        <a href="{% url 'adminpanel_contact_messages' %}" class="qa-card">
+          Mensajes
+        </a>
+
+        <a href="{% url 'adminpanel_analytics' %}" class="qa-card">
+          Estadísticas
+        </a>
+
+        <a href="{% url 'adminpanel_settings' %}" class="qa-card">
+          Configuración
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
   </div>
 </section>
 {% endblock %}
+
+{% block footer %}{% endblock %}

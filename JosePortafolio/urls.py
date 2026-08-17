@@ -1,4 +1,4 @@
-"""
+﻿"""
 URL configuration for JosePortafolio project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -35,7 +35,9 @@ urlpatterns = [
     path('projects/', include('projects.urls')),
     path('api/projects/', include('projects.api.urls')),
     path('adminpanel/', include('adminpanel.urls')),
+    path('analytics/', include('analytics.urls')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

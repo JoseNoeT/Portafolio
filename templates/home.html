@@ -163,34 +163,82 @@
     <div class="container">
         <div class="section-header">
             <span class="section-eyebrow reveal">Proyectos</span>
-            <h2 class="section-title reveal">Proyectos que muestran proceso, estructura y solución</h2>
+            <h2 class="section-title reveal">
+                Proyectos que muestran proceso, estructura y solución
+            </h2>
             <p class="section-desc reveal">
-                Una selección de trabajos donde he aplicado desarrollo web, organización técnica y resolución de problemas en contextos reales.
+                Una selección de trabajos donde he aplicado desarrollo web,
+                organización técnica y resolución de problemas en contextos reales.
             </p>
         </div>
 
-        <div class="feature-grid">
+        <div class="home-project-carousel reveal" data-home-project-carousel>
             {% if projects %}
-                                {% for project in projects %}
-                                        <article class="feature-card reveal">
-                                                <div class="card-media">
-                                                    {% if project.image %}
-                                                        <img src="{{ project.image.url }}" alt="{{ project.title }}" onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';">
-                                                    {% elif project.static_image_path %}
-                                                        <img src="{% static project.static_image_path %}" alt="{{ project.title }}" onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';">
-                                                    {% else %}
-                                                        <div class="media-placeholder" aria-hidden="true"></div>
-                                                    {% endif %}
-                                                </div>
-                                                <h3 class="feature-card__title">{{ project.title }}</h3>
-                                                <p class="feature-card__text">{{ project.description|truncatewords:20 }}</p>
-                                                <a href="{% url 'project_detail' project.slug %}" class="btn btn-outline btn-sm" style="margin-top:12px">
-                                                        Ver caso de estudio
-                                                </a>
-                                        </article>
-                                {% endfor %}
+                <div class="home-project-track">
+                    {% for project in projects %}
+                        <article class="feature-card reveal">
+
+                            <div class="card-media">
+                                {% if project.image %}
+                                    <img
+                                        src="{{ project.image.url }}"
+                                        alt="{{ project.title }}"
+                                        onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';"
+                                    >
+                                {% elif project.static_image_path %}
+                                    <img
+                                        src="{% static project.static_image_path %}"
+                                        alt="{{ project.title }}"
+                                        onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';"
+                                    >
+                                {% else %}
+                                    <div class="media-placeholder" aria-hidden="true"></div>
+                                {% endif %}
+                            </div>
+
+                            <h3 class="feature-card__title">
+                                {{ project.title }}
+                            </h3>
+
+                            <p class="feature-card__text">
+                                {{ project.description|truncatewords:20 }}
+                            </p>
+
+                            <a
+                                href="{% url 'project_detail' project.slug %}"
+                                class="btn btn-outline btn-sm"
+                                style="margin-top:12px"
+                            >
+                                Ver caso de estudio
+                            </a>
+
+                        </article>
+                    {% endfor %}
+                </div>
+
+                <div
+                    class="home-project-controls"
+                    aria-label="Controles del carrusel"
+                >
+                    <button
+                        type="button"
+                        class="home-project-control"
+                        data-carousel-prev
+                        aria-label="Proyecto anterior"
+                    >&larr;</button>
+
+                    <button
+                        type="button"
+                        class="home-project-control"
+                        data-carousel-next
+                        aria-label="Proyecto siguiente"
+                    >&rarr;</button>
+                </div>
+
             {% else %}
-                <p class="section-desc reveal">No hay proyectos disponibles en este momento.</p>
+                <p class="section-desc reveal">
+                    No hay proyectos disponibles en este momento.
+                </p>
             {% endif %}
         </div>
     </div>
@@ -219,6 +267,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 <script src="{% static 'js/animations/hero.js' %}"></script>
 <script src="{% static 'js/home.js' %}" defer></script>
+<script src="{% static 'js/home-project-carousel.js' %}" defer></script>
 <script>
   (function () {
     var btn = document.getElementById('theme-toggle');

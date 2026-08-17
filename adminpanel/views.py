@@ -1,4 +1,4 @@
-from django.contrib import messages
+﻿from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import PermissionDenied
@@ -10,7 +10,7 @@ import logging
 from django.views.decorators.http import require_POST
 from django.views.generic import TemplateView
 
-from analytics.models import ProjectView
+from analytics.models import AnalyticsEvent, ProjectView
 from analytics.services import get_visible_pageviews_queryset
 from core.forms import SiteSettingsForm
 from core.models import ContactMessage, SiteSettings
@@ -141,13 +141,43 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
 def analytics_dashboard(request):
     if not _staff_check(request.user):
         raise PermissionDenied
+
     now = timezone.now()
     seven_days_ago = now - timezone.timedelta(days=7)
 
     pageviews = get_visible_pageviews_queryset()
+    recent_pageviews = pageviews.filter(
+        created_at__gte=seven_days_ago
+    )
+
+    total_pageviews = recent_pageviews.count()
+
+    unique_visitors = (
+        recent_pageviews
+        .exclude(visitor_hash__isnull=True)
+        .exclude(visitor_hash='')
+        .values('visitor_hash')
+        .distinct()
+        .count()
+    )
+
+    total_sessions = (
+        recent_pageviews
+        .exclude(session_hash__isnull=True)
+        .exclude(session_hash='')
+        .values('session_hash')
+        .distinct()
+        .count()
+    )
+
+    pages_per_session = (
+        round(total_pageviews / total_sessions, 1)
+        if total_sessions
+        else 0
+    )
 
     visits_by_day = list(
-        pageviews.filter(created_at__gte=seven_days_ago)
+        recent_pageviews
         .annotate(day=TruncDate('created_at'))
         .values('day')
         .annotate(total=Count('id'))
@@ -155,30 +185,68 @@ def analytics_dashboard(request):
     )
 
     top_pages = list(
-        pageviews.values('path')
+        pageviews
+        .values('path')
         .annotate(total=Count('id'))
         .order_by('-total')[:20]
     )
 
     top_projects = list(
-        ProjectView.objects.values('project__title')
+        ProjectView.objects
+        .values('project__title')
         .annotate(total=Count('id'))
         .order_by('-total')[:20]
     )
 
     latest_visits = pageviews.order_by('-created_at')[:10]
 
+    recent_events = AnalyticsEvent.objects.filter(
+        created_at__gte=seven_days_ago
+    )
+
+    github_clicks = recent_events.filter(
+        event_type='github_click'
+    ).count()
+
+    demo_clicks = recent_events.filter(
+        event_type='demo_click'
+    ).count()
+
+    total_conversions = recent_events.count()
+
+    converted_sessions = (
+        recent_events
+        .exclude(session_hash__isnull=True)
+        .exclude(session_hash='')
+        .values('session_hash')
+        .distinct()
+        .count()
+    )
+
+    conversion_rate = (
+        round((converted_sessions / total_sessions) * 100, 1)
+        if total_sessions
+        else 0
+    )
+
     return render(
         request,
         'adminpanel/analytics.html',
         {
+            'total_pageviews': total_pageviews,
+            'unique_visitors': unique_visitors,
+            'total_sessions': total_sessions,
+            'pages_per_session': pages_per_session,
             'visits_by_day': visits_by_day,
             'top_pages': top_pages,
             'top_projects': top_projects,
             'latest_visits': latest_visits,
+            'github_clicks': github_clicks,
+            'demo_clicks': demo_clicks,
+            'total_conversions': total_conversions,
+            'conversion_rate': conversion_rate,
         },
     )
-
 
 @login_required
 def settings_view(request):
@@ -190,7 +258,7 @@ def settings_view(request):
         form = SiteSettingsForm(request.POST, instance=site_settings)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Configuración actualizada correctamente.')
+            messages.success(request, 'ConfiguraciÃ³n actualizada correctamente.')
             return redirect('adminpanel_settings')
     else:
         form = SiteSettingsForm(instance=site_settings)
@@ -243,7 +311,7 @@ def mark_contact_message_read(request, pk):
     message_obj.is_read = True
     message_obj.save(update_fields=['is_read'])
 
-    messages.success(request, 'Mensaje marcado como leído.')
+    messages.success(request, 'Mensaje marcado como leÃ­do.')
     return redirect('adminpanel_contact_messages')
 
 
@@ -263,3 +331,5 @@ def mark_contact_message_replied(request, pk):
 
     messages.success(request, 'Mensaje marcado como respondido.')
     return redirect('adminpanel_contact_message_detail', pk=pk)
+
+

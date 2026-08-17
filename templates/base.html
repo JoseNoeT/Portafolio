@@ -81,7 +81,7 @@
 
                 {% if user.is_authenticated and user.is_staff %}
                 <div class="nav-cta-mobile">
-                    <a href="{% url 'dashboard' %}" class="btn btn-secondary">Dashboard</a>
+                    <a href="{% url 'dashboard' %}" class="btn btn-secondary">Panel administrativo</a>
                 </div>
                 {% endif %}
             </nav>
@@ -92,7 +92,7 @@
                 {% if user.is_authenticated and user.is_staff %}
                 <div class="nav-cta desktop-only">
                     <a href="{% url 'dashboard' %}" class="btn btn-secondary" id="navbar-admin">
-                        Dashboard
+                        Panel administrativo
                     </a>
                 </div>
                 {% else %}
@@ -138,7 +138,9 @@
     </main>
 
     <!-- FOOTER -->
+    {% block footer %}
     {% include "partials/footer.html" %}
+{% endblock %}
 
     <!-- JAVASCRIPT -->
 

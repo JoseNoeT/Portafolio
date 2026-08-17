@@ -98,3 +98,157 @@ class AnalyticsIntegrationTests(TestCase):
         self.client.login(username='staffanalytics', password='admin1234')
         response = self.client.get(reverse('adminpanel_analytics'))
         self.assertEqual(response.status_code, 200)
+
+def test_robots_txt_is_not_tracked(self):
+    self.client.get('/robots.txt')
+    self.assertEqual(PageView.objects.count(), 0)
+
+
+def test_known_bot_is_not_tracked(self):
+    self.client.get(
+        '/',
+        HTTP_USER_AGENT='Mozilla/5.0 Googlebot/2.1'
+    )
+    self.assertEqual(PageView.objects.count(), 0)
+
+
+def test_regular_browser_is_tracked(self):
+    self.client.get(
+        '/',
+        HTTP_USER_AGENT=(
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+            'AppleWebKit/537.36 Chrome/151.0 Safari/537.36'
+        )
+    )
+    self.assertEqual(PageView.objects.count(), 1)
+class AnalyticsFilteringTests(TestCase):
+    def test_robots_txt_is_not_tracked(self):
+        self.client.get('/robots.txt')
+        self.assertEqual(PageView.objects.count(), 0)
+
+    def test_known_bot_is_not_tracked(self):
+        self.client.get(
+            '/',
+            HTTP_USER_AGENT='Mozilla/5.0 Googlebot/2.1'
+        )
+        self.assertEqual(PageView.objects.count(), 0)
+
+    def test_regular_browser_is_tracked(self):
+        self.client.get(
+            '/',
+            HTTP_USER_AGENT=(
+                'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                'AppleWebKit/537.36 Chrome/151.0 Safari/537.36'
+            )
+        )
+        self.assertEqual(PageView.objects.count(), 1)
+
+class AnalyticsStatusCodeTests(TestCase):
+    def test_404_is_not_tracked(self):
+        response = self.client.get(
+            '/ruta-que-no-existe-analytics-v2/',
+            HTTP_USER_AGENT='Mozilla/5.0 Chrome/151.0'
+        )
+
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(PageView.objects.count(), 0)
+
+class AnalyticsSessionTests(TestCase):
+    def test_same_visitor_keeps_same_visitor_hash(self):
+        self.client.get(
+            '/',
+            HTTP_USER_AGENT='Mozilla/5.0 Chrome/151.0',
+            REMOTE_ADDR='10.0.0.1',
+        )
+        self.client.get(
+            '/projects/',
+            HTTP_USER_AGENT='Mozilla/5.0 Chrome/151.0',
+            REMOTE_ADDR='10.0.0.1',
+        )
+
+        views = list(PageView.objects.order_by('created_at'))
+
+        self.assertEqual(len(views), 2)
+        self.assertEqual(
+            views[0].visitor_hash,
+            views[1].visitor_hash,
+        )
+
+    def test_same_visitor_within_timeout_keeps_same_session(self):
+        self.client.get(
+            '/',
+            HTTP_USER_AGENT='Mozilla/5.0 Chrome/151.0',
+            REMOTE_ADDR='10.0.0.2',
+        )
+        self.client.get(
+            '/projects/',
+            HTTP_USER_AGENT='Mozilla/5.0 Chrome/151.0',
+            REMOTE_ADDR='10.0.0.2',
+        )
+
+        views = list(PageView.objects.order_by('created_at'))
+
+        self.assertEqual(len(views), 2)
+        self.assertEqual(
+            views[0].session_hash,
+            views[1].session_hash,
+        )
+
+    def test_different_visitors_get_different_visitor_hashes(self):
+        self.client.get(
+            '/',
+            HTTP_USER_AGENT='Mozilla/5.0 Chrome/151.0',
+            REMOTE_ADDR='10.0.0.3',
+        )
+        self.client.get(
+            '/',
+            HTTP_USER_AGENT='Mozilla/5.0 Firefox/141.0',
+            REMOTE_ADDR='10.0.0.4',
+        )
+
+        views = list(PageView.objects.order_by('created_at'))
+
+        self.assertEqual(len(views), 2)
+        self.assertNotEqual(
+            views[0].visitor_hash,
+            views[1].visitor_hash,
+        )
+
+from datetime import timedelta
+from unittest.mock import patch
+
+from django.utils import timezone
+
+
+class AnalyticsSessionTimeoutTests(TestCase):
+    def test_session_expires_after_30_minutes(self):
+        start = timezone.now()
+
+        with patch('analytics.services.timezone.now', return_value=start):
+            self.client.get(
+                '/',
+                HTTP_USER_AGENT='Mozilla/5.0 Chrome/151.0',
+                REMOTE_ADDR='10.0.0.10',
+            )
+
+        with patch(
+            'analytics.services.timezone.now',
+            return_value=start + timedelta(minutes=31),
+        ):
+            self.client.get(
+                '/projects/',
+                HTTP_USER_AGENT='Mozilla/5.0 Chrome/151.0',
+                REMOTE_ADDR='10.0.0.10',
+            )
+
+        views = list(PageView.objects.order_by('created_at'))
+
+        self.assertEqual(len(views), 2)
+        self.assertEqual(
+            views[0].visitor_hash,
+            views[1].visitor_hash,
+        )
+        self.assertNotEqual(
+            views[0].session_hash,
+            views[1].session_hash,
+        )

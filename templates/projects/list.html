@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block hero %}
-{% include "components/hero.html" with eyebrow="Portafolio" title="Proyectos que reflejan proceso y solución" subtitle="Selección de trabajos donde aplico desarrollo web, estructura y resolución de necesidades reales." %}
+{% include "components/hero.html" with eyebrow="Proyectos" title="Proyectos que reflejan proceso y solución" subtitle="Selección de trabajos donde aplico desarrollo web, estructura y resolución de necesidades reales." %}
 {% endblock %}
 
 {% block content %}
@@ -32,7 +32,19 @@
   <div class="container">
 
     {% if projects %}
-    <div class="projects-grid">
+    <div class="projects-carousel" aria-label="Proyectos destacados">
+
+      <button
+        class="carousel-control carousel-control--prev"
+        type="button"
+        aria-label="Proyecto anterior"
+        data-carousel-prev
+      >
+        &#10094;
+      </button>
+
+      <div class="projects-carousel__viewport" data-carousel-viewport>
+        <div class="projects-grid" data-carousel-track>
 
       {% for project in projects %}
       <article class="project-card"
@@ -72,13 +84,13 @@
             </a>
 
             {% if project.github_url %}
-            <a class="btn btn-ghost btn-sm" href="{{ project.github_url }}" target="_blank" rel="noopener">
+            <a class="btn btn-ghost btn-sm" href="{% url 'analytics:outbound_event' 'github_click' project.slug %}" target="_blank" rel="noopener">
               GitHub
             </a>
             {% endif %}
 
             {% if project.live_url %}
-            <a class="btn btn-ghost btn-sm" href="{{ project.live_url }}" target="_blank" rel="noopener">
+            <a class="btn btn-ghost btn-sm" href="{% url 'analytics:outbound_event' 'demo_click' project.slug %}" target="_blank" rel="noopener">
               Demo
             </a>
             {% endif %}
@@ -87,6 +99,24 @@
 
       </article>
       {% endfor %}
+
+        </div>
+      </div>
+
+      <button
+        class="carousel-control carousel-control--next"
+        type="button"
+        aria-label="Proyecto siguiente"
+        data-carousel-next
+      >
+        &#10095;
+      </button>
+
+      <div
+        class="carousel-status"
+        data-carousel-status
+        aria-live="polite"
+      ></div>
 
     </div>
     {% else %}

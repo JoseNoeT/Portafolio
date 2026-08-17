@@ -39,7 +39,7 @@
       <h4>Contacto directo</h4>
       <p>¿Tienes dudas o quieres trabajar conmigo? Escríbeme por correo o usa la página de contacto.</p>
       <div class="footer-contact-form" aria-label="Canales de contacto disponibles">
-        <a href="mailto:jmnt2012@gmail.com" class="btn-footer">Enviar correo</a>
+        <a href="{% url 'analytics:contact_outbound_event' 'email_click' %}" class="btn-footer">Enviar correo</a>
         <a href="{% url 'contact' %}" class="btn-footer">Ir a contacto</a>
       </div>
     </div>
