@@ -409,33 +409,25 @@
     align-items: stretch;
     gap: 22px;
 
-    width: 100%;
-    max-width: 100%;
+    width: max-content;
+    max-width: none;
 
     padding: 8px 0 18px;
     margin: 0;
 
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: visible;
 
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.home-project-track::-webkit-scrollbar {
-    display: none;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
 }
 
 .home-project-track .feature-card {
-    flex: 0 0 calc((100% - 44px) / 3);
-    width: calc((100% - 44px) / 3);
-    min-width: 0;
-    max-width: none;
+    flex: 0 0 320px;
+    width: 320px;
+    min-width: 320px;
+    max-width: 320px;
 
     box-sizing: border-box;
-    scroll-snap-align: start;
 }
 
 .home-project-controls {
@@ -453,36 +445,18 @@
     align-items: center;
     justify-content: center;
 
-    border-radius: 12px;
+    border-radius: 50%;
     border: 1px solid var(--color-border-soft);
 
-    background: var(--color-surface-subtle);
-    color: var(--color-text-primary);
+    background: var(--glass-bg);
+    color: var(--color-heading);
 
+    font-size: 22px;
     cursor: pointer;
-    transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        background 0.2s ease;
 }
 
 .home-project-control:hover {
     transform: translateY(-2px);
-    border-color: var(--color-border-accent-soft);
-    background: var(--color-accent-glass);
-}
-
-.home-project-control:disabled {
-    opacity: 0.4;
-    cursor: default;
-    transform: none;
-}
-
-@media (max-width: 1000px) {
-    .home-project-track .feature-card {
-        flex-basis: calc((100% - 22px) / 2);
-        width: calc((100% - 22px) / 2);
-    }
 }
 
 @media (max-width: 700px) {
@@ -491,8 +465,9 @@
     }
 
     .home-project-track .feature-card {
-        flex: 0 0 86%;
-        width: 86%;
-        min-width: 86%;
+        flex: 0 0 84vw;
+        width: 84vw;
+        min-width: 84vw;
+        max-width: 340px;
     }
 }
