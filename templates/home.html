@@ -4,7 +4,9 @@
 {% block title %}Inicio - Jose Noe{% endblock %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <link rel="stylesheet" href="{% static 'css/pages/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/project-carousel.css' %}">
 {% endblock %}
 
 {% block hero %}
@@ -75,6 +77,122 @@
 
 
 {% block content %}
+
+<!-- FEATURED PROJECTS -->
+<section class="section-shell projects-showcase" id="projects">
+    <div class="container">
+
+        <div class="section-header">
+            <span class="section-eyebrow reveal">Proyectos</span>
+
+            <h2 class="section-title reveal">
+                Proyectos que muestran proceso, estructura y solución
+            </h2>
+
+            <p class="section-desc reveal">
+                Una selección de trabajos donde he aplicado desarrollo web,
+                organización técnica y resolución de problemas en contextos reales.
+            </p>
+        </div>
+
+        {% if projects %}
+
+        <div class="swiper portfolio-swiper reveal">
+
+            <div class="swiper-wrapper">
+
+                {% for project in projects %}
+
+                <article class="swiper-slide project-slide">
+
+                    <div class="panorama-card">
+
+                        <div class="panorama-card__media">
+
+                            {% if project.image %}
+                                <img
+                                    src="{{ project.image.url }}"
+                                    alt="{{ project.title }}"
+                                    onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';"
+                                >
+                            {% elif project.static_image_path %}
+                                <img
+                                    src="{% static project.static_image_path %}"
+                                    alt="{{ project.title }}"
+                                    onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';"
+                                >
+                            {% else %}
+                                <div class="panorama-card__placeholder">
+                                    <span>{{ project.title }}</span>
+                                </div>
+                            {% endif %}
+
+                            <div class="panorama-card__gradient"></div>
+
+                            <span class="panorama-card__category">
+                                {{ project.get_category_display }}
+                            </span>
+
+                        </div>
+
+                        <div class="panorama-card__body">
+
+                            <h3>{{ project.title }}</h3>
+
+                            <p>
+                                {{ project.short_description|default:project.description|truncatewords:22 }}
+                            </p>
+
+                            {% if project.technologies %}
+                            <div class="panorama-card__stack">
+                                {{ project.technologies }}
+                            </div>
+                            {% endif %}
+
+                            <a
+                                href="{% url 'project_detail' project.slug %}"
+                                class="btn btn-outline btn-sm"
+                            >
+                                Ver caso de estudio
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                {% endfor %}
+
+            </div>
+
+            <button
+                class="swiper-button-prev"
+                type="button"
+                aria-label="Proyecto anterior">
+            </button>
+
+            <button
+                class="swiper-button-next"
+                type="button"
+                aria-label="Proyecto siguiente">
+            </button>
+
+            <div class="swiper-pagination"></div>
+
+        </div>
+
+        {% else %}
+
+        <p class="section-desc reveal">
+            No hay proyectos disponibles en este momento.
+        </p>
+
+        {% endif %}
+
+    </div>
+</section>
+
 <!-- METHODOLOGY — split section -->
 <section class="section-shell section-shell--alt" id="methodology">
     <div class="container">
@@ -158,92 +276,6 @@
     </div>
 </section>
 
-<!-- FEATURED PROJECTS -->
-<section class="section-shell" id="projects">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-eyebrow reveal">Proyectos</span>
-            <h2 class="section-title reveal">
-                Proyectos que muestran proceso, estructura y solución
-            </h2>
-            <p class="section-desc reveal">
-                Una selección de trabajos donde he aplicado desarrollo web,
-                organización técnica y resolución de problemas en contextos reales.
-            </p>
-        </div>
-
-        <div class="home-project-carousel reveal" data-home-project-carousel>
-            {% if projects %}
-                <div class="home-project-track">
-                    {% for project in projects %}
-                        <article class="feature-card reveal">
-
-                            <div class="card-media">
-                                {% if project.image %}
-                                    <img
-                                        src="{{ project.image.url }}"
-                                        alt="{{ project.title }}"
-                                        onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';"
-                                    >
-                                {% elif project.static_image_path %}
-                                    <img
-                                        src="{% static project.static_image_path %}"
-                                        alt="{{ project.title }}"
-                                        onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';"
-                                    >
-                                {% else %}
-                                    <div class="media-placeholder" aria-hidden="true"></div>
-                                {% endif %}
-                            </div>
-
-                            <h3 class="feature-card__title">
-                                {{ project.title }}
-                            </h3>
-
-                            <p class="feature-card__text">
-                                {{ project.description|truncatewords:20 }}
-                            </p>
-
-                            <a
-                                href="{% url 'project_detail' project.slug %}"
-                                class="btn btn-outline btn-sm"
-                                style="margin-top:12px"
-                            >
-                                Ver caso de estudio
-                            </a>
-
-                        </article>
-                    {% endfor %}
-                </div>
-
-                <div
-                    class="home-project-controls"
-                    aria-label="Controles del carrusel"
-                >
-                    <button
-                        type="button"
-                        class="home-project-control"
-                        data-carousel-prev
-                        aria-label="Proyecto anterior"
-                    >&larr;</button>
-
-                    <button
-                        type="button"
-                        class="home-project-control"
-                        data-carousel-next
-                        aria-label="Proyecto siguiente"
-                    >&rarr;</button>
-                </div>
-
-            {% else %}
-                <p class="section-desc reveal">
-                    No hay proyectos disponibles en este momento.
-                </p>
-            {% endif %}
-        </div>
-    </div>
-</section>
-
 <!-- CTA -->
 <section class="section-shell section-shell--accent" role="region" aria-label="Llamado a la accion">
     <div class="container">
@@ -267,7 +299,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 <script src="{% static 'js/animations/hero.js' %}"></script>
 <script src="{% static 'js/home.js' %}" defer></script>
-<script src="{% static 'js/home-project-carousel.js' %}" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{% static 'js/components/project-carousel.js' %}" defer></script>
 <script>
   (function () {
     var btn = document.getElementById('theme-toggle');
@@ -297,4 +330,4 @@
     refresh();
   })();
 </script>
-{% endblock %}
+{% endblock %}    

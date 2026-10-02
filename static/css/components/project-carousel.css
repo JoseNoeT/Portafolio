@@ -1,0 +1,225 @@
+/* ======================================================
+   PORTFOLIO PANORAMA SLIDER
+   ====================================================== */
+
+.projects-showcase {
+    overflow: hidden;
+}
+
+.portfolio-swiper {
+    width: 100%;
+    padding: 35px 0 70px;
+    overflow: visible;
+}
+
+.project-slide {
+    width: clamp(280px, 32vw, 430px);
+    height: auto;
+}
+
+.panorama-card {
+    height: 100%;
+    overflow: hidden;
+
+    border: 1px solid var(--color-border-soft);
+    border-radius: 22px;
+
+    background: var(--glass-bg);
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.28);
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease;
+}
+
+.swiper-slide:not(.swiper-slide-active) .panorama-card {
+    opacity: 0.72;
+}
+
+.swiper-slide-active .panorama-card {
+    opacity: 1;
+}
+
+.panorama-card__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+
+    background: #071022;
+}
+
+.panorama-card__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.7s ease;
+}
+
+.swiper-slide-active .panorama-card__media img {
+    transform: scale(1.035);
+}
+
+.panorama-card__gradient {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(2, 8, 22, 0.88),
+            transparent 58%
+        );
+}
+
+.panorama-card__category {
+    position: absolute;
+    left: 18px;
+    bottom: 16px;
+
+    padding: 7px 12px;
+
+    border: 1px solid rgba(56, 189, 248, 0.65);
+    border-radius: 999px;
+
+    background: rgba(2, 12, 30, 0.8);
+
+    color: #e9f7ff;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+
+    backdrop-filter: blur(10px);
+}
+
+.panorama-card__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(14, 165, 233, 0.25),
+            transparent 45%
+        ),
+        #08142c;
+
+    color: var(--color-heading);
+
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.panorama-card__body {
+    padding: 22px;
+}
+
+.panorama-card__body h3 {
+    margin: 0 0 10px;
+
+    color: var(--color-heading);
+
+    font-size: 1.35rem;
+}
+
+.panorama-card__body p {
+    margin: 0 0 16px;
+
+    color: var(--color-text);
+
+    line-height: 1.65;
+}
+
+.panorama-card__stack {
+    margin-bottom: 18px;
+
+    color: var(--color-primary);
+
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+.portfolio-swiper .swiper-button-prev,
+.portfolio-swiper .swiper-button-next {
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 50%;
+
+    background: rgba(4, 15, 35, 0.9);
+
+    color: #38bdf8;
+
+    backdrop-filter: blur(12px);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+.portfolio-swiper .swiper-button-prev:hover,
+.portfolio-swiper .swiper-button-next:hover {
+    transform: scale(1.08);
+
+    background: rgba(14, 165, 233, 0.18);
+}
+
+.portfolio-swiper .swiper-button-prev::after,
+.portfolio-swiper .swiper-button-next::after {
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.portfolio-swiper .swiper-pagination {
+    bottom: 18px;
+}
+
+.portfolio-swiper .swiper-pagination-bullet {
+    width: 9px;
+    height: 9px;
+
+    background: #64748b;
+    opacity: 0.45;
+}
+
+.portfolio-swiper .swiper-pagination-bullet-active {
+    width: 24px;
+
+    border-radius: 999px;
+
+    background: #38bdf8;
+    opacity: 1;
+}
+
+@media (max-width: 700px) {
+
+    .portfolio-swiper {
+        padding-top: 22px;
+    }
+
+    .project-slide {
+        width: 82vw;
+        max-width: 350px;
+    }
+
+    .portfolio-swiper .swiper-button-prev,
+    .portfolio-swiper .swiper-button-next {
+        display: none;
+    }
+
+}

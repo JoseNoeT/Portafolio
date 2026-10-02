@@ -419,6 +419,7 @@
 
     transform: translate3d(0, 0, 0);
     will-change: transform;
+    transition: transform 0.45s ease;
 }
 
 .home-project-track .feature-card {
