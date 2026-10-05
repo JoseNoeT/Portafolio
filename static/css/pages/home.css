@@ -1528,3 +1528,190 @@
     transform: scale(1.04);
   }
 }
+
+
+/* ======================================================
+   SERVICES CARDS V2 — approved glass/neon composition
+   ====================================================== */
+
+#services .services-flow {
+  display: none !important;
+}
+
+#services .services-story {
+  gap: clamp(28px, 3vw, 52px);
+  align-items: stretch;
+  margin-top: 54px;
+}
+
+#services .feature-card {
+  min-height: 360px;
+  padding: 32px 32px 28px;
+  overflow: visible;
+  text-align: left;
+  border: 1px solid rgba(56, 189, 248, 0.68);
+  border-radius: 22px;
+  background:
+    linear-gradient(145deg, rgba(5, 25, 52, 0.72), rgba(2, 13, 31, 0.84));
+  -webkit-backdrop-filter: blur(13px) saturate(125%);
+  backdrop-filter: blur(13px) saturate(125%);
+  box-shadow:
+    inset 0 1px 0 rgba(216, 248, 255, 0.08),
+    0 18px 48px rgba(0, 0, 0, 0.26),
+    0 0 18px rgba(56, 189, 248, 0.08);
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Large editable step number, no floating empty circles. */
+#services .feature-card[data-step]::after {
+  content: attr(data-step);
+  top: 27px;
+  right: 27px;
+  left: auto;
+  width: auto;
+  height: auto;
+  display: block;
+  transform: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(56, 189, 248, 0.08);
+  -webkit-text-stroke: 1px rgba(56, 189, 248, 0.70);
+  font-size: clamp(2.7rem, 4vw, 4.15rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  box-shadow: none;
+  animation: none;
+}
+
+#services .feature-card__icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 0 22px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(56, 189, 248, 0.70);
+  border-radius: 14px;
+  color: #38bdf8;
+  background: rgba(4, 31, 63, 0.72);
+  box-shadow:
+    inset 0 0 18px rgba(56, 189, 248, 0.08),
+    0 0 18px rgba(56, 189, 248, 0.22);
+}
+
+#services .feature-card__icon svg {
+  width: 29px;
+  height: 29px;
+  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.42));
+}
+
+#services .feature-card__title {
+  position: relative;
+  max-width: 12ch;
+  margin: 0 0 22px;
+  color: #f8fbff;
+  font-size: clamp(1.35rem, 1.8vw, 1.75rem);
+  line-height: 1.03;
+  font-weight: 800;
+  text-align: left;
+  text-wrap: balance;
+}
+
+#services .feature-card__title span {
+  display: block;
+  color: #22d3ee;
+  text-shadow: 0 0 14px rgba(34, 211, 238, 0.20);
+}
+
+#services .feature-card__title::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 2px;
+  margin-top: 13px;
+  background: linear-gradient(90deg, #67e8f9, rgba(56, 189, 248, 0));
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.42);
+}
+
+#services .feature-card__text {
+  margin: 0;
+  color: #cbd8e8;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  text-align: left;
+}
+
+#services .feature-card__tags {
+  justify-content: flex-start;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+#services .feature-card__tags span {
+  padding: 6px 12px;
+  border-color: rgba(56, 189, 248, 0.44);
+  background: rgba(3, 20, 43, 0.72);
+  color: #d7f4ff;
+}
+
+/* Cyan chevrons connect the three editable cards. */
+#services .feature-card:not(:last-child) {
+  position: relative;
+}
+
+#services .feature-card:not(:last-child) > .feature-card__tags::after {
+  content: "›";
+  position: absolute;
+  top: 50%;
+  right: calc(clamp(28px, 3vw, 52px) / -2 - 10px);
+  z-index: 8;
+  transform: translateY(-50%);
+  color: #22d3ee;
+  font-size: 3.2rem;
+  font-weight: 300;
+  line-height: 1;
+  text-shadow:
+    0 0 7px rgba(34, 211, 238, 0.95),
+    0 0 18px rgba(56, 189, 248, 0.52);
+  pointer-events: none;
+}
+
+#services .feature-card:hover {
+  transform: translateY(-7px);
+  background:
+    linear-gradient(145deg, rgba(7, 35, 70, 0.78), rgba(3, 17, 38, 0.90));
+  box-shadow:
+    inset 0 1px 0 rgba(216, 248, 255, 0.12),
+    0 24px 56px rgba(0, 0, 0, 0.32),
+    0 0 26px rgba(56, 189, 248, 0.18);
+}
+
+#services .feature-card:hover .feature-card__icon {
+  color: #d8f8ff;
+  box-shadow:
+    inset 0 0 20px rgba(56, 189, 248, 0.14),
+    0 0 24px rgba(56, 189, 248, 0.40);
+}
+
+@media (max-width: 900px) {
+  #services .services-story {
+    gap: 28px;
+  }
+
+  #services .feature-card {
+    min-height: 0;
+  }
+
+  #services .feature-card:not(:last-child) > .feature-card__tags::after {
+    content: "⌄";
+    top: auto;
+    right: 50%;
+    bottom: -38px;
+    transform: translateX(50%);
+    font-size: 2.4rem;
+  }
+}
