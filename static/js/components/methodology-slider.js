@@ -15,7 +15,19 @@
   const show = (index) => {
     current = (index + slides.length) % slides.length;
 
-    slides.forEach((slide, i) => slide.classList.toggle("is-active", i === current));
+    slides.forEach((slide, i) => {
+      const active = i === current;
+      slide.classList.toggle("is-active", active);
+
+      if (active) {
+        const image = slide.querySelector("img");
+        if (image && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          image.style.animation = "none";
+          void image.offsetWidth;
+          image.style.animation = "";
+        }
+      }
+    });
     dots.forEach((dot, i) => {
       const active = i === current;
       dot.classList.toggle("is-active", active);
