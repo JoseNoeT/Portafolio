@@ -2388,3 +2388,59 @@
 @media (prefers-reduced-motion: reduce) {
   .closing-cta__pulse { animation: none; }
 }
+
+
+/* CLOSING CTA 2.0 — photographic story layer */
+.closing-cta {
+  background: #020713 !important;
+}
+
+.closing-cta::before {
+  content: "";
+  position: absolute;
+  inset: -3%;
+  z-index: -2;
+  pointer-events: none;
+  background: url("../../img/contact/contact-bg.png") center 52% / cover no-repeat;
+  opacity: .68;
+  transform: scale(1.035);
+  animation: closing-bg-drift 22s ease-in-out infinite alternate;
+}
+
+.closing-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(1,7,18,.56) 0%, rgba(1,8,20,.40) 48%, rgba(2,7,18,.84) 100%),
+    radial-gradient(ellipse at 50% 58%, rgba(2,12,28,.18) 0%, rgba(2,8,20,.60) 76%);
+}
+
+.closing-cta__panel {
+  background:
+    radial-gradient(circle at 50% 100%, rgba(14,165,233,.07), transparent 40%),
+    linear-gradient(145deg, rgba(2,14,31,.68), rgba(2,9,23,.76)) !important;
+  border-color: rgba(56,189,248,.38) !important;
+  box-shadow:
+    0 28px 72px rgba(0,0,0,.40),
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 0 34px rgba(14,165,233,.06) !important;
+}
+
+@keyframes closing-bg-drift {
+  from { transform: scale(1.035) translate3d(0,0,0); }
+  to { transform: scale(1.085) translate3d(-.7%,-.5%,0); }
+}
+
+@media (max-width: 700px) {
+  .closing-cta::before {
+    background-position: 58% center;
+    opacity: .56;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .closing-cta::before { animation: none; }
+}
