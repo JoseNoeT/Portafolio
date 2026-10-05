@@ -50,5 +50,12 @@
         });
 
 
+        const scrollTopButton = document.querySelector("[data-scroll-top]");
+        if (scrollTopButton) {
+            scrollTopButton.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        }
+
     });
 })(window);
