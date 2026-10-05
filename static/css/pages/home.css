@@ -1270,3 +1270,176 @@
     animation: none;
   }
 }
+
+
+/* ======================================================
+   SERVICES STORY — build -> connect -> evolve
+   ====================================================== */
+
+#services {
+  --services-cyan: #38bdf8;
+  --services-deep: #020713;
+}
+
+#services .container {
+  position: relative;
+  z-index: 2;
+}
+
+#services::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 14% 56%, rgba(0, 174, 255, 0.13), transparent 20%),
+    radial-gradient(circle at 50% 54%, rgba(14, 165, 233, 0.10), transparent 23%),
+    radial-gradient(circle at 86% 56%, rgba(56, 189, 248, 0.11), transparent 20%);
+}
+
+#services .section-title span,
+#services .section-title strong {
+  color: var(--services-cyan);
+}
+
+.services-story {
+  position: relative;
+  z-index: 2;
+}
+
+.services-flow {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 17%);
+  height: 2px;
+  margin: 42px auto -1px;
+  overflow: visible;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(56, 189, 248, 0.30) 8%,
+    rgba(56, 189, 248, 0.70) 50%,
+    rgba(56, 189, 248, 0.30) 92%,
+    transparent);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.18);
+}
+
+.services-flow__pulse {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 76px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, #d8f8ff, #38bdf8, transparent);
+  box-shadow: 0 0 12px #38bdf8, 0 0 26px rgba(56, 189, 248, 0.48);
+  transform: translateY(-50%);
+  animation: services-energy-run 4.8s ease-in-out infinite;
+}
+
+@keyframes services-energy-run {
+  0% { left: 0; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { left: calc(100% - 76px); opacity: 0; }
+}
+
+#services .feature-card {
+  overflow: visible;
+  min-height: 290px;
+  padding-top: 48px;
+  background:
+    linear-gradient(180deg, rgba(7, 20, 45, 0.94), rgba(4, 14, 34, 0.96));
+  backdrop-filter: blur(10px);
+}
+
+#services .feature-card::marker {
+  content: "";
+}
+
+#services .feature-card[data-step]::after {
+  content: attr(data-step);
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  z-index: 5;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  transform: translateX(-50%);
+  border: 1px solid rgba(56, 189, 248, 0.82);
+  border-radius: 50%;
+  background: #04152c;
+  color: #7dd3fc;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  box-shadow:
+    0 0 0 5px rgba(2, 7, 19, 0.82),
+    0 0 16px rgba(56, 189, 248, 0.32);
+  animation: services-node-pulse 4.8s ease-in-out infinite;
+}
+
+#services .feature-card:nth-child(2)::after { animation-delay: 1.6s; }
+#services .feature-card:nth-child(3)::after { animation-delay: 3.2s; }
+
+@keyframes services-node-pulse {
+  0%, 24%, 100% {
+    color: #7dd3fc;
+    border-color: rgba(56, 189, 248, 0.55);
+    box-shadow: 0 0 0 5px rgba(2, 7, 19, 0.82), 0 0 10px rgba(56, 189, 248, 0.18);
+  }
+  34%, 44% {
+    color: #fff;
+    border-color: #d8f8ff;
+    box-shadow: 0 0 0 5px rgba(2, 7, 19, 0.82), 0 0 22px rgba(56, 189, 248, 0.72);
+  }
+}
+
+#services .feature-card__icon {
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.12);
+}
+
+#services .feature-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 20px;
+}
+
+#services .feature-card__tags span {
+  padding: 5px 10px;
+  border: 1px solid rgba(56, 189, 248, 0.26);
+  border-radius: 999px;
+  background: rgba(2, 14, 34, 0.70);
+  color: #a8dff8;
+  font-size: 0.72rem;
+  line-height: 1;
+}
+
+#services .feature-card:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(180deg, rgba(8, 27, 56, 0.97), rgba(4, 15, 36, 0.98));
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28), 0 0 26px rgba(56, 189, 248, 0.09);
+}
+
+@media (max-width: 900px) {
+  .services-flow {
+    display: none;
+  }
+
+  #services .feature-card {
+    margin-top: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-flow__pulse,
+  #services .feature-card[data-step]::after {
+    animation: none;
+  }
+}
