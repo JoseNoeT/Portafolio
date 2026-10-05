@@ -1848,3 +1848,16 @@
     animation: none;
   }
 }
+
+
+/* SERVICES — title/text color hierarchy */
+#services .services-title-accent {
+  display: block;
+  color: #22d3ee;
+  text-shadow: 0 0 18px rgba(34, 211, 238, 0.20);
+}
+
+#services .services-desc-accent {
+  color: #7dd3fc;
+  font-weight: 600;
+}
