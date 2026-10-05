@@ -472,3 +472,92 @@
         max-width: 340px;
     }
 }
+
+
+/* ======================================================
+   HOME TYPOGRAPHY HIERARCHY — white + cyan, centered
+   ====================================================== */
+
+#methodology .split-section__content,
+#about .split-section__content {
+  text-align: center;
+}
+
+#methodology .split-section__title,
+#about .split-section__title,
+#services .section-title,
+.section-shell--accent .cta-band__title {
+  color: #f8fbff;
+  text-align: center;
+}
+
+#methodology .split-section__title::after,
+#about .split-section__title::after,
+#services .section-title::after,
+.section-shell--accent .cta-band__title::after {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 2px;
+  margin: 12px auto 0;
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.32);
+}
+
+#methodology .split-section__text,
+#about .split-section__text,
+#services .section-desc,
+.section-shell--accent .cta-band__text {
+  max-width: 66ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: #c5d3e4;
+}
+
+#services .feature-card {
+  text-align: center;
+}
+
+#services .feature-card__icon {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#services .feature-card__title {
+  color: #f8fbff;
+  text-align: center;
+}
+
+#services .feature-card__text {
+  color: #b9c9dc;
+  text-align: center;
+}
+
+#about .section-eyebrow,
+.section-shell--accent .section-eyebrow {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#about .split-section__title {
+  text-wrap: balance;
+}
+
+#services .feature-card__icon,
+#about .section-eyebrow,
+.section-shell--accent .section-eyebrow {
+  color: #38bdf8;
+}
+
+#services .feature-card__title::first-letter {
+  color: #f8fbff;
+}
+
+.section-shell--accent .cta-band {
+  text-align: center;
+}
+
+.section-shell--accent .cta-band__actions {
+  justify-content: center;
+}
