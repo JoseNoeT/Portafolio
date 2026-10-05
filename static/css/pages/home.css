@@ -2444,3 +2444,111 @@
 @media (prefers-reduced-motion: reduce) {
   .closing-cta::before { animation: none; }
 }
+
+
+/* ======================================================
+   HOME 2.0 — continuous canvas / seamless section joins
+   All narrative sections share one exact horizontal rail.
+   ====================================================== */
+:root {
+  --home-canvas-width: 1200px;
+  --home-canvas-bg: #020b19;
+  --home-gutter: clamp(18px, 3vw, 34px);
+}
+
+/* One visual rail from Projects through the closing CTA. */
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+  width: min(100%, var(--home-canvas-width));
+  margin-inline: auto;
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  box-shadow: none;
+}
+
+/* Remove old separator rules. Atmosphere now changes through light, not lines. */
+#methodology::after,
+#services::after,
+#about::after {
+  display: none !important;
+}
+
+/* Exact same content gutters in every narrative section. */
+#projects > .container,
+#methodology > .container,
+#services > .container,
+#about > .container,
+.closing-cta > .container {
+  width: 100% !important;
+  max-width: none !important;
+  padding-left: var(--home-gutter) !important;
+  padding-right: var(--home-gutter) !important;
+}
+
+/* Soft overlap hides hard image/background cuts between scenes. */
+#methodology,
+#services,
+#about,
+.closing-cta {
+  margin-top: -1px;
+}
+
+#methodology::before,
+#services::before,
+#about.profile-v2::before,
+.closing-cta::before {
+  background-repeat: no-repeat !important;
+}
+
+/* Edge vignettes make every photographic scene fade into the same canvas. */
+#methodology .methodology-scene__veil {
+  background:
+    linear-gradient(90deg, rgba(2,11,25,.86) 0%, rgba(2,11,25,.10) 10%, rgba(2,11,25,.10) 90%, rgba(2,11,25,.86) 100%),
+    linear-gradient(180deg, rgba(2,11,25,.82) 0%, rgba(2,11,25,.18) 12%, rgba(2,11,25,.18) 86%, rgba(2,11,25,.86) 100%) !important;
+}
+
+#services::after {
+  display: block !important;
+  inset: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  transform: none !important;
+  z-index: 0 !important;
+  background:
+    linear-gradient(90deg, rgba(2,11,25,.80) 0%, rgba(2,11,25,.08) 9%, rgba(2,11,25,.08) 91%, rgba(2,11,25,.80) 100%),
+    linear-gradient(180deg, rgba(2,11,25,.76) 0%, transparent 14%, transparent 86%, rgba(2,11,25,.82) 100%) !important;
+}
+
+#about.profile-v2::after {
+  background:
+    linear-gradient(90deg, rgba(2,11,25,.84) 0%, rgba(1,7,18,.34) 10%, rgba(1,7,18,.34) 90%, rgba(2,11,25,.84) 100%),
+    linear-gradient(180deg, rgba(2,11,25,.78) 0%, rgba(1,8,20,.34) 14%, rgba(1,7,18,.42) 84%, rgba(2,11,25,.86) 100%) !important;
+}
+
+.closing-cta::after {
+  background:
+    linear-gradient(90deg, rgba(2,11,25,.86) 0%, rgba(2,8,20,.28) 10%, rgba(2,8,20,.28) 90%, rgba(2,11,25,.86) 100%),
+    linear-gradient(180deg, rgba(2,11,25,.84) 0%, rgba(1,8,20,.34) 16%, rgba(2,7,18,.76) 100%) !important;
+}
+
+/* The page outside the rail uses the same navy, so no section appears wider. */
+body {
+  background-color: var(--home-canvas-bg);
+}
+
+@media (max-width: 1240px) {
+  :root { --home-canvas-width: calc(100% - 32px); }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --home-canvas-width: 100%;
+    --home-gutter: 18px;
+  }
+}
