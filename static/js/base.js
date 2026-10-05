@@ -50,6 +50,20 @@
         });
 
 
+        // CTA motion is event-driven: one entrance, then only intentional attention cues.
+        document.querySelectorAll(".motion-cta").forEach((cta) => {
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.remove("bounce-top");
+                    void entry.target.offsetWidth;
+                    entry.target.classList.add("bounce-top");
+                    obs.unobserve(entry.target);
+                });
+            }, { threshold: 0.72 });
+            observer.observe(cta);
+        });
+
         const scrollTopButton = document.querySelector("[data-scroll-top]");
         if (scrollTopButton) {
             scrollTopButton.addEventListener("click", () => {
