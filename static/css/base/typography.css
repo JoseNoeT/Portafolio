@@ -229,3 +229,68 @@ nav,
   font-family: var(--font-family-body);
   font-weight: 600;
 }
+
+
+/* ================================================================
+   MOTION HIERARCHY — focus-in-contract
+   Reserved for high-information anchors, not every text element.
+   ================================================================ */
+@-webkit-keyframes focus-in-contract {
+  0% {
+    letter-spacing: 1em;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes focus-in-contract {
+  0% {
+    letter-spacing: 1em;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* Primary visual anchors: one strong entrance per content level. */
+.hero-title.active,
+.section-title.active,
+.split-section__title.active,
+.cta-band__title.active {
+  -webkit-animation: focus-in-contract .72s cubic-bezier(.25,.46,.45,.94) both;
+  animation: focus-in-contract .72s cubic-bezier(.25,.46,.45,.94) both;
+}
+
+/* Smaller orientation cues use a shorter, softer version. */
+.section-eyebrow.active,
+.closing-cta__status.active {
+  -webkit-animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) both;
+  animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) both;
+}
+
+/* Keep interaction readable and stable for motion-sensitive visitors. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-title.active,
+  .section-title.active,
+  .split-section__title.active,
+  .cta-band__title.active,
+  .section-eyebrow.active,
+  .closing-cta__status.active {
+    -webkit-animation: none !important;
+    animation: none !important;
+    letter-spacing: inherit;
+    filter: none;
+    opacity: 1;
+  }
+}
