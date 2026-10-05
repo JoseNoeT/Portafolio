@@ -104,6 +104,8 @@
      ================================================================ */
 
   --font-family: 'Inter', Arial, sans-serif;
+  --font-family-heading: 'DM Sans', 'Inter', Arial, sans-serif;
+  --font-family-body: 'Inter', Arial, sans-serif;
 
   --font-size-base: 1rem;
   --line-height-base: 1.6;

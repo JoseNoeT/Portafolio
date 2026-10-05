@@ -1,50 +1,86 @@
-<!-- Modern SaaS Portfolio Footer - Glassmorphism, Gradients, Responsive -->
-<footer class="footer">
+<footer class="footer footer-v2">
+  <div class="footer-watermark" aria-hidden="true">JOSÉ NOE</div>
+
   <div class="footer-container">
-    <!-- Columna 1: Marca -->
-    <div class="footer-col footer-brand">
-      <h3>Jose Noe</h3>
-      <p>Backend Engineer</p>
-      <div class="footer-social">
-        <a href="https://github.com/JoseNoeT" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61a3.18 3.18 0 0 0-1.33-1.76c-1.09-.74.08-.73.08-.73a2.52 2.52 0 0 1 1.84 1.24 2.56 2.56 0 0 0 3.5 1 2.56 2.56 0 0 1 .76-1.6c-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 0 1 1.24-3.22 4.3 4.3 0 0 1 .12-3.18s1-.32 3.3 1.23a11.38 11.38 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23a4.3 4.3 0 0 1 .12 3.18 4.64 4.64 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92a2.87 2.87 0 0 1 .82 2.23v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg>
+    <section class="footer-intro" aria-label="Resumen profesional">
+      <div class="footer-identity">
+        <h2>JOSÉ NOE</h2>
+        <p class="footer-role">Analista Programador <span>|</span> Estudiante de Ingeniería en Informática</p>
+        <p class="footer-summary">Desarrollo soluciones web con foco en backend, automatización y sistemas reales.</p>
+
+        <div class="footer-stack" aria-label="Tecnologías principales">
+          <span>Python</span>
+          <span>Django</span>
+          <span>SQL</span>
+          <span>AWS</span>
+          <span>Automatización</span>
+        </div>
+      </div>
+
+      <div class="footer-availability">
+        <div class="footer-status">
+          <span class="footer-status-dot" aria-hidden="true"></span>
+          <div>
+            <strong>DISPONIBLE</strong>
+            <small>para nuevas oportunidades</small>
+          </div>
+        </div>
+        <p class="footer-location">⌖ &nbsp;Santiago, Chile</p>
+      </div>
+    </section>
+
+    <div class="footer-divider" aria-hidden="true"><span></span></div>
+
+    <div class="footer-grid">
+      <nav class="footer-col footer-links" aria-label="Navegación del pie de página">
+        <h3>NAVEGACIÓN</h3>
+        <ul>
+          <li><a href="{% url 'home' %}"><span>Inicio</span><b>→</b></a></li>
+          <li><a href="{% url 'projects_list' %}"><span>Proyectos</span><b>→</b></a></li>
+          <li><a href="{% url 'metodologia' %}"><span>Metodología</span><b>→</b></a></li>
+          <li><a href="{% url 'services' %}"><span>Servicios</span><b>→</b></a></li>
+          <li><a href="{% url 'about' %}"><span>Sobre mí</span><b>→</b></a></li>
+          <li><a href="{% url 'contact' %}"><span>Contacto</span><b>→</b></a></li>
+        </ul>
+      </nav>
+
+      <section class="footer-col footer-connect">
+        <h3>CONECTA</h3>
+        <a class="footer-social-link" href="https://github.com/JoseNoeT" target="_blank" rel="noopener noreferrer">
+          <span class="footer-social-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="23" height="23" fill="currentColor"><path d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.02c-3.22.7-3.9-1.37-3.9-1.37-.52-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.39.97.1-.75.4-1.27.74-1.56-2.57-.29-5.27-1.29-5.27-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.75 0c2.19-1.49 3.15-1.18 3.15-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.42-2.71 5.39-5.29 5.68.42.36.79 1.06.79 2.14v3.16c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+          </span>
+          <span><strong>GitHub</strong><small>Mis proyectos y código</small></span><b>→</b>
         </a>
-      </div>
-    </div>
-    <!-- Columna 2: Enlaces rápidos -->
-    <div class="footer-col footer-links">
-      <h4>Enlaces rápidos</h4>
-      <ul>
-        <li><a href="{% url 'home' %}">Inicio</a></li>
-        <li><a href="{% url 'projects_list' %}">Proyectos</a></li>
-        <li><a href="{% url 'services' %}">Servicios</a></li>
-        <li><a href="{% url 'metodologia' %}">Metodología</a></li>
-        <li><a href="{% url 'about' %}">Sobre mí</a></li>
-        <li><a href="{% url 'contact' %}">Contacto</a></li>
-        {% if user.is_authenticated and user.is_staff %}
-        <li><a href="{% url 'dashboard' %}" class="btn btn-primary">Admin</a></li>
-        {% else %}
-        <li><a href="{% url 'login' %}" class="btn btn-primary">Admin</a></li>
-        {% endif %}
-      </ul>
-    </div>
-    <!-- Columna 3: Contacto -->
-    <div class="footer-col footer-contact">
-      <h4>Contacto</h4>
-      <p>📧 jmnt2012@gmail.com</p>
-      <p>📞 +56 9 30387145</p>
-    </div>
-    <!-- Columna 4: Formulario -->
-    <div class="footer-col footer-form">
-      <h4>Contacto directo</h4>
-      <p>¿Tienes dudas o quieres trabajar conmigo? Escríbeme por correo o usa la página de contacto.</p>
-      <div class="footer-contact-form" aria-label="Canales de contacto disponibles">
-        <a href="{% url 'analytics:contact_outbound_event' 'email_click' %}" class="btn-footer">Enviar correo</a>
-        <a href="{% url 'contact' %}" class="btn-footer">Ir a contacto</a>
-      </div>
+        <a class="footer-social-link" href="https://www.linkedin.com/in/jose-noe-torres/" target="_blank" rel="noopener noreferrer">
+          <span class="footer-social-icon footer-social-icon--linkedin" aria-hidden="true">in</span>
+          <span><strong>LinkedIn</strong><small>Perfil profesional</small></span><b>→</b>
+        </a>
+      </section>
+
+      <section class="footer-col footer-contact">
+        <h3>CONTACTO DIRECTO</h3>
+        <a class="footer-email" href="{% url 'analytics:contact_outbound_event' 'email_click' %}">
+          <span aria-hidden="true">✉</span>
+          <strong>jmnt2012@gmail.com</strong>
+          <b>→</b>
+        </a>
+        <p>Escríbeme para oportunidades, proyectos o simplemente conversar.</p>
+        <a href="{% url 'contact' %}" class="footer-contact-cta">Ir a la página de contacto <span>→</span></a>
+      </section>
     </div>
   </div>
+
   <div class="footer-bottom">
-    © 2026 Jose Noe — Backend Developer
+    <div>
+      <span>© 2026 José Noe</span>
+      <i></i>
+      <span>Diseñado y desarrollado por <strong>José Noe</strong></span>
+    </div>
+    <div>
+      <span>Santiago, Chile</span>
+      <i></i>
+      <button type="button" class="footer-top" data-scroll-top aria-label="Volver arriba">↑ <span>Volver arriba</span></button>
+    </div>
   </div>
 </footer>

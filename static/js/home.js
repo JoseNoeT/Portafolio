@@ -39,3 +39,36 @@
         startHero();
     });
 })(window);
+
+// Methodology image: roll-in-blurred once when it enters the viewport.
+(() => {
+  const image = document.querySelector(".methodology-roll-image");
+  if (!image) return;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let hasAnimated = false;
+
+  const observer = new IntersectionObserver(
+    (entries, currentObserver) => {
+      const entry = entries[0];
+      if (!entry.isIntersecting || hasAnimated) return;
+
+      hasAnimated = true;
+      image.classList.add("is-roll-running");
+      currentObserver.unobserve(image);
+
+      image.addEventListener(
+        "animationend",
+        () => image.classList.remove("is-roll-running"),
+        { once: true }
+      );
+    },
+    {
+      threshold: 0.28,
+      rootMargin: "0px 0px -8% 0px",
+    }
+  );
+
+  observer.observe(image);
+})();

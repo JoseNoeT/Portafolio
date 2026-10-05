@@ -6,8 +6,8 @@
    ==================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-family);
-  font-weight: 800;
+  font-family: var(--font-family-heading);
+  font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.15;
 }
@@ -166,4 +166,154 @@ mark {
         filter: none;
         transition: none;
     }
+}
+
+/* ================================================================
+   TYPOGRAPHY 2.0 — DM Sans + Inter hierarchy
+   ================================================================ */
+h1,
+.hero-title {
+  font-family: var(--font-family-heading);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+
+h2,
+.section-title,
+.split-section__title,
+.cta-band__title {
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+h3,
+.panorama-card__body h3,
+.feature-card__title,
+.profile-v2__card h3 {
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+}
+
+body,
+p,
+a,
+button,
+input,
+textarea,
+select,
+.section-desc,
+.split-section__text,
+.feature-card__text {
+  font-family: var(--font-family-body);
+}
+
+.section-eyebrow,
+.panorama-card__category,
+.feature-card__tags,
+.profile-v2__label,
+.closing-cta__status {
+  font-family: var(--font-family-body);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+button,
+.btn,
+nav,
+.nav-links {
+  font-family: var(--font-family-body);
+  font-weight: 600;
+}
+
+
+/* ================================================================
+   MOTION HIERARCHY — focus-in-contract
+   Reserved for high-information anchors, not every text element.
+   ================================================================ */
+@-webkit-keyframes focus-in-contract {
+  0% {
+    letter-spacing: 1em;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes focus-in-contract {
+  0% {
+    letter-spacing: 1em;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+/* Primary visual anchors: one strong entrance per content level. */
+.hero-title.active,
+.section-title.active,
+.split-section__title.active,
+.cta-band__title.active {
+  -webkit-animation: focus-in-contract .72s cubic-bezier(.25,.46,.45,.94) both;
+  animation: focus-in-contract .72s cubic-bezier(.25,.46,.45,.94) both;
+}
+
+/* Smaller orientation cues use a shorter, softer version. */
+.section-eyebrow.active,
+.closing-cta__status.active {
+  -webkit-animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) both;
+  animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) both;
+}
+
+/* Keep interaction readable and stable for motion-sensitive visitors. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-title.active,
+  .section-title.active,
+  .split-section__title.active,
+  .cta-band__title.active,
+  .section-eyebrow.active,
+  .closing-cta__status.active {
+    -webkit-animation: none !important;
+    animation: none !important;
+    letter-spacing: inherit;
+    filter: none;
+    opacity: 1;
+  }
+}
+
+
+/* Hero is visible on first paint, so its focus entrance does not wait for reveal JS. */
+.hero-title.focus-in-contract {
+  -webkit-animation: focus-in-contract .78s cubic-bezier(.25,.46,.45,.94) both;
+  animation: focus-in-contract .78s cubic-bezier(.25,.46,.45,.94) both;
+}
+
+.hero-eyebrow.focus-in-contract {
+  -webkit-animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) .10s both;
+  animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) .10s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title.focus-in-contract,
+  .hero-eyebrow.focus-in-contract {
+    -webkit-animation: none !important;
+    animation: none !important;
+    letter-spacing: inherit;
+    filter: none;
+    opacity: 1;
+  }
 }
