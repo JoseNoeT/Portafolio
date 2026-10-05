@@ -338,22 +338,39 @@
 </section>
 
 <!-- ABOUT — split section reversed -->
-<section class="section-shell section-shell--alt" id="about">
+<section class="section-shell section-shell--alt profile-v2" id="about">
     <div class="container">
-        <div class="split-section split-section--reverse">
-            <div class="split-section__content">
-                <span class="section-eyebrow reveal">Perfil profesional</span>
-                <h2 class="split-section__title reveal">Una base técnica en crecimiento, orientada a proyectos reales</h2>
-                <p class="split-section__text reveal">
-                    Soy Analista Programador titulado y actualmente continúo fortaleciendo mi formación en Ingeniería en Informática. Me interesa construir soluciones web bien pensadas, con foco en backend, estructura de sistemas y desarrollo funcional.
-                </p>
-                <p class="split-section__text reveal">
-                    Busco seguir creciendo en proyectos donde pueda aportar con organización, aprendizaje continuo y una forma de trabajo seria, adaptable y orientada a resolver necesidades reales.
-                </p>
-            </div>
-            <div class="split-section__visual reveal">
-                <img src="{% static 'img/personaCompu.jpg' %}" alt="Perfil profesional de Jose Noe como desarrollador web" />
-            </div>
+        <div class="profile-v2__intro">
+            <span class="section-eyebrow reveal">Perfil profesional</span>
+            <h2 class="split-section__title reveal">Una base técnica en crecimiento, <span>orientada a proyectos reales</span></h2>
+            <p class="split-section__text reveal">
+                Soy Analista Programador titulado y continúo mi formación en Ingeniería en Informática. Construyo soluciones web con foco en backend, estructura de sistemas y desarrollo funcional.
+            </p>
+        </div>
+
+        <div class="profile-v2__grid">
+            <article class="profile-v2__card reveal" data-profile-step="01">
+                <span class="profile-v2__label">Formación</span>
+                <h3>Base técnica <span>en evolución</span></h3>
+                <p>Analista Programador titulado y estudiante de Ingeniería en Informática, fortaleciendo una base que conecta desarrollo, datos y sistemas.</p>
+            </article>
+
+            <article class="profile-v2__card reveal" data-profile-step="02">
+                <span class="profile-v2__label">Enfoque</span>
+                <h3>Backend y <span>soluciones reales</span></h3>
+                <p>Trabajo con lógica de negocio, Django, bases de datos, integraciones y proyectos pensados para resolver necesidades concretas.</p>
+            </article>
+
+            <article class="profile-v2__card reveal" data-profile-step="03">
+                <span class="profile-v2__label">Proyección</span>
+                <h3>Crecer hacia <span>TI y Cloud</span></h3>
+                <p>Busco aportar en equipos tecnológicos mientras continúo profundizando en desarrollo, arquitectura, automatización y servicios cloud.</p>
+            </article>
+        </div>
+
+        <div class="profile-v2__closing reveal">
+            <span class="profile-v2__signal" aria-hidden="true"></span>
+            <p>Organización, aprendizaje continuo y criterio técnico para convertir problemas en soluciones que puedan evolucionar.</p>
         </div>
     </div>
 </section>
