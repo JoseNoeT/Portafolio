@@ -605,3 +605,26 @@ transform:translateY(0);
     transition: none !important;
   }
 }
+
+
+/* NAVBAR 2.1 — Animista bounce feedback on desktop navigation hover */
+@media (min-width: 1025px) {
+  .nav-links ul li a:hover {
+    -webkit-animation: bounce-top .62s both;
+    animation: bounce-top .62s both;
+    color: var(--navbar-link-hover);
+  }
+
+  /* Preserve the cyan underline while the label bounces. */
+  .nav-links ul li a:hover::after {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-links ul li a:hover {
+    -webkit-animation: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
