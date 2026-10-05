@@ -46,9 +46,10 @@
   if (!image) return;
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    image.classList.add("is-roll-visible");
     return;
   }
+
+  image.classList.add("is-roll-pending");
 
   const observer = new IntersectionObserver(
     (entries, currentObserver) => {
@@ -57,6 +58,12 @@
 
       image.classList.add("is-roll-visible");
       currentObserver.unobserve(image);
+
+      image.addEventListener(
+        "animationend",
+        () => image.classList.remove("is-roll-pending", "is-roll-visible"),
+        { once: true }
+      );
     },
     {
       threshold: 0.28,
