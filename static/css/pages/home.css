@@ -792,3 +792,40 @@
 .section-shell--accent {
   border-top: 1px solid rgba(56, 189, 248, 0.07);
 }
+
+
+/* ======================================================
+   METHODOLOGY — image fallback + compact heading
+   ====================================================== */
+
+#methodology .methodology-content .split-section__title {
+  max-width: 18ch;
+  font-size: clamp(1.65rem, 2.25vw, 2.45rem);
+  line-height: 1.08;
+}
+
+#methodology .methodology-roll-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+#methodology .methodology-roll-image.is-roll-pending {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateX(115vw) rotate(110deg) scale(0.72);
+}
+
+#methodology .methodology-roll-image.is-roll-pending.is-roll-visible {
+  animation: methodology-roll-in-blurred 2.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (max-width: 767px) {
+  #methodology .methodology-content .split-section__title {
+    max-width: 22ch;
+    font-size: clamp(1.55rem, 7vw, 2rem);
+  }
+}
