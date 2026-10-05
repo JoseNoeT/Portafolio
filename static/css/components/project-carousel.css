@@ -319,3 +319,56 @@
     .panorama-card::before { animation: none; }
     .panorama-card { transform: none !important; }
 }
+
+
+/* Vertical project showcase */
+.portfolio-swiper {
+    height: min(680px, 76vh);
+    padding: 38px 0;
+}
+
+.portfolio-swiper .swiper-wrapper {
+    align-items: center;
+}
+
+.project-slide {
+    height: auto;
+}
+
+.portfolio-swiper .swiper-button-prev,
+.portfolio-swiper .swiper-button-next {
+    left: 50%;
+    right: auto;
+    margin: 0;
+    transform: translateX(-50%) rotate(90deg);
+}
+
+.portfolio-swiper .swiper-button-prev {
+    top: 4px;
+    bottom: auto;
+}
+
+.portfolio-swiper .swiper-button-next {
+    top: auto;
+    bottom: 4px;
+}
+
+.portfolio-swiper .swiper-button-prev:hover,
+.portfolio-swiper .swiper-button-next:hover {
+    transform: translateX(-50%) rotate(90deg) scale(1.08);
+}
+
+.portfolio-swiper .swiper-pagination {
+    left: auto;
+    right: 18px;
+    top: 50%;
+    bottom: auto;
+    width: auto;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 700px) {
+    .portfolio-swiper {
+        height: min(610px, 78vh);
+    }
+}
