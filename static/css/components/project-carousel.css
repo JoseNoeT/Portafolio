@@ -244,7 +244,7 @@
     position: absolute;
     inset: -1px;
     z-index: 5;
-    padding: 1.5px;
+    padding: 3px;
     border-radius: inherit;
     background: conic-gradient(
         from var(--edge-angle, 0deg),
@@ -261,7 +261,8 @@
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
-    opacity: 0.72;
+    opacity: 0.88;
+    filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.38));
     animation: panorama-edge-orbit 5.5s linear infinite;
 }
 
@@ -283,6 +284,7 @@
 
 .swiper-slide-active .panorama-card::before {
     opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.68));
     animation-duration: 3.8s;
 }
 
