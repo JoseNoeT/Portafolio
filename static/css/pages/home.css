@@ -746,3 +746,49 @@
     animation: none;
   }
 }
+
+
+/* ======================================================
+   HOME BACKGROUND SYSTEM — continuous project atmosphere
+   ====================================================== */
+
+#methodology,
+#services,
+#about,
+.section-shell--accent {
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(0, 174, 255, 0.075), transparent 30%),
+    radial-gradient(circle at 14% 38%, rgba(14, 165, 233, 0.04), transparent 24%),
+    radial-gradient(circle at 86% 42%, rgba(56, 189, 248, 0.035), transparent 22%),
+    linear-gradient(180deg, #030916 0%, #051022 50%, #020713 100%);
+}
+
+#methodology,
+#services,
+#about {
+  border-top: 1px solid rgba(56, 189, 248, 0.055);
+}
+
+#methodology::after,
+#services::after,
+#about::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(86%, 1180px);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(56, 189, 248, 0.12),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.section-shell--accent {
+  border-top: 1px solid rgba(56, 189, 248, 0.07);
+}
