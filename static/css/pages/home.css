@@ -1715,3 +1715,136 @@
     font-size: 2.4rem;
   }
 }
+
+
+/* ======================================================
+   SERVICES — synchronized animated edge system
+   All three cards share one rhythm with phased highlights.
+   ====================================================== */
+
+#services .feature-card {
+  --services-edge-angle: 0deg;
+  border-color: rgba(56, 189, 248, 0.24);
+}
+
+/* Override older generic edge layers so only one coherent border runs. */
+#services .feature-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 6;
+  padding: 1.5px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--services-edge-angle),
+    transparent 0deg 214deg,
+    rgba(34, 211, 238, 0.08) 236deg,
+    rgba(56, 189, 248, 0.42) 258deg,
+    #38bdf8 282deg,
+    #d8f8ff 298deg,
+    #67e8f9 310deg,
+    rgba(56, 189, 248, 0.28) 332deg,
+    transparent 354deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.92;
+  filter:
+    drop-shadow(0 0 4px rgba(56, 189, 248, 0.52))
+    drop-shadow(0 0 10px rgba(34, 211, 238, 0.18));
+  animation: services-edge-orbit 5.4s linear infinite;
+}
+
+/* Same speed, staggered phase: visually one current flowing 01 -> 02 -> 03. */
+#services .feature-card:nth-child(1)::before { animation-delay: 0s; }
+#services .feature-card:nth-child(2)::before { animation-delay: -1.8s; }
+#services .feature-card:nth-child(3)::before { animation-delay: -3.6s; }
+
+@property --services-edge-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes services-edge-orbit {
+  to { --services-edge-angle: 360deg; }
+}
+
+#services .feature-card:hover::before {
+  opacity: 1;
+  filter:
+    drop-shadow(0 0 6px rgba(216, 248, 255, 0.82))
+    drop-shadow(0 0 14px rgba(56, 189, 248, 0.48));
+}
+
+/* Icons breathe in the same 5.4 s cycle as their card edge. */
+#services .feature-card__icon {
+  animation: services-icon-breathe 5.4s ease-in-out infinite;
+}
+
+#services .feature-card:nth-child(2) .feature-card__icon { animation-delay: -1.8s; }
+#services .feature-card:nth-child(3) .feature-card__icon { animation-delay: -3.6s; }
+
+@keyframes services-icon-breathe {
+  0%, 58%, 100% {
+    box-shadow:
+      inset 0 0 18px rgba(56, 189, 248, 0.08),
+      0 0 12px rgba(56, 189, 248, 0.16);
+  }
+  72% {
+    box-shadow:
+      inset 0 0 22px rgba(56, 189, 248, 0.18),
+      0 0 24px rgba(56, 189, 248, 0.44);
+  }
+}
+
+/* Connecting arrows pulse with the same visual language. */
+#services .feature-card:not(:last-child) > .feature-card__tags::after {
+  animation: services-chevron-pulse 2.7s ease-in-out infinite;
+}
+
+#services .feature-card:nth-child(2) > .feature-card__tags::after {
+  animation-delay: -1.35s;
+}
+
+@keyframes services-chevron-pulse {
+  0%, 100% {
+    opacity: 0.50;
+    filter: brightness(0.9);
+    transform: translateY(-50%) translateX(-2px);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.35);
+    transform: translateY(-50%) translateX(3px);
+  }
+}
+
+@media (max-width: 900px) {
+  #services .feature-card:not(:last-child) > .feature-card__tags::after {
+    animation: services-chevron-pulse-mobile 2.7s ease-in-out infinite;
+  }
+
+  @keyframes services-chevron-pulse-mobile {
+    0%, 100% {
+      opacity: 0.50;
+      transform: translateX(50%) translateY(-2px);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(50%) translateY(3px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #services .feature-card::before,
+  #services .feature-card__icon,
+  #services .feature-card:not(:last-child) > .feature-card__tags::after {
+    animation: none;
+  }
+}
