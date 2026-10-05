@@ -561,3 +561,145 @@
 .section-shell--accent .cta-band__actions {
   justify-content: center;
 }
+
+
+/* ======================================================
+   METHODOLOGY — structured process
+   ====================================================== */
+
+#methodology .methodology-content {
+  text-align: left;
+}
+
+#methodology .methodology-content .section-eyebrow {
+  margin: 0 0 16px;
+}
+
+#methodology .methodology-content .split-section__title {
+  text-align: left;
+  max-width: 15ch;
+  line-height: 1.05;
+}
+
+#methodology .methodology-content .split-section__title::after {
+  margin-left: 0;
+}
+
+#methodology .methodology-title-accent {
+  color: #38bdf8;
+  text-shadow: 0 0 22px rgba(56, 189, 248, 0.14);
+}
+
+#methodology .methodology-content .split-section__text {
+  text-align: left;
+  max-width: 58ch;
+  margin-left: 0;
+  color: #c5d3e4;
+}
+
+.methodology-steps {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+  max-width: 620px;
+}
+
+.methodology-steps::before {
+  content: "";
+  position: absolute;
+  left: 21px;
+  top: 22px;
+  bottom: 22px;
+  width: 1px;
+  background: linear-gradient(180deg, #38bdf8, rgba(56, 189, 248, 0.08));
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.22);
+}
+
+.methodology-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 14px;
+  border: 1px solid rgba(56, 189, 248, 0.12);
+  border-radius: 14px;
+  background: rgba(5, 18, 40, 0.42);
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.methodology-step:hover {
+  transform: translateX(4px);
+  border-color: rgba(56, 189, 248, 0.38);
+  background: rgba(7, 27, 55, 0.64);
+}
+
+.methodology-step__number {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(56, 189, 248, 0.55);
+  border-radius: 12px;
+  background: #06152d;
+  color: #38bdf8;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 16px rgba(14, 165, 233, 0.10);
+}
+
+.methodology-step h3 {
+  margin: 0 0 3px;
+  color: #f8fbff;
+  font-size: 0.98rem;
+}
+
+.methodology-step p {
+  margin: 0;
+  color: #aebed2;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+#methodology .split-section__visual {
+  position: relative;
+}
+
+#methodology .split-section__visual::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 1px solid rgba(56, 189, 248, 0.46);
+  box-shadow:
+    0 0 20px rgba(14, 165, 233, 0.10),
+    inset 0 0 22px rgba(14, 165, 233, 0.035);
+}
+
+@media (max-width: 767px) {
+  #methodology .methodology-content,
+  #methodology .methodology-content .split-section__title,
+  #methodology .methodology-content .split-section__text {
+    text-align: center;
+  }
+
+  #methodology .methodology-content .split-section__title {
+    max-width: none;
+  }
+
+  #methodology .methodology-content .split-section__title::after,
+  #methodology .methodology-content .section-eyebrow {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .methodology-steps {
+    text-align: left;
+  }
+}
