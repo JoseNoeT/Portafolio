@@ -226,102 +226,75 @@
 
 
 /* ======================================================
-   FEATURED PROJECT CARD — GLASS + ANIMATED EDGE
+   FEATURED PROJECT CARD — CLEAN NEON EDGE
    ====================================================== */
 
 .panorama-card {
     position: relative;
     isolation: isolate;
     transform-style: preserve-3d;
-    background:
-        linear-gradient(145deg, rgba(8, 25, 48, 0.94), rgba(4, 14, 31, 0.86));
-    border-color: rgba(56, 189, 248, 0.24);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    transition:
-        opacity 0.45s ease,
-        transform 0.18s ease-out,
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
+    background: var(--glass-bg);
+    border-color: rgba(56, 189, 248, 0.28);
+    transition: opacity 0.45s ease, transform 0.18s ease-out,
+                border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .panorama-card::before {
     content: "";
     position: absolute;
     inset: -1px;
-    z-index: 3;
-    padding: 1px;
+    z-index: 5;
+    padding: 1.5px;
     border-radius: inherit;
     background: conic-gradient(
         from var(--edge-angle, 0deg),
-        transparent 0deg,
-        transparent 250deg,
-        rgba(56, 189, 248, 0.08) 285deg,
-        rgba(56, 189, 248, 0.95) 315deg,
+        transparent 0deg 292deg,
+        rgba(14, 165, 233, 0.15) 304deg,
+        #38bdf8 320deg,
         #e0f7ff 326deg,
-        rgba(14, 165, 233, 0.55) 338deg,
+        #38bdf8 332deg,
+        rgba(14, 165, 233, 0.15) 346deg,
         transparent 360deg
     );
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                  linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
-    opacity: 0.52;
-    animation: panorama-edge-orbit 7s linear infinite;
+    opacity: 0.72;
+    animation: panorama-edge-orbit 5.5s linear infinite;
 }
 
 .panorama-card::after {
     content: "";
     position: absolute;
-    inset: 0;
-    z-index: 2;
-    border-radius: inherit;
-    background:
-        radial-gradient(
-            420px circle at var(--glare-x, 50%) var(--glare-y, 35%),
-            rgba(125, 211, 252, 0.16),
-            rgba(14, 165, 233, 0.06) 28%,
-            transparent 58%
-        ),
-        linear-gradient(
-            120deg,
-            transparent 25%,
-            rgba(255, 255, 255, 0.035) 43%,
-            rgba(125, 211, 252, 0.10) 50%,
-            rgba(255, 255, 255, 0.025) 57%,
-            transparent 75%
-        );
-    opacity: 0;
+    inset: -5px;
+    z-index: -1;
+    border-radius: 26px;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 .swiper-slide-active .panorama-card {
-    border-color: rgba(56, 189, 248, 0.52);
-    box-shadow:
-        0 24px 65px rgba(0, 0, 0, 0.38),
-        0 0 28px rgba(14, 165, 233, 0.13),
-        inset 0 0 28px rgba(56, 189, 248, 0.035);
+    border-color: rgba(56, 189, 248, 0.48);
+    box-shadow: 0 22px 58px rgba(0, 0, 0, 0.32),
+                0 0 18px rgba(14, 165, 233, 0.10);
 }
 
 .swiper-slide-active .panorama-card::before {
     opacity: 1;
-    filter: drop-shadow(0 0 7px rgba(56, 189, 248, 0.62));
-    animation-duration: 4.8s;
+    animation-duration: 3.8s;
 }
 
 .panorama-card:hover {
     border-color: rgba(56, 189, 248, 0.72);
-    box-shadow:
-        0 28px 72px rgba(0, 0, 0, 0.42),
-        0 0 34px rgba(14, 165, 233, 0.20),
-        inset 0 0 30px rgba(56, 189, 248, 0.05);
+    box-shadow: 0 26px 64px rgba(0, 0, 0, 0.36),
+                0 0 22px rgba(14, 165, 233, 0.18);
 }
 
 .panorama-card:hover::after {
-    opacity: 1;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.18),
+                0 0 30px rgba(14, 165, 233, 0.08);
 }
 
 .panorama-card__media,
@@ -331,9 +304,7 @@
 }
 
 @keyframes panorama-edge-orbit {
-    to {
-        --edge-angle: 360deg;
-    }
+    to { --edge-angle: 360deg; }
 }
 
 @property --edge-angle {
@@ -343,11 +314,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .panorama-card::before {
-        animation: none;
-    }
-
-    .panorama-card {
-        transform: none !important;
-    }
+    .panorama-card::before { animation: none; }
+    .panorama-card { transform: none !important; }
 }
