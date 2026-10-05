@@ -703,3 +703,46 @@
     text-align: left;
   }
 }
+
+
+/* ======================================================
+   METHODOLOGY IMAGE — roll-in-blurred entrance
+   ====================================================== */
+
+.methodology-roll-image {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateX(-70px) rotate(-28deg);
+  transform-origin: center;
+  will-change: transform, filter, opacity;
+}
+
+.methodology-roll-image.is-roll-visible {
+  animation: methodology-roll-in-blurred 0.85s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@keyframes methodology-roll-in-blurred {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateX(-70px) rotate(-28deg);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0) rotate(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .methodology-roll-image {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
+  .methodology-roll-image.is-roll-visible {
+    animation: none;
+  }
+}
