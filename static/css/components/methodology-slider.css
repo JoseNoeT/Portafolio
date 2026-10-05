@@ -425,3 +425,24 @@
   opacity: 1 !important;
   filter: brightness(.96) saturate(.96) contrast(1.04) !important;
 }
+
+
+/* METHODOLOGY — use the same global motion cadence as the home imagery */
+.methodology-slide.is-active img {
+  -webkit-animation: home-kenburns-top-left var(--home-motion-duration, 12s) var(--home-motion-ease, ease-in-out) infinite alternate !important;
+  animation: home-kenburns-top-left var(--home-motion-duration, 12s) var(--home-motion-ease, ease-in-out) infinite alternate !important;
+}
+
+.methodology-scene__bg.is-active {
+  -webkit-animation: home-kenburns-top-left var(--home-motion-duration, 12s) var(--home-motion-ease, ease-in-out) infinite alternate !important;
+  animation: home-kenburns-top-left var(--home-motion-duration, 12s) var(--home-motion-ease, ease-in-out) infinite alternate !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .methodology-slide.is-active img,
+  .methodology-scene__bg.is-active {
+    -webkit-animation: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
