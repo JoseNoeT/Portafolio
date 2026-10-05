@@ -22,16 +22,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         watchSlidesProgress: true,
 
-        direction: "vertical",
-
         effect: "coverflow",
 
         coverflowEffect: {
-            rotate: 8,
-            stretch: 20,
-            depth: 190,
-            modifier: 1.1,
-            scale: 0.91,
+            rotate: 14,
+            stretch: 0,
+            depth: 160,
+            modifier: 1.15,
+            scale: 0.93,
             slideShadows: false
         },
 
