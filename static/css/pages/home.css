@@ -882,3 +882,23 @@
     opacity: 1;
   }
 }
+
+
+/* ======================================================
+   METHODOLOGY IMAGE — stable final state
+   The image stays visible until JS actually starts the animation.
+   ====================================================== */
+
+#methodology .methodology-roll-image,
+#methodology .methodology-roll-image.is-roll-pending {
+  opacity: 1;
+  -webkit-filter: none;
+  filter: none;
+  -webkit-transform: none;
+  transform: none;
+}
+
+#methodology .methodology-roll-image.is-roll-running {
+  -webkit-animation: roll-in-blurred-left 1.35s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  animation: roll-in-blurred-left 1.35s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+}
