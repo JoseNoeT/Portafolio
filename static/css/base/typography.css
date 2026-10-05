@@ -294,3 +294,26 @@ nav,
     opacity: 1;
   }
 }
+
+
+/* Hero is visible on first paint, so its focus entrance does not wait for reveal JS. */
+.hero-title.focus-in-contract {
+  -webkit-animation: focus-in-contract .78s cubic-bezier(.25,.46,.45,.94) both;
+  animation: focus-in-contract .78s cubic-bezier(.25,.46,.45,.94) both;
+}
+
+.hero-eyebrow.focus-in-contract {
+  -webkit-animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) .10s both;
+  animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) .10s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title.focus-in-contract,
+  .hero-eyebrow.focus-in-contract {
+    -webkit-animation: none !important;
+    animation: none !important;
+    letter-spacing: inherit;
+    filter: none;
+    opacity: 1;
+  }
+}
