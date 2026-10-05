@@ -2552,3 +2552,21 @@ body {
     --home-gutter: 18px;
   }
 }
+
+
+/* HOME 2.0 — align narrative canvas with the hero width */
+:root {
+  --home-canvas-width: 1400px;
+}
+
+@media (max-width: 1440px) {
+  :root {
+    --home-canvas-width: calc(100% - 32px);
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --home-canvas-width: 100%;
+  }
+}
