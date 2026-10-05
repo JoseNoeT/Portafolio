@@ -914,3 +914,112 @@
   border-radius: 999px;
   letter-spacing: 0.14em;
 }
+
+
+/* ======================================================
+   HOME VISUAL SYSTEM — hero background + heading hierarchy
+   ====================================================== */
+
+:root {
+  --home-page-bg: #030a19;
+  --home-page-bg-deep: #020713;
+  --home-page-cyan: #38bdf8;
+  --home-page-text: #f8fbff;
+  --home-page-muted: #c5d3e4;
+}
+
+/* One continuous visual language from projects to the CTA. */
+.projects-showcase,
+#methodology,
+#services,
+#about,
+.section-shell--accent {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(14, 165, 233, 0.055), transparent 30%),
+    linear-gradient(180deg, var(--home-page-bg) 0%, var(--home-page-bg-deep) 100%);
+}
+
+/* Shared centered hierarchy for all section headings. */
+#methodology .methodology-content,
+#services .section-header,
+#about .split-section__content,
+.section-shell--accent .cta-band {
+  text-align: center;
+}
+
+#methodology .methodology-content .section-eyebrow,
+#services .section-eyebrow,
+#about .section-eyebrow,
+.section-shell--accent .section-eyebrow {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#methodology .methodology-content .split-section__title,
+#services .section-title,
+#about .split-section__title,
+.section-shell--accent .cta-band__title {
+  max-width: 24ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: var(--home-page-text);
+  font-size: clamp(1.75rem, 2.35vw, 2.55rem);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+#methodology .methodology-content .split-section__title::after,
+#services .section-title::after,
+#about .split-section__title::after,
+.section-shell--accent .cta-band__title::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#methodology .methodology-content .split-section__text,
+#services .section-desc,
+#about .split-section__text,
+.section-shell--accent .cta-band__text {
+  max-width: 64ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: var(--home-page-muted);
+}
+
+/* Methodology: balanced image instead of a dominant half-page panel. */
+#methodology .split-section {
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.72fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+#methodology .split-section__visual {
+  width: min(100%, 480px);
+  justify-self: center;
+}
+
+#methodology .split-section__visual img {
+  width: 100%;
+  max-height: 430px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+#methodology .methodology-steps {
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  #methodology .split-section {
+    grid-template-columns: 1fr;
+  }
+
+  #methodology .split-section__visual {
+    width: min(100%, 560px);
+  }
+}
