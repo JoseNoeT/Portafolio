@@ -1117,3 +1117,156 @@
     animation: none;
   }
 }
+
+
+/* ======================================================
+   HOME ATMOSPHERES — same system, distinct section mood
+   ====================================================== */
+
+#services {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 28%, rgba(34, 211, 238, 0.10), transparent 27%),
+    radial-gradient(circle at 82% 72%, rgba(14, 165, 233, 0.07), transparent 30%),
+    linear-gradient(145deg, #020713 0%, #061326 52%, #020914 100%);
+}
+
+#services::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.12) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(circle at center, #000 10%, transparent 72%);
+  mask-image: radial-gradient(circle at center, #000 10%, transparent 72%);
+}
+
+#about {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 76% 36%, rgba(99, 102, 241, 0.10), transparent 30%),
+    radial-gradient(circle at 22% 72%, rgba(14, 165, 233, 0.07), transparent 28%),
+    linear-gradient(155deg, #020713 0%, #071225 54%, #030817 100%);
+}
+
+#about::before {
+  content: "";
+  position: absolute;
+  width: min(56vw, 720px);
+  aspect-ratio: 1;
+  right: -18%;
+  top: 4%;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 1px solid rgba(56, 189, 248, 0.10);
+  box-shadow:
+    0 0 0 70px rgba(56, 189, 248, 0.018),
+    0 0 0 140px rgba(56, 189, 248, 0.012);
+}
+
+.section-shell--accent {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 105%, rgba(56, 189, 248, 0.16), transparent 38%),
+    linear-gradient(180deg, #030b1b 0%, #020713 100%);
+}
+
+/* Shared animated-edge system for interactive/contained surfaces. */
+#methodology .methodology-step,
+#methodology .methodology-slider__viewport,
+#services .feature-card,
+#about .split-section__visual,
+#about .stat-card,
+#about .about-card,
+.section-shell--accent .cta-band,
+.section-shell--accent .btn {
+  --surface-edge-angle: 0deg;
+  position: relative;
+  isolation: isolate;
+}
+
+#methodology .methodology-step::before,
+#services .feature-card::before,
+#about .split-section__visual::before,
+#about .stat-card::before,
+#about .about-card::before,
+.section-shell--accent .cta-band::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--surface-edge-angle),
+    transparent 0deg 238deg,
+    rgba(14, 165, 233, 0.10) 260deg,
+    rgba(56, 189, 248, 0.60) 292deg,
+    #d8f8ff 310deg,
+    #38bdf8 322deg,
+    rgba(14, 165, 233, 0.18) 344deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.30));
+  animation: surface-edge-orbit 5.8s linear infinite;
+}
+
+@property --surface-edge-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes surface-edge-orbit {
+  to { --surface-edge-angle: 360deg; }
+}
+
+#services .feature-card:nth-child(2)::before,
+#about .stat-card:nth-child(2)::before {
+  animation-delay: -1.9s;
+}
+
+#services .feature-card:nth-child(3)::before,
+#about .stat-card:nth-child(3)::before {
+  animation-delay: -3.8s;
+}
+
+#methodology .methodology-step:hover::before,
+#services .feature-card:hover::before,
+#about .split-section__visual:hover::before,
+#about .stat-card:hover::before,
+#about .about-card:hover::before,
+.section-shell--accent .cta-band:hover::before {
+  filter:
+    drop-shadow(0 0 7px rgba(216, 248, 255, 0.66))
+    drop-shadow(0 0 15px rgba(56, 189, 248, 0.34));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #methodology .methodology-step::before,
+  #services .feature-card::before,
+  #about .split-section__visual::before,
+  #about .stat-card::before,
+  #about .about-card::before,
+  .section-shell--accent .cta-band::before {
+    animation: none;
+  }
+}
