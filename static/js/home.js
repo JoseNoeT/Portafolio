@@ -45,23 +45,22 @@
   const image = document.querySelector(".methodology-roll-image");
   if (!image) return;
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    return;
-  }
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  image.classList.add("is-roll-pending");
+  let hasAnimated = false;
 
   const observer = new IntersectionObserver(
     (entries, currentObserver) => {
       const entry = entries[0];
-      if (!entry.isIntersecting) return;
+      if (!entry.isIntersecting || hasAnimated) return;
 
-      image.classList.add("is-roll-visible");
+      hasAnimated = true;
+      image.classList.add("is-roll-running");
       currentObserver.unobserve(image);
 
       image.addEventListener(
         "animationend",
-        () => image.classList.remove("is-roll-pending", "is-roll-visible"),
+        () => image.classList.remove("is-roll-running"),
         { once: true }
       );
     },
