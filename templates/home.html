@@ -375,18 +375,40 @@
     </div>
 </section>
 
-<!-- CTA -->
-<section class="section-shell section-shell--accent" role="region" aria-label="Llamado a la accion">
+<!-- CTA — cierre narrativo -->
+<section class="section-shell section-shell--accent closing-cta" role="region" aria-label="Contacto profesional">
     <div class="container">
-        <div class="cta-band cta-band--accent">
-            <span class="section-eyebrow reveal">Hablemos</span>
-            <h2 class="cta-band__title reveal">Disponible para nuevas oportunidades, colaboraciones y proyectos web</h2>
-            <p class="cta-band__text reveal">
-                Si buscas a alguien que pueda aportar con desarrollo web, backend y una forma de trabajo estructurada, aquí puedes revisar mis proyectos o escribirme directamente para conversar.
+        <div class="cta-band cta-band--accent closing-cta__panel">
+            <div class="closing-cta__status reveal">
+                <span class="closing-cta__pulse" aria-hidden="true"></span>
+                Disponible para oportunidades
+            </div>
+
+            <h2 class="cta-band__title closing-cta__title reveal">
+                ¿Construimos algo <span>juntos?</span>
+            </h2>
+
+            <div class="closing-cta__focus reveal" aria-label="Áreas de interés">
+                <span>Desarrollo web</span>
+                <i aria-hidden="true"></i>
+                <span>Backend</span>
+                <i aria-hidden="true"></i>
+                <span>Cloud / Automatización</span>
+            </div>
+
+            <p class="cta-band__text closing-cta__text reveal">
+                Estoy abierto a oportunidades donde pueda aportar, aprender y seguir construyendo soluciones reales con una base técnica que continúa creciendo.
             </p>
-            <div class="cta-band__actions reveal">
-                <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver proyectos</a>
-                <a href="{% url 'contact' %}" class="btn btn-outline">Contactar</a>
+
+            <div class="cta-band__actions closing-cta__actions reveal">
+                <a href="{% url 'contact' %}" class="btn btn-primary closing-cta__primary">Contactar</a>
+                <a href="https://github.com/JoseNoeT" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Ver GitHub</a>
+            </div>
+
+            <div class="closing-cta__meta reveal">
+                <span>Santiago, Chile</span>
+                <span aria-hidden="true">·</span>
+                <span>Remoto / Híbrido</span>
             </div>
         </div>
     </div>
