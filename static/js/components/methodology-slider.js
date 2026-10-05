@@ -34,6 +34,19 @@
       dot.setAttribute("aria-current", active ? "true" : "false");
     });
     steps.forEach((step, i) => step.classList.toggle("is-active", i === current));
+
+    const section = document.getElementById("methodology");
+    const backgrounds = section ? [...section.querySelectorAll(".methodology-scene__bg")] : [];
+    backgrounds.forEach((background, i) => {
+      const active = i === current;
+      background.classList.toggle("is-active", active);
+
+      if (active && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        background.style.animation = "none";
+        void background.offsetWidth;
+        background.style.animation = "";
+      }
+    });
   };
 
   const start = () => {
