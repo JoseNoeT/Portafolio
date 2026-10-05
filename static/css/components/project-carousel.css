@@ -244,7 +244,7 @@
     position: absolute;
     inset: -1px;
     z-index: 5;
-    padding: 3px;
+    padding: 1.5px;
     border-radius: inherit;
     background: conic-gradient(
         from var(--edge-angle, 0deg),
@@ -261,8 +261,7 @@
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
-    opacity: 0.88;
-    filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.38));
+    opacity: 0.72;
     animation: panorama-edge-orbit 5.5s linear infinite;
 }
 
@@ -284,7 +283,6 @@
 
 .swiper-slide-active .panorama-card::before {
     opacity: 1;
-    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.68));
     animation-duration: 3.8s;
 }
 
@@ -318,57 +316,4 @@
 @media (prefers-reduced-motion: reduce) {
     .panorama-card::before { animation: none; }
     .panorama-card { transform: none !important; }
-}
-
-
-/* Vertical project showcase */
-.portfolio-swiper {
-    height: min(680px, 76vh);
-    padding: 38px 0;
-}
-
-.portfolio-swiper .swiper-wrapper {
-    align-items: center;
-}
-
-.project-slide {
-    height: auto;
-}
-
-.portfolio-swiper .swiper-button-prev,
-.portfolio-swiper .swiper-button-next {
-    left: 50%;
-    right: auto;
-    margin: 0;
-    transform: translateX(-50%) rotate(90deg);
-}
-
-.portfolio-swiper .swiper-button-prev {
-    top: 4px;
-    bottom: auto;
-}
-
-.portfolio-swiper .swiper-button-next {
-    top: auto;
-    bottom: 4px;
-}
-
-.portfolio-swiper .swiper-button-prev:hover,
-.portfolio-swiper .swiper-button-next:hover {
-    transform: translateX(-50%) rotate(90deg) scale(1.08);
-}
-
-.portfolio-swiper .swiper-pagination {
-    left: auto;
-    right: 18px;
-    top: 50%;
-    bottom: auto;
-    width: auto;
-    transform: translateY(-50%);
-}
-
-@media (max-width: 700px) {
-    .portfolio-swiper {
-        height: min(610px, 78vh);
-    }
 }
