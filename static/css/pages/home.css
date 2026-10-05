@@ -2570,3 +2570,56 @@ body {
     --home-canvas-width: 100%;
   }
 }
+
+
+/* HOME 2.0 — one continuous rounded 1400px visual rail */
+:root {
+  --home-canvas-radius: 28px;
+}
+
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+  width: min(100%, var(--home-canvas-width));
+  border-radius: var(--home-canvas-radius) !important;
+  overflow: hidden;
+}
+
+/* Keep the narrative visually continuous while preserving the hero-like curve. */
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+
+/* On desktop every scene uses the same curved silhouette as the hero. */
+@media (min-width: 701px) {
+  #projects,
+  #methodology,
+  #services,
+  #about,
+  .closing-cta {
+    border-top-left-radius: var(--home-canvas-radius) !important;
+    border-top-right-radius: var(--home-canvas-radius) !important;
+    border-bottom-left-radius: var(--home-canvas-radius) !important;
+    border-bottom-right-radius: var(--home-canvas-radius) !important;
+  }
+}
+
+/* Mobile uses a softer curve so content width is not sacrificed. */
+@media (max-width: 700px) {
+  :root { --home-canvas-radius: 18px; }
+
+  #projects,
+  #methodology,
+  #services,
+  #about,
+  .closing-cta {
+    border-radius: var(--home-canvas-radius) !important;
+  }
+}
