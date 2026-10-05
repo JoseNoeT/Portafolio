@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <link rel="stylesheet" href="{% static 'css/pages/home.css' %}">
 <link rel="stylesheet" href="{% static 'css/components/project-carousel.css' %}">
+<link rel="stylesheet" href="{% static 'css/components/methodology-slider.css' %}">
 {% endblock %}
 
 {% block hero %}
@@ -240,8 +241,38 @@
                     </div>
                 </div>
             </div>
-            <div class="split-section__visual reveal">
-                <img class="methodology-roll-image" src="{% static 'img/arquitec.jpeg' %}" alt="Metodología de desarrollo y proceso de trabajo" />
+            <div class="split-section__visual methodology-slider reveal" data-methodology-slider>
+                <div class="methodology-slider__viewport">
+                    <article class="methodology-slide is-active" data-methodology-slide="0">
+                        <img src="{% static 'img/projects/campus360.jpg' %}" alt="Análisis del problema y necesidades del proyecto" />
+                        <div class="methodology-slide__caption">
+                            <span>01 · Problema</span>
+                            <strong>Entender antes de construir</strong>
+                        </div>
+                    </article>
+
+                    <article class="methodology-slide" data-methodology-slide="1">
+                        <img src="{% static 'img/arquitec.jpeg' %}" alt="Diseño de arquitectura y estructura de la solución" />
+                        <div class="methodology-slide__caption">
+                            <span>02 · Diseño</span>
+                            <strong>Convertir la necesidad en una estructura clara</strong>
+                        </div>
+                    </article>
+
+                    <article class="methodology-slide" data-methodology-slide="2">
+                        <img src="{% static 'img/projects/ferramas.jpg' %}" alt="Solución web desarrollada y preparada para evolucionar" />
+                        <div class="methodology-slide__caption">
+                            <span>03 · Solución</span>
+                            <strong>Construir, probar y mejorar</strong>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="methodology-slider__controls" aria-label="Etapas de metodología">
+                    <button type="button" class="methodology-slider__dot is-active" data-methodology-dot="0" aria-label="Ver análisis del problema"></button>
+                    <button type="button" class="methodology-slider__dot" data-methodology-dot="1" aria-label="Ver diseño de solución"></button>
+                    <button type="button" class="methodology-slider__dot" data-methodology-dot="2" aria-label="Ver solución desarrollada"></button>
+                </div>
             </div>
         </div>
     </div>
@@ -338,6 +369,7 @@
 <script src="{% static 'js/home.js' %}" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="{% static 'js/components/project-carousel.js' %}" defer></script>
+<script src="{% static 'js/components/methodology-slider.js' %}" defer></script>
 <script>
   (function () {
     var btn = document.getElementById('theme-toggle');
