@@ -2804,3 +2804,141 @@ body {
     transform: none;
   }
 }
+
+
+/* =========================================================
+   SECTION VIEWPORT RHYTHM 2.3
+   Desktop: each narrative chapter fits naturally in one view.
+   Content is compacted, never clipped.
+========================================================= */
+@media (min-width: 901px) and (min-height: 650px) {
+  .section-shell {
+    min-height: min(100svh, 820px);
+    display: flex;
+    align-items: center;
+    padding-block: clamp(28px, 4.5vh, 54px);
+    overflow: hidden;
+  }
+
+  .section-shell > .container {
+    width: 100%;
+  }
+
+  .section-header {
+    margin-bottom: clamp(18px, 2.8vh, 30px);
+  }
+
+  .section-eyebrow {
+    margin-bottom: 8px;
+  }
+
+  .section-title,
+  .split-section__title {
+    margin-bottom: 10px;
+    line-height: 1.04;
+  }
+
+  .section-desc,
+  .split-section__text {
+    line-height: 1.5;
+  }
+
+  .projects-showcase .portfolio-swiper {
+    margin-top: clamp(14px, 2vh, 24px);
+  }
+
+  .methodology-scene .split-section {
+    min-height: 0;
+    align-items: center;
+    gap: clamp(28px, 4vw, 58px);
+  }
+
+  .methodology-steps {
+    margin-top: clamp(16px, 2.4vh, 26px);
+    gap: 9px;
+  }
+
+  .methodology-step {
+    padding-block: 10px;
+  }
+
+  #services .feature-grid {
+    margin-top: clamp(18px, 2.8vh, 30px);
+    gap: clamp(14px, 1.8vw, 24px);
+  }
+
+  #services .feature-card {
+    min-height: 0;
+    padding: clamp(20px, 2.4vw, 30px);
+  }
+
+  .profile-v2__intro {
+    padding: clamp(18px, 2.6vh, 26px) clamp(22px, 2.5vw, 30px);
+  }
+
+  .profile-v2__grid {
+    margin-top: clamp(16px, 2.4vh, 26px);
+    gap: clamp(14px, 1.8vw, 22px);
+  }
+
+  .profile-v2__card {
+    min-height: 0;
+    padding: clamp(18px, 2.2vw, 26px);
+  }
+
+  .profile-v2__closing {
+    margin-top: clamp(14px, 2vh, 22px);
+  }
+
+  .closing-cta__panel {
+    padding-block: clamp(34px, 5vh, 58px);
+  }
+}
+
+/* Laptop-height screens: preserve the chapter-per-screen intention. */
+@media (min-width: 901px) and (max-height: 760px) {
+  .section-shell {
+    min-height: calc(100svh - 54px);
+    padding-block: 24px;
+  }
+
+  .section-header {
+    margin-bottom: 16px;
+  }
+
+  .section-title,
+  .split-section__title {
+    font-size: clamp(1.7rem, 2.6vw, 2.45rem);
+  }
+
+  .section-desc,
+  .split-section__text {
+    font-size: .92rem;
+  }
+
+  .methodology-step {
+    padding-block: 8px;
+  }
+
+  #services .feature-grid,
+  .profile-v2__grid {
+    margin-top: 14px;
+  }
+
+  #services .feature-card,
+  .profile-v2__card {
+    padding: 18px;
+  }
+
+  .closing-cta__panel {
+    padding-block: 30px;
+  }
+}
+
+/* Mobile remains content-driven: never force viewport-height sections. */
+@media (max-width: 900px) {
+  .section-shell {
+    min-height: auto;
+    overflow: visible;
+  }
+}
