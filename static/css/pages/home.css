@@ -712,20 +712,20 @@
 .methodology-roll-image {
   opacity: 0;
   filter: blur(12px);
-  transform: translateX(-70px) rotate(-28deg);
+  transform: translateX(115vw) rotate(110deg) scale(0.72);
   transform-origin: center;
   will-change: transform, filter, opacity;
 }
 
 .methodology-roll-image.is-roll-visible {
-  animation: methodology-roll-in-blurred 0.85s cubic-bezier(0.23, 1, 0.32, 1) both;
+  animation: methodology-roll-in-blurred 2.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes methodology-roll-in-blurred {
   0% {
     opacity: 0;
     filter: blur(12px);
-    transform: translateX(-70px) rotate(-28deg);
+    transform: translateX(115vw) rotate(110deg) scale(0.72);
   }
 
   100% {
