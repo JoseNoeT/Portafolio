@@ -647,3 +647,115 @@
         animation: none !important;
     }
 }
+
+
+/* ======================================================
+   PROJECT TITLES + CARD VISUAL PASS
+   Keeps slider sizing, transforms and positions intact.
+   ====================================================== */
+
+.projects-showcase .section-eyebrow {
+    color: #38bdf8;
+    border-color: rgba(56, 189, 248, 0.52);
+    background: rgba(14, 165, 233, 0.08);
+    box-shadow:
+        0 0 18px rgba(14, 165, 233, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.projects-showcase .section-title {
+    color: #f8fbff;
+    text-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.02),
+        0 0 24px rgba(56, 189, 248, 0.10);
+}
+
+.projects-showcase .section-title .projects-title-accent {
+    color: #38bdf8;
+    text-shadow:
+        0 0 10px rgba(56, 189, 248, 0.24),
+        0 0 28px rgba(14, 165, 233, 0.15);
+}
+
+.projects-showcase .section-subtitle {
+    color: #c3d2e5;
+}
+
+.panorama-card {
+    border-color: rgba(56, 189, 248, 0.34);
+    background:
+        radial-gradient(circle at 78% 4%, rgba(14, 165, 233, 0.13), transparent 34%),
+        linear-gradient(160deg, rgba(8, 27, 54, 0.98), rgba(3, 12, 28, 0.99));
+    box-shadow:
+        0 24px 58px rgba(0, 0, 0, 0.40),
+        0 0 18px rgba(14, 165, 233, 0.055),
+        inset 0 1px 0 rgba(255, 255, 255, 0.055);
+}
+
+.swiper-slide-active .panorama-card {
+    background:
+        radial-gradient(circle at 78% 2%, rgba(56, 189, 248, 0.17), transparent 34%),
+        linear-gradient(160deg, rgba(8, 31, 61, 0.99), rgba(3, 13, 30, 0.99));
+    box-shadow:
+        0 30px 78px rgba(0, 0, 0, 0.50),
+        0 0 24px rgba(56, 189, 248, 0.22),
+        0 0 54px rgba(14, 165, 233, 0.11),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.panorama-card__body {
+    border-top: 1px solid rgba(56, 189, 248, 0.12);
+    background:
+        radial-gradient(circle at 88% 0%, rgba(56, 189, 248, 0.07), transparent 36%),
+        linear-gradient(180deg, rgba(7, 25, 49, 0.88), rgba(3, 12, 28, 0.97));
+}
+
+.panorama-card__body h3 {
+    color: #f8fbff;
+    font-weight: 800;
+    text-shadow:
+        0 0 12px rgba(255, 255, 255, 0.035),
+        0 0 22px rgba(56, 189, 248, 0.07);
+}
+
+.swiper-slide-active .panorama-card__body h3 {
+    text-shadow:
+        0 0 12px rgba(255, 255, 255, 0.05),
+        0 0 24px rgba(56, 189, 248, 0.13);
+}
+
+.panorama-card__body p {
+    color: #c1cede;
+}
+
+.panorama-card__stack {
+    color: #38bdf8;
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.12);
+}
+
+.panorama-card__category {
+    color: #eaf9ff;
+    border-color: rgba(56, 189, 248, 0.74);
+    background: rgba(2, 15, 34, 0.84);
+    box-shadow:
+        0 0 15px rgba(14, 165, 233, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.panorama-card .btn-outline {
+    color: #38bdf8;
+    border-color: rgba(56, 189, 248, 0.72);
+    background: rgba(3, 18, 39, 0.72);
+    box-shadow:
+        0 0 14px rgba(14, 165, 233, 0.07),
+        inset 0 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.panorama-card .btn-outline:hover {
+    color: #f8fbff;
+    border-color: #38bdf8;
+    background: rgba(14, 165, 233, 0.18);
+    box-shadow:
+        0 0 18px rgba(56, 189, 248, 0.24),
+        0 0 36px rgba(14, 165, 233, 0.10);
+}
