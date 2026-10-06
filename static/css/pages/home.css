@@ -2626,44 +2626,10 @@ body {
 
 
 /* ======================================================
-   HOME MOTION 2.0 — synchronized Ken Burns
-   One cadence for photographic surfaces and section backgrounds.
+   HOME MOTION APPLICATIONS
+   Motion primitives/tokens are owned by components/motion.css.
+   This page file only selects which Home surfaces use them.
    ====================================================== */
-:root {
-  --home-motion-duration: 12s;
-  --home-motion-ease: ease-in-out;
-}
-
-@-webkit-keyframes home-kenburns-top-left {
-  0% {
-    -webkit-transform: scale(1) translate(0, 0);
-    transform: scale(1) translate(0, 0);
-    -webkit-transform-origin: 16% 16%;
-    transform-origin: 16% 16%;
-  }
-  100% {
-    -webkit-transform: scale(1.12) translate(-12px, -9px);
-    transform: scale(1.12) translate(-12px, -9px);
-    -webkit-transform-origin: top left;
-    transform-origin: top left;
-  }
-}
-
-@keyframes home-kenburns-top-left {
-  0% {
-    -webkit-transform: scale(1) translate(0, 0);
-    transform: scale(1) translate(0, 0);
-    -webkit-transform-origin: 16% 16%;
-    transform-origin: 16% 16%;
-  }
-  100% {
-    -webkit-transform: scale(1.12) translate(-12px, -9px);
-    transform: scale(1.12) translate(-12px, -9px);
-    -webkit-transform-origin: top left;
-    transform-origin: top left;
-  }
-}
-
 /* Project card photography. Carousel geometry itself is untouched. */
 #projects .panorama-card__media,
 #projects .panorama-card__media img,
