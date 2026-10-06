@@ -1758,7 +1758,7 @@
     padding:
       calc(var(--navbar-height-mobile, 64px) + 8px)
       4px
-      10px !important;
+      22px !important;
     overflow: visible !important;
     scroll-snap-align: none;
   }
@@ -1779,7 +1779,7 @@
 
 @media (max-width: 480px) {
   .hero.hero--home {
-    padding-bottom: 8px !important;
+    padding-bottom: 18px !important;
   }
 
   .hero.hero--home .hero-content {
