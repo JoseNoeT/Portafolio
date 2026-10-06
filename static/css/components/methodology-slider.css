@@ -627,13 +627,6 @@
 
 /* Image motion is owned by the shared motion primitive declared at the end of this file. */
 
-100% {
-    -webkit-transform: scale(1.15) translateY(-10px);
-    transform: scale(1.15) translateY(-10px);
-    -webkit-transform-origin: top;
-    transform-origin: top;
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .methodology-slide.is-active img,
@@ -692,8 +685,6 @@
   z-index: 1;
 }
 
-to { -webkit-transform: scale(1.14) translateY(-8px); }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .methodology-scene__bg,
