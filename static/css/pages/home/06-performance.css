@@ -1,0 +1,16 @@
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #services::before,
+  #about.profile-v2::before,
+  .closing-cta::before {
+    animation: none !important;
+  }
+}

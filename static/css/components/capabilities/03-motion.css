@@ -73,8 +73,10 @@ content: "";
   inset: -5%;
   z-index: -3;
   pointer-events: none;
-  background:
-    url("../../img/services/services-bg.png") center center / cover no-repeat;
+  background-image: var(--section-bg-image, none);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
   transform: scale(1.04);
   transform-origin: center;
   animation: services-bg-kenburns 18s ease-in-out infinite alternate;
