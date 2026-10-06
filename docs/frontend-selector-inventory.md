@@ -1,45 +1,18 @@
-# Inventario de propiedad CSS — Home
+# Inventario final de propiedad CSS — Home
 
-Generado durante la limpieza canónica.
+Estado reconstruido conservando el orden de cascada del snapshot previo.
 
-- capabilities/cards: 43 reglas → 5 módulo(s)
-- capabilities/motion: 8 reglas → 1 módulo(s)
-- capabilities/responsive: 19 reglas → 2 módulo(s)
-- capabilities/section: 17 reglas → 2 módulo(s)
-- cta/content: 16 reglas → 2 módulo(s)
-- cta/motion: 2 reglas → 1 módulo(s)
-- cta/responsive: 17 reglas → 2 módulo(s)
-- cta/section: 10 reglas → 1 módulo(s)
-- hero-home/actions: 21 reglas → 2 módulo(s)
-- hero-home/motion: 6 reglas → 1 módulo(s)
-- hero-home/portrait: 4 reglas → 1 módulo(s)
-- hero-home/responsive: 97 reglas → 9 módulo(s)
-- hero-home/shell: 18 reglas → 3 módulo(s)
-- hero-home/story: 12 reglas → 2 módulo(s)
-- hero-page/background: 8 reglas → 3 módulo(s)
-- hero-page/panel: 6 reglas → 1 módulo(s)
-- hero-page/responsive: 16 reglas → 2 módulo(s)
-- hero-page/shell: 3 reglas → 2 módulo(s)
-- hero-page/typography: 10 reglas → 2 módulo(s)
-- home/canvas: 27 reglas → 4 módulo(s)
-- home/composition: 1 reglas → 1 módulo(s)
-- home/motion: 4 reglas → 1 módulo(s)
-- home/responsive: 70 reglas → 8 módulo(s)
-- home/typography: 10 reglas → 2 módulo(s)
-- horizontal/responsive: 6 reglas → 1 módulo(s)
-- methodology/mobile-story: 1 reglas → 1 módulo(s)
-- methodology/motion: 2 reglas → 1 módulo(s)
-- methodology/responsive: 121 reglas → 12 módulo(s)
-- methodology/section: 31 reglas → 3 módulo(s)
-- methodology/slider: 24 reglas → 3 módulo(s)
-- methodology/steps: 13 reglas → 2 módulo(s)
-- profile/cards: 19 reglas → 2 módulo(s)
-- profile/motion: 4 reglas → 1 módulo(s)
-- profile/responsive: 28 reglas → 3 módulo(s)
-- profile/section: 33 reglas → 4 módulo(s)
-- projects/atmosphere: 15 reglas → 2 módulo(s)
-- projects/card: 58 reglas → 6 módulo(s)
-- projects/carousel: 7 reglas → 1 módulo(s)
-- projects/motion: 7 reglas → 1 módulo(s)
-- projects/responsive: 35 reglas → 3 módulo(s)
-- projects/section: 14 reglas → 2 módulo(s)
+| Propietario | Reglas conservadas | Módulos |
+|---|---:|---:|
+| Hero páginas | 43 | 9 |
+| Hero Home | 158 | 16 |
+| Proyectos | 136 | 13 |
+| Metodología | 192 | 19 |
+| Capacidades | 90 | 10 |
+| Perfil | 84 | 8 |
+| CTA | 45 | 5 |
+| Carril horizontal | 6 | 1 |
+| Home foundation | 66 | 8 |
+| Home final | 46 | 5 |
+
+Los duplicados exactos se eliminaron conservando la última ocurrencia efectiva. Las reglas compartidas entre más de un componente permanecen en la capa de composición de Home para no inventar propietarios falsos.
