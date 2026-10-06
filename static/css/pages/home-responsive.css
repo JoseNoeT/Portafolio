@@ -1587,3 +1587,158 @@
     inset: -12px -8px -10px !important;
   }
 }
+
+
+/* =========================================================
+   MOBILE CHAPTERS 3.5
+   One narrative section per viewport. The Hero fills the first screen
+   without stretching its card; following sections use the same rhythm.
+========================================================= */
+@media (max-width: 768px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  .hero.hero--home,
+  #projects,
+  #methodology,
+  #services,
+  #about,
+  .closing-cta {
+    box-sizing: border-box;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-height: 100svh !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+
+  /* Hero occupies the first viewport, while the card keeps content height. */
+  .hero.hero--home {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding:
+      calc(var(--navbar-height-mobile, 64px) + 8px)
+      4px
+      8px !important;
+    overflow: hidden !important;
+  }
+
+  .hero.hero--home .hero-content {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: calc(100svh - var(--navbar-height-mobile, 64px) - 20px) !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .hero.hero--home .hero-wrapper {
+    height: auto !important;
+    max-height: 100% !important;
+  }
+
+  /* More readable title and body rhythm. */
+  .hero.hero--home .hero-title {
+    line-height: 1.06 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .hero.hero--home .hero-story__intro,
+  .hero.hero--home .hero-story__focus {
+    line-height: 1.34 !important;
+  }
+
+  .hero.hero--home .hero-story__focus {
+    margin-top: 5px !important;
+  }
+
+  /* Narrative chapters center their content inside one viewport. */
+  #projects,
+  #methodology,
+  #services,
+  #about,
+  .closing-cta {
+    display: flex !important;
+    align-items: center !important;
+    padding-block: 18px !important;
+    overflow: hidden !important;
+  }
+
+  #projects > .container,
+  #methodology > .container,
+  #services > .container,
+  #about > .container,
+  .closing-cta > .container {
+    width: 100% !important;
+    max-height: 100% !important;
+    margin-block: auto !important;
+  }
+
+  /* Keep section headers compact enough for a one-screen chapter. */
+  #projects .section-header,
+  #services .section-header {
+    margin-bottom: 12px !important;
+  }
+
+  #methodology .methodology-content {
+    gap: 7px !important;
+  }
+
+  #about .profile-v2__intro {
+    margin-bottom: 10px !important;
+  }
+
+  .closing-cta__panel {
+    max-height: calc(100svh - 36px);
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero.hero--home .hero-content {
+    padding: 9px 12px 11px !important;
+  }
+
+  .hero.hero--home .hero-title {
+    font-size: clamp(1.48rem, 7.1vw, 1.82rem) !important;
+    line-height: 1.07 !important;
+  }
+
+  .hero.hero--home .hero-story__intro,
+  .hero.hero--home .hero-story__focus {
+    font-size: .61rem !important;
+    line-height: 1.36 !important;
+  }
+
+  #projects,
+  #methodology,
+  #services,
+  #about,
+  .closing-cta {
+    padding-block: 14px !important;
+  }
+
+  #projects .section-title,
+  #services .section-title,
+  #methodology .split-section__title,
+  #about .split-section__title,
+  .closing-cta__title {
+    line-height: 1.05 !important;
+  }
+
+  #projects .section-desc,
+  #services .section-desc,
+  #methodology .split-section__text,
+  #about .split-section__text,
+  .closing-cta__text {
+    line-height: 1.42 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none;
+  }
+}
