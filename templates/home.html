@@ -33,36 +33,8 @@
 <script src="{% static 'js/animations/hero.js' %}"></script>
 <script src="{% static 'js/home.js' %}" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="{% static 'js/components/project-carousel.js' %}?v=2.1" defer></script>
-<script src="{% static 'js/components/methodology-slider.js' %}?v=4.1" defer></script>
+<script type="module" src="{% static 'js/components/project-carousel.js' %}?v=3.0"></script>
+<script type="module" src="{% static 'js/components/methodology-slider.js' %}?v=5.0"></script>
 <script src="{% static 'js/components/mobile-horizontal-hint.js' %}?v=1.2" defer></script>
-<script>
-  (function () {
-    var btn = document.getElementById('theme-toggle');
-    if (!btn) return;
-    var label = btn.querySelector('.theme-toggle-label');
-    var icon  = btn.querySelector('.theme-toggle-icon');
-    var root  = document.documentElement;
-    var KEY   = 'portfolio-theme';
-
-    function refresh() {
-      var theme = root.getAttribute('data-theme') || 'dark';
-      var isDark = theme === 'dark';
-      label.textContent = isDark ? 'Oscuro' : 'Claro';
-      icon.textContent  = isDark ? '\u263E' : '\u2600';
-      btn.setAttribute('aria-label',
-        isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
-    }
-
-    btn.addEventListener('click', function () {
-      var current = root.getAttribute('data-theme') || 'dark';
-      var next = current === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem(KEY, next);
-      refresh();
-    });
-
-    refresh();
-  })();
-</script>
+<script src="{% static 'js/components/theme-toggle.js' %}?v=1.0" defer></script>
 {% endblock %}    
