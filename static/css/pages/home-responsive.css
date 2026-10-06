@@ -926,3 +926,165 @@
     font-size: .68rem !important;
   }
 }
+
+
+/* =========================================================
+   HERO MOBILE FIT 2.2 — true 360x800 first-screen fit
+   Reduce vertical rhythm and remove inherited spacing that was
+   still pushing chips/buttons below the viewport.
+========================================================= */
+@media (max-width: 480px) {
+  .hero.hero--home {
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-height: 100svh !important;
+    padding: calc(var(--navbar-height-mobile, 64px) + 4px) 4px 4px !important;
+  }
+
+  .hero.hero--home .hero-content {
+    height: calc(100svh - var(--navbar-height-mobile, 64px) - 8px) !important;
+    max-height: calc(100svh - var(--navbar-height-mobile, 64px) - 8px) !important;
+    padding: 8px 12px !important;
+    align-items: flex-start !important;
+  }
+
+  .hero.hero--home .hero-wrapper {
+    height: 100%;
+    max-height: 100%;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0 !important;
+  }
+
+  .hero.hero--home .hero-image {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 0;
+  }
+
+  .hero.hero--home .hero-image .img-card {
+    width: 68px !important;
+    height: 68px !important;
+    margin: 0 auto !important;
+  }
+
+  .hero.hero--home .hero-text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .hero.hero--home .hero-topline {
+    margin: 4px 0 5px !important;
+    gap: 5px !important;
+  }
+
+  .hero.hero--home .theme-toggle {
+    min-height: 25px !important;
+    padding: 4px 9px !important;
+    font-size: .61rem !important;
+  }
+
+  .hero.hero--home .hero-eyebrow {
+    min-height: 25px !important;
+    padding: 4px 10px !important;
+    font-size: .61rem !important;
+    letter-spacing: .09em !important;
+  }
+
+  .hero.hero--home .hero-title {
+    margin: 0 0 5px !important;
+    font-size: clamp(1.34rem, 6.6vw, 1.58rem) !important;
+    line-height: .98 !important;
+  }
+
+  .hero.hero--home .hero-story {
+    margin: 0 0 5px !important;
+    padding: 7px 8px 7px 0 !important;
+    gap: 8px !important;
+    border-radius: 0 11px 11px 0 !important;
+  }
+
+  .hero.hero--home .hero-story__kicker {
+    margin-bottom: 3px !important;
+    font-size: .49rem !important;
+    letter-spacing: .055em !important;
+    white-space: nowrap;
+  }
+
+  .hero.hero--home .hero-story__intro,
+  .hero.hero--home .hero-story__focus {
+    font-size: .59rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero.hero--home .hero-story__focus {
+    margin-top: 3px !important;
+  }
+
+  .hero.hero--home .hero-tags {
+    margin: 0 !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 4px !important;
+  }
+
+  .hero.hero--home .hero-tag {
+    min-height: 23px !important;
+    padding: 3px 5px !important;
+    font-size: .54rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .hero.hero--home .hero-tag svg {
+    width: 10px !important;
+    height: 10px !important;
+  }
+
+  .hero.hero--home .hero-buttons {
+    margin: 5px 0 0 !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 5px !important;
+  }
+
+  .hero.hero--home .hero-buttons .btn {
+    min-height: 29px !important;
+    padding: 5px 7px !important;
+    font-size: .61rem !important;
+    border-radius: 9px !important;
+  }
+
+  .hero.hero--home .hero-buttons .btn svg {
+    width: 11px !important;
+    height: 11px !important;
+  }
+}
+
+/* Slightly roomier phones can breathe without losing first-screen fit. */
+@media (min-width: 390px) and (max-width: 480px) and (min-height: 820px) {
+  .hero.hero--home .hero-image .img-card {
+    width: 78px !important;
+    height: 78px !important;
+  }
+
+  .hero.hero--home .hero-title {
+    font-size: 1.66rem !important;
+  }
+
+  .hero.hero--home .hero-story__intro,
+  .hero.hero--home .hero-story__focus {
+    font-size: .64rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .hero.hero--home .hero-tag {
+    min-height: 26px !important;
+    font-size: .58rem !important;
+  }
+
+  .hero.hero--home .hero-buttons .btn {
+    min-height: 32px !important;
+    font-size: .65rem !important;
+  }
+}
