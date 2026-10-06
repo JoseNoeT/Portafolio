@@ -1379,3 +1379,79 @@
     padding: 8px 12px 10px !important;
   }
 }
+
+
+/* =========================================================
+   METHODOLOGY MOBILE ORDER 3.2
+   sections.css moves every split visual before its copy on mobile.
+   That is wrong for this narrative: explain -> steps -> visual evidence.
+========================================================= */
+@media (max-width: 768px) {
+  #methodology .methodology-content {
+    order: 0 !important;
+  }
+
+  #methodology .methodology-slider,
+  #methodology .split-section__visual {
+    order: 1 !important;
+  }
+
+  #methodology .split-section {
+    align-content: center;
+  }
+
+  #methodology .methodology-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px !important;
+  }
+
+  #methodology .methodology-content .section-eyebrow {
+    margin-bottom: 2px !important;
+  }
+
+  #methodology .methodology-content .split-section__title {
+    margin-bottom: 2px !important;
+  }
+
+  #methodology .methodology-content .split-section__text {
+    margin-bottom: 2px !important;
+  }
+
+  #methodology .methodology-steps {
+    width: 100%;
+    max-width: none !important;
+  }
+
+  #methodology .methodology-slider {
+    margin-top: 2px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #methodology .methodology-content .split-section__title {
+    font-size: clamp(1.5rem, 7.4vw, 1.9rem) !important;
+    line-height: 1.02 !important;
+  }
+
+  #methodology .methodology-content .split-section__text {
+    font-size: .82rem !important;
+    line-height: 1.42 !important;
+  }
+
+  #methodology .methodology-slider {
+    width: 100% !important;
+  }
+
+  #methodology .methodology-slider__viewport {
+    aspect-ratio: 16 / 8.8 !important;
+  }
+
+  #methodology .methodology-slide__caption {
+    padding: 10px 12px !important;
+  }
+
+  #methodology .methodology-slide__caption strong {
+    font-size: .9rem !important;
+  }
+}
