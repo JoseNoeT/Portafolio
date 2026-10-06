@@ -200,34 +200,9 @@
   }
 }
 
-.methodology-slide.is-active img {
-  -webkit-animation: methodology-kenburns-top 6.8s ease-out both;
-  animation: methodology-kenburns-top 6.8s ease-out both;
-}
+/* Image motion is owned by the shared motion primitive declared at the end of this file. */
 
-@-webkit-keyframes methodology-kenburns-top {
-  0% {
-    -webkit-transform: scale(1) translateY(0);
-    transform: scale(1) translateY(0);
-    -webkit-transform-origin: 50% 16%;
-    transform-origin: 50% 16%;
-  }
-  100% {
-    -webkit-transform: scale(1.15) translateY(-10px);
-    transform: scale(1.15) translateY(-10px);
-    -webkit-transform-origin: top;
-    transform-origin: top;
-  }
-}
-
-@keyframes methodology-kenburns-top {
-  0% {
-    -webkit-transform: scale(1) translateY(0);
-    transform: scale(1) translateY(0);
-    -webkit-transform-origin: 50% 16%;
-    transform-origin: 50% 16%;
-  }
-  100% {
+100% {
     -webkit-transform: scale(1.15) translateY(-10px);
     transform: scale(1.15) translateY(-10px);
     -webkit-transform-origin: top;
@@ -278,8 +253,6 @@
 
 .methodology-scene__bg.is-active {
   opacity: 1;
-  -webkit-animation: methodology-background-kenburns 7.2s ease-out both;
-  animation: methodology-background-kenburns 7.2s ease-out both;
 }
 
 .methodology-scene__veil {
@@ -294,14 +267,7 @@
   z-index: 1;
 }
 
-@keyframes methodology-background-kenburns {
-  from { transform: scale(1.05) translateY(0); }
-  to { transform: scale(1.14) translateY(-8px); }
-}
-
-@-webkit-keyframes methodology-background-kenburns {
-  from { -webkit-transform: scale(1.05) translateY(0); }
-  to { -webkit-transform: scale(1.14) translateY(-8px); }
+to { -webkit-transform: scale(1.14) translateY(-8px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
