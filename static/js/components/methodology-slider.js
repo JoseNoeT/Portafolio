@@ -1,147 +1,164 @@
 (() => {
   "use strict";
 
-  const slider = document.querySelector("[data-methodology-slider]");
   const section = document.getElementById("methodology");
-  if (!slider || !section) return;
+  const slider = document.querySelector("[data-methodology-slider]");
+  const story = document.querySelector("[data-methodology-story]");
 
-  const viewport = slider.querySelector(".methodology-slider__viewport");
-  const stepRail = section.querySelector(".methodology-steps");
-  const slides = [...slider.querySelectorAll("[data-methodology-slide]")];
-  const dots = [...slider.querySelectorAll("[data-methodology-dot]")];
-  const steps = [...section.querySelectorAll(".methodology-step")];
+  if (!section || !slider) return;
+
+  const desktopViewport = slider.querySelector(".methodology-slider__viewport");
+  const desktopSlides = [...slider.querySelectorAll("[data-methodology-slide]")];
+  const desktopDots = [...slider.querySelectorAll("[data-methodology-dot]")];
+  const desktopSteps = [...section.querySelectorAll(".methodology-steps .methodology-step")];
+
+  const storyTrack = story?.querySelector("[data-methodology-story-track]") ?? null;
+  const storySlides = story
+    ? [...story.querySelectorAll("[data-methodology-story-slide]")]
+    : [];
+  const storyDots = story
+    ? [...story.querySelectorAll("[data-methodology-story-dot]")]
+    : [];
+
   const backgrounds = [...section.querySelectorAll(".methodology-scene__bg")];
 
-  if (!slides.length) return;
+  if (!desktopSlides.length) return;
 
-  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   const mobileQuery = window.matchMedia("(max-width: 768px)");
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
   const interval = 4200;
-  const swipeThreshold = 42;
 
   let current = 0;
   let timer = null;
   let isVisible = true;
-  let railFrame = null;
-  let railRestartTimer = null;
-  let pointerStartX = null;
-  let pointerStartY = null;
+  let storyScrollFrame = null;
+  let storyRestartTimer = null;
+  let storySyncTimer = null;
+  let isStorySyncing = false;
 
-  const reducedMotion = () => reducedMotionQuery.matches;
   const isMobile = () => mobileQuery.matches;
+  const reducedMotion = () => reducedMotionQuery.matches;
 
   const stop = () => {
     window.clearInterval(timer);
     timer = null;
   };
 
-  const restartLater = () => {
-    window.clearTimeout(railRestartTimer);
-    railRestartTimer = window.setTimeout(start, 900);
-  };
-
-  const scrollStepIntoView = (index) => {
-    if (!isMobile() || !stepRail || !steps[index]) return;
-
-    const step = steps[index];
-    const maxScroll = Math.max(0, stepRail.scrollWidth - stepRail.clientWidth);
-    const target = Math.min(
-      maxScroll,
-      Math.max(0, step.offsetLeft - stepRail.clientWidth * 0.08)
-    );
-
-    stepRail.scrollTo({
-      left: target,
-      behavior: reducedMotion() ? "auto" : "smooth"
+  const markActive = (items, index, className = "is-active") => {
+    items.forEach((item, i) => {
+      const active = i === index;
+      item.classList.toggle(className, active);
+      item.setAttribute("aria-current", active ? "true" : "false");
     });
   };
 
-  const show = (index, options = {}) => {
-    const {
-      syncRail = true,
-      restart = false
-    } = options;
+  const scrollStoryTo = (index) => {
+    if (!storyTrack || !storySlides[index] || !isMobile()) return;
 
-    const next = (index + slides.length) % slides.length;
+    isStorySyncing = true;
+    window.clearTimeout(storySyncTimer);
+
+    const slide = storySlides[index];
+    const maxScroll = Math.max(0, storyTrack.scrollWidth - storyTrack.clientWidth);
+    const target = Math.min(maxScroll, Math.max(0, slide.offsetLeft - 4));
+
+    storyTrack.scrollTo({
+      left: target,
+      behavior: reducedMotion() ? "auto" : "smooth"
+    });
+
+    storySyncTimer = window.setTimeout(() => {
+      isStorySyncing = false;
+    }, reducedMotion() ? 40 : 720);
+  };
+
+  const show = (index, options = {}) => {
+    const { syncStory = true, restart = false } = options;
+    const next = (index + desktopSlides.length) % desktopSlides.length;
+
+    const previous = current;
+    current = next;
+
+    const wrapsForward = previous === desktopSlides.length - 1 && next === 0;
+    const wrapsBackward = previous === 0 && next === desktopSlides.length - 1;
     const direction =
-      next === current
+      next === previous
         ? "next"
-        : (
-            (next > current && !(current === slides.length - 1 && next === 0)) ||
-            (current === 0 && next === slides.length - 1)
-          )
+        : (next > previous && !wrapsBackward) || wrapsForward
           ? "next"
           : "prev";
 
-    current = next;
     slider.dataset.direction = direction;
 
-    slides.forEach((slide, i) => {
+    desktopSlides.forEach((slide, i) => {
       const active = i === current;
       slide.classList.toggle("is-active", active);
       slide.setAttribute("aria-hidden", active ? "false" : "true");
     });
 
-    dots.forEach((dot, i) => {
-      const active = i === current;
-      dot.classList.toggle("is-active", active);
-      dot.setAttribute("aria-current", active ? "true" : "false");
-    });
-
-    steps.forEach((step, i) => {
+    desktopSteps.forEach((step, i) => {
       const active = i === current;
       step.classList.toggle("is-active", active);
       step.setAttribute("aria-current", active ? "step" : "false");
     });
 
+    markActive(desktopDots, current);
+    markActive(storySlides, current);
+    markActive(storyDots, current);
+
     backgrounds.forEach((background, i) => {
       background.classList.toggle("is-active", i === current);
     });
 
-    if (syncRail) scrollStepIntoView(current);
+    if (syncStory) scrollStoryTo(current);
     if (restart) start();
   };
 
   const start = () => {
     stop();
     if (reducedMotion() || !isVisible) return;
-    timer = window.setInterval(() => show(current + 1), interval);
+
+    timer = window.setInterval(() => {
+      show(current + 1, { syncStory: isMobile() });
+    }, interval);
   };
 
-  const nearestStepIndex = () => {
-    if (!stepRail || !steps.length) return current;
+  const nearestStoryIndex = () => {
+    if (!storyTrack || !storySlides.length) return current;
 
-    const railLeft = stepRail.getBoundingClientRect().left;
-    const probe = railLeft + Math.min(stepRail.clientWidth * 0.22, 76);
+    const trackRect = storyTrack.getBoundingClientRect();
+    const probe = trackRect.left + Math.min(storyTrack.clientWidth * 0.16, 58);
 
     let nearest = current;
-    let nearestDistance = Infinity;
+    let distance = Infinity;
 
-    steps.forEach((step, index) => {
-      const rect = step.getBoundingClientRect();
-      const distance = Math.abs(rect.left - probe);
-      if (distance < nearestDistance) {
+    storySlides.forEach((slide, index) => {
+      const slideRect = slide.getBoundingClientRect();
+      const currentDistance = Math.abs(slideRect.left - probe);
+
+      if (currentDistance < distance) {
+        distance = currentDistance;
         nearest = index;
-        nearestDistance = distance;
       }
     });
 
     return nearest;
   };
 
-  dots.forEach((dot, index) => {
+  desktopDots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
-      show(index, { syncRail: true });
+      show(index, { syncStory: false });
       start();
     });
   });
 
-  steps.forEach((step, index) => {
+  desktopSteps.forEach((step, index) => {
     step.setAttribute("tabindex", "0");
     step.setAttribute("role", "button");
 
     const activate = () => {
-      show(index, { syncRail: true });
+      show(index, { syncStory: false });
       start();
     };
 
@@ -153,66 +170,77 @@
     });
   });
 
-  if (stepRail) {
-    stepRail.addEventListener(
+  storyDots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      show(index, { syncStory: true });
+      start();
+    });
+  });
+
+  if (storyTrack) {
+    const userTakesControl = () => {
+      isStorySyncing = false;
+      window.clearTimeout(storySyncTimer);
+      stop();
+    };
+
+    storyTrack.addEventListener("pointerdown", userTakesControl, { passive: true });
+    storyTrack.addEventListener("touchstart", userTakesControl, { passive: true });
+
+    storyTrack.addEventListener(
       "scroll",
       () => {
-        if (!isMobile()) return;
+        if (!isMobile() || isStorySyncing) return;
 
         stop();
-        if (railFrame) window.cancelAnimationFrame(railFrame);
 
-        railFrame = window.requestAnimationFrame(() => {
-          const index = nearestStepIndex();
+        if (storyScrollFrame) {
+          window.cancelAnimationFrame(storyScrollFrame);
+        }
+
+        storyScrollFrame = window.requestAnimationFrame(() => {
+          const index = nearestStoryIndex();
           if (index !== current) {
-            show(index, { syncRail: false });
+            show(index, { syncStory: false });
           }
         });
 
-        restartLater();
+        window.clearTimeout(storyRestartTimer);
+        storyRestartTimer = window.setTimeout(start, 1100);
       },
       { passive: true }
     );
-
-    stepRail.addEventListener("pointerdown", stop, { passive: true });
-    stepRail.addEventListener("touchstart", stop, { passive: true });
   }
 
-  if (viewport) {
-    viewport.style.touchAction = "pan-y";
+  if (desktopViewport) {
+    let startX = null;
+    let startY = null;
 
-    viewport.addEventListener("pointerdown", (event) => {
-      if (!isMobile()) return;
-      pointerStartX = event.clientX;
-      pointerStartY = event.clientY;
+    desktopViewport.addEventListener("pointerdown", (event) => {
+      if (isMobile()) return;
+      startX = event.clientX;
+      startY = event.clientY;
       stop();
-      viewport.classList.add("is-dragging");
     });
 
-    viewport.addEventListener("pointerup", (event) => {
-      if (!isMobile() || pointerStartX === null || pointerStartY === null) return;
+    desktopViewport.addEventListener("pointerup", (event) => {
+      if (isMobile() || startX === null || startY === null) return;
 
-      const deltaX = event.clientX - pointerStartX;
-      const deltaY = event.clientY - pointerStartY;
+      const deltaX = event.clientX - startX;
+      const deltaY = event.clientY - startY;
 
-      viewport.classList.remove("is-dragging");
-
-      if (
-        Math.abs(deltaX) >= swipeThreshold &&
-        Math.abs(deltaX) > Math.abs(deltaY)
-      ) {
-        show(deltaX < 0 ? current + 1 : current - 1, { syncRail: true });
+      if (Math.abs(deltaX) >= 42 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        show(deltaX < 0 ? current + 1 : current - 1, { syncStory: false });
       }
 
-      pointerStartX = null;
-      pointerStartY = null;
+      startX = null;
+      startY = null;
       start();
     });
 
-    viewport.addEventListener("pointercancel", () => {
-      pointerStartX = null;
-      pointerStartY = null;
-      viewport.classList.remove("is-dragging");
+    desktopViewport.addEventListener("pointercancel", () => {
+      startX = null;
+      startY = null;
       start();
     });
   }
@@ -226,8 +254,12 @@
     const observer = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry.isIntersecting;
-        if (isVisible) start();
-        else stop();
+
+        if (isVisible) {
+          start();
+        } else {
+          stop();
+        }
       },
       { threshold: 0.15 }
     );
@@ -241,7 +273,8 @@
   });
 
   mobileQuery.addEventListener?.("change", () => {
-    show(current, { syncRail: isMobile() });
+    show(current, { syncStory: isMobile() });
+    start();
   });
 
   reducedMotionQuery.addEventListener?.("change", () => {
@@ -249,6 +282,6 @@
     else start();
   });
 
-  show(0, { syncRail: false });
+  show(0, { syncStory: false });
   start();
 })();
