@@ -4,9 +4,10 @@ on:
   pull_request:
   push:
     branches: [main, mejoras-portafolio]
+  workflow_dispatch:
 
 jobs:
-  css-architecture:
+  css-size:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,4 +15,12 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scripts/check_frontend_sizes.py --scope css --strict
+
+  css-ownership:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - run: python scripts/check_css_ownership.py
