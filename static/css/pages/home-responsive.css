@@ -1332,3 +1332,50 @@
     min-width: 80vw !important;
   }
 }
+
+
+/* =========================================================
+   HERO MOBILE CONTENT HEIGHT 3.1
+   The hero must fit inside the first viewport, not artificially
+   fill it. Let its card end immediately after the actions.
+========================================================= */
+@media (max-width: 768px) {
+  .hero.hero--home {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding-bottom: 6px !important;
+    overflow: visible !important;
+  }
+
+  .hero.hero--home .hero-content {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    align-items: center !important;
+  }
+
+  .hero.hero--home .hero-wrapper {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  .hero.hero--home .hero-text {
+    flex: 0 0 auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero.hero--home {
+    padding:
+      calc(var(--navbar-height-mobile, 64px) + 4px)
+      4px
+      4px !important;
+  }
+
+  .hero.hero--home .hero-content {
+    padding: 8px 12px 10px !important;
+  }
+}
