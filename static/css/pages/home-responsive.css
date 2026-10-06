@@ -1756,7 +1756,7 @@
     max-height: none !important;
     display: block !important;
     padding:
-      calc(var(--navbar-height-mobile, 64px) + 8px)
+      calc(var(--navbar-height-mobile, 64px) + 18px)
       4px
       22px !important;
     overflow: visible !important;
