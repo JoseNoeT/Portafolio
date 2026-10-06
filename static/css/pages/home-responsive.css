@@ -6,23 +6,23 @@
 
 /* ---------- Large / medium desktop ---------- */
 @media (max-width: 1240px) {
+
   :root {
     --home-canvas-width: calc(100% - 24px);
     --home-gutter: clamp(20px, 3vw, 30px);
   }
 
-  .hero.hero--home .hero-content {
-    width: min(100%, calc(100% - 24px));
-  }
-
   .section-title,
-  .split-section__title {
+.split-section__title {
     font-size: clamp(2rem, 3.4vw, 2.8rem);
   }
+
 }
+
 
 /* ---------- Tablet / small laptop ---------- */
 @media (max-width: 1024px) {
+
   :root {
     --home-canvas-width: calc(100% - 20px);
     --home-gutter: 24px;
@@ -39,46 +39,8 @@
   }
 
   .section-header,
-  .profile-v2__intro {
+.profile-v2__intro {
     max-width: 760px;
-  }
-
-  /* Hero */
-  .hero.hero--home {
-    height: auto !important;
-    min-height: calc(100svh - var(--navbar-height-mobile, 64px));
-    max-height: none;
-    padding: calc(var(--navbar-height-mobile, 64px) + 14px) 10px 22px;
-  }
-
-  .hero.hero--home .hero-content {
-    max-height: none;
-    padding: 28px 30px;
-  }
-
-  .hero.hero--home .hero-wrapper {
-    gap: 30px;
-  }
-
-  .hero.hero--home .hero-image {
-    flex: 0 0 190px;
-  }
-
-  .hero.hero--home .hero-image .img-card {
-    width: 180px;
-    height: 180px;
-  }
-
-  .hero.hero--home .hero-title {
-    font-size: clamp(2.2rem, 4.7vw, 3.3rem);
-  }
-
-  .hero.hero--home .hero-story {
-    max-width: none;
-  }
-
-  .hero.hero--home .hero-tags {
-    flex-wrap: wrap;
   }
 
   /* Projects */
@@ -133,10 +95,13 @@
     width: 100%;
     justify-self: center;
   }
+
 }
+
 
 /* ---------- Tablet portrait / large phones ---------- */
 @media (max-width: 768px) {
+
   :root {
     --home-canvas-width: calc(100% - 16px);
     --home-gutter: 18px;
@@ -162,116 +127,19 @@
   }
 
   .section-title,
-  .split-section__title,
-  .cta-band__title {
+.split-section__title,
+.cta-band__title {
     font-size: clamp(1.85rem, 7vw, 2.45rem);
     line-height: 1.04;
     text-wrap: balance;
   }
 
   .section-desc,
-  .split-section__text,
-  .cta-band__text {
+.split-section__text,
+.cta-band__text {
     max-width: 62ch;
     font-size: .94rem;
     line-height: 1.55;
-  }
-
-  /* Hero becomes an intentional vertical composition. */
-  .hero.hero--home {
-    min-height: auto;
-    padding: calc(var(--navbar-height-mobile, 64px) + 12px) 8px 18px;
-  }
-
-  .hero.hero--home .hero-content {
-    width: 100%;
-    padding: 24px 20px 22px;
-    border-radius: 22px;
-  }
-
-  .hero.hero--home .hero-wrapper {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .hero.hero--home .hero-image {
-    order: 0;
-    flex: none;
-    display: flex;
-    justify-content: center;
-  }
-
-  .hero.hero--home .hero-image .img-card {
-    width: 142px;
-    height: 142px;
-  }
-
-  .hero.hero--home .hero-text {
-    order: 1;
-    text-align: center;
-  }
-
-  .hero.hero--home .hero-topline {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .hero.hero--home .hero-title {
-    max-width: 700px;
-    margin-inline: auto;
-    font-size: clamp(2rem, 8.3vw, 2.8rem);
-    line-height: 1;
-    text-wrap: balance;
-  }
-
-  .hero.hero--home .hero-story {
-    grid-template-columns: 3px minmax(0, 1fr);
-    gap: 12px;
-    margin: 14px auto;
-    padding: 14px 14px 14px 0;
-    text-align: left;
-    border-radius: 0 14px 14px 0;
-  }
-
-  .hero-story__kicker {
-    font-size: .66rem;
-  }
-
-  .hero-story__intro,
-  .hero-story__focus {
-    font-size: .88rem !important;
-    line-height: 1.48 !important;
-  }
-
-  .hero.hero--home .hero-tags {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-    margin-top: 12px;
-  }
-
-  .hero.hero--home .hero-tag {
-    min-width: 0;
-    min-height: 42px;
-    justify-content: center;
-    padding: 8px 10px;
-    font-size: .76rem;
-    white-space: normal;
-    text-align: center;
-  }
-
-  .hero.hero--home .hero-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    margin-top: 14px;
-  }
-
-  .hero.hero--home .hero-buttons .btn {
-    width: 100%;
-    min-height: 46px;
-    justify-content: center;
   }
 
   /* Projects: touch-first carousel */
@@ -330,7 +198,7 @@
   }
 
   .portfolio-swiper .swiper-button-prev,
-  .portfolio-swiper .swiper-button-next {
+.portfolio-swiper .swiper-button-next {
     display: none !important;
   }
 
@@ -342,8 +210,8 @@
   }
 
   #methodology .methodology-content,
-  #methodology .methodology-content .split-section__title,
-  #methodology .methodology-content .split-section__text {
+#methodology .methodology-content .split-section__title,
+#methodology .methodology-content .split-section__text {
     width: 100%;
     max-width: none;
     text-align: left;
@@ -376,7 +244,7 @@
   }
 
   #services .feature-card,
-  #services .feature-card:last-child {
+#services .feature-card:last-child {
     grid-column: auto;
     width: 100%;
     max-width: none;
@@ -400,7 +268,7 @@
   }
 
   .profile-v2__card,
-  .profile-v2__card:last-child {
+.profile-v2__card:last-child {
     grid-column: auto;
     width: 100%;
     max-width: none;
@@ -444,23 +312,26 @@
 
   /* Mobile performance: keep identity, stop full-scene perpetual motion. */
   #services::before,
-  #about.profile-v2::before,
-  .closing-cta::before,
-  .methodology-scene__bg.is-active {
+#about.profile-v2::before,
+.closing-cta::before,
+.methodology-scene__bg.is-active {
     animation: none !important;
     transform: none !important;
   }
 
   #services::after,
-  #about.profile-v2::after,
-  .closing-cta::after {
+#about.profile-v2::after,
+.closing-cta::after {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
+
 }
+
 
 /* ---------- Phones ---------- */
 @media (max-width: 480px) {
+
   :root {
     --home-canvas-width: calc(100% - 10px);
     --home-gutter: 14px;
@@ -472,73 +343,15 @@
   }
 
   .section-title,
-  .split-section__title,
-  .cta-band__title {
+.split-section__title,
+.cta-band__title {
     font-size: clamp(1.65rem, 8.4vw, 2.05rem);
   }
 
   .section-desc,
-  .split-section__text,
-  .cta-band__text {
+.split-section__text,
+.cta-band__text {
     font-size: .9rem;
-  }
-
-  /* Hero */
-  .hero.hero--home {
-    padding-inline: 5px;
-  }
-
-  .hero.hero--home .hero-content {
-    padding: 20px 14px 18px;
-    border-radius: 18px;
-  }
-
-  .hero.hero--home .hero-image .img-card {
-    width: 116px;
-    height: 116px;
-  }
-
-  .hero.hero--home .hero-title {
-    font-size: clamp(1.82rem, 9.2vw, 2.25rem);
-  }
-
-  .hero.hero--home .hero-story {
-    margin-block: 12px;
-    padding: 12px 10px 12px 0;
-  }
-
-  .hero-story__kicker {
-    letter-spacing: .065em;
-    font-size: .61rem;
-  }
-
-  .hero-story__intro,
-  .hero-story__focus {
-    font-size: .82rem !important;
-  }
-
-  .hero.hero--home .hero-tags {
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-  }
-
-  .hero.hero--home .hero-tag {
-    padding: 7px 6px;
-    font-size: .7rem;
-  }
-
-  .hero.hero--home .hero-tag svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  .hero.hero--home .hero-buttons {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .hero.hero--home .hero-buttons .btn {
-    min-height: 45px;
   }
 
   /* Projects */
@@ -593,18 +406,18 @@
 
   /* Cards */
   #services .feature-card,
-  .profile-v2__card {
+.profile-v2__card {
     padding: 18px;
     border-radius: 16px;
   }
 
   .feature-card__title,
-  .profile-v2__card h3 {
+.profile-v2__card h3 {
     font-size: 1.15rem;
   }
 
   .feature-card__text,
-  .profile-v2__card p {
+.profile-v2__card p {
     font-size: .84rem;
     line-height: 1.5;
   }
@@ -623,21 +436,13 @@
     justify-content: center;
     gap: 6px 10px;
   }
+
 }
+
 
 /* ---------- Very small phones ---------- */
 @media (max-width: 360px) {
-  .hero.hero--home .hero-content {
-    padding-inline: 11px;
-  }
 
-  .hero.hero--home .hero-title {
-    font-size: 1.72rem;
-  }
-
-  .hero.hero--home .hero-tags {
-    grid-template-columns: 1fr;
-  }
 
   .project-slide {
     width: min(63vw, 225px) !important;
@@ -653,56 +458,45 @@
   }
 
   .section-title,
-  .split-section__title,
-  .cta-band__title {
+.split-section__title,
+.cta-band__title {
     font-size: 1.58rem;
   }
+
 }
+
 
 /* ---------- Short landscape screens ---------- */
 @media (max-height: 520px) and (orientation: landscape) and (min-width: 700px) {
-  .hero.hero--home {
-    min-height: auto;
-    padding-top: calc(var(--navbar-height-mobile, 54px) + 8px);
-  }
 
-  .hero.hero--home .hero-content {
-    padding-block: 16px;
-  }
-
-  .hero.hero--home .hero-image .img-card {
-    width: 120px;
-    height: 120px;
-  }
-
-  .hero.hero--home .hero-story {
-    margin-block: 8px;
-    padding-block: 8px;
-  }
 
   .section-shell {
     min-height: auto !important;
     padding-block: 28px !important;
   }
+
 }
+
 
 /* ---------- Touch accessibility ---------- */
 @media (hover: none), (pointer: coarse) {
+
   .btn,
-  .nav-links a,
-  .methodology-slider__dot,
-  .swiper-pagination-bullet {
+.nav-links a,
+.methodology-slider__dot,
+.swiper-pagination-bullet {
     min-height: 44px;
   }
 
   .btn:hover,
-  .hero-tag:hover,
-  .feature-card:hover,
-  .profile-v2__card:hover,
-  .panorama-card:hover {
+.feature-card:hover,
+.profile-v2__card:hover,
+.panorama-card:hover {
     transform: none !important;
   }
+
 }
+
 
 
 /* =========================================================
@@ -710,222 +504,13 @@
    Rule: navbar + complete hero must fit inside the first viewport.
    No vertical overflow on supported responsive widths.
 ========================================================= */
-@media (max-width: 900px) {
-  .hero.hero--home {
-    box-sizing: border-box;
-    height: 100svh !important;
-    min-height: 100svh !important;
-    max-height: 100svh !important;
-    padding:
-      calc(var(--navbar-height-mobile, 64px) + 6px)
-      6px
-      6px !important;
-    overflow: hidden !important;
-    align-items: stretch;
-  }
 
-  .hero.hero--home .hero-content {
-    box-sizing: border-box;
-    width: 100%;
-    height: calc(100svh - var(--navbar-height-mobile, 64px) - 12px);
-    max-height: calc(100svh - var(--navbar-height-mobile, 64px) - 12px);
-    min-height: 0;
-    padding: clamp(12px, 2.1vh, 18px) clamp(12px, 3.5vw, 18px) !important;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-  }
-
-  .hero.hero--home .hero-wrapper {
-    width: 100%;
-    max-height: 100%;
-    min-height: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto minmax(0, 1fr);
-    gap: clamp(7px, 1.2vh, 12px) !important;
-    align-content: center;
-  }
-
-  .hero.hero--home .hero-image {
-    min-height: 0;
-  }
-
-  .hero.hero--home .hero-image .img-card {
-    width: clamp(82px, 13vh, 116px) !important;
-    height: clamp(82px, 13vh, 116px) !important;
-  }
-
-  .hero.hero--home .hero-text {
-    min-height: 0;
-  }
-
-  .hero.hero--home .hero-topline {
-    gap: 6px;
-    margin-bottom: clamp(5px, .8vh, 8px);
-  }
-
-  .hero.hero--home .theme-toggle,
-  .hero.hero--home .hero-eyebrow {
-    min-height: 0;
-  }
-
-  .hero.hero--home .hero-title {
-    margin-bottom: clamp(5px, .8vh, 9px);
-    font-size: clamp(1.62rem, 7vw, 2.2rem) !important;
-    line-height: .98 !important;
-  }
-
-  .hero.hero--home .hero-story {
-    margin: clamp(6px, .9vh, 9px) auto !important;
-    padding: clamp(8px, 1.2vh, 11px) 10px clamp(8px, 1.2vh, 11px) 0 !important;
-  }
-
-  .hero.hero--home .hero-story__signal {
-    min-height: 0 !important;
-  }
-
-  .hero.hero--home .hero-story__kicker {
-    margin-bottom: 4px;
-    font-size: clamp(.55rem, 1.8vw, .64rem) !important;
-  }
-
-  .hero.hero--home .hero-story__intro,
-  .hero.hero--home .hero-story__focus {
-    font-size: clamp(.72rem, 2.45vw, .84rem) !important;
-    line-height: 1.34 !important;
-  }
-
-  .hero.hero--home .hero-story__focus {
-    margin-top: 4px !important;
-  }
-
-  .hero.hero--home .hero-tags {
-    margin-top: clamp(5px, .8vh, 8px) !important;
-    gap: 5px !important;
-  }
-
-  .hero.hero--home .hero-tag {
-    min-height: 31px !important;
-    padding: 5px 7px !important;
-    font-size: clamp(.62rem, 2vw, .7rem) !important;
-  }
-
-  .hero.hero--home .hero-tag svg {
-    width: 12px !important;
-    height: 12px !important;
-  }
-
-  .hero.hero--home .hero-buttons {
-    margin-top: clamp(6px, .9vh, 9px) !important;
-    gap: 7px !important;
-  }
-
-  .hero.hero--home .hero-buttons .btn {
-    min-height: 38px !important;
-    padding: 8px 10px !important;
-    font-size: .75rem !important;
-  }
-
-  .hero.hero--home .hero-buttons .btn svg {
-    width: 14px;
-    height: 14px;
-  }
-}
 
 /* Common phone heights (360×640 through 430×932). */
-@media (max-width: 480px) {
-  .hero.hero--home .hero-content {
-    border-radius: 16px !important;
-  }
 
-  .hero.hero--home .hero-wrapper {
-    gap: 6px !important;
-  }
-
-  .hero.hero--home .hero-image .img-card {
-    width: clamp(74px, 11.5vh, 102px) !important;
-    height: clamp(74px, 11.5vh, 102px) !important;
-  }
-
-  .hero.hero--home .hero-title {
-    font-size: clamp(1.5rem, 7.5vw, 1.95rem) !important;
-  }
-
-  .hero.hero--home .hero-story__intro,
-  .hero.hero--home .hero-story__focus {
-    font-size: clamp(.68rem, 2.7vw, .78rem) !important;
-  }
-
-  .hero.hero--home .hero-tags {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-
-  .hero.hero--home .hero-tag {
-    font-size: .64rem !important;
-    min-height: 29px !important;
-  }
-
-  .hero.hero--home .hero-buttons {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-
-  .hero.hero--home .hero-buttons .btn {
-    min-height: 36px !important;
-  }
-}
 
 /* Short phones: preserve all hero content by tightening rhythm, not hiding it. */
-@media (max-width: 480px) and (max-height: 740px) {
-  .hero.hero--home .hero-content {
-    padding-block: 8px !important;
-  }
 
-  .hero.hero--home .hero-image .img-card {
-    width: 70px !important;
-    height: 70px !important;
-  }
-
-  .hero.hero--home .hero-title {
-    font-size: 1.42rem !important;
-    margin-bottom: 4px;
-  }
-
-  .hero.hero--home .hero-story {
-    margin-block: 4px !important;
-    padding-block: 6px !important;
-  }
-
-  .hero.hero--home .hero-story__kicker {
-    font-size: .52rem !important;
-  }
-
-  .hero.hero--home .hero-story__intro,
-  .hero.hero--home .hero-story__focus {
-    font-size: .64rem !important;
-    line-height: 1.27 !important;
-  }
-
-  .hero.hero--home .hero-tags {
-    margin-top: 4px !important;
-  }
-
-  .hero.hero--home .hero-tag {
-    min-height: 25px !important;
-    padding: 4px 5px !important;
-    font-size: .58rem !important;
-  }
-
-  .hero.hero--home .hero-buttons {
-    margin-top: 5px !important;
-  }
-
-  .hero.hero--home .hero-buttons .btn {
-    min-height: 32px !important;
-    padding-block: 6px !important;
-    font-size: .68rem !important;
-  }
-}
 
 
 /* =========================================================
@@ -933,161 +518,10 @@
    Reduce vertical rhythm and remove inherited spacing that was
    still pushing chips/buttons below the viewport.
 ========================================================= */
-@media (max-width: 480px) {
-  .hero.hero--home {
-    height: 100svh !important;
-    min-height: 100svh !important;
-    max-height: 100svh !important;
-    padding: calc(var(--navbar-height-mobile, 64px) + 4px) 4px 4px !important;
-  }
 
-  .hero.hero--home .hero-content {
-    height: calc(100svh - var(--navbar-height-mobile, 64px) - 8px) !important;
-    max-height: calc(100svh - var(--navbar-height-mobile, 64px) - 8px) !important;
-    padding: 8px 12px !important;
-    align-items: flex-start !important;
-  }
-
-  .hero.hero--home .hero-wrapper {
-    height: 100%;
-    max-height: 100%;
-    display: flex !important;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 0 !important;
-  }
-
-  .hero.hero--home .hero-image {
-    margin: 0 !important;
-    padding: 0 !important;
-    line-height: 0;
-  }
-
-  .hero.hero--home .hero-image .img-card {
-    width: 68px !important;
-    height: 68px !important;
-    margin: 0 auto !important;
-  }
-
-  .hero.hero--home .hero-text {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-  }
-
-  .hero.hero--home .hero-topline {
-    margin: 4px 0 5px !important;
-    gap: 5px !important;
-  }
-
-  .hero.hero--home .theme-toggle {
-    min-height: 25px !important;
-    padding: 4px 9px !important;
-    font-size: .61rem !important;
-  }
-
-  .hero.hero--home .hero-eyebrow {
-    min-height: 25px !important;
-    padding: 4px 10px !important;
-    font-size: .61rem !important;
-    letter-spacing: .09em !important;
-  }
-
-  .hero.hero--home .hero-title {
-    margin: 0 0 5px !important;
-    font-size: clamp(1.34rem, 6.6vw, 1.58rem) !important;
-    line-height: .98 !important;
-  }
-
-  .hero.hero--home .hero-story {
-    margin: 0 0 5px !important;
-    padding: 7px 8px 7px 0 !important;
-    gap: 8px !important;
-    border-radius: 0 11px 11px 0 !important;
-  }
-
-  .hero.hero--home .hero-story__kicker {
-    margin-bottom: 3px !important;
-    font-size: .49rem !important;
-    letter-spacing: .055em !important;
-    white-space: nowrap;
-  }
-
-  .hero.hero--home .hero-story__intro,
-  .hero.hero--home .hero-story__focus {
-    font-size: .59rem !important;
-    line-height: 1.2 !important;
-  }
-
-  .hero.hero--home .hero-story__focus {
-    margin-top: 3px !important;
-  }
-
-  .hero.hero--home .hero-tags {
-    margin: 0 !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 4px !important;
-  }
-
-  .hero.hero--home .hero-tag {
-    min-height: 23px !important;
-    padding: 3px 5px !important;
-    font-size: .54rem !important;
-    line-height: 1.1 !important;
-  }
-
-  .hero.hero--home .hero-tag svg {
-    width: 10px !important;
-    height: 10px !important;
-  }
-
-  .hero.hero--home .hero-buttons {
-    margin: 5px 0 0 !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 5px !important;
-  }
-
-  .hero.hero--home .hero-buttons .btn {
-    min-height: 29px !important;
-    padding: 5px 7px !important;
-    font-size: .61rem !important;
-    border-radius: 9px !important;
-  }
-
-  .hero.hero--home .hero-buttons .btn svg {
-    width: 11px !important;
-    height: 11px !important;
-  }
-}
 
 /* Slightly roomier phones can breathe without losing first-screen fit. */
-@media (min-width: 390px) and (max-width: 480px) and (min-height: 820px) {
-  .hero.hero--home .hero-image .img-card {
-    width: 78px !important;
-    height: 78px !important;
-  }
 
-  .hero.hero--home .hero-title {
-    font-size: 1.66rem !important;
-  }
-
-  .hero.hero--home .hero-story__intro,
-  .hero.hero--home .hero-story__focus {
-    font-size: .64rem !important;
-    line-height: 1.25 !important;
-  }
-
-  .hero.hero--home .hero-tag {
-    min-height: 26px !important;
-    font-size: .58rem !important;
-  }
-
-  .hero.hero--home .hero-buttons .btn {
-    min-height: 32px !important;
-    font-size: .65rem !important;
-  }
-}
 
 
 /* =========================================================
@@ -1095,27 +529,7 @@
    The previous space-between distributed unused height between
    image and content, creating the giant empty area seen at 360x800.
 ========================================================= */
-@media (max-width: 480px) {
-  .hero.hero--home .hero-content {
-    justify-content: center !important;
-  }
 
-  .hero.hero--home .hero-wrapper {
-    height: auto !important;
-    max-height: 100% !important;
-    justify-content: flex-start !important;
-    align-content: center !important;
-    gap: 6px !important;
-  }
-
-  .hero.hero--home .hero-image {
-    margin-bottom: 2px !important;
-  }
-
-  .hero.hero--home .hero-text {
-    flex: 0 1 auto !important;
-  }
-}
 
 
 /* =========================================================
@@ -1124,9 +538,10 @@
    stay compact, readable and closer to one viewport chapter.
 ========================================================= */
 @media (max-width: 768px) {
+
   #methodology,
-  #services,
-  #about {
+#services,
+#about {
     min-height: calc(100svh - var(--navbar-height-mobile, 64px)) !important;
     display: flex;
     align-items: center;
@@ -1134,15 +549,15 @@
   }
 
   #methodology > .container,
-  #services > .container,
-  #about > .container {
+#services > .container,
+#about > .container {
     width: 100% !important;
   }
 
   /* Shared horizontal rail behavior */
   #methodology .methodology-steps,
-  #services .feature-grid,
-  #about .profile-v2__grid {
+#services .feature-grid,
+#about .profile-v2__grid {
     display: flex !important;
     flex-wrap: nowrap !important;
     gap: 12px !important;
@@ -1158,8 +573,8 @@
   }
 
   #methodology .methodology-steps::-webkit-scrollbar,
-  #services .feature-grid::-webkit-scrollbar,
-  #about .profile-v2__grid::-webkit-scrollbar {
+#services .feature-grid::-webkit-scrollbar,
+#about .profile-v2__grid::-webkit-scrollbar {
     display: none;
   }
 
@@ -1199,7 +614,7 @@
   }
 
   #services .feature-card,
-  #services .feature-card:last-child {
+#services .feature-card:last-child {
     flex: 0 0 min(82vw, 300px) !important;
     width: min(82vw, 300px) !important;
     min-width: min(82vw, 300px) !important;
@@ -1226,7 +641,7 @@
   }
 
   #about .profile-v2__card,
-  #about .profile-v2__card:last-child {
+#about .profile-v2__card:last-child {
     flex: 0 0 min(82vw, 300px) !important;
     width: min(82vw, 300px) !important;
     min-width: min(82vw, 300px) !important;
@@ -1259,8 +674,8 @@
 
   /* Give a visible cue that content continues horizontally. */
   #methodology .methodology-steps,
-  #services .feature-grid,
-  #about .profile-v2__grid {
+#services .feature-grid,
+#about .profile-v2__grid {
     mask-image: linear-gradient(
       90deg,
       transparent 0,
@@ -1276,13 +691,16 @@
       transparent 100%
     );
   }
+
 }
+
 
 /* Phones: show one strong card plus a glimpse of the next one. */
 @media (max-width: 480px) {
+
   #methodology,
-  #services,
-  #about {
+#services,
+#about {
     padding-block: 22px !important;
   }
 
@@ -1293,9 +711,9 @@
   }
 
   #services .feature-card,
-  #services .feature-card:last-child,
-  #about .profile-v2__card,
-  #about .profile-v2__card:last-child {
+#services .feature-card:last-child,
+#about .profile-v2__card,
+#about .profile-v2__card:last-child {
     flex-basis: min(79vw, 280px) !important;
     width: min(79vw, 280px) !important;
     min-width: min(79vw, 280px) !important;
@@ -1313,10 +731,13 @@
   #about .profile-v2__closing {
     display: none;
   }
+
 }
+
 
 /* Very small phones keep the sideways pattern without creating a narrow tube. */
 @media (max-width: 360px) {
+
   #methodology .methodology-step {
     flex-basis: 78vw !important;
     width: 78vw !important;
@@ -1324,14 +745,16 @@
   }
 
   #services .feature-card,
-  #services .feature-card:last-child,
-  #about .profile-v2__card,
-  #about .profile-v2__card:last-child {
+#services .feature-card:last-child,
+#about .profile-v2__card,
+#about .profile-v2__card:last-child {
     flex-basis: 80vw !important;
     width: 80vw !important;
     min-width: 80vw !important;
   }
+
 }
+
 
 
 /* =========================================================
@@ -1339,46 +762,9 @@
    The hero must fit inside the first viewport, not artificially
    fill it. Let its card end immediately after the actions.
 ========================================================= */
-@media (max-width: 768px) {
-  .hero.hero--home {
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    padding-bottom: 6px !important;
-    overflow: visible !important;
-  }
 
-  .hero.hero--home .hero-content {
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    overflow: visible !important;
-    align-items: center !important;
-  }
 
-  .hero.hero--home .hero-wrapper {
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-  }
 
-  .hero.hero--home .hero-text {
-    flex: 0 0 auto !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero.hero--home {
-    padding:
-      calc(var(--navbar-height-mobile, 64px) + 4px)
-      4px
-      4px !important;
-  }
-
-  .hero.hero--home .hero-content {
-    padding: 8px 12px 10px !important;
-  }
-}
 
 
 /* =========================================================
@@ -1387,12 +773,13 @@
    That is wrong for this narrative: explain -> steps -> visual evidence.
 ========================================================= */
 @media (max-width: 768px) {
+
   #methodology .methodology-content {
     order: 0 !important;
   }
 
   #methodology .methodology-slider,
-  #methodology .split-section__visual {
+#methodology .split-section__visual {
     order: 1 !important;
   }
 
@@ -1426,9 +813,12 @@
   #methodology .methodology-slider {
     margin-top: 2px !important;
   }
+
 }
 
+
 @media (max-width: 480px) {
+
   #methodology .methodology-content .split-section__title {
     font-size: clamp(1.5rem, 7.4vw, 1.9rem) !important;
     line-height: 1.02 !important;
@@ -1454,7 +844,9 @@
   #methodology .methodology-slide__caption strong {
     font-size: .9rem !important;
   }
+
 }
+
 
 
 /* =========================================================
@@ -1464,17 +856,18 @@
    motion hint instead of forcing the user to discover them manually.
 ========================================================= */
 @media (max-width: 768px) {
+
   #methodology .methodology-steps,
-  #services .feature-grid,
-  #about .profile-v2__grid {
+#services .feature-grid,
+#about .profile-v2__grid {
     position: relative;
     scroll-behavior: smooth;
   }
 
   /* Slightly stronger next-card affordance without consuming space. */
   #methodology .methodology-steps::after,
-  #services .feature-grid::after,
-  #about .profile-v2__grid::after {
+#services .feature-grid::after,
+#about .profile-v2__grid::after {
     content: "";
     flex: 0 0 10px;
     width: 10px;
@@ -1510,9 +903,12 @@
     opacity: 0;
     transform: translateX(5px);
   }
+
 }
 
+
 @media (prefers-reduced-motion: reduce) {
+
   .mobile-horizontal-hint {
     scroll-behavior: auto !important;
   }
@@ -1520,7 +916,9 @@
   .mobile-horizontal-hint::before {
     transition: none !important;
   }
+
 }
+
 
 
 /* =========================================================
@@ -1529,6 +927,7 @@
    transforms must not push the slider to the right on mobile.
 ========================================================= */
 @media (max-width: 768px) {
+
   #methodology {
     overflow-x: clip !important;
   }
@@ -1539,16 +938,16 @@
   }
 
   #methodology .methodology-content,
-  #methodology .methodology-slider,
-  #methodology .split-section__visual {
+#methodology .methodology-slider,
+#methodology .split-section__visual {
     min-width: 0 !important;
     max-width: 100% !important;
   }
 
   #methodology .methodology-slider,
-  #methodology .methodology-slider.reveal,
-  #methodology .methodology-slider.active,
-  #methodology .split-section__visual {
+#methodology .methodology-slider.reveal,
+#methodology .methodology-slider.active,
+#methodology .split-section__visual {
     width: 100% !important;
     justify-self: stretch !important;
     margin-inline: 0 !important;
@@ -1564,7 +963,7 @@
   }
 
   #methodology .methodology-slide,
-  #methodology .methodology-slide.is-active {
+#methodology .methodology-slide.is-active {
     max-width: 100% !important;
   }
 
@@ -1572,9 +971,12 @@
     width: 100%;
     margin-inline: 0 !important;
   }
+
 }
 
+
 @media (max-width: 480px) {
+
   #methodology > .container {
     padding-inline: 14px !important;
   }
@@ -1586,7 +988,9 @@
   #methodology .methodology-slider::before {
     inset: -12px -8px -10px !important;
   }
+
 }
+
 
 
 /* =========================================================
@@ -1595,16 +999,16 @@
    without stretching its card; following sections use the same rhythm.
 ========================================================= */
 @media (max-width: 768px) {
+
   html {
     scroll-snap-type: y proximity;
   }
 
-  .hero.hero--home,
   #projects,
-  #methodology,
-  #services,
-  #about,
-  .closing-cta {
+#methodology,
+#services,
+#about,
+.closing-cta {
     box-sizing: border-box;
     height: 100svh !important;
     min-height: 100svh !important;
@@ -1613,53 +1017,12 @@
     scroll-snap-stop: normal;
   }
 
-  /* Hero occupies the first viewport, while the card keeps content height. */
-  .hero.hero--home {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding:
-      calc(var(--navbar-height-mobile, 64px) + 8px)
-      4px
-      8px !important;
-    overflow: hidden !important;
-  }
-
-  .hero.hero--home .hero-content {
-    width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: calc(100svh - var(--navbar-height-mobile, 64px) - 20px) !important;
-    margin: 0 !important;
-    overflow: hidden !important;
-  }
-
-  .hero.hero--home .hero-wrapper {
-    height: auto !important;
-    max-height: 100% !important;
-  }
-
-  /* More readable title and body rhythm. */
-  .hero.hero--home .hero-title {
-    line-height: 1.06 !important;
-    margin-bottom: 8px !important;
-  }
-
-  .hero.hero--home .hero-story__intro,
-  .hero.hero--home .hero-story__focus {
-    line-height: 1.34 !important;
-  }
-
-  .hero.hero--home .hero-story__focus {
-    margin-top: 5px !important;
-  }
-
   /* Narrative chapters center their content inside one viewport. */
   #projects,
-  #methodology,
-  #services,
-  #about,
-  .closing-cta {
+#methodology,
+#services,
+#about,
+.closing-cta {
     display: flex !important;
     align-items: center !important;
     padding-block: 18px !important;
@@ -1667,10 +1030,10 @@
   }
 
   #projects > .container,
-  #methodology > .container,
-  #services > .container,
-  #about > .container,
-  .closing-cta > .container {
+#methodology > .container,
+#services > .container,
+#about > .container,
+.closing-cta > .container {
     width: 100% !important;
     max-height: 100% !important;
     margin-block: auto !important;
@@ -1678,7 +1041,7 @@
 
   /* Keep section headers compact enough for a one-screen chapter. */
   #projects .section-header,
-  #services .section-header {
+#services .section-header {
     margin-bottom: 12px !important;
   }
 
@@ -1694,54 +1057,48 @@
     max-height: calc(100svh - 36px);
     overflow: hidden;
   }
+
 }
 
+
 @media (max-width: 480px) {
-  .hero.hero--home .hero-content {
-    padding: 9px 12px 11px !important;
-  }
 
-  .hero.hero--home .hero-title {
-    font-size: clamp(1.48rem, 7.1vw, 1.82rem) !important;
-    line-height: 1.07 !important;
-  }
-
-  .hero.hero--home .hero-story__intro,
-  .hero.hero--home .hero-story__focus {
-    font-size: .61rem !important;
-    line-height: 1.36 !important;
-  }
 
   #projects,
-  #methodology,
-  #services,
-  #about,
-  .closing-cta {
+#methodology,
+#services,
+#about,
+.closing-cta {
     padding-block: 14px !important;
   }
 
   #projects .section-title,
-  #services .section-title,
-  #methodology .split-section__title,
-  #about .split-section__title,
-  .closing-cta__title {
+#services .section-title,
+#methodology .split-section__title,
+#about .split-section__title,
+.closing-cta__title {
     line-height: 1.05 !important;
   }
 
   #projects .section-desc,
-  #services .section-desc,
-  #methodology .split-section__text,
-  #about .split-section__text,
-  .closing-cta__text {
+#services .section-desc,
+#methodology .split-section__text,
+#about .split-section__text,
+.closing-cta__text {
     line-height: 1.42 !important;
   }
+
 }
 
+
 @media (prefers-reduced-motion: reduce) {
+
   html {
     scroll-snap-type: none;
   }
+
 }
+
 
 
 /* =========================================================
@@ -1749,40 +1106,6 @@
    The Hero should be compact and content-driven on mobile.
    Other narrative sections keep the one-screen chapter behavior.
 ========================================================= */
-@media (max-width: 768px) {
-  .hero.hero--home {
-    height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
-    display: block !important;
-    padding:
-      calc(var(--navbar-height-mobile, 64px) + 18px)
-      4px
-      22px !important;
-    overflow: visible !important;
-    scroll-snap-align: none;
-  }
 
-  .hero.hero--home .hero-content {
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    margin: 0 auto !important;
-    overflow: visible !important;
-  }
 
-  .hero.hero--home .hero-wrapper {
-    height: auto !important;
-    max-height: none !important;
-  }
-}
 
-@media (max-width: 480px) {
-  .hero.hero--home {
-    padding-bottom: 18px !important;
-  }
-
-  .hero.hero--home .hero-content {
-    padding-bottom: 9px !important;
-  }
-}
