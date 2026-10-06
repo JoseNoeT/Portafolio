@@ -1,0 +1,59 @@
+{% load static %}
+<article class="swiper-slide project-slide">
+
+                    <div class="panorama-card">
+
+                        <div class="panorama-card__media">
+
+                            {% if project.image %}
+                                <img
+                                    src="{{ project.image.url }}"
+                                    alt="{{ project.title }}"
+                                    onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';"
+                                >
+                            {% elif project.static_image_path %}
+                                <img
+                                    src="{% static project.static_image_path %}"
+                                    alt="{{ project.title }}"
+                                    onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';"
+                                >
+                            {% else %}
+                                <div class="panorama-card__placeholder">
+                                    <span>{{ project.title }}</span>
+                                </div>
+                            {% endif %}
+
+                            <div class="panorama-card__gradient"></div>
+
+                            <span class="panorama-card__category">
+                                {{ project.get_category_display }}
+                            </span>
+
+                        </div>
+
+                        <div class="panorama-card__body">
+
+                            <h3>{{ project.title }}</h3>
+
+                            <p>
+                                {{ project.short_description|default:project.description|truncatewords:22 }}
+                            </p>
+
+                            {% if project.technologies %}
+                            <div class="panorama-card__stack">
+                                {{ project.technologies }}
+                            </div>
+                            {% endif %}
+
+                            <a
+                                href="{% url 'project_detail' project.slug %}"
+                                class="btn btn-outline btn-sm"
+                            >
+                                Ver caso de estudio
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>

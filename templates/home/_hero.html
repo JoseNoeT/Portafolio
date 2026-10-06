@@ -1,0 +1,69 @@
+{% load static %}
+<section class="hero hero--home" role="banner" aria-label="Hero">
+    <div class="hero-canvas" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+        <div class="hero-wrapper">
+            <div class="hero-image">
+                <img src="{% static 'img/JoseNoe.png' %}" alt="Jose Noe" class="img-card">
+            </div>
+            <div class="hero-text">
+                <button
+                    type="button"
+                    class="theme-toggle-pill"
+                    id="theme-toggle"
+                    aria-label="Cambiar a modo claro"
+                    title="Cambiar tema"
+                >
+                    <span class="theme-toggle-icon" aria-hidden="true"></span>
+                    <span class="theme-toggle-label">Oscuro</span>
+                </button>
+                <span class="hero-eyebrow focus-in-contract">Full Stack · Datos · Cloud</span>
+                <h1 class="hero-title focus-in-contract">
+                    Construyo soluciones tecnológicas
+                    <span>conectando desarrollo, datos y cloud</span>
+                </h1>
+                <div class="hero-story" aria-label="Presentación profesional">
+                    <span class="hero-story__signal" aria-hidden="true"></span>
+                    <div class="hero-story__content">
+                        <span class="hero-story__kicker">Tecnología al servicio del problema</span>
+                        <p class="hero-story__intro">
+                            Soy <strong>José Noe</strong>, <strong>Analista Programador Computacional titulado</strong> y estudiante de <strong>Ingeniería en Informática</strong>, con formación y experiencia práctica en desarrollo <strong>Full Stack</strong>.
+                        </p>
+                        <p class="hero-story__focus">
+                            Trabajo con desarrollo Full Stack, APIs, integración y datos. Actualmente amplío esa base hacia <strong>cloud</strong>, <strong>Business Intelligence</strong>, <strong>seguridad</strong> y <strong>automatización</strong>, adaptando las herramientas al problema.
+                        </p>
+                    </div>
+                </div>
+                <div class="hero-tags">
+                    <span class="hero-tag">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        Full Stack
+                    </span>
+                    <span class="hero-tag">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h8"/><path d="M12 8v8"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
+                        APIs & Integraciones
+                    </span>
+                    <span class="hero-tag">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L9 18l-5-5"/></svg>
+                        Datos & BI
+                    </span>
+                    <span class="hero-tag">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                        Cloud & Automatización
+                    </span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="{% url 'projects_list' %}" class="btn btn-primary motion-cta">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        Ver Proyectos
+                    </a>
+                    <a href="{% url 'contact' %}" class="btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        Hablemos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

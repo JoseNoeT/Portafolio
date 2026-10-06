@@ -1,0 +1,66 @@
+{% load static %}
+<section class="section-shell projects-showcase" id="projects">
+    <div class="projects-atmosphere" aria-hidden="true">
+        <span class="projects-orbit projects-orbit--one"></span>
+        <span class="projects-orbit projects-orbit--two"></span>
+        <span class="projects-spark projects-spark--one"></span>
+        <span class="projects-spark projects-spark--two"></span>
+        <span class="projects-spark projects-spark--three"></span>
+        <span class="projects-tech projects-tech--code">&lt;/&gt;</span>
+        <span class="projects-tech projects-tech--db">DB</span>
+        <span class="projects-tech projects-tech--cloud">☁</span>
+    </div>
+    <div class="container">
+
+        <div class="section-header">
+            <span class="section-eyebrow reveal">Proyectos</span>
+
+            <h2 class="section-title reveal">
+                Distintos problemas. <span class="projects-title-accent">Distintas tecnologías.</span><br><span class="projects-title-resolution">Soluciones que funcionan.</span>
+            </h2>
+
+            <p class="section-desc reveal">
+                Cada proyecto demuestra una capacidad aplicada: desarrollo Full Stack, lógica de negocio, datos, integraciones, APIs y despliegue.
+            </p>
+        </div>
+
+        {% if projects %}
+
+        <div class="swiper portfolio-swiper reveal">
+
+            <div class="swiper-wrapper">
+
+                {% for project in projects %}
+
+{% include "home/_project_card.html" %}
+
+                {% endfor %}
+
+            </div>
+
+            <button
+                class="swiper-button-prev"
+                type="button"
+                aria-label="Proyecto anterior">
+            </button>
+
+            <button
+                class="swiper-button-next"
+                type="button"
+                aria-label="Proyecto siguiente">
+            </button>
+
+            <div class="swiper-pagination"></div>
+
+        </div>
+
+        {% else %}
+
+        <p class="section-desc reveal">
+            No hay proyectos disponibles en este momento.
+        </p>
+
+        {% endif %}
+
+    </div>
+</section>
