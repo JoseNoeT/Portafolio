@@ -10,11 +10,25 @@ jobs:
   css-size:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: python3 scripts/check_frontend_sizes.py --scope css --strict
+      - name: Checkout without marketplace action
+        shell: bash
+        run: |
+          git init .
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Enforce CSS module size
+        run: python3 scripts/check_frontend_sizes.py --scope css --strict
 
   css-ownership:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: python3 scripts/check_css_ownership.py
+      - name: Checkout without marketplace action
+        shell: bash
+        run: |
+          git init .
+          git remote add origin "https://github.com/$GITHUB_REPOSITORY.git"
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Enforce canonical CSS ownership
+        run: python3 scripts/check_css_ownership.py
