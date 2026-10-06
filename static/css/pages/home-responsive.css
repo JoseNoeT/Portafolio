@@ -1455,3 +1455,69 @@
     font-size: .9rem !important;
   }
 }
+
+
+/* =========================================================
+   MOBILE HORIZONTAL DISCOVERABILITY 3.3
+   UX principles: visibility of system status, recognition over recall,
+   signifiers and progressive disclosure. Rails show a subtle one-time
+   motion hint instead of forcing the user to discover them manually.
+========================================================= */
+@media (max-width: 768px) {
+  #methodology .methodology-steps,
+  #services .feature-grid,
+  #about .profile-v2__grid {
+    position: relative;
+    scroll-behavior: smooth;
+  }
+
+  /* Slightly stronger next-card affordance without consuming space. */
+  #methodology .methodology-steps::after,
+  #services .feature-grid::after,
+  #about .profile-v2__grid::after {
+    content: "";
+    flex: 0 0 10px;
+    width: 10px;
+  }
+
+  .mobile-horizontal-hint {
+    position: relative;
+  }
+
+  .mobile-horizontal-hint::before {
+    content: "Desliza →";
+    position: absolute;
+    right: 10px;
+    top: -18px;
+    z-index: 6;
+    color: rgba(125, 211, 252, .82);
+    font-size: .58rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: opacity .3s ease, transform .3s ease;
+  }
+
+  .mobile-horizontal-hint.is-hint-visible::before {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .mobile-horizontal-hint.is-hint-done::before {
+    opacity: 0;
+    transform: translateX(5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-horizontal-hint {
+    scroll-behavior: auto !important;
+  }
+
+  .mobile-horizontal-hint::before {
+    transition: none !important;
+  }
+}
