@@ -1,57 +1,52 @@
 (() => {
   const slider = document.querySelector("[data-methodology-slider]");
-  if (!slider) return;
+  const section = document.getElementById("methodology");
+  if (!slider || !section) return;
 
   const slides = [...slider.querySelectorAll("[data-methodology-slide]")];
   const dots = [...slider.querySelectorAll("[data-methodology-dot]")];
-  const steps = [...document.querySelectorAll("#methodology .methodology-step")];
+  const steps = [...section.querySelectorAll(".methodology-step")];
+  const backgrounds = [...section.querySelectorAll(".methodology-scene__bg")];
 
   if (!slides.length) return;
 
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const interval = 4200;
+
   let current = 0;
   let timer = null;
-  const interval = 4200;
+  let isVisible = true;
+
+  const stop = () => {
+    window.clearInterval(timer);
+    timer = null;
+  };
 
   const show = (index) => {
     current = (index + slides.length) % slides.length;
 
     slides.forEach((slide, i) => {
-      const active = i === current;
-      slide.classList.toggle("is-active", active);
-
-      if (active) {
-        const image = slide.querySelector("img");
-        if (image && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-          image.style.animation = "none";
-          void image.offsetWidth;
-          image.style.animation = "";
-        }
-      }
+      slide.classList.toggle("is-active", i === current);
     });
+
     dots.forEach((dot, i) => {
       const active = i === current;
       dot.classList.toggle("is-active", active);
       dot.setAttribute("aria-current", active ? "true" : "false");
     });
-    steps.forEach((step, i) => step.classList.toggle("is-active", i === current));
 
-    const section = document.getElementById("methodology");
-    const backgrounds = section ? [...section.querySelectorAll(".methodology-scene__bg")] : [];
+    steps.forEach((step, i) => {
+      step.classList.toggle("is-active", i === current);
+    });
+
     backgrounds.forEach((background, i) => {
-      const active = i === current;
-      background.classList.toggle("is-active", active);
-
-      if (active && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        background.style.animation = "none";
-        void background.offsetWidth;
-        background.style.animation = "";
-      }
+      background.classList.toggle("is-active", i === current);
     });
   };
 
   const start = () => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    window.clearInterval(timer);
+    stop();
+    if (reducedMotion || !isVisible) return;
     timer = window.setInterval(() => show(current + 1), interval);
   };
 
@@ -69,8 +64,28 @@
     });
   });
 
-  slider.addEventListener("mouseenter", () => window.clearInterval(timer));
+  slider.addEventListener("mouseenter", stop);
   slider.addEventListener("mouseleave", start);
+  slider.addEventListener("focusin", stop);
+  slider.addEventListener("focusout", start);
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) start();
+        else stop();
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(section);
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) stop();
+    else start();
+  });
 
   show(0);
   start();
