@@ -5,95 +5,16 @@
 
 @media (prefers-reduced-motion: reduce) {
 
+
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 
-}
-
-
-/* HOME PROJECT CAROUSEL */
-
-.home-project-carousel {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-}
-
-.home-project-track {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: stretch;
-    gap: 22px;
-
-    width: max-content;
-    max-width: none;
-
-    padding: 8px 0 18px;
-    margin: 0;
-
-    overflow: visible;
-
-    transform: translate3d(0, 0, 0);
-    will-change: transform;
-    transition: transform 0.45s ease;
-}
-
-.home-project-track .feature-card {
-    flex: 0 0 320px;
-    width: 320px;
-    min-width: 320px;
-    max-width: 320px;
-
-    box-sizing: border-box;
-}
-
-.home-project-controls {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 14px;
-}
-
-.home-project-control {
-    width: 44px;
-    height: 44px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-    border: 1px solid var(--color-border-soft);
-
-    background: var(--glass-bg);
-    color: var(--color-heading);
-
-    font-size: 22px;
-    cursor: pointer;
-}
-
-.home-project-control:hover {
-    transform: translateY(-2px);
-}
-
-@media (max-width: 700px) {
-
-    .home-project-track {
-        gap: 14px;
-    }
-
-    .home-project-track .feature-card {
-        flex: 0 0 84vw;
-        width: 84vw;
-        min-width: 84vw;
-        max-width: 340px;
-    }
 
 }
+
 
 
 
@@ -307,6 +228,7 @@
 
 @media (max-width: 767px) {
 
+
   #methodology .methodology-content,
 #methodology .methodology-content .split-section__title,
 #methodology .methodology-content .split-section__text {
@@ -327,7 +249,9 @@
     text-align: left;
   }
 
+
 }
+
 
 
 
@@ -363,6 +287,7 @@
 
 @media (prefers-reduced-motion: reduce) {
 
+
   .methodology-roll-image {
     opacity: 1;
     filter: none;
@@ -373,7 +298,9 @@
     animation: none;
   }
 
+
 }
+
 
 
 
@@ -454,12 +381,15 @@
 
 @media (max-width: 767px) {
 
+
   #methodology .methodology-content .split-section__title {
     max-width: 22ch;
     font-size: clamp(1.55rem, 7vw, 2rem);
   }
 
+
 }
+
 
 
 
@@ -648,6 +578,7 @@
 
 @media (max-width: 900px) {
 
+
   #methodology .split-section {
     grid-template-columns: 1fr;
   }
@@ -656,7 +587,9 @@
     width: min(100%, 560px);
   }
 
+
 }
+
 
 
 
@@ -746,6 +679,7 @@
 
 @media (prefers-reduced-motion: reduce) {
 
+
   #methodology .methodology-step::after,
 #services .feature-card::after,
 #about .split-section__visual::after,
@@ -753,7 +687,9 @@
     animation: none;
   }
 
+
 }
+
 
 
 
@@ -900,6 +836,7 @@
 
 @media (prefers-reduced-motion: reduce) {
 
+
   #methodology .methodology-step::before,
 #services .feature-card::before,
 #about .split-section__visual::before,
@@ -909,7 +846,9 @@
     animation: none;
   }
 
+
 }
+
 
 
 
@@ -1070,6 +1009,7 @@
 
 @media (max-width: 900px) {
 
+
   .services-flow {
     display: none;
   }
@@ -1078,17 +1018,22 @@
     margin-top: 24px;
   }
 
+
 }
 
 
+
 @media (prefers-reduced-motion: reduce) {
+
 
   .services-flow__pulse,
 #services .feature-card[data-step]::after {
     animation: none;
   }
 
+
 }
+
 
 
 
@@ -1171,12 +1116,15 @@
 
 @media (prefers-reduced-motion: reduce) {
 
+
   #services::before {
     animation: none;
     transform: scale(1.04);
   }
 
+
 }
+
 
 
 
@@ -1349,6 +1297,7 @@
 
 @media (max-width: 900px) {
 
+
   #services .services-story {
     gap: 28px;
   }
@@ -1366,7 +1315,9 @@
     font-size: 2.4rem;
   }
 
+
 }
+
 
 
 
@@ -1479,6 +1430,7 @@
 
 @media (max-width: 900px) {
 
+
   #services .feature-card:not(:last-child) > .feature-card__tags::after {
     animation: services-chevron-pulse-mobile 2.7s ease-in-out infinite;
   }
@@ -1494,10 +1446,13 @@
     }
   }
 
+
 }
 
 
+
 @media (prefers-reduced-motion: reduce) {
+
 
   #services .feature-card::before,
 #services .feature-card__icon,
@@ -1505,7 +1460,9 @@
     animation: none;
   }
 
+
 }
+
 
 
 
@@ -1722,19 +1679,25 @@
 
 @media (max-width: 900px) {
 
+
   .profile-v2__grid { grid-template-columns: 1fr; }
   .profile-v2__card { min-height: 0; }
+
 
 }
 
 
+
 @media (prefers-reduced-motion: reduce) {
+
 
   #about.profile-v2::before,
 .profile-v2__card::before,
 .profile-v2__signal { animation: none; }
 
+
 }
+
 
 
 
@@ -1892,11 +1855,14 @@
 
 @media (max-width: 900px) {
 
+
   #about.profile-v2 { min-height: auto; }
   #about.profile-v2::before { background-position: 62% center !important; }
   .profile-v2__grid { gap: 22px; }
 
+
 }
+
 
 
 
@@ -2049,18 +2015,24 @@
 
 @media (max-width: 640px) {
 
+
   .closing-cta__title { font-size: clamp(2.1rem, 12vw, 3.25rem) !important; }
   .closing-cta__focus { gap: 9px; }
   .closing-cta__meta { flex-wrap: wrap; }
 
+
 }
+
 
 
 @media (prefers-reduced-motion: reduce) {
 
+
   .closing-cta__pulse { animation: none; }
 
+
 }
+
 
 
 
@@ -2110,19 +2082,25 @@
 
 @media (max-width: 700px) {
 
+
   .closing-cta::before {
     background-position: 58% center;
     opacity: .56;
   }
 
+
 }
+
 
 
 @media (prefers-reduced-motion: reduce) {
 
+
   .closing-cta::before { animation: none; }
 
+
 }
+
 
 
 
@@ -2224,19 +2202,25 @@ body {
 
 @media (max-width: 1240px) {
 
+
   :root { --home-canvas-width: calc(100% - 32px); }
+
 
 }
 
 
+
 @media (max-width: 700px) {
+
 
   :root {
     --home-canvas-width: 100%;
     --home-gutter: 18px;
   }
 
+
 }
+
 
 
 
@@ -2247,20 +2231,26 @@ body {
 
 @media (max-width: 1440px) {
 
+
   :root {
     --home-canvas-width: calc(100% - 32px);
   }
 
+
 }
 
 
+
 @media (max-width: 700px) {
+
 
   :root {
     --home-canvas-width: 100%;
   }
 
+
 }
+
 
 
 
@@ -2292,6 +2282,7 @@ body {
 /* On desktop every scene uses the same curved silhouette as the hero. */
 @media (min-width: 701px) {
 
+
   #projects,
 #methodology,
 #services,
@@ -2303,11 +2294,14 @@ body {
     border-bottom-right-radius: var(--home-canvas-radius) !important;
   }
 
+
 }
+
 
 
 /* Mobile uses a softer curve so content width is not sacrificed. */
 @media (max-width: 700px) {
+
 
   :root { --home-canvas-radius: 18px; }
 
@@ -2319,28 +2313,9 @@ body {
     border-radius: var(--home-canvas-radius) !important;
   }
 
+
 }
 
-
-
-/* ======================================================
-   HOME MOTION APPLICATIONS
-   Motion primitives/tokens are owned by components/motion.css.
-   This page file only selects which Home surfaces use them.
-   ====================================================== */
-/* Project card photography. Carousel geometry itself is untouched. */
-#projects .panorama-card__media,
-#projects .panorama-card__media img,
-#projects .swiper-slide img {
-  overflow: hidden;
-}
-
-#projects .panorama-card__media img,
-#projects .swiper-slide img {
-  -webkit-animation: home-kenburns-top-left var(--home-motion-duration) var(--home-motion-ease) infinite alternate;
-  animation: home-kenburns-top-left var(--home-motion-duration) var(--home-motion-ease) infinite alternate;
-  will-change: transform;
-}
 
 /* Full photographic section backgrounds use the same clock. */
 #services::before,
@@ -2353,6 +2328,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
 
+
   #projects .panorama-card__media img,
 #projects .swiper-slide img,
 #services::before,
@@ -2363,7 +2339,9 @@ body {
     transform: none !important;
   }
 
+
 }
+
 
 
 
@@ -2382,19 +2360,6 @@ body {
 .profile-v2__intro .split-section__text {
   max-width: 68ch;
   margin-inline: auto;
-}
-
-.projects-title-resolution {
-  display: inline-block;
-  margin-top: .14em;
-  color: rgba(241,248,255,.94);
-  font-size: .72em;
-  font-weight: 650;
-  letter-spacing: -.015em;
-}
-
-.projects-showcase .section-desc {
-  max-width: 62ch;
 }
 
 .methodology-content .split-section__text {
@@ -2456,17 +2421,18 @@ body {
 
 @media (max-width: 700px) {
 
+
   .profile-v2__intro {
     padding: 20px 18px 22px;
   }
-  .projects-title-resolution {
-    font-size: .78em;
-  }
+
 
 }
 
 
+
 @media (prefers-reduced-motion: reduce) {
+
 
   .profile-v2__card {
     transition: none;
@@ -2475,7 +2441,9 @@ body {
     transform: none;
   }
 
+
 }
+
 
 
 
@@ -2485,6 +2453,7 @@ body {
    Content is compacted, never clipped.
 ========================================================= */
 @media (min-width: 901px) and (min-height: 650px) {
+
 
   .section-shell {
     min-height: min(100svh, 820px);
@@ -2515,10 +2484,6 @@ body {
   .section-desc,
 .split-section__text {
     line-height: 1.5;
-  }
-
-  .projects-showcase .portfolio-swiper {
-    margin-top: clamp(14px, 2vh, 24px);
   }
 
   .methodology-scene .split-section {
@@ -2568,11 +2533,14 @@ body {
     padding-block: clamp(34px, 5vh, 58px);
   }
 
+
 }
+
 
 
 /* Laptop-height screens: preserve the chapter-per-screen intention. */
 @media (min-width: 901px) and (max-height: 760px) {
+
 
   .section-shell {
     min-height: calc(100svh - 54px);
@@ -2611,16 +2579,21 @@ body {
     padding-block: 30px;
   }
 
+
 }
+
 
 
 /* Mobile remains content-driven: never force viewport-height sections. */
 @media (max-width: 900px) {
+
 
   .section-shell {
     min-height: auto;
     overflow: visible;
   }
 
+
 }
+
 
