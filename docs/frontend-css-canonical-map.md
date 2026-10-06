@@ -158,3 +158,15 @@ Migrar una sección por commit:
 9. Eliminación de `home-responsive.css`
 
 Esto mantiene cada paso reversible y evita que una refactorización estructural cambie el diseño aprobado.
+
+
+## Estado de migración
+- [x] Hero Home → `components/hero-home.css`
+- [x] Proyectos → `components/project-carousel.css`
+- [x] Metodología → `components/methodology-slider.css`
+- [ ] Carril horizontal compartido → `components/horizontal-rail.css`
+- [ ] Capacidades → `components/capabilities.css`
+- [ ] Perfil profesional → `components/profile.css`
+- [ ] CTA final → `components/closing-cta.css`
+- [ ] Limpieza final de `pages/home.css`
+- [ ] Eliminar `pages/home-responsive.css`
