@@ -1,7 +1,43 @@
 /* =========================================================
-   GLOBAL EDGE MOTION 2.0
-   Shared animated cyan edge language across interactive UI.
+   MOTION SYSTEM 3.0
+   Shared motion tokens + reusable motion primitives.
+   Component-specific effects stay in their component stylesheet.
 ========================================================= */
+:root {
+  --motion-duration-slow: 12s;
+  --motion-duration-edge: 5.4s;
+  --motion-ease-ambient: ease-in-out;
+  --home-motion-duration: var(--motion-duration-slow);
+  --home-motion-ease: var(--motion-ease-ambient);
+}
+
+@-webkit-keyframes home-kenburns-top-left {
+  0% {
+    -webkit-transform: scale(1) translate(0, 0);
+    transform: scale(1) translate(0, 0);
+    -webkit-transform-origin: 16% 16%;
+    transform-origin: 16% 16%;
+  }
+  100% {
+    -webkit-transform: scale(1.12) translate(-12px, -9px);
+    transform: scale(1.12) translate(-12px, -9px);
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+  }
+}
+
+@keyframes home-kenburns-top-left {
+  0% {
+    transform: scale(1) translate(0, 0);
+    transform-origin: 16% 16%;
+  }
+  100% {
+    transform: scale(1.12) translate(-12px, -9px);
+    transform-origin: top left;
+  }
+}
+
+/* Shared animated cyan edge language for surfaces that do not own a local edge. */
 @property --edge-angle {
   syntax: "<angle>";
   initial-value: 0deg;
@@ -16,12 +52,6 @@
 .btn,
 .nav-primary-cta,
 .hero-card,
-.panorama-card,
-.feature-card,
-.methodology-step,
-.methodology-slider__viewport,
-.profile-v2__card,
-.closing-cta__panel,
 .footer-status,
 .footer-email,
 .footer-contact-cta {
@@ -32,12 +62,6 @@
 .btn::after,
 .nav-primary-cta::after,
 .hero-card::after,
-.panorama-card::after,
-.feature-card::after,
-.methodology-step::after,
-.methodology-slider__viewport::after,
-.profile-v2__card::after,
-.closing-cta__panel::after,
 .footer-status::after,
 .footer-email::after,
 .footer-contact-cta::after {
@@ -60,7 +84,7 @@
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  animation: edge-orbit 5.4s linear infinite;
+  animation: edge-orbit var(--motion-duration-edge) linear infinite;
   opacity: .58;
 }
 
@@ -72,10 +96,8 @@
   filter: drop-shadow(0 0 5px rgba(56,189,248,.42));
 }
 
-/* Major containers stay calmer so the page does not become visual noise. */
-.hero-card::after,
-.closing-cta__panel::after,
-.methodology-slider__viewport::after {
+/* Major shared container stays calmer so the page does not become visual noise. */
+.hero-card::after {
   opacity: .42;
 }
 
@@ -83,12 +105,6 @@
   .btn::after,
   .nav-primary-cta::after,
   .hero-card::after,
-  .panorama-card::after,
-  .feature-card::after,
-  .methodology-step::after,
-  .methodology-slider__viewport::after,
-  .profile-v2__card::after,
-  .closing-cta__panel::after,
   .footer-status::after,
   .footer-email::after,
   .footer-contact-cta::after {
