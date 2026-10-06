@@ -1,0 +1,83 @@
+.panorama-card__body h3 {
+margin: 0 0 10px;
+
+    color: var(--color-heading);
+
+    font-size: 1.35rem;
+}
+
+.panorama-card__body p {
+margin: 0 0 16px;
+
+    color: var(--color-text);
+
+    line-height: 1.65;
+}
+
+.panorama-card__stack {
+margin-bottom: 18px;
+
+    color: var(--color-primary);
+
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+.portfolio-swiper .swiper-button-prev,
+.portfolio-swiper .swiper-button-next {
+width: 48px;
+    height: 48px;
+
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 50%;
+
+    background: rgba(4, 15, 35, 0.9);
+
+    color: #38bdf8;
+
+    backdrop-filter: blur(12px);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+.portfolio-swiper .swiper-button-prev:hover,
+.portfolio-swiper .swiper-button-next:hover {
+transform: scale(1.08);
+
+    background: rgba(14, 165, 233, 0.18);
+}
+
+.portfolio-swiper .swiper-button-prev::after,
+.portfolio-swiper .swiper-button-next::after {
+font-size: 18px;
+    font-weight: 800;
+}
+
+.portfolio-swiper .swiper-pagination {
+bottom: 18px;
+}
+
+.portfolio-swiper .swiper-pagination-bullet {
+width: 9px;
+    height: 9px;
+
+    background: #64748b;
+    opacity: 0.45;
+}
+
+.portfolio-swiper .swiper-pagination-bullet-active {
+width: 24px;
+
+    border-radius: 999px;
+
+    background: #38bdf8;
+    opacity: 1;
+}
+
+@media (max-width: 700px) {
+.portfolio-swiper {
+padding-top: 22px;
+}
+}

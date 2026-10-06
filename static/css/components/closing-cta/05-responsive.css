@@ -1,0 +1,6 @@
+@media (max-width: 768px) {
+.closing-cta__panel {
+max-height: calc(100svh - 36px);
+    overflow: hidden;
+}
+}

@@ -1,16 +1,14 @@
-/* Canonical projects stylesheet. Implementation lives in small owned modules. */
-@import url("./projects/card-01.css");
-@import url("./projects/card-02.css");
-@import url("./projects/card-03.css");
-@import url("./projects/card-04.css");
-@import url("./projects/card-05.css");
-@import url("./projects/card-06.css");
-@import url("./projects/section-01.css");
-@import url("./projects/section-02.css");
-@import url("./projects/responsive-01.css");
-@import url("./projects/responsive-02.css");
-@import url("./projects/responsive-03.css");
-@import url("./projects/carousel.css");
-@import url("./projects/motion.css");
-@import url("./projects/atmosphere-01.css");
-@import url("./projects/atmosphere-02.css");
+/* Canonical projects entrypoint. Ordered modules preserve cascade. */
+@import url("./projects/01-card.css");
+@import url("./projects/02-card.css");
+@import url("./projects/03-card.css");
+@import url("./projects/04-responsive.css");
+@import url("./projects/05-card.css");
+@import url("./projects/06-card.css");
+@import url("./projects/07-card.css");
+@import url("./projects/08-atmosphere.css");
+@import url("./projects/09-motion.css");
+@import url("./projects/10-card.css");
+@import url("./projects/11-card.css");
+@import url("./projects/12-responsive.css");
+@import url("./projects/13-responsive.css");

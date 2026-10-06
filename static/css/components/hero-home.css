@@ -1,19 +1,17 @@
-/* Canonical hero-home stylesheet. Implementation lives in small owned modules. */
-@import url("./hero-home/motion.css");
-@import url("./hero-home/shell-01.css");
-@import url("./hero-home/shell-02.css");
-@import url("./hero-home/shell-03.css");
-@import url("./hero-home/responsive-01.css");
-@import url("./hero-home/responsive-02.css");
-@import url("./hero-home/responsive-03.css");
-@import url("./hero-home/responsive-04.css");
-@import url("./hero-home/responsive-05.css");
-@import url("./hero-home/responsive-06.css");
-@import url("./hero-home/responsive-07.css");
-@import url("./hero-home/responsive-08.css");
-@import url("./hero-home/responsive-09.css");
-@import url("./hero-home/actions-01.css");
-@import url("./hero-home/actions-02.css");
-@import url("./hero-home/story-01.css");
-@import url("./hero-home/story-02.css");
-@import url("./hero-home/portrait.css");
+/* Canonical hero-home entrypoint. Ordered modules preserve cascade. */
+@import url("./hero-home/01-motion.css");
+@import url("./hero-home/02-shell.css");
+@import url("./hero-home/03-motion.css");
+@import url("./hero-home/04-story.css");
+@import url("./hero-home/05-responsive.css");
+@import url("./hero-home/06-responsive.css");
+@import url("./hero-home/07-shell.css");
+@import url("./hero-home/08-actions.css");
+@import url("./hero-home/09-actions.css");
+@import url("./hero-home/10-responsive.css");
+@import url("./hero-home/11-responsive.css");
+@import url("./hero-home/12-responsive.css");
+@import url("./hero-home/13-responsive.css");
+@import url("./hero-home/14-responsive.css");
+@import url("./hero-home/15-responsive.css");
+@import url("./hero-home/16-responsive.css");

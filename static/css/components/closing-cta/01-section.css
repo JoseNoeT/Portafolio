@@ -1,0 +1,77 @@
+.section-shell--accent .cta-band {
+text-align: center;
+}
+
+.section-shell--accent .cta-band__actions {
+justify-content: center;
+}
+
+.section-shell--accent {
+border-top: 1px solid rgba(56, 189, 248, 0.07);
+}
+
+.section-shell--accent {
+position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 105%, rgba(56, 189, 248, 0.16), transparent 38%),
+    linear-gradient(180deg, #030b1b 0%, #020713 100%);
+}
+
+.closing-cta {
+position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(76px, 8vw, 116px);
+  background:
+    radial-gradient(ellipse at 50% 105%, rgba(34,211,238,.17) 0%, rgba(14,165,233,.06) 34%, transparent 64%),
+    linear-gradient(180deg, #020713 0%, #030b19 56%, #041222 100%) !important;
+}
+
+.closing-cta::before {
+content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 49.8%, rgba(56,189,248,.045) 50%, transparent 50.2%),
+    radial-gradient(circle at 50% 82%, rgba(103,232,249,.10), transparent 25%);
+  opacity: .85;
+}
+
+.closing-cta .container {
+position: relative;
+  z-index: 2;
+}
+
+.closing-cta__panel {
+width: min(100%, 1050px);
+  margin-inline: auto;
+  padding: clamp(48px, 6vw, 78px) clamp(24px, 7vw, 92px) !important;
+  border: 1px solid rgba(56,189,248,.24) !important;
+  border-radius: 26px !important;
+  background:
+    radial-gradient(circle at 50% 100%, rgba(14,165,233,.075), transparent 38%),
+    linear-gradient(145deg, rgba(3,16,35,.72), rgba(2,10,25,.56)) !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 26px 70px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.025);
+  text-align: center;
+}
+
+.closing-cta__status {
+display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 7px 13px;
+  border: 1px solid rgba(56,189,248,.32);
+  border-radius: 999px;
+  color: #7dd3fc;
+  background: rgba(2,16,36,.62);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}

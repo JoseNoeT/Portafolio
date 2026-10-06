@@ -1,0 +1,80 @@
+.panorama-card:hover::before {
+opacity: 1;
+    filter:
+        drop-shadow(0 0 6px rgba(186, 230, 253, 0.95))
+        drop-shadow(0 0 14px rgba(56, 189, 248, 0.78));
+}
+
+.projects-showcase {
+position: relative;
+    isolation: isolate;
+    background:
+        radial-gradient(circle at 50% 58%, rgba(0, 174, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 14% 42%, rgba(14, 165, 233, 0.08), transparent 24%),
+        radial-gradient(circle at 86% 36%, rgba(56, 189, 248, 0.07), transparent 22%),
+        linear-gradient(180deg, #061127 0%, #07142b 50%, #050e20 100%);
+}
+
+.projects-showcase > .container {
+position: relative;
+    z-index: 2;
+}
+
+.projects-atmosphere {
+position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.projects-atmosphere::before,
+.projects-atmosphere::after {
+content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 4%;
+    border-radius: 50%;
+    transform: translateX(-50%) perspective(500px) rotateX(68deg);
+}
+
+.projects-atmosphere::before {
+width: min(760px, 70vw);
+    height: 180px;
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    box-shadow:
+        0 0 20px rgba(14, 165, 233, 0.16),
+        inset 0 0 28px rgba(14, 165, 233, 0.08);
+    animation: project-platform-pulse 4.5s ease-in-out infinite;
+}
+
+.projects-atmosphere::after {
+width: min(560px, 54vw);
+    height: 120px;
+    background: radial-gradient(ellipse, rgba(14, 165, 233, 0.16), transparent 68%);
+    filter: blur(12px);
+}
+
+.projects-orbit {
+position: absolute;
+    left: 50%;
+    width: 115%;
+    height: 420px;
+    border-radius: 50%;
+    border-top: 2px solid rgba(14, 165, 233, 0.34);
+    filter: drop-shadow(0 0 9px rgba(14, 165, 233, 0.28));
+    transform-origin: center;
+}
+
+.projects-orbit--one {
+top: 17%;
+    transform: translateX(-50%) rotate(-7deg);
+    animation: project-orbit-drift 8s ease-in-out infinite alternate;
+}
+
+.projects-orbit--two {
+top: 24%;
+    opacity: 0.48;
+    transform: translateX(-50%) rotate(8deg) scale(0.92);
+    animation: project-orbit-drift-alt 10s ease-in-out infinite alternate;
+}

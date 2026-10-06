@@ -1,7 +1,6 @@
-/* Canonical cta stylesheet. Implementation lives in small owned modules. */
-@import url("./closing-cta/section.css");
-@import url("./closing-cta/content-01.css");
-@import url("./closing-cta/content-02.css");
-@import url("./closing-cta/motion.css");
-@import url("./closing-cta/responsive-01.css");
-@import url("./closing-cta/responsive-02.css");
+/* Canonical cta entrypoint. Ordered modules preserve cascade. */
+@import url("./closing-cta/01-section.css");
+@import url("./closing-cta/02-content.css");
+@import url("./closing-cta/03-motion.css");
+@import url("./closing-cta/04-section.css");
+@import url("./closing-cta/05-responsive.css");

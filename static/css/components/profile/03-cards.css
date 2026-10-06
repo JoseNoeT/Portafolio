@@ -1,0 +1,80 @@
+.profile-v2__card h3 {
+max-width: 13ch;
+  margin: 0 0 18px;
+  color: #f8fbff;
+  font-size: clamp(1.35rem,1.8vw,1.75rem);
+  line-height: 1.08;
+}
+
+.profile-v2__card h3 span {
+display: block;
+  color: #22d3ee;
+}
+
+.profile-v2__card p {
+margin: 0;
+  color: #cbd8e8;
+  line-height: 1.65;
+}
+
+.profile-v2__card:hover {
+transform: translateY(-7px);
+  background: linear-gradient(145deg, rgba(7,34,68,.80), rgba(3,16,36,.91));
+  box-shadow: 0 24px 58px rgba(0,0,0,.34), 0 0 26px rgba(56,189,248,.12);
+}
+
+.profile-v2__closing {
+width: min(100%, 880px);
+  margin: 38px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #d5e3f2;
+  text-align: center;
+}
+
+.profile-v2__closing p {
+margin: 0;
+}
+
+.profile-v2__signal {
+flex: 0 0 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 12px #38bdf8;
+  animation: profile-signal 2.4s ease-in-out infinite;
+}
+
+@property --profile-edge-angle {
+syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes profile-edge-orbit {
+to { --profile-edge-angle: 360deg; }
+}
+
+@keyframes profile-bg-drift {
+from { transform: scale(1.04) translate3d(0,0,0); }
+  to { transform: scale(1.10) translate3d(-1%,-1%,0); }
+}
+
+@keyframes profile-signal {
+50% { opacity: .45; box-shadow: 0 0 5px #38bdf8; }
+}
+
+@media (max-width: 900px) {
+.profile-v2__grid {
+grid-template-columns: 1fr;
+}
+}
+
+@media (max-width: 900px) {
+.profile-v2__card {
+min-height: 0;
+}
+}

@@ -1,0 +1,18 @@
+@media (max-width: 768px) {
+#services .feature-card__text {
+font-size: .82rem !important;
+    line-height: 1.48 !important;
+}
+}
+
+@media (max-width: 768px) {
+#services .feature-card__tags {
+margin-top: auto;
+}
+}
+
+@media (max-width: 480px) {
+#services .feature-card {
+min-height: 218px !important;
+}
+}

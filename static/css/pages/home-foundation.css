@@ -1,0 +1,9 @@
+/* Canonical home-base entrypoint. Ordered modules preserve cascade. */
+@import url("./home-foundation/01-responsive.css");
+@import url("./home-foundation/02-composition.css");
+@import url("./home-foundation/03-composition.css");
+@import url("./home-foundation/04-composition.css");
+@import url("./home-foundation/05-composition.css");
+@import url("./home-foundation/06-composition.css");
+@import url("./home-foundation/07-responsive.css");
+@import url("./home-foundation/08-responsive.css");

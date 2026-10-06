@@ -1,11 +1,11 @@
-/* Canonical capabilities stylesheet. Implementation lives in small owned modules. */
-@import url("./capabilities/cards-01.css");
-@import url("./capabilities/cards-02.css");
-@import url("./capabilities/cards-03.css");
-@import url("./capabilities/cards-04.css");
-@import url("./capabilities/cards-05.css");
-@import url("./capabilities/section-01.css");
-@import url("./capabilities/section-02.css");
-@import url("./capabilities/motion.css");
-@import url("./capabilities/responsive-01.css");
-@import url("./capabilities/responsive-02.css");
+/* Canonical capabilities entrypoint. Ordered modules preserve cascade. */
+@import url("./capabilities/01-cards.css");
+@import url("./capabilities/02-section.css");
+@import url("./capabilities/03-motion.css");
+@import url("./capabilities/04-section.css");
+@import url("./capabilities/05-cards.css");
+@import url("./capabilities/06-cards.css");
+@import url("./capabilities/07-responsive.css");
+@import url("./capabilities/08-cards.css");
+@import url("./capabilities/09-section.css");
+@import url("./capabilities/10-responsive.css");

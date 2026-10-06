@@ -1,0 +1,80 @@
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+width: min(100%, var(--home-canvas-width));
+  border-radius: var(--home-canvas-radius) !important;
+  overflow: hidden;
+}
+
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+margin-top: -1px;
+  margin-bottom: -1px;
+}
+
+@media (min-width: 701px) {
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+border-top-left-radius: var(--home-canvas-radius) !important;
+    border-top-right-radius: var(--home-canvas-radius) !important;
+    border-bottom-left-radius: var(--home-canvas-radius) !important;
+    border-bottom-right-radius: var(--home-canvas-radius) !important;
+}
+}
+
+@media (max-width: 700px) {
+:root {
+--home-canvas-radius: 18px;
+}
+}
+
+@media (max-width: 700px) {
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+border-radius: var(--home-canvas-radius) !important;
+}
+}
+
+#services::before,
+#about.profile-v2::before,
+.closing-cta::before {
+-webkit-animation: home-kenburns-top-left var(--home-motion-duration) var(--home-motion-ease) infinite alternate !important;
+  animation: home-kenburns-top-left var(--home-motion-duration) var(--home-motion-ease) infinite alternate !important;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+#projects .panorama-card__media img,
+#projects .swiper-slide img,
+#services::before,
+#about.profile-v2::before,
+.closing-cta::before {
+-webkit-animation: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+}
+
+.section-header,
+.profile-v2__intro {
+max-width: 780px;
+  margin-inline: auto;
+}
+
+.section-desc,
+.split-section__text,
+.profile-v2__intro .split-section__text {
+max-width: 68ch;
+  margin-inline: auto;
+}

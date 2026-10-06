@@ -1,0 +1,72 @@
+.methodology-slider__dot {
+width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 1px solid rgba(56, 189, 248, 0.7);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  transition: width 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.methodology-slider__dot.is-active {
+width: 30px;
+  background: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.55);
+}
+
+.methodology-step.is-active {
+border-color: rgba(56, 189, 248, 0.58);
+  background: rgba(7, 27, 55, 0.72);
+}
+
+.methodology-step.is-active .methodology-step__number {
+color: #f8fbff;
+  border-color: #38bdf8;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.28);
+}
+
+@media (max-width: 900px) {
+.methodology-slider {
+width: min(100%, 560px);
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.methodology-slide {
+transition: none;
+    transform: none;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.methodology-slider__dot {
+transition: none;
+}
+}
+
+.methodology-slider::before {
+content: "";
+  position: absolute;
+  inset: -28px -34px -22px;
+  z-index: -1;
+  border-radius: 34px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 52% 45%, rgba(14, 165, 233, 0.20), transparent 42%),
+    radial-gradient(circle at 82% 20%, rgba(56, 189, 248, 0.10), transparent 28%),
+    linear-gradient(135deg, rgba(4, 19, 43, 0.82), rgba(2, 7, 19, 0.28));
+  filter: blur(1px);
+}
+
+.methodology-slider__viewport::before {
+content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 38px rgba(2, 7, 19, 0.30),
+    inset 0 0 1px rgba(216, 248, 255, 0.65);
+}

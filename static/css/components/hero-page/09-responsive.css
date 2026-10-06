@@ -1,0 +1,31 @@
+@media (max-width: 768px) {
+[data-theme="light"] .hero-page__overlay {
+background:
+            radial-gradient(
+                ellipse at 18% 24%,
+                rgba(16, 185, 129, 0.09) 0%,
+                transparent 28%
+            ),
+            radial-gradient(
+                ellipse at 84% 78%,
+                rgba(20, 184, 166, 0.08) 0%,
+                transparent 32%
+            ),
+            linear-gradient(
+                180deg,
+                rgba(240, 253, 244, 0.04) 0%,
+                rgba(240, 253, 244, 0.10) 100%
+            );
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.hero.hero-page .hero-page__eyebrow,
+.hero.hero-page .hero-page__title,
+.hero.hero-page .hero-page__subtitle {
+opacity: 1;
+        transform: none;
+        transition: none;
+        will-change: auto;
+}
+}

@@ -1,11 +1,9 @@
-/* Canonical profile stylesheet. Implementation lives in small owned modules. */
-@import url("./profile/section-01.css");
-@import url("./profile/section-02.css");
-@import url("./profile/section-03.css");
-@import url("./profile/section-04.css");
-@import url("./profile/cards-01.css");
-@import url("./profile/cards-02.css");
-@import url("./profile/motion.css");
-@import url("./profile/responsive-01.css");
-@import url("./profile/responsive-02.css");
-@import url("./profile/responsive-03.css");
+/* Canonical profile entrypoint. Ordered modules preserve cascade. */
+@import url("./profile/01-section.css");
+@import url("./profile/02-section.css");
+@import url("./profile/03-cards.css");
+@import url("./profile/04-responsive.css");
+@import url("./profile/05-cards.css");
+@import url("./profile/06-responsive.css");
+@import url("./profile/07-responsive.css");
+@import url("./profile/08-responsive.css");

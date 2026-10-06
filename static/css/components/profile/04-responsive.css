@@ -1,0 +1,82 @@
+@media (prefers-reduced-motion: reduce) {
+#about.profile-v2::before,
+.profile-v2__card::before,
+.profile-v2__signal {
+animation: none;
+}
+}
+
+#about.profile-v2 {
+min-height: 760px;
+  padding-block: clamp(88px, 9vw, 132px);
+  background: #020713 !important;
+}
+
+#about.profile-v2::before {
+inset: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  right: 0 !important;
+  top: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  z-index: 0 !important;
+  background: url("../../img/perfil/perfil-bg.png") center 48% / cover no-repeat !important;
+  opacity: .78 !important;
+  transform: scale(1.025);
+  animation: profile-bg-drift 20s ease-in-out infinite alternate !important;
+}
+
+#about.profile-v2::after {
+left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  transform: none !important;
+  z-index: 1 !important;
+  background:
+    linear-gradient(180deg, rgba(1,7,18,.55) 0%, rgba(1,8,20,.36) 42%, rgba(1,7,18,.82) 100%),
+    linear-gradient(90deg, rgba(1,7,18,.72) 0%, rgba(2,10,24,.36) 48%, rgba(1,7,18,.58) 100%) !important;
+}
+
+#about.profile-v2 > .container {
+z-index: 2 !important;
+}
+
+.profile-v2__intro {
+max-width: 900px;
+  margin-bottom: clamp(44px, 5vw, 66px);
+}
+
+#about .profile-v2__intro .section-eyebrow {
+color: #67e8f9;
+  border-color: rgba(56,189,248,.48);
+  background: rgba(2,16,36,.68);
+  box-shadow: 0 0 20px rgba(56,189,248,.10);
+}
+
+#about .profile-v2__intro .split-section__title {
+max-width: 850px;
+  margin: 16px auto 18px;
+  font-size: clamp(2rem, 4.2vw, 3.8rem);
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+#about .profile-v2__intro .profile-v2__accent {
+display: block;
+  color: #22d3ee;
+  text-shadow: 0 0 22px rgba(34,211,238,.28);
+}
+
+#about .profile-v2__intro .split-section__text {
+max-width: 760px;
+  margin-inline: auto;
+  color: #d6e2ef;
+  font-size: clamp(.98rem, 1.15vw, 1.08rem);
+  line-height: 1.72;
+}

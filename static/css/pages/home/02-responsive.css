@@ -1,0 +1,80 @@
+@media (max-width: 768px) {
+.section-desc,
+.split-section__text,
+.cta-band__text {
+max-width: 62ch;
+    font-size: .94rem;
+    line-height: 1.55;
+}
+}
+
+@media (max-width: 768px) {
+.feature-card__tags {
+flex-wrap: wrap;
+    gap: 6px;
+}
+}
+
+@media (max-width: 768px) {
+#services::before,
+#about.profile-v2::before,
+.closing-cta::before,
+.methodology-scene__bg.is-active {
+animation: none !important;
+    transform: none !important;
+}
+}
+
+@media (max-width: 768px) {
+#services::after,
+#about.profile-v2::after,
+.closing-cta::after {
+backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+}
+
+@media (max-width: 480px) {
+:root {
+--home-canvas-width: calc(100% - 10px);
+    --home-gutter: 14px;
+    --home-canvas-radius: 16px;
+}
+}
+
+@media (max-width: 480px) {
+.section-shell {
+padding-block: 32px !important;
+}
+}
+
+@media (max-width: 480px) {
+.section-title,
+.split-section__title,
+.cta-band__title {
+font-size: clamp(1.65rem, 8.4vw, 2.05rem);
+}
+}
+
+@media (max-width: 480px) {
+.section-desc,
+.split-section__text,
+.cta-band__text {
+font-size: .9rem;
+}
+}
+
+@media (max-width: 480px) {
+#services .feature-card,
+.profile-v2__card {
+padding: 18px;
+    border-radius: 16px;
+}
+}
+
+@media (max-width: 480px) {
+.feature-card__title,
+.profile-v2__card h3 {
+font-size: 1.15rem;
+}
+}

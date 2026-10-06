@@ -1,0 +1,83 @@
+#methodology .methodology-step,
+#services .feature-card,
+#about .split-section__visual,
+.section-shell--accent .cta-band {
+position: relative;
+  isolation: isolate;
+}
+
+#methodology .methodology-step::after,
+#services .feature-card::after,
+#about .split-section__visual::after,
+.section-shell--accent .cta-band::after {
+content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--home-edge-angle, 0deg),
+    transparent 0deg 250deg,
+    rgba(14, 165, 233, 0.08) 268deg,
+    rgba(0, 174, 255, 0.52) 292deg,
+    #38bdf8 310deg,
+    #d8f8ff 320deg,
+    #67e8f9 330deg,
+    rgba(14, 165, 233, 0.18) 350deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.72;
+  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.28));
+  animation: home-edge-orbit 5.4s linear infinite;
+}
+
+@property --home-edge-angle {
+syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes home-edge-orbit {
+to {
+    --home-edge-angle: 360deg;
+  }
+}
+
+#methodology .methodology-step:hover::after,
+#services .feature-card:hover::after,
+#about .split-section__visual:hover::after,
+.section-shell--accent .cta-band:hover::after {
+opacity: 1;
+  filter:
+    drop-shadow(0 0 6px rgba(186, 230, 253, 0.72))
+    drop-shadow(0 0 12px rgba(56, 189, 248, 0.36));
+}
+
+@media (prefers-reduced-motion: reduce) {
+#methodology .methodology-step::after,
+#services .feature-card::after,
+#about .split-section__visual::after,
+.section-shell--accent .cta-band::after {
+animation: none;
+}
+}
+
+#methodology .methodology-step,
+#methodology .methodology-slider__viewport,
+#services .feature-card,
+#about .split-section__visual,
+#about .stat-card,
+#about .about-card,
+.section-shell--accent .cta-band,
+.section-shell--accent .btn {
+--surface-edge-angle: 0deg;
+  position: relative;
+  isolation: isolate;
+}

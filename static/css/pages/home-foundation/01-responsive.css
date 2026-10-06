@@ -1,0 +1,74 @@
+@media (prefers-reduced-motion: reduce) {
+* {
+animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+}
+}
+
+#methodology .split-section__content,
+#about .split-section__content {
+text-align: center;
+}
+
+#methodology .split-section__title,
+#about .split-section__title,
+#services .section-title,
+.section-shell--accent .cta-band__title {
+color: #f8fbff;
+  text-align: center;
+}
+
+#methodology .split-section__title::after,
+#about .split-section__title::after,
+#services .section-title::after,
+.section-shell--accent .cta-band__title::after {
+content: "";
+  display: block;
+  width: 84px;
+  height: 2px;
+  margin: 12px auto 0;
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.32);
+}
+
+#methodology .split-section__text,
+#about .split-section__text,
+#services .section-desc,
+.section-shell--accent .cta-band__text {
+max-width: 66ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: #c5d3e4;
+}
+
+#about .section-eyebrow,
+.section-shell--accent .section-eyebrow {
+margin-left: auto;
+  margin-right: auto;
+}
+
+#services .feature-card__icon,
+#about .section-eyebrow,
+.section-shell--accent .section-eyebrow {
+color: #38bdf8;
+}
+
+#methodology,
+#services,
+#about,
+.section-shell--accent {
+position: relative;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(0, 174, 255, 0.075), transparent 30%),
+    radial-gradient(circle at 14% 38%, rgba(14, 165, 233, 0.04), transparent 24%),
+    radial-gradient(circle at 86% 42%, rgba(56, 189, 248, 0.035), transparent 22%),
+    linear-gradient(180deg, #030916 0%, #051022 50%, #020713 100%);
+}
+
+#methodology,
+#services,
+#about {
+border-top: 1px solid rgba(56, 189, 248, 0.055);
+}

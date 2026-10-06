@@ -1,0 +1,77 @@
+#projects .panorama-card__media,
+#projects .panorama-card__media img,
+#projects .swiper-slide img {
+overflow: hidden;
+}
+
+#projects .panorama-card__media img,
+#projects .swiper-slide img {
+-webkit-animation: home-kenburns-top-left var(--home-motion-duration) var(--home-motion-ease) infinite alternate;
+  animation: home-kenburns-top-left var(--home-motion-duration) var(--home-motion-ease) infinite alternate;
+  will-change: transform;
+}
+
+.projects-title-resolution {
+display: inline-block;
+  margin-top: .14em;
+  color: rgba(241,248,255,.94);
+  font-size: .72em;
+  font-weight: 650;
+  letter-spacing: -.015em;
+}
+
+.projects-showcase .section-desc {
+max-width: 62ch;
+}
+
+@media (max-width: 700px) {
+.projects-title-resolution {
+font-size: .78em;
+}
+}
+
+@media (min-width: 901px) and (min-height: 650px) {
+.projects-showcase .portfolio-swiper {
+margin-top: clamp(14px, 2vh, 24px);
+}
+}
+
+.projects-showcase {
+overflow: hidden;
+}
+
+.portfolio-swiper {
+width: 100%;
+    padding: 35px 0 70px;
+    overflow: visible;
+}
+
+.project-slide {
+width: clamp(280px, 32vw, 430px);
+    height: auto;
+}
+
+.panorama-card {
+height: 100%;
+    overflow: hidden;
+
+    border: 1px solid var(--color-border-soft);
+    border-radius: 22px;
+
+    background: var(--glass-bg);
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.28);
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease;
+}
+
+.swiper-slide:not(.swiper-slide-active) .panorama-card {
+opacity: 0.72;
+}
+
+.swiper-slide-active .panorama-card {
+opacity: 1;
+}

@@ -1,11 +1,10 @@
-/* Canonical hero-page stylesheet. Implementation lives in small owned modules. */
-@import url("./hero-page/shell-01.css");
-@import url("./hero-page/shell-02.css");
-@import url("./hero-page/background-01.css");
-@import url("./hero-page/background-02.css");
-@import url("./hero-page/background-03.css");
-@import url("./hero-page/panel.css");
-@import url("./hero-page/typography-01.css");
-@import url("./hero-page/typography-02.css");
-@import url("./hero-page/responsive-01.css");
-@import url("./hero-page/responsive-02.css");
+/* Canonical hero-page entrypoint. Ordered modules preserve cascade. */
+@import url("./hero-page/01-shell.css");
+@import url("./hero-page/02-background.css");
+@import url("./hero-page/03-background.css");
+@import url("./hero-page/04-panel.css");
+@import url("./hero-page/05-typography.css");
+@import url("./hero-page/06-responsive.css");
+@import url("./hero-page/07-responsive.css");
+@import url("./hero-page/08-background.css");
+@import url("./hero-page/09-responsive.css");

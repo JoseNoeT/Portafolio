@@ -1,0 +1,75 @@
+@property --hero-edge-angle {
+syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes hero-edge-orbit {
+to { --hero-edge-angle: 360deg; }
+}
+
+.hero.hero--home .hero-content {
+position: relative;
+  isolation: isolate;
+  border: 2px solid rgba(56, 189, 248, .28) !important;
+  box-shadow:
+    0 0 0 1px rgba(56, 189, 248, .08),
+    0 0 26px rgba(14, 165, 233, .10),
+    var(--glass-shadow);
+}
+
+.hero.hero--home .hero-content::before {
+content: "";
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: calc(var(--radius-xl) + 3px);
+  padding: 3px;
+  background: conic-gradient(
+    from var(--hero-edge-angle),
+    rgba(56,189,248,.06) 0deg,
+    rgba(56,189,248,.06) 205deg,
+    rgba(34,211,238,.42) 248deg,
+    #38bdf8 282deg,
+    #e0f7ff 302deg,
+    #22d3ee 320deg,
+    rgba(56,189,248,.30) 340deg,
+    rgba(56,189,248,.06) 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: hero-edge-orbit 3.6s linear infinite;
+  filter:
+    drop-shadow(0 0 5px rgba(56,189,248,.95))
+    drop-shadow(0 0 12px rgba(14,165,233,.50));
+  opacity: 1;
+}
+
+.hero.hero--home .hero-content::after {
+content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -2;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow:
+    0 0 14px rgba(56,189,248,.18),
+    inset 0 0 12px rgba(56,189,248,.05);
+  animation: hero-edge-breathe 2.4s ease-in-out infinite;
+}
+
+@keyframes hero-edge-breathe {
+0%,100% { opacity:.48; }
+  50% { opacity:1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+.hero.hero--home .hero-content::before,
+.hero.hero--home .hero-content::after {
+animation: none !important;
+}
+}

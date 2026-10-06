@@ -1,17 +1,6 @@
-/* Canonical home stylesheet. Implementation lives in small owned modules. */
-@import url("./home/responsive-01.css");
-@import url("./home/responsive-02.css");
-@import url("./home/responsive-03.css");
-@import url("./home/responsive-04.css");
-@import url("./home/responsive-05.css");
-@import url("./home/responsive-06.css");
-@import url("./home/responsive-07.css");
-@import url("./home/responsive-08.css");
-@import url("./home/canvas-01.css");
-@import url("./home/canvas-02.css");
-@import url("./home/canvas-03.css");
-@import url("./home/canvas-04.css");
-@import url("./home/typography-01.css");
-@import url("./home/typography-02.css");
-@import url("./home/motion.css");
-@import url("./home/composition.css");
+/* Canonical home-final entrypoint. Ordered modules preserve cascade. */
+@import url("./home/01-responsive.css");
+@import url("./home/02-responsive.css");
+@import url("./home/03-responsive.css");
+@import url("./home/04-responsive.css");
+@import url("./home/05-responsive.css");
