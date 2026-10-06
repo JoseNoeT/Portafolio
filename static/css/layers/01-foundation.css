@@ -1,0 +1,4 @@
+/* Layer 01: shared design foundations. No component/page selectors here. */
+@import url("../base/design-tokens.css?v=6.0");
+@import url("../base/typography.css?v=6.0");
+@import url("../base/global.css?v=6.0");
