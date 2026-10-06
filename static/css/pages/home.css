@@ -6,6 +6,7 @@
 @media (prefers-reduced-motion: reduce) {
 
 
+
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
@@ -13,7 +14,9 @@
   }
 
 
+
 }
+
 
 
 
@@ -107,201 +110,6 @@
 }
 
 
-/* ======================================================
-   METHODOLOGY — structured process
-   ====================================================== */
-
-#methodology .methodology-content {
-  text-align: left;
-}
-
-#methodology .methodology-content .section-eyebrow {
-  margin: 0 0 16px;
-}
-
-#methodology .methodology-content .split-section__title {
-  text-align: left;
-  max-width: 15ch;
-  line-height: 1.05;
-}
-
-#methodology .methodology-content .split-section__title::after {
-  margin-left: 0;
-}
-
-#methodology .methodology-title-accent {
-  color: #38bdf8;
-  text-shadow: 0 0 22px rgba(56, 189, 248, 0.14);
-}
-
-#methodology .methodology-content .split-section__text {
-  text-align: left;
-  max-width: 58ch;
-  margin-left: 0;
-  color: #c5d3e4;
-}
-
-.methodology-steps {
-  position: relative;
-  display: grid;
-  gap: 10px;
-  margin-top: 24px;
-  max-width: 620px;
-}
-
-.methodology-steps::before {
-  content: "";
-  position: absolute;
-  left: 21px;
-  top: 22px;
-  bottom: 22px;
-  width: 1px;
-  background: linear-gradient(180deg, #38bdf8, rgba(56, 189, 248, 0.08));
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.22);
-}
-
-.methodology-step {
-  position: relative;
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 14px;
-  align-items: center;
-  padding: 12px 14px;
-  border: 1px solid rgba(56, 189, 248, 0.12);
-  border-radius: 14px;
-  background: rgba(5, 18, 40, 0.42);
-  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
-}
-
-.methodology-step:hover {
-  transform: translateX(4px);
-  border-color: rgba(56, 189, 248, 0.38);
-  background: rgba(7, 27, 55, 0.64);
-}
-
-.methodology-step__number {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(56, 189, 248, 0.55);
-  border-radius: 12px;
-  background: #06152d;
-  color: #38bdf8;
-  font-size: 0.76rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  box-shadow: 0 0 16px rgba(14, 165, 233, 0.10);
-}
-
-.methodology-step h3 {
-  margin: 0 0 3px;
-  color: #f8fbff;
-  font-size: 0.98rem;
-}
-
-.methodology-step p {
-  margin: 0;
-  color: #aebed2;
-  font-size: 0.84rem;
-  line-height: 1.45;
-}
-
-#methodology .split-section__visual {
-  position: relative;
-}
-
-#methodology .split-section__visual::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  z-index: 1;
-  border-radius: inherit;
-  pointer-events: none;
-  border: 1px solid rgba(56, 189, 248, 0.46);
-  box-shadow:
-    0 0 20px rgba(14, 165, 233, 0.10),
-    inset 0 0 22px rgba(14, 165, 233, 0.035);
-}
-
-@media (max-width: 767px) {
-
-
-  #methodology .methodology-content,
-#methodology .methodology-content .split-section__title,
-#methodology .methodology-content .split-section__text {
-    text-align: center;
-  }
-
-  #methodology .methodology-content .split-section__title {
-    max-width: none;
-  }
-
-  #methodology .methodology-content .split-section__title::after,
-#methodology .methodology-content .section-eyebrow {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .methodology-steps {
-    text-align: left;
-  }
-
-
-}
-
-
-
-
-/* ======================================================
-   METHODOLOGY IMAGE — roll-in-blurred entrance
-   ====================================================== */
-
-.methodology-roll-image {
-  opacity: 0;
-  filter: blur(12px);
-  transform: translateX(115vw) rotate(110deg) scale(0.72);
-  transform-origin: center;
-  will-change: transform, filter, opacity;
-}
-
-.methodology-roll-image.is-roll-visible {
-  animation: methodology-roll-in-blurred 2.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes methodology-roll-in-blurred {
-  0% {
-    opacity: 0;
-    filter: blur(12px);
-    transform: translateX(115vw) rotate(110deg) scale(0.72);
-  }
-
-  100% {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0) rotate(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-
-  .methodology-roll-image {
-    opacity: 1;
-    filter: none;
-    transform: none;
-  }
-
-  .methodology-roll-image.is-roll-visible {
-    animation: none;
-  }
-
-
-}
-
-
 
 
 /* ======================================================
@@ -347,134 +155,6 @@
 
 .section-shell--accent {
   border-top: 1px solid rgba(56, 189, 248, 0.07);
-}
-
-
-/* ======================================================
-   METHODOLOGY — image fallback + compact heading
-   ====================================================== */
-
-#methodology .methodology-content .split-section__title {
-  max-width: 18ch;
-  font-size: clamp(1.65rem, 2.25vw, 2.45rem);
-  line-height: 1.08;
-}
-
-#methodology .methodology-roll-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  opacity: 1;
-  filter: none;
-  transform: none;
-}
-
-#methodology .methodology-roll-image.is-roll-pending {
-  opacity: 0;
-  filter: blur(12px);
-  transform: translateX(115vw) rotate(110deg) scale(0.72);
-}
-
-#methodology .methodology-roll-image.is-roll-pending.is-roll-visible {
-  animation: methodology-roll-in-blurred 2.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@media (max-width: 767px) {
-
-
-  #methodology .methodology-content .split-section__title {
-    max-width: 22ch;
-    font-size: clamp(1.55rem, 7vw, 2rem);
-  }
-
-
-}
-
-
-
-
-/* ======================================================
-   METHODOLOGY IMAGE — Animista roll-in-blurred-left
-   Source values supplied by project owner
-   ====================================================== */
-
-#methodology .methodology-roll-image.is-roll-pending {
-  opacity: 0;
-  -webkit-filter: blur(50px);
-  filter: blur(50px);
-  -webkit-transform: translateX(-1000px) rotate(-720deg);
-  transform: translateX(-1000px) rotate(-720deg);
-}
-
-#methodology .methodology-roll-image.is-roll-pending.is-roll-visible {
-  -webkit-animation: roll-in-blurred-left 1.35s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-  animation: roll-in-blurred-left 1.35s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-}
-
-@-webkit-keyframes roll-in-blurred-left {
-  0% {
-    -webkit-transform: translateX(-1000px) rotate(-720deg);
-    transform: translateX(-1000px) rotate(-720deg);
-    -webkit-filter: blur(50px);
-    filter: blur(50px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0) rotate(0deg);
-    transform: translateX(0) rotate(0deg);
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-
-@keyframes roll-in-blurred-left {
-  0% {
-    -webkit-transform: translateX(-1000px) rotate(-720deg);
-    transform: translateX(-1000px) rotate(-720deg);
-    -webkit-filter: blur(50px);
-    filter: blur(50px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0) rotate(0deg);
-    transform: translateX(0) rotate(0deg);
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-
-
-/* ======================================================
-   METHODOLOGY IMAGE — stable final state
-   The image stays visible until JS actually starts the animation.
-   ====================================================== */
-
-#methodology .methodology-roll-image,
-#methodology .methodology-roll-image.is-roll-pending {
-  opacity: 1;
-  -webkit-filter: none;
-  filter: none;
-  -webkit-transform: none;
-  transform: none;
-}
-
-#methodology .methodology-roll-image.is-roll-running {
-  -webkit-animation: roll-in-blurred-left 1.35s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-  animation: roll-in-blurred-left 1.35s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-}
-
-
-/* Methodology eyebrow — compact label, not a full-width bar */
-#methodology .methodology-content .section-eyebrow {
-  display: inline-flex;
-  width: auto;
-  max-width: max-content;
-  padding: 7px 16px;
-  margin: 0 0 16px;
-  border-radius: 999px;
-  letter-spacing: 0.14em;
 }
 
 
@@ -550,46 +230,6 @@
   color: var(--home-page-muted);
 }
 
-/* Methodology: balanced image instead of a dominant half-page panel. */
-#methodology .split-section {
-  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.72fr);
-  gap: clamp(32px, 5vw, 72px);
-  align-items: center;
-}
-
-#methodology .split-section__visual {
-  width: min(100%, 480px);
-  justify-self: center;
-}
-
-#methodology .split-section__visual img {
-  width: 100%;
-  max-height: 430px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-#methodology .methodology-steps {
-  max-width: 620px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-}
-
-@media (max-width: 900px) {
-
-
-  #methodology .split-section {
-    grid-template-columns: 1fr;
-  }
-
-  #methodology .split-section__visual {
-    width: min(100%, 560px);
-  }
-
-
-}
-
 
 
 
@@ -647,14 +287,6 @@
   animation-delay: -3.6s;
 }
 
-#methodology .methodology-step:nth-child(2)::after {
-  animation-delay: -1.4s;
-}
-
-#methodology .methodology-step:nth-child(3)::after {
-  animation-delay: -2.8s;
-}
-
 @property --home-edge-angle {
   syntax: "<angle>";
   initial-value: 0deg;
@@ -680,6 +312,7 @@
 @media (prefers-reduced-motion: reduce) {
 
 
+
   #methodology .methodology-step::after,
 #services .feature-card::after,
 #about .split-section__visual::after,
@@ -688,7 +321,9 @@
   }
 
 
+
 }
+
 
 
 
@@ -837,6 +472,7 @@
 @media (prefers-reduced-motion: reduce) {
 
 
+
   #methodology .methodology-step::before,
 #services .feature-card::before,
 #about .split-section__visual::before,
@@ -847,7 +483,9 @@
   }
 
 
+
 }
+
 
 
 
@@ -1010,6 +648,7 @@
 @media (max-width: 900px) {
 
 
+
   .services-flow {
     display: none;
   }
@@ -1019,11 +658,14 @@
   }
 
 
+
 }
 
 
 
+
 @media (prefers-reduced-motion: reduce) {
+
 
 
   .services-flow__pulse,
@@ -1032,7 +674,9 @@
   }
 
 
+
 }
+
 
 
 
@@ -1117,13 +761,16 @@
 @media (prefers-reduced-motion: reduce) {
 
 
+
   #services::before {
     animation: none;
     transform: scale(1.04);
   }
 
 
+
 }
+
 
 
 
@@ -1298,6 +945,7 @@
 @media (max-width: 900px) {
 
 
+
   #services .services-story {
     gap: 28px;
   }
@@ -1316,7 +964,9 @@
   }
 
 
+
 }
+
 
 
 
@@ -1431,6 +1081,7 @@
 @media (max-width: 900px) {
 
 
+
   #services .feature-card:not(:last-child) > .feature-card__tags::after {
     animation: services-chevron-pulse-mobile 2.7s ease-in-out infinite;
   }
@@ -1447,11 +1098,14 @@
   }
 
 
+
 }
 
 
 
+
 @media (prefers-reduced-motion: reduce) {
+
 
 
   #services .feature-card::before,
@@ -1461,7 +1115,9 @@
   }
 
 
+
 }
+
 
 
 
@@ -1680,15 +1336,19 @@
 @media (max-width: 900px) {
 
 
+
   .profile-v2__grid { grid-template-columns: 1fr; }
   .profile-v2__card { min-height: 0; }
+
 
 
 }
 
 
 
+
 @media (prefers-reduced-motion: reduce) {
+
 
 
   #about.profile-v2::before,
@@ -1696,7 +1356,9 @@
 .profile-v2__signal { animation: none; }
 
 
+
 }
+
 
 
 
@@ -1856,12 +1518,15 @@
 @media (max-width: 900px) {
 
 
+
   #about.profile-v2 { min-height: auto; }
   #about.profile-v2::before { background-position: 62% center !important; }
   .profile-v2__grid { gap: 22px; }
 
 
+
 }
+
 
 
 
@@ -2016,22 +1681,28 @@
 @media (max-width: 640px) {
 
 
+
   .closing-cta__title { font-size: clamp(2.1rem, 12vw, 3.25rem) !important; }
   .closing-cta__focus { gap: 9px; }
   .closing-cta__meta { flex-wrap: wrap; }
 
 
+
 }
+
 
 
 
 @media (prefers-reduced-motion: reduce) {
 
 
+
   .closing-cta__pulse { animation: none; }
 
 
+
 }
+
 
 
 
@@ -2083,23 +1754,29 @@
 @media (max-width: 700px) {
 
 
+
   .closing-cta::before {
     background-position: 58% center;
     opacity: .56;
   }
 
 
+
 }
+
 
 
 
 @media (prefers-reduced-motion: reduce) {
 
 
+
   .closing-cta::before { animation: none; }
 
 
+
 }
+
 
 
 
@@ -2162,13 +1839,6 @@
   background-repeat: no-repeat !important;
 }
 
-/* Edge vignettes make every photographic scene fade into the same canvas. */
-#methodology .methodology-scene__veil {
-  background:
-    linear-gradient(90deg, rgba(2,11,25,.86) 0%, rgba(2,11,25,.10) 10%, rgba(2,11,25,.10) 90%, rgba(2,11,25,.86) 100%),
-    linear-gradient(180deg, rgba(2,11,25,.82) 0%, rgba(2,11,25,.18) 12%, rgba(2,11,25,.18) 86%, rgba(2,11,25,.86) 100%) !important;
-}
-
 #services::after {
   display: block !important;
   inset: 0 !important;
@@ -2203,14 +1873,18 @@ body {
 @media (max-width: 1240px) {
 
 
+
   :root { --home-canvas-width: calc(100% - 32px); }
+
 
 
 }
 
 
 
+
 @media (max-width: 700px) {
+
 
 
   :root {
@@ -2219,7 +1893,9 @@ body {
   }
 
 
+
 }
+
 
 
 
@@ -2232,16 +1908,20 @@ body {
 @media (max-width: 1440px) {
 
 
+
   :root {
     --home-canvas-width: calc(100% - 32px);
   }
+
 
 
 }
 
 
 
+
 @media (max-width: 700px) {
+
 
 
   :root {
@@ -2249,7 +1929,9 @@ body {
   }
 
 
+
 }
+
 
 
 
@@ -2283,6 +1965,7 @@ body {
 @media (min-width: 701px) {
 
 
+
   #projects,
 #methodology,
 #services,
@@ -2295,12 +1978,15 @@ body {
   }
 
 
+
 }
+
 
 
 
 /* Mobile uses a softer curve so content width is not sacrificed. */
 @media (max-width: 700px) {
+
 
 
   :root { --home-canvas-radius: 18px; }
@@ -2314,7 +2000,9 @@ body {
   }
 
 
+
 }
+
 
 
 /* Full photographic section backgrounds use the same clock. */
@@ -2329,6 +2017,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
 
 
+
   #projects .panorama-card__media img,
 #projects .swiper-slide img,
 #services::before,
@@ -2340,7 +2029,9 @@ body {
   }
 
 
+
 }
+
 
 
 
@@ -2360,11 +2051,6 @@ body {
 .profile-v2__intro .split-section__text {
   max-width: 68ch;
   margin-inline: auto;
-}
-
-.methodology-content .split-section__text {
-  margin-inline: 0;
-  max-width: 60ch;
 }
 
 #services .section-desc {
@@ -2422,16 +2108,20 @@ body {
 @media (max-width: 700px) {
 
 
+
   .profile-v2__intro {
     padding: 20px 18px 22px;
   }
+
 
 
 }
 
 
 
+
 @media (prefers-reduced-motion: reduce) {
+
 
 
   .profile-v2__card {
@@ -2442,7 +2132,9 @@ body {
   }
 
 
+
 }
+
 
 
 
@@ -2453,6 +2145,7 @@ body {
    Content is compacted, never clipped.
 ========================================================= */
 @media (min-width: 901px) and (min-height: 650px) {
+
 
 
   .section-shell {
@@ -2484,21 +2177,6 @@ body {
   .section-desc,
 .split-section__text {
     line-height: 1.5;
-  }
-
-  .methodology-scene .split-section {
-    min-height: 0;
-    align-items: center;
-    gap: clamp(28px, 4vw, 58px);
-  }
-
-  .methodology-steps {
-    margin-top: clamp(16px, 2.4vh, 26px);
-    gap: 9px;
-  }
-
-  .methodology-step {
-    padding-block: 10px;
   }
 
   #services .feature-grid {
@@ -2534,12 +2212,15 @@ body {
   }
 
 
+
 }
+
 
 
 
 /* Laptop-height screens: preserve the chapter-per-screen intention. */
 @media (min-width: 901px) and (max-height: 760px) {
+
 
 
   .section-shell {
@@ -2561,10 +2242,6 @@ body {
     font-size: .92rem;
   }
 
-  .methodology-step {
-    padding-block: 8px;
-  }
-
   #services .feature-grid,
 .profile-v2__grid {
     margin-top: 14px;
@@ -2580,12 +2257,15 @@ body {
   }
 
 
+
 }
+
 
 
 
 /* Mobile remains content-driven: never force viewport-height sections. */
 @media (max-width: 900px) {
+
 
 
   .section-shell {
@@ -2594,6 +2274,8 @@ body {
   }
 
 
+
 }
+
 
 
