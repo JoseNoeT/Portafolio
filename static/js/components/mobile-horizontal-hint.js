@@ -7,7 +7,7 @@
   if (!media.matches) return;
 
   const rails = [
-    document.querySelector("#methodology .methodology-steps"),
+    document.querySelector("#methodology [data-methodology-story-track]"),
     document.querySelector("#services .feature-grid"),
     document.querySelector("#about .profile-v2__grid")
   ].filter(Boolean);
