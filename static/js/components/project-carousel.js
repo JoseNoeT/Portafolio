@@ -27,14 +27,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         watchSlidesProgress: true,
 
-        effect: isMobile ? "slide" : "coverflow",
+        effect: "coverflow",
 
         coverflowEffect: {
-            rotate: 14,
+            rotate: isMobile ? 6 : 14,
             stretch: 0,
-            depth: 160,
-            modifier: 1.15,
-            scale: 0.93,
+            depth: isMobile ? 80 : 160,
+            modifier: isMobile ? 1 : 1.15,
+            scale: isMobile ? 0.88 : 0.93,
             slideShadows: false
         },
 
