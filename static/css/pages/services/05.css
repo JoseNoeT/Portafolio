@@ -1,0 +1,71 @@
+/* static/css/pages/services.css · module 05 */
+.services-cta__text {
+font-size: clamp(0.9rem, 1.2vw, 1.02rem);
+  line-height: 1.68;
+  color: var(--color-body, #9abdd6);
+  max-width: 56ch;
+  margin: 0 auto 28px;
+  text-wrap: pretty;
+}
+
+.services-cta__actions {
+display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+.services-split__layout,
+  .services-approach__layout {
+grid-template-columns: 1fr;
+    gap: clamp(24px, 5vw, 36px);
+}
+}
+
+@media (max-width: 900px) {
+.services-split__image,
+  .services-approach__image {
+height: clamp(200px, 44vw, 320px);
+}
+}
+
+@media (max-width: 900px) {
+.services-approach__figure {
+max-width: 100%;
+    justify-self: stretch;
+}
+}
+
+@media (max-width: 640px) {
+.services-page .section-shell {
+padding: clamp(40px, 10vw, 60px) 0;
+}
+}
+
+@media (max-width: 640px) {
+.services-carousel__card {
+flex: 0 0 min(82vw, 300px);
+}
+}
+
+@media (max-width: 640px) {
+.services-cta__actions {
+flex-direction: column;
+    align-items: stretch;
+}
+}
+
+@media (max-width: 640px) {
+.services-approach__step {
+align-items: flex-start;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.services-page * {
+animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+}

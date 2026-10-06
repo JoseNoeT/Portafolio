@@ -1,0 +1,85 @@
+/* static/css/layout/footer.css · module 03 */
+.footer-social-link {
+display:grid; grid-template-columns:44px 1fr auto; align-items:center; gap:12px;
+  padding:11px 2px; border-bottom:1px solid rgba(148,163,184,.11);
+  color:#f4f8fc; text-decoration:none;
+  transition:transform .2s ease, color .2s ease;
+}
+
+.footer-social-link:hover {
+color:#38bdf8; transform:translateX(4px);
+}
+
+.footer-social-icon {
+display:grid; place-items:center; width:38px; height:38px;
+  border:1px solid rgba(125,211,252,.18); border-radius:10px;
+  background:rgba(255,255,255,.05); color:#fff;
+}
+
+.footer-social-icon--linkedin {
+background:#0a66c2; font-size:1.2rem; font-weight:800;
+}
+
+.footer-social-link strong, .footer-social-link small {
+display:block;
+}
+
+.footer-social-link strong {
+font-size:.9rem;
+}
+
+.footer-social-link small {
+margin-top:3px; color:#899bb2; font-size:.72rem;
+}
+
+.footer-email {
+display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px;
+  padding:15px; border:1px solid rgba(56,189,248,.22); border-radius:10px;
+  background:rgba(5,20,42,.65); color:#8edcff; text-decoration:none; font-size:.84rem;
+}
+
+.footer-contact p {
+margin:10px 0 18px; color:#98a9be; font-size:.78rem; line-height:1.55;
+}
+
+.footer-contact-cta {
+display:flex; align-items:center; justify-content:space-between;
+  padding:13px 16px; border:1px solid #19c9ff; border-radius:9px;
+  color:#62d9ff; text-decoration:none; font-size:.82rem; font-weight:700;
+  transition:background .2s ease, box-shadow .2s ease;
+}
+
+.footer-contact-cta:hover {
+background:rgba(14,165,233,.10); box-shadow:0 0 18px rgba(14,165,233,.12);
+}
+
+.footer-bottom {
+width:calc(100% + clamp(48px, 10vw, 144px));
+  margin-left:calc(clamp(24px, 5vw, 72px) * -1);
+  padding:18px clamp(24px, 5vw, 72px);
+  display:flex; justify-content:space-between; align-items:center; gap:24px;
+  border-top:1px solid rgba(56,189,248,.20);
+  color:#91a2b7; font-size:.72rem;
+}
+
+.footer-bottom > div {
+display:flex; align-items:center; gap:14px;
+}
+
+.footer-bottom i {
+width:1px; height:14px; background:rgba(148,163,184,.28);
+}
+
+.footer-bottom strong {
+color:#4ed1ff; font-weight:600;
+}
+
+.footer-top {
+display:inline-flex; align-items:center; gap:8px;
+  border:0; background:transparent; color:#a9b8ca; cursor:pointer;
+  font:600 .72rem var(--font-family-body);
+}
+
+.footer-top::first-letter {
+color:#38bdf8; font-size:1.2rem;
+}

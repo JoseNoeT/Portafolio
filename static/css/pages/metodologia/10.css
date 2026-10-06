@@ -1,0 +1,85 @@
+/* static/css/pages/metodologia.css · module 10 */
+@media (max-width: 900px) {
+.method-split__inner {
+grid-template-columns: 1fr;
+    gap: clamp(24px, 5vw, 36px);
+}
+}
+
+@media (max-width: 900px) {
+.method-phases__grid {
+grid-template-columns: 1fr;
+    gap: clamp(24px, 5vw, 36px);
+}
+}
+
+@media (max-width: 900px) {
+.method-phases__visual {
+position: static;
+    order: -1; /* image above cards on small screens */
+}
+}
+
+@media (max-width: 900px) {
+.method-image-card img {
+height: clamp(200px, 46vw, 320px);
+}
+}
+
+@media (max-width: 640px) {
+.method-section {
+padding: clamp(40px, 10vw, 60px) 0;
+}
+}
+
+@media (max-width: 640px) {
+.method-benefits {
+grid-template-columns: 1fr;
+}
+}
+
+@media (max-width: 640px) {
+.method-recruiter-grid {
+grid-template-columns: 1fr;
+}
+}
+
+@media (max-width: 640px) {
+.method-cta__actions {
+flex-direction: column;
+    align-items: stretch;
+}
+}
+
+@media (max-width: 640px) {
+.method-cta__band {
+padding: 32px 20px;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.metodologia-page * {
+animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+}
+
+.metodologia-page .section-shell {
+padding: clamp(56px, 7vw, 88px) 0;
+  overflow: clip;
+}
+
+.method-intro__layout {
+display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.method-intro__content {
+min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}

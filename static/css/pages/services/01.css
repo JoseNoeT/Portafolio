@@ -1,0 +1,85 @@
+/* static/css/pages/services.css · module 01 */
+.services-page {
+position: relative;
+}
+
+.services-page .section-shell {
+padding: clamp(56px, 7vw, 88px) 0;
+  overflow: clip;
+}
+
+.services-offer__header {
+margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+.services-offer__title {
+font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.18;
+  color: var(--color-heading, #ddf1ff);
+  margin: 0 0 14px;
+  text-wrap: pretty;
+}
+
+.services-offer__lead {
+font-size: clamp(1rem, 1.35vw, 1.1rem);
+  line-height: 1.68;
+  color: var(--color-body, #9abdd6);
+  max-width: 60ch;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.services-carousel {
+display: flex;
+  gap: clamp(16px, 2vw, 24px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+  /* subtle scrollbar on mobile */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.28) transparent;
+}
+
+.services-carousel::-webkit-scrollbar {
+height: 4px;
+}
+
+.services-carousel::-webkit-scrollbar-track {
+background: transparent;
+}
+
+.services-carousel::-webkit-scrollbar-thumb {
+background: rgba(56, 189, 248, 0.28);
+  border-radius: 2px;
+}
+
+@media (min-width: 900px) {
+.services-carousel {
+overflow-x: visible;
+    scrollbar-width: none;
+}
+}
+
+@media (min-width: 900px) {
+.services-carousel::-webkit-scrollbar {
+display: none;
+}
+}
+
+.services-carousel__card {
+flex: 0 0 clamp(270px, 31vw, 340px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  background: rgba(18, 36, 64, 0.88);
+  border: 1px solid rgba(56, 189, 248, 0.26);
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.40),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+}

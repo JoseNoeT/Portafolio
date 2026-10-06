@@ -1,0 +1,45 @@
+/* static/css/layout/navbar.css · module 08 */
+@media (prefers-reduced-motion: reduce) {
+.nav-links ul li a:hover {
+-webkit-animation: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+}
+
+@media (min-width: 1025px) {
+.nav-links ul li {
+position: relative;
+}
+}
+
+@media (min-width: 1025px) {
+.nav-links ul li a {
+transform: translateY(0);
+    will-change: transform;
+}
+}
+
+@media (min-width: 1025px) {
+.nav-links ul li:hover > a {
+-webkit-animation: none !important;
+    animation: none !important;
+    color: var(--navbar-link-hover);
+    transform: translateY(-7px);
+    transition:
+      transform .16s cubic-bezier(.34, 1.56, .64, 1),
+      color .2s ease;
+}
+}
+
+@media (min-width: 1025px) {
+.nav-links ul li:hover > a::after {
+width: 100%;
+}
+}
+
+@media (min-width: 1025px) {
+.nav-links ul li > a:active {
+transform: translateY(-2px) scale(.97);
+}
+}

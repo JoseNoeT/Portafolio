@@ -1,0 +1,79 @@
+/* static/css/components/sections.css · module 01 */
+.section-shell {
+position: relative;
+  padding: var(--section-py) 0;
+}
+
+.section-shell > .container {
+position: relative;
+  z-index: 1;
+}
+
+.section-shell--compact {
+padding: var(--section-py-sm) 0;
+}
+
+.section-shell--lg {
+padding: var(--section-py-lg) 0;
+}
+
+.section-shell--alt {
+background: var(--color-bg-alt);
+}
+
+.section-shell--accent {
+background: var(--color-bg-accent);
+}
+
+.section-header {
+max-width: 720px;
+  margin: 0 auto clamp(32px, 4vw, 48px);
+  text-align: center;
+}
+
+.section-header--left {
+text-align: left;
+  margin-left: 0;
+}
+
+.section-eyebrow {
+display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-label);
+  background: var(--color-accent-glass);
+  border: 1px solid var(--color-border-accent-soft);
+}
+
+.section-title {
+margin: 0 0 12px;
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--color-heading);
+  text-wrap: balance;
+}
+
+.section-desc {
+max-width: 60ch;
+  margin: 0 auto;
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  line-height: 1.7;
+  color: var(--color-body);
+}
+
+.section-header--left .section-desc {
+margin-left: 0;
+}
+
+.feature-grid {
+display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+}

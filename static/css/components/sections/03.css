@@ -1,0 +1,82 @@
+/* static/css/components/sections.css · module 03 */
+.split-section__title {
+margin: 0;
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--color-heading);
+}
+
+.split-section__text {
+margin: 0;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--color-body);
+}
+
+.split-section__visual {
+border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border-soft);
+}
+
+.split-section__visual img {
+width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+.split-section {
+grid-template-columns: 1fr;
+}
+}
+
+@media (max-width: 768px) {
+.split-section--reverse {
+direction: ltr;
+}
+}
+
+@media (max-width: 768px) {
+.split-section__visual {
+order: -1;
+}
+}
+
+.cta-band {
+padding: clamp(40px, 6vw, 64px) clamp(24px, 4vw, 48px);
+  border-radius: var(--radius-xl);
+  background: var(--glass-bg);
+  border: 1px solid var(--color-border-soft);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  text-align: center;
+}
+
+.cta-band__title {
+margin: 0 0 12px;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-heading);
+  text-wrap: balance;
+}
+
+.cta-band__text {
+max-width: 56ch;
+  margin: 0 auto 24px;
+  font-size: clamp(0.95rem, 1.2vw, 1.06rem);
+  line-height: 1.7;
+  color: var(--color-body);
+}
+
+.cta-band__actions {
+display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}

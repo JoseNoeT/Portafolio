@@ -1,0 +1,83 @@
+/* static/css/pages/projects-detail.css · module 03 */
+.detail-actions {
+display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.detail-sidebar {
+position: sticky;
+  top: 32px;
+  height: fit-content;
+}
+
+.sidebar-card {
+padding: clamp(24px, 3vw, 32px);
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--color-border-soft);
+  box-shadow: var(--glass-shadow);
+}
+
+.sidebar-card__heading {
+font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-label);
+  margin: 0 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.meta-block {
+display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 20px;
+}
+
+.meta-block:last-of-type {
+margin-bottom: 0;
+}
+
+.meta-block__label {
+font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-label);
+}
+
+.meta-block__value {
+font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-body-strong);
+}
+
+.sidebar-actions {
+display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border-soft);
+}
+
+.image-modal {
+position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(4, 9, 18, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+:root[data-theme="light"] .image-modal {
+background: rgba(0, 0, 0, 0.75);
+}

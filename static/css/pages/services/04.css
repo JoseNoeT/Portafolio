@@ -1,0 +1,81 @@
+/* static/css/pages/services.css · module 04 */
+.services-approach__step {
+display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid rgba(56, 189, 248, 0.24);
+  background: rgba(18, 36, 64, 0.84);
+  color: var(--color-body-strong, #c8e0f5);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.services-approach__badge {
+flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #b6f0ff 0%, #38bdf8 60%, #0ea5e9 100%);
+  color: #01111f;
+  font-size: 0.85rem;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.36);
+  flex-shrink: 0;
+}
+
+.services-approach__step-text {
+min-width: 0;
+}
+
+.services-approach__figure {
+min-width: 0;
+  margin: 0;
+  max-width: 380px;
+  width: 100%;
+  justify-self: center;
+}
+
+.services-approach__image {
+width: 100%;
+  height: clamp(240px, 28vw, 360px);
+  object-fit: cover;
+  border-radius: var(--radius-xl, 16px);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.40),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.services-cta__band {
+max-width: 880px;
+  margin-inline: auto;
+  padding: clamp(40px, 5.5vw, 64px) clamp(24px, 4vw, 52px);
+  border: 1px solid rgba(56, 189, 248, 0.38);
+  border-radius: var(--radius-xl, 16px);
+  text-align: center;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(56, 189, 248, 0.16), transparent 46%),
+    radial-gradient(circle at 92% 100%, rgba(14, 165, 233, 0.10), transparent 42%),
+    linear-gradient(155deg, rgba(10, 24, 48, 0.92) 0%, rgba(4, 12, 28, 0.96) 100%);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.52),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 0 44px rgba(56, 189, 248, 0.08);
+}
+
+.services-cta__title {
+font-size: clamp(1.35rem, 2.5vw, 2rem);
+  font-weight: 800;
+  line-height: 1.24;
+  color: var(--color-heading, #ddf1ff);
+  max-width: 26ch;
+  margin: 0 auto 16px;
+  text-wrap: pretty;
+}

@@ -1,0 +1,38 @@
+/* static/css/base/global.css · module 02 */
+img {
+max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.section-wrapper {
+background: var(--glass-bg);
+  color: var(--color-body);
+  padding: 40px 20px;
+  border-radius: var(--radius-xl);
+  margin-bottom: 20px;
+  border: var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+
+.container {
+width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+.section-wrapper {
+padding: 20px 10px;
+}
+}
+
+@media (max-width: 768px) {
+button,
+  .btn {
+padding: 8px 16px;
+}
+}

@@ -1,0 +1,81 @@
+/* static/css/pages/metodologia.css · module 08 */
+.method-phase-card__title {
+font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+  font-weight: 700;
+  line-height: 1.28;
+  color: var(--color-heading, #ddf1ff);
+  margin: 0;
+}
+
+.method-phase-card__text {
+font-size: clamp(0.84rem, 1vw, 0.92rem);
+  line-height: 1.66;
+  color: var(--color-body, #9abdd6);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.method-benefits {
+display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.method-benefit-card {
+padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(56, 189, 248, 0.20);
+  border-radius: var(--radius-md, 10px);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.22);
+}
+
+.method-benefit-card__title {
+font-size: 0.88rem;
+  font-weight: 700;
+  color: #b8e4ff;
+  display: block;
+}
+
+.method-benefit-card__text {
+font-size: 0.80rem;
+  line-height: 1.55;
+  color: rgba(154, 189, 214, 0.82);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.method-recruiter-grid {
+display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: clamp(28px, 4vw, 40px);
+}
+
+.method-recruiter__card {
+padding: clamp(18px, 2.2vw, 26px) clamp(16px, 2vw, 22px);
+  background: rgba(18, 36, 64, 0.72);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: var(--radius-md, 10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 240ms ease, box-shadow 240ms ease;
+}
+
+.method-recruiter__card:hover {
+border-color: rgba(56, 189, 248, 0.40);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.36);
+}
+
+.method-recruiter__number {
+font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  display: block;
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,85 @@
+/* static/css/layout/navbar.css · module 02 */
+.navbar-logo {
+width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+
+  transform-origin:left center;
+  animation:navbarLogoEnter 500ms cubic-bezier(.22,1,.36,1) both;
+
+  transition:
+  transform .22s cubic-bezier(.22,1,.36,1),
+  filter .22s cubic-bezier(.22,1,.36,1),
+  opacity .18s ease;
+}
+
+.navbar-logo:hover {
+transform:scale(1.03);
+  filter:drop-shadow(0 6px 18px var(--color-accent-glass));
+}
+
+.nav-links {
+display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.nav-cta-mobile {
+display:none;
+}
+
+.nav-links ul {
+display:flex;
+  gap:20px;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.nav-links a {
+display:inline-block;
+  position:relative;
+  padding:8px 4px;
+  color:var(--navbar-link);
+  text-decoration:none;
+  font-weight:500;
+  font-size:.95rem;
+  transition:color .3s ease;
+}
+
+.nav-links a::after {
+content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  border-radius:2px;
+  background:var(--color-accent-primary);
+  transition:width .3s ease;
+}
+
+.nav-links a:hover {
+color:var(--navbar-link-hover);
+}
+
+.nav-links a:hover::after {
+width:100%;
+}
+
+.nav-overlay {
+position:fixed;
+  inset:0;
+  background:var(--color-overlay);
+  backdrop-filter:blur(3px);
+  -webkit-backdrop-filter:blur(3px);
+
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+
+  transition:opacity .36s ease,visibility .36s ease;
+
+  z-index:1500;
+}

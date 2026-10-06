@@ -1,0 +1,79 @@
+/* static/css/components/buttons.css · module 01 */
+.btn {
+display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease;
+}
+
+.btn svg {
+flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+}
+
+.btn-primary,
+.btn.btn-primary {
+background: var(--gradient-primary);
+  color: var(--color-btn-text);
+  border-color: transparent;
+  box-shadow: 0 8px 24px var(--color-accent-glow);
+}
+
+.btn-primary:hover,
+.btn.btn-primary:hover {
+transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--color-accent-glow-strong);
+}
+
+.btn-primary:active,
+.btn.btn-primary:active {
+transform: translateY(0);
+  box-shadow: 0 4px 12px var(--color-accent-glow);
+}
+
+.btn-secondary,
+.btn.btn-secondary {
+background: var(--color-accent-glass);
+  color: var(--color-accent-primary);
+  border-color: var(--color-border-accent-strong);
+  box-shadow: none;
+}
+
+.btn-secondary:hover,
+.btn.btn-secondary:hover {
+background: var(--gradient-primary);
+  color: var(--color-btn-text);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--color-accent-glow);
+}
+
+.btn-secondary:active,
+.btn.btn-secondary:active {
+transform: translateY(0);
+}
+
+.btn-outline,
+.btn.btn-outline {
+background: transparent;
+  color: var(--color-accent-primary);
+  border-color: var(--color-border-accent);
+  box-shadow: none;
+}

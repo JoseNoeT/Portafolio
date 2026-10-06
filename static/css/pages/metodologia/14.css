@@ -1,0 +1,41 @@
+/* static/css/pages/metodologia.css · module 14 */
+@media (max-width: 900px) {
+.method-intro__image,
+  .method-phases__image,
+  .method-value__image {
+height: clamp(200px, 44vw, 320px);
+}
+}
+
+@media (max-width: 900px) {
+.method-phases__visual {
+position: static;
+}
+}
+
+@media (max-width: 640px) {
+.metodologia-page .section-shell {
+padding: clamp(40px, 10vw, 60px) 0;
+}
+}
+
+@media (max-width: 640px) {
+.method-cta__actions {
+flex-direction: column;
+    align-items: stretch;
+}
+}
+
+@media (max-width: 640px) {
+.method-phase-card {
+align-items: flex-start;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.metodologia-page * {
+animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+}

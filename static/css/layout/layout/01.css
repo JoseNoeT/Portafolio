@@ -1,0 +1,86 @@
+/* static/css/layout/layout.css · module 01 */
+.container {
+max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section {
+padding: var(--spacing-lg) 0;
+  margin-bottom: var(--spacing-lg);
+}
+
+.grid {
+display: grid;
+  gap: var(--spacing-md);
+}
+
+.flex {
+display: flex;
+}
+
+.flex-center {
+display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-center {
+text-align: center;
+}
+
+.full-width {
+width: 100%;
+}
+
+.section-sm {
+padding: var(--spacing-md) 0;
+}
+
+.section-lg {
+padding: calc(var(--spacing-lg) * 2) 0;
+}
+
+@media (max-width: 1024px) {
+.container {
+padding: 0 16px;
+}
+}
+
+@media (max-width: 1024px) {
+.grid {
+gap: var(--spacing-md);
+}
+}
+
+@media (max-width: 768px) {
+.section {
+padding: var(--spacing-md) 0;
+}
+}
+
+@media (max-width: 768px) {
+.container {
+padding: 0 14px;
+}
+}
+
+@media (max-width: 480px) {
+.container {
+padding: 0 12px;
+}
+}
+
+@media (max-width: 480px) {
+.section {
+padding: var(--spacing-md) 0;
+}
+}

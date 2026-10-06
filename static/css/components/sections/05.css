@@ -1,0 +1,82 @@
+/* static/css/components/sections.css · module 05 */
+.timeline-step__meta {
+display: block;
+  margin-top: 4px;
+  font-size: 0.82rem;
+  color: var(--color-caption);
+}
+
+.bento-grid {
+display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.bento-grid > :first-child {
+grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+.bento-grid {
+grid-template-columns: 1fr;
+}
+}
+
+@media (max-width: 768px) {
+.bento-grid > :first-child {
+grid-column: span 1;
+}
+}
+
+.step-list {
+list-style: none;
+  counter-reset: step-counter;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.step-list__item {
+counter-increment: step-counter;
+  position: relative;
+  padding-left: 56px;
+}
+
+.step-list__item::before {
+content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-accent-primary);
+  background: var(--color-accent-glass);
+  border: 1px solid var(--color-border-accent-soft);
+}
+
+.step-list__title {
+margin: 0 0 4px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.step-list__text {
+margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-body);
+}
+
+.tag-list {
+display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

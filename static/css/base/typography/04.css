@@ -1,0 +1,50 @@
+/* static/css/base/typography.css · module 04 */
+.hero-title.active,
+.section-title.active,
+.split-section__title.active,
+.cta-band__title.active {
+-webkit-animation: focus-in-contract .72s cubic-bezier(.25,.46,.45,.94) both;
+  animation: focus-in-contract .72s cubic-bezier(.25,.46,.45,.94) both;
+}
+
+.section-eyebrow.active,
+.closing-cta__status.active {
+-webkit-animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) both;
+  animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+.hero-title.active,
+  .section-title.active,
+  .split-section__title.active,
+  .cta-band__title.active,
+  .section-eyebrow.active,
+  .closing-cta__status.active {
+-webkit-animation: none !important;
+    animation: none !important;
+    letter-spacing: inherit;
+    filter: none;
+    opacity: 1;
+}
+}
+
+.hero-title.focus-in-contract {
+-webkit-animation: focus-in-contract .78s cubic-bezier(.25,.46,.45,.94) both;
+  animation: focus-in-contract .78s cubic-bezier(.25,.46,.45,.94) both;
+}
+
+.hero-eyebrow.focus-in-contract {
+-webkit-animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) .10s both;
+  animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) .10s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+.hero-title.focus-in-contract,
+  .hero-eyebrow.focus-in-contract {
+-webkit-animation: none !important;
+    animation: none !important;
+    letter-spacing: inherit;
+    filter: none;
+    opacity: 1;
+}
+}

@@ -1,0 +1,79 @@
+/* static/css/base/typography.css · module 03 */
+h2,
+.section-title,
+.split-section__title,
+.cta-band__title {
+font-family: var(--font-family-heading);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+h3,
+.panorama-card__body h3,
+.feature-card__title,
+.profile-v2__card h3 {
+font-family: var(--font-family-heading);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+}
+
+body,
+p,
+a,
+button,
+input,
+textarea,
+select,
+.section-desc,
+.split-section__text,
+.feature-card__text {
+font-family: var(--font-family-body);
+}
+
+.section-eyebrow,
+.panorama-card__category,
+.feature-card__tags,
+.profile-v2__label,
+.closing-cta__status {
+font-family: var(--font-family-body);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+button,
+.btn,
+nav,
+.nav-links {
+font-family: var(--font-family-body);
+  font-weight: 600;
+}
+
+@-webkit-keyframes focus-in-contract {
+0% {
+    letter-spacing: 1em;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes focus-in-contract {
+0% {
+    letter-spacing: 1em;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
