@@ -7,6 +7,7 @@
 /* ---------- Large / medium desktop ---------- */
 @media (max-width: 1240px) {
 
+
   :root {
     --home-canvas-width: calc(100% - 24px);
     --home-gutter: clamp(20px, 3vw, 30px);
@@ -17,11 +18,14 @@
     font-size: clamp(2rem, 3.4vw, 2.8rem);
   }
 
+
 }
+
 
 
 /* ---------- Tablet / small laptop ---------- */
 @media (max-width: 1024px) {
+
 
   :root {
     --home-canvas-width: calc(100% - 20px);
@@ -41,20 +45,6 @@
   .section-header,
 .profile-v2__intro {
     max-width: 760px;
-  }
-
-  /* Projects */
-  .projects-showcase .section-header {
-    margin-bottom: 22px;
-  }
-
-  .portfolio-swiper {
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .project-slide {
-    width: min(42vw, 360px);
   }
 
   /* Methodology */
@@ -96,11 +86,14 @@
     justify-self: center;
   }
 
+
 }
+
 
 
 /* ---------- Tablet portrait / large phones ---------- */
 @media (max-width: 768px) {
+
 
   :root {
     --home-canvas-width: calc(100% - 16px);
@@ -140,66 +133,6 @@
     max-width: 62ch;
     font-size: .94rem;
     line-height: 1.55;
-  }
-
-  /* Projects: touch-first carousel */
-  .projects-atmosphere .projects-tech {
-    opacity: .35;
-    transform: scale(.82);
-  }
-
-  .portfolio-swiper {
-    padding-inline: 0;
-  }
-
-  .project-slide {
-    width: min(66vw, 255px) !important;
-    max-width: 255px;
-  }
-
-  .panorama-card {
-    min-height: 0;
-  }
-
-  .panorama-card__media {
-    height: 145px;
-  }
-
-  .panorama-card__body {
-    padding: 13px;
-  }
-
-  .panorama-card__body h3 {
-    font-size: .98rem;
-    margin-bottom: 5px;
-  }
-
-  .panorama-card__body p {
-    font-size: .76rem;
-    line-height: 1.42;
-    margin-bottom: 8px;
-  }
-
-  .panorama-card__stack {
-    font-size: .62rem;
-    line-height: 1.35;
-  }
-
-  .panorama-card .btn-outline {
-    min-height: 32px;
-    padding: 6px 9px;
-    font-size: .67rem;
-  }
-
-  .panorama-card__stack {
-    white-space: normal;
-    overflow-wrap: anywhere;
-    line-height: 1.45;
-  }
-
-  .portfolio-swiper .swiper-button-prev,
-.portfolio-swiper .swiper-button-next {
-    display: none !important;
   }
 
   /* Methodology: narrative first, evidence second */
@@ -326,11 +259,14 @@
     -webkit-backdrop-filter: none !important;
   }
 
+
 }
+
 
 
 /* ---------- Phones ---------- */
 @media (max-width: 480px) {
+
 
   :root {
     --home-canvas-width: calc(100% - 10px);
@@ -352,29 +288,6 @@
 .split-section__text,
 .cta-band__text {
     font-size: .9rem;
-  }
-
-  /* Projects */
-  .projects-title-resolution {
-    display: block;
-  }
-
-  .project-slide {
-    width: min(64vw, 245px) !important;
-    max-width: 245px;
-  }
-
-  .panorama-card__media {
-    height: 132px;
-  }
-
-  .panorama-card__body h3 {
-    font-size: 1.05rem;
-  }
-
-  .panorama-card__body p {
-    font-size: .84rem;
-    line-height: 1.5;
   }
 
   /* Methodology */
@@ -437,25 +350,14 @@
     gap: 6px 10px;
   }
 
+
 }
+
 
 
 /* ---------- Very small phones ---------- */
 @media (max-width: 360px) {
 
-
-  .project-slide {
-    width: min(63vw, 225px) !important;
-    max-width: 225px;
-  }
-
-  .panorama-card__media {
-    height: 122px;
-  }
-
-  .panorama-card__body {
-    padding: 11px;
-  }
 
   .section-title,
 .split-section__title,
@@ -463,11 +365,14 @@
     font-size: 1.58rem;
   }
 
+
 }
+
 
 
 /* ---------- Short landscape screens ---------- */
 @media (max-height: 520px) and (orientation: landscape) and (min-width: 700px) {
+
 
 
   .section-shell {
@@ -475,11 +380,14 @@
     padding-block: 28px !important;
   }
 
+
 }
+
 
 
 /* ---------- Touch accessibility ---------- */
 @media (hover: none), (pointer: coarse) {
+
 
   .btn,
 .nav-links a,
@@ -495,7 +403,9 @@
     transform: none !important;
   }
 
+
 }
+
 
 
 
@@ -538,6 +448,7 @@
    stay compact, readable and closer to one viewport chapter.
 ========================================================= */
 @media (max-width: 768px) {
+
 
   #methodology,
 #services,
@@ -692,11 +603,14 @@
     );
   }
 
+
 }
+
 
 
 /* Phones: show one strong card plus a glimpse of the next one. */
 @media (max-width: 480px) {
+
 
   #methodology,
 #services,
@@ -732,11 +646,14 @@
     display: none;
   }
 
+
 }
+
 
 
 /* Very small phones keep the sideways pattern without creating a narrow tube. */
 @media (max-width: 360px) {
+
 
   #methodology .methodology-step {
     flex-basis: 78vw !important;
@@ -753,7 +670,9 @@
     min-width: 80vw !important;
   }
 
+
 }
+
 
 
 
@@ -773,6 +692,7 @@
    That is wrong for this narrative: explain -> steps -> visual evidence.
 ========================================================= */
 @media (max-width: 768px) {
+
 
   #methodology .methodology-content {
     order: 0 !important;
@@ -814,10 +734,13 @@
     margin-top: 2px !important;
   }
 
+
 }
 
 
+
 @media (max-width: 480px) {
+
 
   #methodology .methodology-content .split-section__title {
     font-size: clamp(1.5rem, 7.4vw, 1.9rem) !important;
@@ -845,7 +768,9 @@
     font-size: .9rem !important;
   }
 
+
 }
+
 
 
 
@@ -856,6 +781,7 @@
    motion hint instead of forcing the user to discover them manually.
 ========================================================= */
 @media (max-width: 768px) {
+
 
   #methodology .methodology-steps,
 #services .feature-grid,
@@ -904,10 +830,13 @@
     transform: translateX(5px);
   }
 
+
 }
 
 
+
 @media (prefers-reduced-motion: reduce) {
+
 
   .mobile-horizontal-hint {
     scroll-behavior: auto !important;
@@ -917,7 +846,9 @@
     transition: none !important;
   }
 
+
 }
+
 
 
 
@@ -927,6 +858,7 @@
    transforms must not push the slider to the right on mobile.
 ========================================================= */
 @media (max-width: 768px) {
+
 
   #methodology {
     overflow-x: clip !important;
@@ -972,10 +904,13 @@
     margin-inline: 0 !important;
   }
 
+
 }
 
 
+
 @media (max-width: 480px) {
+
 
   #methodology > .container {
     padding-inline: 14px !important;
@@ -989,7 +924,9 @@
     inset: -12px -8px -10px !important;
   }
 
+
 }
+
 
 
 
@@ -999,6 +936,7 @@
    without stretching its card; following sections use the same rhythm.
 ========================================================= */
 @media (max-width: 768px) {
+
 
   html {
     scroll-snap-type: y proximity;
@@ -1058,10 +996,13 @@
     overflow: hidden;
   }
 
+
 }
 
 
+
 @media (max-width: 480px) {
+
 
 
   #projects,
@@ -1088,16 +1029,21 @@
     line-height: 1.42 !important;
   }
 
+
 }
 
 
+
 @media (prefers-reduced-motion: reduce) {
+
 
   html {
     scroll-snap-type: none;
   }
 
+
 }
+
 
 
 
