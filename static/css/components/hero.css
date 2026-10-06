@@ -3,7 +3,7 @@
  *
  * .hero            — base compartida
  * .hero.hero-page  — hero de páginas internas
- * .hero.hero--home — controlado por home.css
+ * .hero.hero--home — estilos específicos en components/hero-home.css
  */
 
 /* ====================================================================
