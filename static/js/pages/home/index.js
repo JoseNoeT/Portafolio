@@ -1,3 +1,4 @@
+import "../../animations/hero.js";
 import "../../components/theme-toggle.js";
 import { initDeferredHomeModules } from "./deferred-modules.js";
 import { initLazyBackgrounds } from "./lazy-backgrounds.js";

@@ -1,3 +1,7 @@
 import { initProjectCarousel } from "./projects/index.js";
 
-document.addEventListener("DOMContentLoaded", initProjectCarousel, { once: true });
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initProjectCarousel, { once: true });
+} else {
+  initProjectCarousel();
+}
