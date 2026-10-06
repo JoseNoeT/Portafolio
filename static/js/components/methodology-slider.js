@@ -26,16 +26,14 @@
 
   const mobileQuery = window.matchMedia("(max-width: 768px)");
   const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-
   const interval = 4200;
+  const swipeThreshold = 42;
 
   let current = 0;
   let timer = null;
   let isVisible = true;
-  let storyScrollFrame = null;
-  let storyRestartTimer = null;
-  let storySyncTimer = null;
-  let isStorySyncing = false;
+  let pointerStartX = null;
+  let pointerStartY = null;
 
   const isMobile = () => mobileQuery.matches;
   const reducedMotion = () => reducedMotionQuery.matches;
@@ -45,36 +43,31 @@
     timer = null;
   };
 
-  const markActive = (items, index, className = "is-active") => {
+  const markActive = (items, index) => {
     items.forEach((item, i) => {
       const active = i === index;
-      item.classList.toggle(className, active);
+      item.classList.toggle("is-active", active);
       item.setAttribute("aria-current", active ? "true" : "false");
     });
   };
 
-  const scrollStoryTo = (index) => {
-    if (!storyTrack || !storySlides[index] || !isMobile()) return;
+  const moveMobileStory = (index) => {
+    if (!story || !storyTrack || !storySlides.length) return;
 
-    isStorySyncing = true;
-    window.clearTimeout(storySyncTimer);
+    story.style.setProperty("--methodology-story-offset", `${index * -100}%`);
+    story.dataset.index = String(index);
 
-    const slide = storySlides[index];
-    const maxScroll = Math.max(0, storyTrack.scrollWidth - storyTrack.clientWidth);
-    const target = Math.min(maxScroll, Math.max(0, slide.offsetLeft - 4));
-
-    storyTrack.scrollTo({
-      left: target,
-      behavior: reducedMotion() ? "auto" : "smooth"
+    storySlides.forEach((slide, i) => {
+      const active = i === index;
+      slide.classList.toggle("is-active", active);
+      slide.setAttribute("aria-hidden", active ? "false" : "true");
     });
 
-    storySyncTimer = window.setTimeout(() => {
-      isStorySyncing = false;
-    }, reducedMotion() ? 40 : 720);
+    markActive(storyDots, index);
   };
 
   const show = (index, options = {}) => {
-    const { syncStory = true, restart = false } = options;
+    const { restart = false } = options;
     const next = (index + desktopSlides.length) % desktopSlides.length;
 
     const previous = current;
@@ -104,14 +97,12 @@
     });
 
     markActive(desktopDots, current);
-    markActive(storySlides, current);
-    markActive(storyDots, current);
+    moveMobileStory(current);
 
     backgrounds.forEach((background, i) => {
       background.classList.toggle("is-active", i === current);
     });
 
-    if (syncStory) scrollStoryTo(current);
     if (restart) start();
   };
 
@@ -120,35 +111,13 @@
     if (reducedMotion() || !isVisible) return;
 
     timer = window.setInterval(() => {
-      show(current + 1, { syncStory: isMobile() });
+      show(current + 1);
     }, interval);
-  };
-
-  const nearestStoryIndex = () => {
-    if (!storyTrack || !storySlides.length) return current;
-
-    const trackRect = storyTrack.getBoundingClientRect();
-    const probe = trackRect.left + Math.min(storyTrack.clientWidth * 0.16, 58);
-
-    let nearest = current;
-    let distance = Infinity;
-
-    storySlides.forEach((slide, index) => {
-      const slideRect = slide.getBoundingClientRect();
-      const currentDistance = Math.abs(slideRect.left - probe);
-
-      if (currentDistance < distance) {
-        distance = currentDistance;
-        nearest = index;
-      }
-    });
-
-    return nearest;
   };
 
   desktopDots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
-      show(index, { syncStory: false });
+      show(index);
       start();
     });
   });
@@ -158,7 +127,7 @@
     step.setAttribute("role", "button");
 
     const activate = () => {
-      show(index, { syncStory: false });
+      show(index);
       start();
     };
 
@@ -172,44 +141,57 @@
 
   storyDots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
-      show(index, { syncStory: true });
+      show(index);
       start();
     });
   });
 
   if (storyTrack) {
-    const userTakesControl = () => {
-      isStorySyncing = false;
-      window.clearTimeout(storySyncTimer);
+    storyTrack.style.touchAction = "pan-y";
+
+    storyTrack.addEventListener("pointerdown", (event) => {
+      if (!isMobile()) return;
+
+      pointerStartX = event.clientX;
+      pointerStartY = event.clientY;
       stop();
-    };
+      story.classList.add("is-dragging");
 
-    storyTrack.addEventListener("pointerdown", userTakesControl, { passive: true });
-    storyTrack.addEventListener("touchstart", userTakesControl, { passive: true });
-
-    storyTrack.addEventListener(
-      "scroll",
-      () => {
-        if (!isMobile() || isStorySyncing) return;
-
-        stop();
-
-        if (storyScrollFrame) {
-          window.cancelAnimationFrame(storyScrollFrame);
+      if (storyTrack.setPointerCapture && event.pointerId !== undefined) {
+        try {
+          storyTrack.setPointerCapture(event.pointerId);
+        } catch (_) {
+          // Some browsers reject capture for synthetic/non-primary pointers.
         }
+      }
+    });
 
-        storyScrollFrame = window.requestAnimationFrame(() => {
-          const index = nearestStoryIndex();
-          if (index !== current) {
-            show(index, { syncStory: false });
-          }
-        });
+    storyTrack.addEventListener("pointerup", (event) => {
+      if (!isMobile() || pointerStartX === null || pointerStartY === null) return;
 
-        window.clearTimeout(storyRestartTimer);
-        storyRestartTimer = window.setTimeout(start, 1100);
-      },
-      { passive: true }
-    );
+      const deltaX = event.clientX - pointerStartX;
+      const deltaY = event.clientY - pointerStartY;
+
+      story.classList.remove("is-dragging");
+
+      if (
+        Math.abs(deltaX) >= swipeThreshold &&
+        Math.abs(deltaX) > Math.abs(deltaY)
+      ) {
+        show(deltaX < 0 ? current + 1 : current - 1);
+      }
+
+      pointerStartX = null;
+      pointerStartY = null;
+      start();
+    });
+
+    storyTrack.addEventListener("pointercancel", () => {
+      pointerStartX = null;
+      pointerStartY = null;
+      story.classList.remove("is-dragging");
+      start();
+    });
   }
 
   if (desktopViewport) {
@@ -229,8 +211,8 @@
       const deltaX = event.clientX - startX;
       const deltaY = event.clientY - startY;
 
-      if (Math.abs(deltaX) >= 42 && Math.abs(deltaX) > Math.abs(deltaY)) {
-        show(deltaX < 0 ? current + 1 : current - 1, { syncStory: false });
+      if (Math.abs(deltaX) >= swipeThreshold && Math.abs(deltaX) > Math.abs(deltaY)) {
+        show(deltaX < 0 ? current + 1 : current - 1);
       }
 
       startX = null;
@@ -250,16 +232,19 @@
   slider.addEventListener("focusin", stop);
   slider.addEventListener("focusout", start);
 
+  if (story) {
+    story.addEventListener("mouseenter", stop);
+    story.addEventListener("mouseleave", start);
+    story.addEventListener("focusin", stop);
+    story.addEventListener("focusout", start);
+  }
+
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry.isIntersecting;
-
-        if (isVisible) {
-          start();
-        } else {
-          stop();
-        }
+        if (isVisible) start();
+        else stop();
       },
       { threshold: 0.15 }
     );
@@ -273,7 +258,7 @@
   });
 
   mobileQuery.addEventListener?.("change", () => {
-    show(current, { syncStory: isMobile() });
+    show(current);
     start();
   });
 
@@ -282,6 +267,6 @@
     else start();
   });
 
-  show(0, { syncStory: false });
+  show(0);
   start();
 })();
