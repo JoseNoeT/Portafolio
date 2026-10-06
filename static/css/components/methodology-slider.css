@@ -1226,3 +1226,98 @@
     gap: 7px !important;
   }
 }
+
+
+/* =========================================================
+   METHODOLOGY STORY SYNC 4.1
+   Mobile narrative: the active numbered step and its image move
+   as one story. Swipe either the step rail or the image.
+========================================================= */
+.methodology-slider[data-direction="prev"] .methodology-slide:not(.is-active) {
+  transform: translateX(-9%) scale(.97);
+}
+
+.methodology-slider[data-direction="next"] .methodology-slide:not(.is-active) {
+  transform: translateX(9%) scale(.97);
+}
+
+@media (max-width: 768px) {
+  #methodology .methodology-steps {
+    scroll-behavior: smooth;
+  }
+
+  #methodology .methodology-step {
+    opacity: .72;
+    transform: scale(.985);
+    transition:
+      opacity .32s ease,
+      transform .38s cubic-bezier(.2,.8,.2,1),
+      border-color .32s ease,
+      background .32s ease,
+      box-shadow .32s ease;
+  }
+
+  #methodology .methodology-step.is-active {
+    opacity: 1;
+    transform: scale(1);
+    border-color: rgba(56,189,248,.68);
+    background: rgba(7,27,55,.84);
+    box-shadow:
+      0 12px 28px rgba(0,0,0,.18),
+      0 0 18px rgba(56,189,248,.08);
+  }
+
+  #methodology .methodology-step.is-active .methodology-step__number {
+    transform: scale(1.04);
+    transition:
+      transform .32s ease,
+      color .32s ease,
+      border-color .32s ease,
+      box-shadow .32s ease;
+  }
+
+  #methodology .methodology-slider__viewport {
+    cursor: grab;
+    touch-action: pan-y;
+  }
+
+  #methodology .methodology-slider__viewport.is-dragging {
+    cursor: grabbing;
+  }
+
+  #methodology .methodology-slide {
+    transition:
+      opacity .48s ease,
+      transform .58s cubic-bezier(.2,.8,.2,1),
+      visibility .48s;
+  }
+
+  #methodology .methodology-slide__caption {
+    transition:
+      opacity .4s ease .08s,
+      transform .48s cubic-bezier(.2,.8,.2,1) .05s;
+  }
+
+  #methodology .methodology-slide:not(.is-active) .methodology-slide__caption {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  #methodology .methodology-slide.is-active .methodology-slide__caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #methodology .methodology-steps {
+    scroll-behavior: auto;
+  }
+
+  #methodology .methodology-step,
+  #methodology .methodology-step__number,
+  #methodology .methodology-slide,
+  #methodology .methodology-slide__caption {
+    transition: none !important;
+  }
+}
