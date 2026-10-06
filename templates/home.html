@@ -4,7 +4,6 @@
 {% block title %}Inicio - Jose Noe{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <link rel="stylesheet" href="{% static 'css/pages/home.bundle.css' %}?v=6.0">
 {% endblock %}
 
@@ -21,8 +20,6 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-<script src="{% static 'js/animations/hero.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script type="module" src="{% static 'js/pages/home/index.js' %}?v=6.0"></script>
+<script src="{% static 'js/animations/hero.js' %}" defer></script>
+<script type="module" src="{% static 'js/pages/home/index.js' %}?v=7.0"></script>
 {% endblock %}    
