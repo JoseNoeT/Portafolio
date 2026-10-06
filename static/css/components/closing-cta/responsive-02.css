@@ -1,0 +1,34 @@
+@media (max-width: 768px) {
+.closing-cta__actions .btn {
+width: 100%;
+    justify-content: center;
+    min-height: 46px;
+}
+}
+
+@media (max-width: 480px) {
+.closing-cta__panel {
+padding: 28px 15px !important;
+}
+}
+
+@media (max-width: 480px) {
+.closing-cta__actions {
+grid-template-columns: 1fr;
+}
+}
+
+@media (max-width: 480px) {
+.closing-cta__meta {
+flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 10px;
+}
+}
+
+@media (max-width: 768px) {
+.closing-cta__panel {
+max-height: calc(100svh - 36px);
+    overflow: hidden;
+}
+}

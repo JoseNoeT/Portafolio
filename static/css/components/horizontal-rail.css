@@ -1,0 +1,2 @@
+/* Canonical horizontal stylesheet. Implementation lives in small owned modules. */
+@import url("./horizontal-rail/responsive.css");

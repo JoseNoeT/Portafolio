@@ -1,0 +1,18 @@
+@property --profile-edge-angle {
+syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes profile-edge-orbit {
+to { --profile-edge-angle: 360deg; }
+}
+
+@keyframes profile-bg-drift {
+from { transform: scale(1.04) translate3d(0,0,0); }
+  to { transform: scale(1.10) translate3d(-1%,-1%,0); }
+}
+
+@keyframes profile-signal {
+50% { opacity: .45; box-shadow: 0 0 5px #38bdf8; }
+}

@@ -1,0 +1,21 @@
+@property --home-edge-angle {
+syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes home-edge-orbit {
+to {
+    --home-edge-angle: 360deg;
+  }
+}
+
+@property --surface-edge-angle {
+syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes surface-edge-orbit {
+to { --surface-edge-angle: 360deg; }
+}

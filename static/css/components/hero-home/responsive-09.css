@@ -1,0 +1,75 @@
+@media (max-width: 480px) {
+.hero.hero--home .hero-buttons .btn {
+min-height: 29px !important;
+    padding: 5px 7px !important;
+    font-size: .61rem !important;
+    border-radius: 9px !important;
+}
+}
+
+@media (max-width: 480px) {
+.hero.hero--home .hero-buttons .btn svg {
+width: 11px;
+    height: 11px;
+}
+}
+
+@media (min-width: 390px) and (max-width: 480px) and (min-height: 820px) {
+.hero.hero--home .hero-image .img-card {
+width: 78px !important;
+    height: 78px !important;
+}
+}
+
+@media (min-width: 390px) and (max-width: 480px) and (min-height: 820px) {
+.hero.hero--home .hero-tag {
+min-height: 26px !important;
+    font-size: .58rem !important;
+}
+}
+
+@media (min-width: 390px) and (max-width: 480px) and (min-height: 820px) {
+.hero.hero--home .hero-buttons .btn {
+min-height: 32px !important;
+    font-size: .65rem !important;
+}
+}
+
+@media (max-height: 520px) and (orientation: landscape) and (min-width: 700px) {
+.hero.hero--home {
+min-height: auto;
+    padding-top: calc(var(--navbar-height-mobile, 54px) + 8px);
+}
+}
+
+@media (max-height: 520px) and (orientation: landscape) and (min-width: 700px) {
+.hero.hero--home .hero-content {
+padding-block: 16px;
+}
+}
+
+@media (max-height: 520px) and (orientation: landscape) and (min-width: 700px) {
+.hero.hero--home .hero-image .img-card {
+width: 120px;
+    height: 120px;
+}
+}
+
+@media (max-height: 520px) and (orientation: landscape) and (min-width: 700px) {
+.hero.hero--home .hero-story {
+margin-block: 8px;
+    padding-block: 8px;
+}
+}
+
+@media (hover: none), (pointer: coarse) {
+.hero.hero--home .hero-tag:hover {
+transform: none !important;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.hero.hero--home .hero-content {
+animation: none !important;
+}
+}

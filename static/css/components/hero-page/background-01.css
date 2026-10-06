@@ -1,0 +1,71 @@
+.hero.hero-page.hero--enhanced::before {
+content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.015) 0%,
+            transparent 18%,
+            transparent 100%
+        ),
+        radial-gradient(
+            circle at 50% 50%,
+            transparent 42%,
+            var(--hero-vignette) 100%
+        );
+}
+
+.hero.hero-page.hero--enhanced::after {
+content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    border-radius: inherit;
+    pointer-events: none;
+
+    opacity: 0.012;
+
+    background-image:
+        radial-gradient(
+            circle at 1px 1px,
+            rgba(220, 240, 255, 0.78) 0.8px,
+            transparent 0.95px
+        );
+
+    background-size: 8px 8px;
+}
+
+.hero-page__overlay {
+position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    border-radius: inherit;
+    overflow: hidden;
+    pointer-events: none;
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            ellipse at 12% 28%,
+            rgba(90, 220, 255, 0.11) 0%,
+            transparent 32%
+        ),
+        radial-gradient(
+            ellipse at 88% 72%,
+            rgba(46, 160, 255, 0.09) 0%,
+            transparent 36%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(3, 8, 18, 0.08) 0%,
+            rgba(3, 8, 18, 0.36) 100%
+        );
+}

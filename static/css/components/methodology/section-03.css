@@ -1,0 +1,33 @@
+#methodology .methodology-content::before {
+content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -34px -44px -32px -38px;
+  border-radius: 28px;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 38% 46%,
+    rgba(2, 9, 23, .84) 0%,
+    rgba(2, 9, 23, .66) 52%,
+    rgba(2, 9, 23, 0) 78%
+  );
+  filter: blur(5px);
+}
+
+.methodology-scene__background {
+z-index: 0;
+}
+
+.methodology-scene__veil {
+z-index: 1;
+}
+
+#methodology.methodology-scene > .container {
+position: relative;
+  z-index: 2;
+}
+
+.methodology-scene__bg.is-active {
+-webkit-animation: home-kenburns-top-left var(--home-motion-duration, 12s) var(--home-motion-ease, ease-in-out) infinite alternate !important;
+  animation: home-kenburns-top-left var(--home-motion-duration, 12s) var(--home-motion-ease, ease-in-out) infinite alternate !important;
+}

@@ -1,0 +1,82 @@
+#services .feature-card:nth-child(2)::before,
+#about .stat-card:nth-child(2)::before {
+animation-delay: -1.9s;
+}
+
+#services .feature-card:nth-child(3)::before,
+#about .stat-card:nth-child(3)::before {
+animation-delay: -3.8s;
+}
+
+#methodology .methodology-step:hover::before,
+#services .feature-card:hover::before,
+#about .split-section__visual:hover::before,
+#about .stat-card:hover::before,
+#about .about-card:hover::before,
+.section-shell--accent .cta-band:hover::before {
+filter:
+    drop-shadow(0 0 7px rgba(216, 248, 255, 0.66))
+    drop-shadow(0 0 15px rgba(56, 189, 248, 0.34));
+}
+
+:root {
+--home-canvas-width: 1200px;
+  --home-canvas-bg: #020b19;
+  --home-gutter: clamp(18px, 3vw, 34px);
+}
+
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+width: min(100%, var(--home-canvas-width));
+  margin-inline: auto;
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  box-shadow: none;
+}
+
+#methodology::after,
+#services::after,
+#about::after {
+display: none !important;
+}
+
+#projects > .container,
+#methodology > .container,
+#services > .container,
+#about > .container,
+.closing-cta > .container {
+width: 100% !important;
+  max-width: none !important;
+  padding-left: var(--home-gutter) !important;
+  padding-right: var(--home-gutter) !important;
+}
+
+#methodology,
+#services,
+#about,
+.closing-cta {
+margin-top: -1px;
+}
+
+#methodology::before,
+#services::before,
+#about.profile-v2::before,
+.closing-cta::before {
+background-repeat: no-repeat !important;
+}
+
+body {
+background-color: var(--home-canvas-bg);
+}
+
+:root {
+--home-canvas-width: 1400px;
+}
+
+:root {
+--home-canvas-radius: 28px;
+}

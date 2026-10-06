@@ -1,0 +1,84 @@
+@media (min-width: 901px) and (max-height: 760px) {
+#services .feature-grid,
+.profile-v2__grid {
+margin-top: 14px;
+}
+}
+
+@media (min-width: 901px) and (max-height: 760px) {
+#services .feature-card,
+.profile-v2__card {
+padding: 18px;
+}
+}
+
+@media (max-width: 900px) {
+.section-shell {
+min-height: auto;
+    overflow: visible;
+}
+}
+
+@media (max-width: 1240px) {
+:root {
+--home-canvas-width: calc(100% - 24px);
+    --home-gutter: clamp(20px, 3vw, 30px);
+}
+}
+
+@media (max-width: 1240px) {
+.section-title,
+.split-section__title {
+font-size: clamp(2rem, 3.4vw, 2.8rem);
+}
+}
+
+@media (max-width: 1024px) {
+:root {
+--home-canvas-width: calc(100% - 20px);
+    --home-gutter: 24px;
+}
+}
+
+@media (max-width: 1024px) {
+.section-shell {
+min-height: auto !important;
+    padding-block: 44px !important;
+    overflow: hidden;
+}
+}
+
+@media (max-width: 1024px) {
+.section-shell > .container {
+padding-inline: var(--home-gutter) !important;
+}
+}
+
+@media (max-width: 1024px) {
+.section-header,
+.profile-v2__intro {
+max-width: 760px;
+}
+}
+
+@media (max-width: 768px) {
+:root {
+--home-canvas-width: calc(100% - 16px);
+    --home-gutter: 18px;
+    --home-canvas-radius: 20px;
+}
+}
+
+@media (max-width: 768px) {
+html {
+scroll-padding-top: var(--navbar-height-mobile, 64px);
+}
+}
+
+@media (max-width: 768px) {
+.section-shell {
+width: var(--home-canvas-width) !important;
+    padding-block: 38px !important;
+    border-radius: var(--home-canvas-radius) !important;
+}
+}

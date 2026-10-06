@@ -1,0 +1,76 @@
+.methodology-content .split-section__text {
+margin-inline: 0;
+  max-width: 60ch;
+}
+
+#methodology.methodology-scene {
+position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #020713;
+}
+
+.methodology-scene__background,
+.methodology-scene__bg,
+.methodology-scene__veil {
+position: absolute;
+  inset: 0;
+}
+
+.methodology-scene__background {
+z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.methodology-scene__bg {
+opacity: 0;
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.05);
+  transition: opacity 1.1s ease;
+  will-change: opacity, transform;
+}
+
+.methodology-scene__bg.is-active {
+opacity: 1;
+}
+
+.methodology-scene__veil {
+z-index: 2;
+  background:
+    radial-gradient(circle at 72% 48%, rgba(3, 19, 42, 0.42), rgba(2, 7, 19, 0.78) 48%, rgba(2, 7, 19, 0.94) 100%),
+    linear-gradient(90deg, rgba(2, 7, 19, 0.96) 0%, rgba(3, 10, 25, 0.86) 46%, rgba(3, 14, 32, 0.72) 100%);
+}
+
+#methodology.methodology-scene > .container {
+position: relative;
+  z-index: 1;
+}
+
+.methodology-scene__bg {
+filter: brightness(.42) saturate(.62) contrast(.86) blur(2.2px);
+  transform: scale(1.065);
+}
+
+.methodology-scene__bg.is-active {
+opacity: .72;
+}
+
+.methodology-scene__veil {
+background:
+    linear-gradient(90deg,
+      rgba(2, 7, 19, .94) 0%,
+      rgba(2, 9, 22, .86) 42%,
+      rgba(2, 8, 20, .64) 66%,
+      rgba(2, 7, 19, .78) 100%),
+    linear-gradient(180deg,
+      rgba(2, 7, 19, .76) 0%,
+      rgba(2, 7, 19, .44) 48%,
+      rgba(2, 7, 19, .82) 100%);
+}
+
+#methodology .methodology-content {
+position: relative;
+  isolation: isolate;
+}

@@ -1,0 +1,86 @@
+@media (max-width: 768px) {
+#methodology .methodology-slide,
+#methodology .methodology-slide.is-active {
+max-width: 100% !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-slider__controls {
+width: 100%;
+    margin-inline: 0 !important;
+}
+}
+
+@media (max-width: 480px) {
+#methodology > .container {
+padding-inline: 14px !important;
+}
+}
+
+@media (max-width: 480px) {
+#methodology .methodology-slider {
+padding-inline: 0 !important;
+}
+}
+
+@media (max-width: 480px) {
+#methodology .methodology-slider::before {
+inset: -12px -8px -10px !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-content {
+gap: 7px !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-steps {
+scroll-behavior: smooth;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-step {
+opacity: .72;
+    transform: scale(.985);
+    transition:
+      opacity .32s ease,
+      transform .38s cubic-bezier(.2,.8,.2,1),
+      border-color .32s ease,
+      background .32s ease,
+      box-shadow .32s ease;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-step.is-active {
+opacity: 1;
+    transform: scale(1);
+    border-color: rgba(56,189,248,.68);
+    background: rgba(7,27,55,.84);
+    box-shadow:
+      0 12px 28px rgba(0,0,0,.18),
+      0 0 18px rgba(56,189,248,.08);
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-step.is-active .methodology-step__number {
+transform: scale(1.04);
+    transition:
+      transform .32s ease,
+      color .32s ease,
+      border-color .32s ease,
+      box-shadow .32s ease;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-slider__viewport {
+cursor: grab;
+    touch-action: pan-y;
+}
+}

@@ -1,0 +1,11 @@
+/* Canonical profile stylesheet. Implementation lives in small owned modules. */
+@import url("./profile/section-01.css");
+@import url("./profile/section-02.css");
+@import url("./profile/section-03.css");
+@import url("./profile/section-04.css");
+@import url("./profile/cards-01.css");
+@import url("./profile/cards-02.css");
+@import url("./profile/motion.css");
+@import url("./profile/responsive-01.css");
+@import url("./profile/responsive-02.css");
+@import url("./profile/responsive-03.css");

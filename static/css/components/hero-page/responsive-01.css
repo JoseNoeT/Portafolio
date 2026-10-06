@@ -1,0 +1,81 @@
+@media (max-width: 1024px) {
+.hero.hero-page {
+padding:
+            calc(var(--navbar-height, 88px) + 22px)
+            22px
+            28px;
+}
+}
+
+@media (max-width: 1024px) {
+.hero-page__panel {
+max-width: 820px;
+}
+}
+
+@media (max-width: 768px) {
+.hero.hero-page {
+min-height: 185px;
+        padding:
+            calc(var(--navbar-height, 88px) + 16px)
+            16px
+            24px;
+
+        border-radius: 20px;
+}
+}
+
+@media (max-width: 768px) {
+.hero.hero-page.hero--enhanced::after {
+opacity: 0.009;
+        background-size: 9px 9px;
+}
+}
+
+@media (max-width: 768px) {
+.hero-page__overlay {
+background:
+            radial-gradient(
+                ellipse at 18% 24%,
+                rgba(90, 220, 255, 0.09) 0%,
+                transparent 28%
+            ),
+            radial-gradient(
+                ellipse at 84% 78%,
+                rgba(46, 160, 255, 0.08) 0%,
+                transparent 32%
+            ),
+            linear-gradient(
+                180deg,
+                rgba(3, 8, 18, 0.10) 0%,
+                rgba(3, 8, 18, 0.32) 100%
+            );
+}
+}
+
+@media (max-width: 768px) {
+.hero-page__overlay::after {
+background-size: 112px 112px;
+        opacity: 0.04;
+}
+}
+
+@media (max-width: 768px) {
+.hero-page__panel {
+padding: 22px 18px;
+        border-radius: 20px;
+
+        backdrop-filter: blur(18px) saturate(135%);
+        -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+}
+
+@media (max-width: 768px) {
+.hero-page__eyebrow {
+margin-bottom: 10px;
+        padding: 7px 16px;
+
+        font-size: 0.74rem;
+        letter-spacing: 0.16em;
+}
+}

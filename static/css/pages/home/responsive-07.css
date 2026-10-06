@@ -1,0 +1,82 @@
+@media (max-width: 768px) {
+#methodology .methodology-steps::after,
+#services .feature-grid::after,
+#about .profile-v2__grid::after {
+content: "";
+    flex: 0 0 10px;
+    width: 10px;
+}
+}
+
+@media (max-width: 768px) {
+html {
+scroll-snap-type: y proximity;
+}
+}
+
+@media (max-width: 768px) {
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+box-sizing: border-box;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-height: 100svh !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+}
+}
+
+@media (max-width: 768px) {
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+display: flex !important;
+    align-items: center !important;
+    padding-block: 18px !important;
+    overflow: hidden !important;
+}
+}
+
+@media (max-width: 768px) {
+#projects > .container,
+#methodology > .container,
+#services > .container,
+#about > .container,
+.closing-cta > .container {
+width: 100% !important;
+    max-height: 100% !important;
+    margin-block: auto !important;
+}
+}
+
+@media (max-width: 768px) {
+#projects .section-header,
+#services .section-header {
+margin-bottom: 12px !important;
+}
+}
+
+@media (max-width: 480px) {
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+padding-block: 14px !important;
+}
+}
+
+@media (max-width: 480px) {
+#projects .section-title,
+#services .section-title,
+#methodology .split-section__title,
+#about .split-section__title,
+.closing-cta__title {
+line-height: 1.05 !important;
+}
+}

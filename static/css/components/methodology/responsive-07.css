@@ -1,0 +1,74 @@
+@media (max-width: 768px) {
+#methodology .methodology-slider__viewport.is-dragging {
+cursor: grabbing;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-slide {
+transition:
+      opacity .48s ease,
+      transform .58s cubic-bezier(.2,.8,.2,1),
+      visibility .48s;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-slide__caption {
+transition:
+      opacity .4s ease .08s,
+      transform .48s cubic-bezier(.2,.8,.2,1) .05s;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-slide:not(.is-active) .methodology-slide__caption {
+opacity: 0;
+    transform: translateY(8px);
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-slide.is-active .methodology-slide__caption {
+opacity: 1;
+    transform: translateY(0);
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+#methodology .methodology-steps {
+scroll-behavior: auto;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+#methodology .methodology-step,
+#methodology .methodology-step__number,
+#methodology .methodology-slide,
+#methodology .methodology-slide__caption {
+transition: none !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-steps,
+#methodology .methodology-slider {
+display: none !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-content {
+width: 100%;
+    max-width: none !important;
+}
+}
+
+@media (max-width: 768px) {
+.methodology-story-mobile {
+display: block;
+    width: 100%;
+    min-width: 0;
+    margin-top: 8px;
+}
+}

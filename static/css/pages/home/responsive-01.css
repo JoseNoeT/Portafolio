@@ -1,0 +1,81 @@
+@media (prefers-reduced-motion: reduce) {
+* {
+animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+#methodology .methodology-step::after,
+#services .feature-card::after,
+#about .split-section__visual::after,
+.section-shell--accent .cta-band::after {
+animation: none;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+#methodology .methodology-step::before,
+#services .feature-card::before,
+#about .split-section__visual::before,
+#about .stat-card::before,
+#about .about-card::before,
+.section-shell--accent .cta-band::before {
+animation: none;
+}
+}
+
+@media (max-width: 1240px) {
+:root {
+--home-canvas-width: calc(100% - 32px);
+}
+}
+
+@media (max-width: 700px) {
+:root {
+--home-canvas-width: 100%;
+    --home-gutter: 18px;
+}
+}
+
+@media (max-width: 1440px) {
+:root {
+--home-canvas-width: calc(100% - 32px);
+}
+}
+
+@media (max-width: 700px) {
+:root {
+--home-canvas-width: 100%;
+}
+}
+
+@media (min-width: 701px) {
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+border-top-left-radius: var(--home-canvas-radius) !important;
+    border-top-right-radius: var(--home-canvas-radius) !important;
+    border-bottom-left-radius: var(--home-canvas-radius) !important;
+    border-bottom-right-radius: var(--home-canvas-radius) !important;
+}
+}
+
+@media (max-width: 700px) {
+:root {
+--home-canvas-radius: 18px;
+}
+}
+
+@media (max-width: 700px) {
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+border-radius: var(--home-canvas-radius) !important;
+}
+}

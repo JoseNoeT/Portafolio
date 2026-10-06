@@ -1,0 +1,74 @@
+#methodology .split-section__content,
+#about .split-section__content {
+text-align: center;
+}
+
+#methodology,
+#services,
+#about,
+.section-shell--accent {
+position: relative;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(0, 174, 255, 0.075), transparent 30%),
+    radial-gradient(circle at 14% 38%, rgba(14, 165, 233, 0.04), transparent 24%),
+    radial-gradient(circle at 86% 42%, rgba(56, 189, 248, 0.035), transparent 22%),
+    linear-gradient(180deg, #030916 0%, #051022 50%, #020713 100%);
+}
+
+#methodology,
+#services,
+#about {
+border-top: 1px solid rgba(56, 189, 248, 0.055);
+}
+
+#methodology::after,
+#services::after,
+#about::after {
+content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(86%, 1180px);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(56, 189, 248, 0.12),
+    transparent
+  );
+  pointer-events: none;
+}
+
+:root {
+--home-page-bg: #030a19;
+  --home-page-bg-deep: #020713;
+  --home-page-cyan: #38bdf8;
+  --home-page-text: #f8fbff;
+  --home-page-muted: #c5d3e4;
+}
+
+.projects-showcase,
+#methodology,
+#services,
+#about,
+.section-shell--accent {
+background:
+    radial-gradient(circle at 50% 42%, rgba(14, 165, 233, 0.055), transparent 30%),
+    linear-gradient(180deg, var(--home-page-bg) 0%, var(--home-page-bg-deep) 100%);
+}
+
+#methodology .methodology-content,
+#services .section-header,
+#about .split-section__content,
+.section-shell--accent .cta-band {
+text-align: center;
+}
+
+#methodology .methodology-step,
+#services .feature-card,
+#about .split-section__visual,
+.section-shell--accent .cta-band {
+position: relative;
+  isolation: isolate;
+}

@@ -1,0 +1,81 @@
+@media (max-width: 1024px) {
+.project-slide {
+width: min(42vw, 360px);
+}
+}
+
+@media (max-width: 768px) {
+.projects-atmosphere .projects-tech {
+opacity: .35;
+    transform: scale(.82);
+}
+}
+
+@media (max-width: 768px) {
+.portfolio-swiper {
+padding-inline: 0;
+}
+}
+
+@media (max-width: 768px) {
+.project-slide {
+width: min(66vw, 255px) !important;
+    max-width: 255px;
+}
+}
+
+@media (max-width: 768px) {
+.panorama-card {
+min-height: 0;
+}
+}
+
+@media (max-width: 768px) {
+.panorama-card__media {
+height: 145px;
+}
+}
+
+@media (max-width: 768px) {
+.panorama-card__body {
+padding: 13px;
+}
+}
+
+@media (max-width: 768px) {
+.panorama-card__body h3 {
+font-size: .98rem;
+    margin-bottom: 5px;
+}
+}
+
+@media (max-width: 768px) {
+.panorama-card__body p {
+font-size: .76rem;
+    line-height: 1.42;
+    margin-bottom: 8px;
+}
+}
+
+@media (max-width: 768px) {
+.panorama-card__stack {
+font-size: .62rem;
+    line-height: 1.35;
+}
+}
+
+@media (max-width: 768px) {
+.panorama-card .btn-outline {
+min-height: 32px;
+    padding: 6px 9px;
+    font-size: .67rem;
+}
+}
+
+@media (max-width: 768px) {
+.panorama-card__stack {
+white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.45;
+}
+}

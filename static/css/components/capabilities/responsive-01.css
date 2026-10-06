@@ -1,0 +1,85 @@
+@media (max-width: 900px) {
+#services .feature-card {
+margin-top: 24px;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+#services .feature-card[data-step]::after {
+animation: none;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+#services::before {
+animation: none;
+    transform: scale(1.04);
+}
+}
+
+@media (max-width: 900px) {
+#services .services-story {
+gap: 28px;
+}
+}
+
+@media (max-width: 900px) {
+#services .feature-card {
+min-height: 0;
+}
+}
+
+@media (max-width: 900px) {
+#services .feature-card:not(:last-child) > .feature-card__tags::after {
+content: "⌄";
+    top: auto;
+    right: 50%;
+    bottom: -38px;
+    transform: translateX(50%);
+    font-size: 2.4rem;
+}
+}
+
+@media (max-width: 900px) {
+#services .feature-card:not(:last-child) > .feature-card__tags::after {
+animation: services-chevron-pulse-mobile 2.7s ease-in-out infinite;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+#services .feature-card::before,
+#services .feature-card__icon,
+#services .feature-card:not(:last-child) > .feature-card__tags::after {
+animation: none;
+}
+}
+
+@media (min-width: 901px) and (min-height: 650px) {
+#services .feature-grid {
+margin-top: clamp(18px, 2.8vh, 30px);
+    gap: clamp(14px, 1.8vw, 24px);
+}
+}
+
+@media (min-width: 901px) and (min-height: 650px) {
+#services .feature-card {
+min-height: 0;
+    padding: clamp(20px, 2.4vw, 30px);
+}
+}
+
+@media (max-width: 1024px) {
+#services .feature-grid {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+}
+
+@media (max-width: 1024px) {
+#services .feature-card:last-child {
+grid-column: 1 / -1;
+    max-width: 720px;
+    width: 100%;
+    justify-self: center;
+}
+}

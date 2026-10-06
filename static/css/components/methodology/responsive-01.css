@@ -1,0 +1,86 @@
+@media (max-width: 767px) {
+#methodology .methodology-content,
+#methodology .methodology-content .split-section__title,
+#methodology .methodology-content .split-section__text {
+text-align: center;
+}
+}
+
+@media (max-width: 767px) {
+#methodology .methodology-content .split-section__title {
+max-width: none;
+}
+}
+
+@media (max-width: 767px) {
+#methodology .methodology-content .split-section__title::after,
+#methodology .methodology-content .section-eyebrow {
+margin-left: auto;
+    margin-right: auto;
+}
+}
+
+@media (max-width: 767px) {
+.methodology-steps {
+text-align: left;
+}
+}
+
+@media (max-width: 767px) {
+#methodology .methodology-content .split-section__title {
+max-width: 22ch;
+    font-size: clamp(1.55rem, 7vw, 2rem);
+}
+}
+
+@media (max-width: 900px) {
+#methodology .split-section {
+grid-template-columns: 1fr;
+}
+}
+
+@media (max-width: 900px) {
+#methodology .split-section__visual {
+width: min(100%, 560px);
+}
+}
+
+@media (min-width: 901px) and (min-height: 650px) {
+.methodology-scene .split-section {
+min-height: 0;
+    align-items: center;
+    gap: clamp(28px, 4vw, 58px);
+}
+}
+
+@media (min-width: 901px) and (min-height: 650px) {
+.methodology-steps {
+margin-top: clamp(16px, 2.4vh, 26px);
+    gap: 9px;
+}
+}
+
+@media (min-width: 901px) and (min-height: 650px) {
+.methodology-step {
+padding-block: 10px;
+}
+}
+
+@media (min-width: 901px) and (max-height: 760px) {
+.methodology-step {
+padding-block: 8px;
+}
+}
+
+@media (max-width: 900px) {
+.methodology-slider {
+width: min(100%, 560px);
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.methodology-slide {
+transition: none;
+    transform: none;
+}
+}

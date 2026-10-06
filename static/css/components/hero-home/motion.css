@@ -1,0 +1,30 @@
+@property --hero-edge-angle {
+syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes hero-edge-orbit {
+to { --hero-edge-angle: 360deg; }
+}
+
+@keyframes hero-edge-breathe {
+0%,100% { opacity:.48; }
+  50% { opacity:1; }
+}
+
+@keyframes hero-copy-signal {
+0%,100% { transform: translateY(0); opacity: .55; }
+  50% { transform: translateY(13px); opacity: 1; }
+}
+
+@keyframes hero-story-scan {
+0% { transform: translateY(0); opacity: .28; }
+  50% { opacity: 1; }
+  100% { transform: translateY(370%); opacity: .28; }
+}
+
+@keyframes hero-home-fade-in {
+from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}

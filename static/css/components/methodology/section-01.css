@@ -1,0 +1,86 @@
+#methodology .methodology-content {
+text-align: left;
+}
+
+#methodology .methodology-content .section-eyebrow {
+margin: 0 0 16px;
+}
+
+#methodology .methodology-content .split-section__title {
+text-align: left;
+  max-width: 15ch;
+  line-height: 1.05;
+}
+
+#methodology .methodology-content .split-section__title::after {
+margin-left: 0;
+}
+
+#methodology .methodology-title-accent {
+color: #38bdf8;
+  text-shadow: 0 0 22px rgba(56, 189, 248, 0.14);
+}
+
+#methodology .methodology-content .split-section__text {
+text-align: left;
+  max-width: 58ch;
+  margin-left: 0;
+  color: #c5d3e4;
+}
+
+#methodology .split-section__visual {
+position: relative;
+}
+
+#methodology .split-section__visual::before {
+content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 1px solid rgba(56, 189, 248, 0.46);
+  box-shadow:
+    0 0 20px rgba(14, 165, 233, 0.10),
+    inset 0 0 22px rgba(14, 165, 233, 0.035);
+}
+
+#methodology .methodology-content .split-section__title {
+max-width: 18ch;
+  font-size: clamp(1.65rem, 2.25vw, 2.45rem);
+  line-height: 1.08;
+}
+
+#methodology .methodology-content .section-eyebrow {
+display: inline-flex;
+  width: auto;
+  max-width: max-content;
+  padding: 7px 16px;
+  margin: 0 0 16px;
+  border-radius: 999px;
+  letter-spacing: 0.14em;
+}
+
+#methodology .split-section {
+grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.72fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+#methodology .split-section__visual {
+width: min(100%, 480px);
+  justify-self: center;
+}
+
+#methodology .split-section__visual img {
+width: 100%;
+  max-height: 430px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+#methodology .methodology-scene__veil {
+background:
+    linear-gradient(90deg, rgba(2,11,25,.86) 0%, rgba(2,11,25,.10) 10%, rgba(2,11,25,.10) 90%, rgba(2,11,25,.86) 100%),
+    linear-gradient(180deg, rgba(2,11,25,.82) 0%, rgba(2,11,25,.18) 12%, rgba(2,11,25,.18) 86%, rgba(2,11,25,.86) 100%) !important;
+}

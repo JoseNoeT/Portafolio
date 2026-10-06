@@ -1,0 +1,83 @@
+@media (prefers-reduced-motion: reduce) {
+.methodology-slider__dot {
+transition: none;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.methodology-slide.is-active img,
+.methodology-slider__viewport::after {
+animation: none;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.methodology-scene__bg,
+.methodology-scene__bg.is-active {
+transition: none;
+    animation: none;
+    transform: none;
+}
+}
+
+@media (max-width: 767px) {
+#methodology .methodology-content::before {
+inset: -24px -18px;
+    background: rgba(2, 9, 23, .62);
+}
+}
+
+@media (max-width: 767px) {
+.methodology-scene__bg {
+filter: brightness(.34) saturate(.55) contrast(.82) blur(2.5px);
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.methodology-slide.is-active img,
+.methodology-scene__bg.is-active {
+-webkit-animation: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+}
+
+@media (max-width: 1024px) {
+#methodology .split-section {
+grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: center;
+}
+}
+
+@media (max-width: 1024px) {
+#methodology .methodology-slider {
+width: 100%;
+    max-width: 480px;
+    justify-self: center;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .split-section {
+display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-content,
+#methodology .methodology-content .split-section__title,
+#methodology .methodology-content .split-section__text {
+width: 100%;
+    max-width: none;
+    text-align: left;
+}
+}
+
+@media (max-width: 768px) {
+.methodology-steps {
+gap: 9px;
+}
+}

@@ -1,0 +1,11 @@
+/* Canonical capabilities stylesheet. Implementation lives in small owned modules. */
+@import url("./capabilities/cards-01.css");
+@import url("./capabilities/cards-02.css");
+@import url("./capabilities/cards-03.css");
+@import url("./capabilities/cards-04.css");
+@import url("./capabilities/cards-05.css");
+@import url("./capabilities/section-01.css");
+@import url("./capabilities/section-02.css");
+@import url("./capabilities/motion.css");
+@import url("./capabilities/responsive-01.css");
+@import url("./capabilities/responsive-02.css");

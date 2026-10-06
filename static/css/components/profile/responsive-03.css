@@ -1,0 +1,25 @@
+@media (max-width: 768px) {
+#about .profile-v2__closing {
+margin-top: 12px !important;
+    font-size: .82rem;
+    line-height: 1.45;
+}
+}
+
+@media (max-width: 480px) {
+#about .profile-v2__card {
+min-height: 210px !important;
+}
+}
+
+@media (max-width: 480px) {
+#about .profile-v2__closing {
+display: none;
+}
+}
+
+@media (max-width: 768px) {
+#about .profile-v2__intro {
+margin-bottom: 10px !important;
+}
+}
