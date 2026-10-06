@@ -1,2 +1,4 @@
-/* Canonical entrypoint: static/css/base/design-tokens.css. */
-@import url("./design-tokens/01.css");
+/* Canonical design tokens entrypoint. */
+@import url("./design-tokens/palette.css");
+@import url("./design-tokens/system.css");
+@import url("./design-tokens/light-theme.css");
