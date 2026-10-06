@@ -16,7 +16,7 @@ Un selector debe tener un propietario claro. Responsive no es una capa separada:
 | Navbar | `static/css/layout/navbar.css` | navbar desktop/mobile |
 | Footer | `static/css/layout/footer.css` | footer desktop/mobile |
 | Motion compartido | `static/css/components/motion.css` | tokens y primitivas reutilizables de movimiento |
-| Hero Home | `static/css/components/hero.css` | Hero completo, incluido responsive |
+| Hero Home | `static/css/components/hero-home.css` | Hero de Home completo, incluido responsive |
 | Proyectos | `static/css/components/project-carousel.css` | carrusel, cards y responsive |
 | Metodología | `static/css/components/methodology-slider.css` | sección/slider/pasos y responsive |
 | Carril horizontal móvil | `static/css/components/horizontal-rail.css` | scroll-snap, affordance y comportamiento común |
@@ -56,7 +56,7 @@ Mover todos los selectores que empiecen por:
 - `.hero-tags`
 - `.hero-buttons`
 
-Destino: `components/hero.css`.
+Destino: `components/hero-home.css`.
 
 ### 2. Proyectos
 Mover:
@@ -124,7 +124,7 @@ Cuando `home-responsive.css` quede sin reglas:
 ## Orden de carga final esperado en home.html
 
 ```html
-<link rel="stylesheet" href=".../components/hero.css">
+<link rel="stylesheet" href=".../components/hero-home.css">
 <link rel="stylesheet" href=".../components/motion.css">
 <link rel="stylesheet" href=".../components/horizontal-rail.css">
 <link rel="stylesheet" href=".../components/project-carousel.css">
