@@ -6,23 +6,28 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
+    const mobileQuery = window.matchMedia("(max-width: 700px)");
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const isMobile = mobileQuery.matches;
+    const reducedMotion = reducedMotionQuery.matches;
+
     const swiper = new Swiper(".portfolio-swiper", {
 
         slidesPerView: "auto",
 
         centeredSlides: true,
 
-        spaceBetween: 24,
+        spaceBetween: isMobile ? 14 : 24,
 
         loop: true,
 
-        speed: 900,
+        speed: isMobile ? 520 : 900,
 
-        grabCursor: true,
+        grabCursor: !isMobile,
 
         watchSlidesProgress: true,
 
-        effect: "coverflow",
+        effect: isMobile ? "slide" : "coverflow",
 
         coverflowEffect: {
             rotate: 14,
@@ -33,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
             slideShadows: false
         },
 
-        autoplay: {
+        autoplay: (isMobile || reducedMotion) ? false : {
             delay: 2600,
             disableOnInteraction: false,
             pauseOnMouseEnter: true
@@ -74,8 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const cards = slider.querySelectorAll(".panorama-card");
     const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
     if (canHover && !reducedMotion) {
         cards.forEach((card) => {
             card.addEventListener("pointermove", (event) => {
