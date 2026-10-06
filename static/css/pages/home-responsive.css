@@ -8,6 +8,7 @@
 @media (max-width: 1240px) {
 
 
+
   :root {
     --home-canvas-width: calc(100% - 24px);
     --home-gutter: clamp(20px, 3vw, 30px);
@@ -19,12 +20,15 @@
   }
 
 
+
 }
+
 
 
 
 /* ---------- Tablet / small laptop ---------- */
 @media (max-width: 1024px) {
+
 
 
   :root {
@@ -45,19 +49,6 @@
   .section-header,
 .profile-v2__intro {
     max-width: 760px;
-  }
-
-  /* Methodology */
-  #methodology .split-section {
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    align-items: center;
-  }
-
-  #methodology .methodology-slider {
-    width: 100%;
-    max-width: 480px;
-    justify-self: center;
   }
 
   /* Capabilities */
@@ -87,12 +78,15 @@
   }
 
 
+
 }
+
 
 
 
 /* ---------- Tablet portrait / large phones ---------- */
 @media (max-width: 768px) {
+
 
 
   :root {
@@ -133,41 +127,6 @@
     max-width: 62ch;
     font-size: .94rem;
     line-height: 1.55;
-  }
-
-  /* Methodology: narrative first, evidence second */
-  #methodology .split-section {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 26px;
-  }
-
-  #methodology .methodology-content,
-#methodology .methodology-content .split-section__title,
-#methodology .methodology-content .split-section__text {
-    width: 100%;
-    max-width: none;
-    text-align: left;
-  }
-
-  .methodology-steps {
-    gap: 9px;
-  }
-
-  .methodology-step {
-    min-height: 72px;
-    padding: 10px 12px;
-  }
-
-  #methodology .methodology-slider {
-    width: min(100%, 560px);
-    max-width: 560px;
-    margin-inline: auto;
-  }
-
-  .methodology-slider__viewport {
-    aspect-ratio: 16 / 10;
-    min-height: 0;
   }
 
   /* Capabilities */
@@ -260,12 +219,15 @@
   }
 
 
+
 }
+
 
 
 
 /* ---------- Phones ---------- */
 @media (max-width: 480px) {
+
 
 
   :root {
@@ -288,33 +250,6 @@
 .split-section__text,
 .cta-band__text {
     font-size: .9rem;
-  }
-
-  /* Methodology */
-  .methodology-step {
-    grid-template-columns: 42px minmax(0, 1fr);
-    gap: 10px;
-  }
-
-  .methodology-step__number {
-    width: 40px;
-    height: 40px;
-  }
-
-  .methodology-step h3 {
-    font-size: .9rem;
-  }
-
-  .methodology-step p {
-    font-size: .77rem;
-  }
-
-  .methodology-slider__viewport {
-    aspect-ratio: 4 / 3;
-  }
-
-  .methodology-slide__caption {
-    padding: 14px;
   }
 
   /* Cards */
@@ -351,12 +286,15 @@
   }
 
 
+
 }
+
 
 
 
 /* ---------- Very small phones ---------- */
 @media (max-width: 360px) {
+
 
 
   .section-title,
@@ -366,12 +304,15 @@
   }
 
 
+
 }
+
 
 
 
 /* ---------- Short landscape screens ---------- */
 @media (max-height: 520px) and (orientation: landscape) and (min-width: 700px) {
+
 
 
 
@@ -381,12 +322,15 @@
   }
 
 
+
 }
+
 
 
 
 /* ---------- Touch accessibility ---------- */
 @media (hover: none), (pointer: coarse) {
+
 
 
   .btn,
@@ -404,7 +348,9 @@
   }
 
 
+
 }
+
 
 
 
@@ -450,6 +396,7 @@
 @media (max-width: 768px) {
 
 
+
   #methodology,
 #services,
 #about {
@@ -487,36 +434,6 @@
 #services .feature-grid::-webkit-scrollbar,
 #about .profile-v2__grid::-webkit-scrollbar {
     display: none;
-  }
-
-  /* Methodology cards */
-  #methodology .methodology-step {
-    flex: 0 0 min(78vw, 300px) !important;
-    width: min(78vw, 300px) !important;
-    min-width: min(78vw, 300px) !important;
-    min-height: 104px !important;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    padding: 14px !important;
-  }
-
-  #methodology .methodology-steps {
-    margin-top: 14px !important;
-  }
-
-  #methodology .split-section {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-
-  #methodology .methodology-slider {
-    width: min(100%, 420px) !important;
-    max-width: 420px !important;
-    margin-inline: auto;
-  }
-
-  #methodology .methodology-slider__viewport {
-    aspect-ratio: 16 / 9 !important;
   }
 
   /* Capabilities cards */
@@ -604,7 +521,9 @@
   }
 
 
+
 }
+
 
 
 
@@ -612,16 +531,11 @@
 @media (max-width: 480px) {
 
 
+
   #methodology,
 #services,
 #about {
     padding-block: 22px !important;
-  }
-
-  #methodology .methodology-step {
-    flex-basis: min(76vw, 270px) !important;
-    width: min(76vw, 270px) !important;
-    min-width: min(76vw, 270px) !important;
   }
 
   #services .feature-card,
@@ -647,19 +561,15 @@
   }
 
 
+
 }
+
 
 
 
 /* Very small phones keep the sideways pattern without creating a narrow tube. */
 @media (max-width: 360px) {
 
-
-  #methodology .methodology-step {
-    flex-basis: 78vw !important;
-    width: 78vw !important;
-    min-width: 78vw !important;
-  }
 
   #services .feature-card,
 #services .feature-card:last-child,
@@ -671,105 +581,9 @@
   }
 
 
-}
-
-
-
-
-/* =========================================================
-   HERO MOBILE CONTENT HEIGHT 3.1
-   The hero must fit inside the first viewport, not artificially
-   fill it. Let its card end immediately after the actions.
-========================================================= */
-
-
-
-
-
-/* =========================================================
-   METHODOLOGY MOBILE ORDER 3.2
-   sections.css moves every split visual before its copy on mobile.
-   That is wrong for this narrative: explain -> steps -> visual evidence.
-========================================================= */
-@media (max-width: 768px) {
-
-
-  #methodology .methodology-content {
-    order: 0 !important;
-  }
-
-  #methodology .methodology-slider,
-#methodology .split-section__visual {
-    order: 1 !important;
-  }
-
-  #methodology .split-section {
-    align-content: center;
-  }
-
-  #methodology .methodology-content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px !important;
-  }
-
-  #methodology .methodology-content .section-eyebrow {
-    margin-bottom: 2px !important;
-  }
-
-  #methodology .methodology-content .split-section__title {
-    margin-bottom: 2px !important;
-  }
-
-  #methodology .methodology-content .split-section__text {
-    margin-bottom: 2px !important;
-  }
-
-  #methodology .methodology-steps {
-    width: 100%;
-    max-width: none !important;
-  }
-
-  #methodology .methodology-slider {
-    margin-top: 2px !important;
-  }
-
 
 }
 
-
-
-@media (max-width: 480px) {
-
-
-  #methodology .methodology-content .split-section__title {
-    font-size: clamp(1.5rem, 7.4vw, 1.9rem) !important;
-    line-height: 1.02 !important;
-  }
-
-  #methodology .methodology-content .split-section__text {
-    font-size: .82rem !important;
-    line-height: 1.42 !important;
-  }
-
-  #methodology .methodology-slider {
-    width: 100% !important;
-  }
-
-  #methodology .methodology-slider__viewport {
-    aspect-ratio: 16 / 8.8 !important;
-  }
-
-  #methodology .methodology-slide__caption {
-    padding: 10px 12px !important;
-  }
-
-  #methodology .methodology-slide__caption strong {
-    font-size: .9rem !important;
-  }
-
-
-}
 
 
 
@@ -781,6 +595,7 @@
    motion hint instead of forcing the user to discover them manually.
 ========================================================= */
 @media (max-width: 768px) {
+
 
 
   #methodology .methodology-steps,
@@ -831,11 +646,14 @@
   }
 
 
+
 }
 
 
 
+
 @media (prefers-reduced-motion: reduce) {
+
 
 
   .mobile-horizontal-hint {
@@ -847,85 +665,9 @@
   }
 
 
-}
-
-
-
-
-/* =========================================================
-   METHODOLOGY MOBILE GEOMETRY 3.4
-   Keep the visual evidence inside the viewport. Generic reveal/split
-   transforms must not push the slider to the right on mobile.
-========================================================= */
-@media (max-width: 768px) {
-
-
-  #methodology {
-    overflow-x: clip !important;
-  }
-
-  #methodology .split-section {
-    width: 100% !important;
-    min-width: 0 !important;
-  }
-
-  #methodology .methodology-content,
-#methodology .methodology-slider,
-#methodology .split-section__visual {
-    min-width: 0 !important;
-    max-width: 100% !important;
-  }
-
-  #methodology .methodology-slider,
-#methodology .methodology-slider.reveal,
-#methodology .methodology-slider.active,
-#methodology .split-section__visual {
-    width: 100% !important;
-    justify-self: stretch !important;
-    margin-inline: 0 !important;
-    transform: none !important;
-    translate: none !important;
-  }
-
-  #methodology .methodology-slider__viewport {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-inline: 0 !important;
-    overflow: hidden !important;
-  }
-
-  #methodology .methodology-slide,
-#methodology .methodology-slide.is-active {
-    max-width: 100% !important;
-  }
-
-  #methodology .methodology-slider__controls {
-    width: 100%;
-    margin-inline: 0 !important;
-  }
-
 
 }
 
-
-
-@media (max-width: 480px) {
-
-
-  #methodology > .container {
-    padding-inline: 14px !important;
-  }
-
-  #methodology .methodology-slider {
-    padding-inline: 0 !important;
-  }
-
-  #methodology .methodology-slider::before {
-    inset: -12px -8px -10px !important;
-  }
-
-
-}
 
 
 
@@ -936,6 +678,7 @@
    without stretching its card; following sections use the same rhythm.
 ========================================================= */
 @media (max-width: 768px) {
+
 
 
   html {
@@ -983,10 +726,6 @@
     margin-bottom: 12px !important;
   }
 
-  #methodology .methodology-content {
-    gap: 7px !important;
-  }
-
   #about .profile-v2__intro {
     margin-bottom: 10px !important;
   }
@@ -997,11 +736,14 @@
   }
 
 
+
 }
 
 
 
+
 @media (max-width: 480px) {
+
 
 
 
@@ -1030,11 +772,14 @@
   }
 
 
+
 }
 
 
 
+
 @media (prefers-reduced-motion: reduce) {
+
 
 
   html {
@@ -1042,7 +787,9 @@
   }
 
 
+
 }
+
 
 
 
