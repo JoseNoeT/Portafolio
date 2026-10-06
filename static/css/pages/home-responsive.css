@@ -1742,3 +1742,47 @@
     scroll-snap-type: none;
   }
 }
+
+
+/* =========================================================
+   HERO MOBILE LENGTH 3.6
+   The Hero should be compact and content-driven on mobile.
+   Other narrative sections keep the one-screen chapter behavior.
+========================================================= */
+@media (max-width: 768px) {
+  .hero.hero--home {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    display: block !important;
+    padding:
+      calc(var(--navbar-height-mobile, 64px) + 8px)
+      4px
+      10px !important;
+    overflow: visible !important;
+    scroll-snap-align: none;
+  }
+
+  .hero.hero--home .hero-content {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+  }
+
+  .hero.hero--home .hero-wrapper {
+    height: auto !important;
+    max-height: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero.hero--home {
+    padding-bottom: 8px !important;
+  }
+
+  .hero.hero--home .hero-content {
+    padding-bottom: 9px !important;
+  }
+}
