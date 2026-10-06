@@ -1116,3 +1116,219 @@
     flex: 0 1 auto !important;
   }
 }
+
+
+/* =========================================================
+   MOBILE HORIZONTAL STORY 3.0
+   Equivalent cards scroll sideways on small screens so sections
+   stay compact, readable and closer to one viewport chapter.
+========================================================= */
+@media (max-width: 768px) {
+  #methodology,
+  #services,
+  #about {
+    min-height: calc(100svh - var(--navbar-height-mobile, 64px)) !important;
+    display: flex;
+    align-items: center;
+    padding-block: 26px !important;
+  }
+
+  #methodology > .container,
+  #services > .container,
+  #about > .container {
+    width: 100% !important;
+  }
+
+  /* Shared horizontal rail behavior */
+  #methodology .methodology-steps,
+  #services .feature-grid,
+  #about .profile-v2__grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--home-gutter, 18px);
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 8px 12px !important;
+    margin-inline: calc(var(--home-gutter, 18px) * -0.35) !important;
+  }
+
+  #methodology .methodology-steps::-webkit-scrollbar,
+  #services .feature-grid::-webkit-scrollbar,
+  #about .profile-v2__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Methodology cards */
+  #methodology .methodology-step {
+    flex: 0 0 min(78vw, 300px) !important;
+    width: min(78vw, 300px) !important;
+    min-width: min(78vw, 300px) !important;
+    min-height: 104px !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding: 14px !important;
+  }
+
+  #methodology .methodology-steps {
+    margin-top: 14px !important;
+  }
+
+  #methodology .split-section {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  #methodology .methodology-slider {
+    width: min(100%, 420px) !important;
+    max-width: 420px !important;
+    margin-inline: auto;
+  }
+
+  #methodology .methodology-slider__viewport {
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  /* Capabilities cards */
+  #services .section-header {
+    margin-bottom: 14px !important;
+  }
+
+  #services .feature-card,
+  #services .feature-card:last-child {
+    flex: 0 0 min(82vw, 300px) !important;
+    width: min(82vw, 300px) !important;
+    min-width: min(82vw, 300px) !important;
+    max-width: 300px !important;
+    min-height: 240px !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding: 22px 18px 18px !important;
+  }
+
+  #services .feature-card__text {
+    font-size: .82rem !important;
+    line-height: 1.48 !important;
+  }
+
+  #services .feature-card__tags {
+    margin-top: auto;
+  }
+
+  /* Professional profile cards */
+  #about .profile-v2__intro {
+    margin-bottom: 14px !important;
+    padding: 16px 16px 18px !important;
+  }
+
+  #about .profile-v2__card,
+  #about .profile-v2__card:last-child {
+    flex: 0 0 min(82vw, 300px) !important;
+    width: min(82vw, 300px) !important;
+    min-width: min(82vw, 300px) !important;
+    max-width: 300px !important;
+    min-height: 230px !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding: 20px 18px !important;
+  }
+
+  #about .profile-v2__label {
+    margin-bottom: 14px !important;
+  }
+
+  #about .profile-v2__card h3 {
+    margin-bottom: 10px !important;
+    font-size: 1.08rem !important;
+  }
+
+  #about .profile-v2__card p {
+    font-size: .8rem !important;
+    line-height: 1.48 !important;
+  }
+
+  #about .profile-v2__closing {
+    margin-top: 12px !important;
+    font-size: .82rem;
+    line-height: 1.45;
+  }
+
+  /* Give a visible cue that content continues horizontally. */
+  #methodology .methodology-steps,
+  #services .feature-grid,
+  #about .profile-v2__grid {
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 10px,
+      #000 calc(100% - 22px),
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 10px,
+      #000 calc(100% - 22px),
+      transparent 100%
+    );
+  }
+}
+
+/* Phones: show one strong card plus a glimpse of the next one. */
+@media (max-width: 480px) {
+  #methodology,
+  #services,
+  #about {
+    padding-block: 22px !important;
+  }
+
+  #methodology .methodology-step {
+    flex-basis: min(76vw, 270px) !important;
+    width: min(76vw, 270px) !important;
+    min-width: min(76vw, 270px) !important;
+  }
+
+  #services .feature-card,
+  #services .feature-card:last-child,
+  #about .profile-v2__card,
+  #about .profile-v2__card:last-child {
+    flex-basis: min(79vw, 280px) !important;
+    width: min(79vw, 280px) !important;
+    min-width: min(79vw, 280px) !important;
+    max-width: 280px !important;
+  }
+
+  #services .feature-card {
+    min-height: 218px !important;
+  }
+
+  #about .profile-v2__card {
+    min-height: 210px !important;
+  }
+
+  #about .profile-v2__closing {
+    display: none;
+  }
+}
+
+/* Very small phones keep the sideways pattern without creating a narrow tube. */
+@media (max-width: 360px) {
+  #methodology .methodology-step {
+    flex-basis: 78vw !important;
+    width: 78vw !important;
+    min-width: 78vw !important;
+  }
+
+  #services .feature-card,
+  #services .feature-card:last-child,
+  #about .profile-v2__card,
+  #about .profile-v2__card:last-child {
+    flex-basis: 80vw !important;
+    width: 80vw !important;
+    min-width: 80vw !important;
+  }
+}
