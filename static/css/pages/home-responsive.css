@@ -1088,3 +1088,31 @@
     font-size: .65rem !important;
   }
 }
+
+
+/* =========================================================
+   HERO MOBILE FIT 2.3 — remove artificial vertical gap
+   The previous space-between distributed unused height between
+   image and content, creating the giant empty area seen at 360x800.
+========================================================= */
+@media (max-width: 480px) {
+  .hero.hero--home .hero-content {
+    justify-content: center !important;
+  }
+
+  .hero.hero--home .hero-wrapper {
+    height: auto !important;
+    max-height: 100% !important;
+    justify-content: flex-start !important;
+    align-content: center !important;
+    gap: 6px !important;
+  }
+
+  .hero.hero--home .hero-image {
+    margin-bottom: 2px !important;
+  }
+
+  .hero.hero--home .hero-text {
+    flex: 0 1 auto !important;
+  }
+}
