@@ -5,6 +5,8 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/pages/home.bundle.css' %}?v=6.0">
+{# Explicit carousel styles: keep slide sizing available even if nested CSS imports fail. #}
+<link rel="stylesheet" href="{% static 'css/components/project-carousel.css' %}?v=6.1">
 {% endblock %}
 
 {% block hero %}
