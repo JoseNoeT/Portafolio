@@ -22,6 +22,8 @@ def target_width(path: Path) -> int:
 def optimize(path: Path, apply: bool) -> tuple[int, int | None, Path]:
     before = path.stat().st_size
     target = path.with_suffix(".webp")
+    if target.exists():
+        return before, None, target
     if not apply:
         return before, None, target
 
@@ -43,16 +45,26 @@ def optimize(path: Path, apply: bool) -> tuple[int, int | None, Path]:
 def main() -> None:
     parser = ArgumentParser()
     parser.add_argument("--apply", action="store_true")
+    parser.add_argument("--file", help="Image path relative to static/img for a single-file test")
     args = parser.parse_args()
 
-    candidates = [
-        p for p in IMG_ROOT.rglob("*")
-        if p.is_file() and p.suffix.lower() in RASTER and p.stat().st_size >= LIMIT
-    ]
+    if args.file:
+        path = (IMG_ROOT / args.file).resolve()
+        if not path.is_relative_to(IMG_ROOT.resolve()):
+            parser.error("--file must be inside static/img")
+        if not path.is_file() or path.suffix.lower() not in RASTER:
+            parser.error("--file must refer to an existing PNG or JPEG image")
+        candidates = [path]
+    else:
+        candidates = [
+            p for p in IMG_ROOT.rglob("*")
+            if p.is_file() and p.suffix.lower() in RASTER and p.stat().st_size >= LIMIT
+        ]
     for path in sorted(candidates, key=lambda p: p.stat().st_size, reverse=True):
         before, after, target = optimize(path, args.apply)
         if after is None:
-            print(f"DRY {human(before):>8} -> {target.relative_to(ROOT)}")
+            status = "SKIP" if target.exists() else "DRY"
+            print(f"{status} {human(before):>8} -> {target.relative_to(ROOT)}")
         else:
             saved = 100 * (1 - after / before)
             print(f"{human(before):>8} -> {human(after):>8}  -{saved:5.1f}%  {target.relative_to(ROOT)}")
