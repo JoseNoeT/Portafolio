@@ -29,13 +29,15 @@
     <link rel="stylesheet" href="{% static 'css/layers/02-layout.css' %}?v=6.0">
     <link rel="stylesheet" href="{% static 'css/layers/03-components.css' %}?v=6.0">
     <link rel="stylesheet" href="{% static 'css/layers/04-responsive.css' %}?v=6.0">
+    <link rel="stylesheet" href="{% static 'css/layout/navbar/09-mobile-drawer.css' %}?v=4">
 
     <!-- PAGE SPECIFIC CSS -->
     {% block extra_css %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/base/light-theme-fixes.css' %}?v=2">
 
 </head>
 
-<body>
+<body class="{% block body_class %}{% endblock %}">
 
     <!-- MOBILE NAV OVERLAY -->
     <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
@@ -59,7 +61,8 @@
             </div>
 
             <!-- NAVIGATION -->
-            <nav class="nav-links" role="navigation" aria-label="Navegacion principal">
+            <nav class="nav-links" id="primary-navigation" role="navigation" aria-label="Navegación principal">
+                <div class="drawer-heading"><span>NAVEGACIÓN</span><strong>Explora mi portafolio</strong></div>
                 <ul>
                     <li><a href="{% url 'home' %}">Inicio</a></li>
                     <li><a href="{% url 'projects_list' %}">Proyectos</a></li>
@@ -68,6 +71,7 @@
                     <li><a href="{% url 'about' %}">Sobre mí</a></li>
                     <li><a href="{% url 'contact' %}">Contacto</a></li>
                 </ul>
+                <div class="drawer-contact"><a href="{% url 'contact' %}" class="btn btn-primary">Hablemos <span aria-hidden="true">→</span></a></div>
 
                 {% if user.is_authenticated and user.is_staff %}
                 <div class="nav-cta-mobile">
@@ -97,16 +101,10 @@
                 <div class="menu-btn-container">
                     <div class="menu-btn">
 
-                        <input
-                            type="checkbox"
-                            class="menu-checkbox"
-                            id="mobile-menu-toggle"
-                            aria-label="Toggle navigation menu"
-                        >
-
-                        <label for="mobile-menu-toggle" class="menu-label">
-                            <div class="menu-bar"></div>
-                        </label>
+                        <button type="button" id="mobile-menu-toggle" class="menu-label" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-navigation">
+                            <svg class="menu-icon menu-icon-grid" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="6.5" height="6.5" rx="1.2"/><rect x="14.5" y="3" width="6.5" height="6.5" rx="1.2"/><rect x="3" y="14.5" width="6.5" height="6.5" rx="1.2"/><rect x="14.5" y="14.5" width="6.5" height="6.5" rx="1.2"/></svg>
+                            <svg class="menu-icon menu-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg>
+                        </button>
 
                     </div>
                 </div>
@@ -135,15 +133,15 @@
     <!-- JAVASCRIPT -->
 
     <script src="{% static 'js/animations/core-utils.js' %}" defer></script>
-    <script src="{% static 'js/animations/mobile-drawer.js' %}" defer></script>
+    <script src="{% static 'js/animations/mobile-drawer.js' %}?v=3" defer></script>
     <script src="{% static 'js/animations/filter-transition.js' %}" defer></script>
-    <script src="{% static 'js/animations/animations-core.js' %}" defer></script>
+    <script src="{% static 'js/animations/animations-core.js' %}?v=2" defer></script>
     <script src="{% static 'js/animations/reveal-on-scroll.js' %}" defer></script>
     <script src="{% static 'js/animations/animated-titles.js' %}" defer></script>
     <script src="{% static 'js/animations/scroll-filter.js' %}" defer></script>
     <script src="{% static 'js/animations/scroll-animations.js' %}" defer></script>
 
-    <script src="{% static 'js/base.js' %}" defer></script>
+    <script src="{% static 'js/base.js' %}?v=2" defer></script>
     <script src="{% static 'js/hero-system.js' %}" defer></script>
 
     {% if APP_DEBUG %}

@@ -1,0 +1,84 @@
+/* Final Home layout: one viewport below the fixed navigation. */
+html:has(body.home-page) {
+  scroll-snap-type: y proximity;
+  scroll-padding-top: var(--navbar-height);
+}
+.home-page { --screen-nav: var(--navbar-height); }
+.home-page main.content {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  margin: 0 !important;
+}
+.home-page .hero.hero--home {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 100svh !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: calc(var(--screen-nav) + 24px) 24px 24px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+  scroll-margin-top: calc(-1 * var(--screen-nav));
+}
+.home-page main.content > :is(#projects, #methodology, #services, #about, .closing-cta) {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: calc(100svh - var(--screen-nav)) !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: clamp(24px, 4svh, 48px) 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center;
+  flex-direction: column;
+  overflow: clip !important;
+  content-visibility: visible !important;
+  scroll-snap-align: start;
+}
+.home-page main.content > .section-shell > .container {
+  width: 100% !important;
+  max-width: 1200px;
+  max-height: none !important;
+  margin: 0 auto !important;
+  padding-inline: clamp(20px, 4vw, 48px) !important;
+}
+.home-page .section-header,
+.home-page .profile-v2__intro {
+  margin: 0 auto 24px;
+}
+.home-page .section-title,
+.home-page .split-section__title {
+  margin-inline: auto;
+}
+.home-page .closing-cta__panel {
+  max-height: none;
+  padding: clamp(24px, 4svh, 48px) clamp(20px, 4vw, 56px) !important;
+}
+@media (min-width: 769px) {
+  .home-page #services .feature-grid,
+  .home-page #about .profile-v2__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .home-page #services .feature-card,
+  .home-page #about .profile-v2__card {
+    min-height: 0 !important;
+    padding: 24px !important;
+    grid-column: auto;
+    max-width: none;
+    width: auto;
+  }
+  .home-page #about .profile-v2__closing { margin-top: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html:has(body.home-page) { scroll-snap-type: none; }
+}

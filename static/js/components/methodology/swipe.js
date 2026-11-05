@@ -14,7 +14,7 @@ export function bindStorySwipe(dom, media, state, show, autoplay) {
   dom.storyTrack.style.touchAction = "pan-y";
 
   dom.storyTrack.addEventListener("pointerdown", (event) => {
-    if (!media.mobileQuery.matches) return;
+    if (!media.mobileQuery.matches || dom.story.swiper) return;
     startX = event.clientX;
     startY = event.clientY;
     autoplay.stop();

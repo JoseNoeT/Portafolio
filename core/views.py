@@ -1,6 +1,8 @@
 import logging
 
 from django.conf import settings
+from django.contrib.staticfiles import finders
+from django.templatetags.static import static
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.shortcuts import redirect, render
@@ -21,7 +23,9 @@ logger = logging.getLogger(__name__)
 
 def home(request):
     projects = Project.objects.all().order_by('-updated_at')
-    return render(request, 'home.html', {'projects': projects})
+    cv_path = 'docs/CV_Jose_Noe.pdf'
+    cv_url = static(cv_path) if finders.find(cv_path) else None
+    return render(request, 'home.html', {'projects': projects, 'cv_url': cv_url})
 
 
 def contact(request):

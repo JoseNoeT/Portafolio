@@ -4,6 +4,8 @@ export function getCarouselConfig(isMobile, reducedMotion) {
     centeredSlides: true,
     spaceBetween: isMobile ? 14 : 24,
     loop: true,
+    slidesPerGroup: 1,
+    loopAddBlankSlides: false,
     speed: isMobile ? 520 : 900,
     grabCursor: !isMobile,
     watchSlidesProgress: true,
@@ -16,8 +18,8 @@ export function getCarouselConfig(isMobile, reducedMotion) {
       scale: isMobile ? 0.88 : 0.93,
       slideShadows: false,
     },
-    autoplay: (isMobile || reducedMotion) ? false : {
-      delay: 2600,
+    autoplay: reducedMotion ? false : {
+      delay: 4500,
       disableOnInteraction: false,
       pauseOnMouseEnter: true,
     },
@@ -32,9 +34,10 @@ export function getCarouselConfig(isMobile, reducedMotion) {
     },
     keyboard: { enabled: true },
     breakpoints: {
-      0: { spaceBetween: 14 },
-      700: { spaceBetween: 20 },
-      1100: { spaceBetween: 28 },
+      0: { slidesPerView: "auto", spaceBetween: 14 },
+      700: { slidesPerView: "auto", spaceBetween: 20 },
+      901: { slidesPerView: 3, spaceBetween: 20 },
+      1100: { slidesPerView: 3, spaceBetween: 28 },
     },
   };
 }

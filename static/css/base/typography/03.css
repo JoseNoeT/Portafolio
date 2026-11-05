@@ -50,30 +50,8 @@ font-family: var(--font-family-body);
   font-weight: 600;
 }
 
-@-webkit-keyframes focus-in-contract {
-0% {
-    letter-spacing: 1em;
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-
-@keyframes focus-in-contract {
-0% {
-    letter-spacing: 1em;
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
+/* Opacity only: keep glyph spacing and line wrapping stable during entry. */
+@keyframes text-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

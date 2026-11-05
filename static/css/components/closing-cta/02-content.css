@@ -16,7 +16,7 @@ max-width: 780px !important;
   text-wrap: balance;
 }
 
-.closing-cta__title span {
+.closing-cta__title span:not(.title-word) {
 display: block;
   color: #22d3ee;
   text-shadow: 0 0 22px rgba(34,211,238,.25);

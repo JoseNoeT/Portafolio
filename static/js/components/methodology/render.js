@@ -9,6 +9,10 @@ function markActive(items, index) {
 export function createRenderer(dom, state) {
   function moveMobileStory(index) {
     if (!dom.story || !dom.storyTrack || !dom.storySlides.length) return;
+    if (dom.story.swiper) {
+      if (dom.story.swiper.realIndex !== index) dom.story.swiper.slideToLoop(index);
+      return;
+    }
     dom.story.style.setProperty("--methodology-story-offset", `${index * -100}%`);
     dom.story.dataset.index = String(index);
 

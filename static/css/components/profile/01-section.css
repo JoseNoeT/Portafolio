@@ -76,7 +76,7 @@ max-width: 820px;
 max-width: 26ch;
 }
 
-#about .profile-v2__intro .split-section__title span {
+#about .profile-v2__intro .split-section__title span:not(.title-word) {
 display: block;
   color: #22d3ee;
   text-shadow: 0 0 18px rgba(34,211,238,.18);

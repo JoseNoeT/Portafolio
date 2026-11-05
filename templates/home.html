@@ -2,11 +2,15 @@
 {% load static %}
 
 {% block title %}Inicio - Jose Noe{% endblock %}
+{% block body_class %}home-page{% endblock %}
 
 {% block extra_css %}
+{# Vendor styles must precede our card sizing rules. #}
+<link id="swiper-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <link rel="stylesheet" href="{% static 'css/pages/home.bundle.css' %}?v=6.0">
 {# Explicit carousel styles: keep slide sizing available even if nested CSS imports fail. #}
 <link rel="stylesheet" href="{% static 'css/components/project-carousel.css' %}?v=6.1">
+<link rel="stylesheet" href="{% static 'css/pages/home-screens.css' %}?v=3.0">
 {% endblock %}
 
 {% block hero %}
@@ -22,5 +26,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script type="module" src="{% static 'js/pages/home/index.js' %}?v=7.1"></script>
+<script type="module" src="{% static 'js/pages/home/index.js' %}?v=7.3"></script>
 {% endblock %}    

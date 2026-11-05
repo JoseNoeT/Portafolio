@@ -11,15 +11,6 @@ function observeOnce(selector, callback, rootMargin = "450px 0px") {
   observer.observe(target);
 }
 
-function loadStyle(href, id) {
-  if (document.getElementById(id)) return;
-  const link = document.createElement("link");
-  link.id = id;
-  link.rel = "stylesheet";
-  link.href = href;
-  document.head.appendChild(link);
-}
-
 function loadScript(src, id) {
   return new Promise((resolve, reject) => {
     const existing = document.getElementById(id);
@@ -41,12 +32,22 @@ function loadScript(src, id) {
 }
 
 export function initDeferredHomeModules() {
-  observeOnce("#projects", async () => {
-    loadStyle("https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", "swiper-css");
+  let mobileSections = null;
+  const startMobileSections = () => mobileSections ??= (async () => {
     await loadScript("https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js", "swiper-js");
-    await import("../../components/project-carousel.js");
+    const { initMobileSectionCarousels } = await import("../../components/mobile-section-carousels.js?v=1");
+    initMobileSectionCarousels();
+  })();
+  observeOnce("#projects", async () => {
+    // CSS is render-blocking in the template, before the custom card styles.
+    // Keep only the JavaScript deferred until the section approaches the viewport.
+    await loadScript("https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js", "swiper-js");
+    await import("../../components/project-carousel.js?v=3");
   });
 
-  observeOnce("#methodology", () => import("../../components/methodology-slider.js"));
-  observeOnce("#services", () => import("../../components/mobile-horizontal-hint.js"));
+  observeOnce("#methodology", async () => {
+    await startMobileSections();
+    await import("../../components/methodology-slider.js?v=3");
+  });
+  observeOnce("#services", startMobileSections);
 }

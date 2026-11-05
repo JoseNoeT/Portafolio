@@ -1,0 +1,8 @@
+/* Home viewport composition, after component styles. */
+@import url("./home/07-screens.css?v=2");
+@import url("./home/08-screens-responsive.css?v=2");
+@import url("../components/hero-home/17-short-screens.css?v=2");
+@import url("../components/projects/14-screen-fit.css?v=2");
+@import url("./home/09-short-sections.css?v=2");
+@import url("../components/projects/15-mobile-fit.css?v=2");
+@import url("./home/10-mobile-carousels.css?v=1");

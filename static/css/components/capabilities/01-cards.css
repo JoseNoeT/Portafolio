@@ -71,7 +71,7 @@ content: "";
     radial-gradient(circle at 86% 56%, rgba(56, 189, 248, 0.11), transparent 20%);
 }
 
-#services .section-title span,
+#services .section-title span:not(.title-word),
 #services .section-title strong {
 color: var(--services-cyan);
 }

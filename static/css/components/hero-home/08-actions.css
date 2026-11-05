@@ -45,7 +45,7 @@ margin-bottom: 10px;
   text-transform: none;
 }
 
-.hero.hero--home .hero-text h1 span {
+.hero.hero--home .hero-text h1 span:not(.title-word) {
 display: inline;
   color: var(--color-accent-primary);
 }

@@ -1,0 +1,51 @@
+:root[data-theme="light"] {
+  --light-surface: rgba(255,255,255,.94);
+  --light-border: rgba(4,120,87,.24);
+  --light-shadow: 0 12px 32px rgba(6,78,59,.08);
+  --color-accent-primary: #047857;
+  --color-text-accent: #047857;
+  --color-label: #047857;
+  --gradient-primary: linear-gradient(135deg,#047857,#0f766e);
+}
+:root[data-theme="light"] :is(#projects,#methodology,#services,#about.profile-v2,.closing-cta,.projects-section,.projects-controls,.services-offer) {
+  background: linear-gradient(145deg,#f4fbf7,#e8f3ee) !important;
+}
+:root[data-theme="light"] :is(.hero-story,.hero-page__panel,.panorama-card,.panorama-card__body,.feature-card,.profile-v2__intro,.profile-v2__card,.profile-v2__closing,.closing-cta__panel,.methodology-step,.methodology-slider__viewport,.methodology-story-card,.services-carousel__card,.services-carousel__body,.project-card,.card-body) {
+  background: var(--light-surface) !important;
+  border-color: var(--light-border) !important;
+  box-shadow: var(--light-shadow) !important;
+}
+:root[data-theme="light"] #services::after,
+:root[data-theme="light"] #about.profile-v2::after,
+:root[data-theme="light"] .closing-cta::after,
+:root[data-theme="light"] .methodology-scene__veil {
+  background: linear-gradient(180deg,rgba(244,251,247,.88),rgba(236,247,241,.94)) !important;
+}
+:root[data-theme="light"] #services::before,
+:root[data-theme="light"] #about.profile-v2::before,
+:root[data-theme="light"] .closing-cta::before { opacity: .10 !important; }
+:root[data-theme="light"] .methodology-scene__background { opacity: .18; }
+:root[data-theme="light"] .hero-page__overlay { background: rgba(240,253,244,.86) !important; }
+:root[data-theme="light"] .hero-canvas { opacity: .12; }
+:root[data-theme="light"] .swiper-slide .panorama-card { opacity: 1; filter: none; }
+:root[data-theme="light"] .panorama-card__body { opacity: 1 !important; }
+:root[data-theme="light"] :is(.hero-tag,.hero-eyebrow,.theme-toggle-pill,.feature-card__tags span,.profile-v2__label,.filter-pill,.chip) {
+  background: #ecf7f1 !important; border-color: var(--light-border) !important;
+}
+:root[data-theme="light"] .footer-v2 { background: #f4faf7; border-color: var(--light-border); box-shadow: var(--light-shadow); color: var(--color-body); }
+:root[data-theme="light"] :is(.footer-status,.footer-email,.footer-contact-cta,.footer-social-icon) { background: #e7f3ec; border-color: var(--light-border); }
+:root[data-theme="light"] .footer-bottom { background: #eaf4ee; }
+:root[data-theme="light"] :is(.btn-primary,.nav-primary-cta) { color: #fff !important; background: var(--gradient-primary) !important; }
+:root[data-theme="light"] :is(.btn-outline,.btn-ghost) { color: #047857 !important; background: rgba(255,255,255,.85) !important; border-color: #047857 !important; }
+:root[data-theme="light"] .nav-links ul li a[aria-current="page"] { color: #064e3b; background: rgba(4,120,87,.10); border-color: #047857; }
+:root[data-theme="light"] .navbar .drawer-contact .btn { color: #fff !important; }
+:root[data-theme="light"] .navbar-logo { filter: drop-shadow(0 1px 2px rgba(0,0,0,.3)); }
+
+:root[data-theme="light"] body { background: var(--color-bg-primary); color: var(--color-body); }
+:root[data-theme="light"] .feature-card__icon { color: #047857 !important; background: #e6f3ec !important; border-color: var(--light-border) !important; }
+
+:root[data-theme="light"] :is(.method-phase-card,.method-benefit-card,.method-recruiter-card,.method-cta__band,.methodology-story-card__step) {
+  background: var(--light-surface) !important; border-color: var(--light-border) !important; box-shadow: var(--light-shadow);
+}
+:root[data-theme="light"] :is(.method-value,.method-recruiter) { background: #ecf7f0; }
+:root[data-theme="light"] .methodology-step__number { background: #e6f3ec !important; }

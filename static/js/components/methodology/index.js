@@ -2,8 +2,8 @@ import { createAutoplay } from "./autoplay.js";
 import { bindControls } from "./controls.js";
 import { getMethodologyDom, getMethodologyMedia } from "./dom.js";
 import { bindLifecycle } from "./lifecycle.js";
-import { createRenderer } from "./render.js";
-import { bindDesktopSwipe, bindStorySwipe } from "./swipe.js";
+import { createRenderer } from "./render.js?v=3";
+import { bindDesktopSwipe, bindStorySwipe } from "./swipe.js?v=3";
 
 export function initMethodology() {
   const dom = getMethodologyDom();
@@ -15,7 +15,7 @@ export function initMethodology() {
   const autoplay = createAutoplay({
     state,
     show,
-    reducedMotion: () => media.reducedMotionQuery.matches,
+    reducedMotion: () => media.reducedMotionQuery.matches || media.mobileQuery.matches,
   });
 
   bindControls(dom, show, autoplay);

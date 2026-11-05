@@ -1,50 +1,22 @@
-/* static/css/base/typography.css · module 04 */
+/* Heading reveals use transitions in 02.css, without a second animation. */
 .hero-title.active,
 .section-title.active,
 .split-section__title.active,
-.cta-band__title.active {
--webkit-animation: focus-in-contract .72s cubic-bezier(.25,.46,.45,.94) both;
-  animation: focus-in-contract .72s cubic-bezier(.25,.46,.45,.94) both;
-}
-
+.cta-band__title.active,
 .section-eyebrow.active,
 .closing-cta__status.active {
--webkit-animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) both;
-  animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) both;
+  animation: none;
 }
 
-@media (prefers-reduced-motion: reduce) {
-.hero-title.active,
-  .section-title.active,
-  .split-section__title.active,
-  .cta-band__title.active,
-  .section-eyebrow.active,
-  .closing-cta__status.active {
--webkit-animation: none !important;
-    animation: none !important;
-    letter-spacing: inherit;
-    filter: none;
-    opacity: 1;
-}
-}
-
-.hero-title.focus-in-contract {
--webkit-animation: focus-in-contract .78s cubic-bezier(.25,.46,.45,.94) both;
-  animation: focus-in-contract .78s cubic-bezier(.25,.46,.45,.94) both;
-}
-
+/* Preserve the hero entrance without blur or animated letter spacing. */
+.hero-title.focus-in-contract:not(.title-reveal),
 .hero-eyebrow.focus-in-contract {
--webkit-animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) .10s both;
-  animation: focus-in-contract .52s cubic-bezier(.25,.46,.45,.94) .10s both;
+  animation: text-fade-in 280ms ease-out both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-.hero-title.focus-in-contract,
+  .hero-title.focus-in-contract:not(.title-reveal),
   .hero-eyebrow.focus-in-contract {
--webkit-animation: none !important;
-    animation: none !important;
-    letter-spacing: inherit;
-    filter: none;
-    opacity: 1;
-}
+    animation: none;
+  }
 }

@@ -1,0 +1,31 @@
+/* Match restored carousel styles to the mobile section's height budget. */
+@media (max-width: 768px) {
+  .home-page #projects .section-header { margin-bottom: 12px !important; }
+  .home-page #projects .section-title {
+    font-size: clamp(1.35rem, 5.5vw, 1.8rem) !important;
+    line-height: 1.1 !important;
+    margin-block: 6px 10px !important;
+  }
+  .home-page #projects .section-desc { font-size: .85rem; line-height: 1.45; }
+  .home-page #projects .portfolio-swiper { padding: 12px 0 30px; }
+  .home-page #projects .swiper-pagination { bottom: 4px; }
+  .home-page #projects .project-slide { width: min(76vw, 300px); }
+  .home-page #projects .panorama-card { display: flex; flex-direction: column; }
+  .home-page #projects .panorama-card__media { height: 132px; aspect-ratio: auto; flex: none; }
+  .home-page #projects .panorama-card__body {
+    display: flex; flex-direction: column; flex: 1; gap: 7px; padding: 14px;
+  }
+  .home-page #projects .panorama-card__body h3 {
+    font-size: 1rem; line-height: 1.2; min-height: 2.4em; margin: 0;
+  }
+  .home-page #projects .panorama-card__body p {
+    font-size: .85rem; line-height: 1.4; min-height: 2.8em; margin: 0;
+  }
+  .home-page #projects .panorama-card__stack {
+    font-size: .7rem; line-height: 1.4; min-height: 2.8em; margin: 0;
+  }
+  .home-page #projects .panorama-card .btn {
+    min-height: 36px; padding: 8px 12px; font-size: .8rem;
+    margin-top: auto; align-self: flex-start;
+  }
+}

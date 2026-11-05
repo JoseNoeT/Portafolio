@@ -1,0 +1,83 @@
+/* Budget space for the complete heading, carousel and controls together. */
+@media (min-width: 769px) {
+  .home-page main.content > #projects {
+    padding-block: clamp(12px, 2svh, 24px) !important;
+  }
+  .home-page #projects .section-header { margin-bottom: 10px; }
+  .home-page #projects .section-eyebrow {
+    padding: 4px 12px;
+    margin-bottom: 4px;
+    font-size: .68rem;
+  }
+  .home-page #projects .section-title {
+    font-size: clamp(1.45rem, 2.2vw, 2rem) !important;
+    line-height: 1.08 !important;
+    margin-block: 4px 8px !important;
+  }
+  .home-page #projects .section-title::after { margin-top: 6px; }
+  .home-page #projects .section-desc { font-size: .85rem; line-height: 1.4; }
+  .home-page #projects .portfolio-swiper {
+    --project-card-width: clamp(260px, 25vw, 330px);
+    max-width: calc(3 * var(--project-card-width) + 56px);
+    overflow: hidden;
+    margin-inline: auto;
+    padding: 10px 0 32px;
+  }
+  .home-page #projects .swiper-pagination { bottom: 4px; }
+  .home-page #projects .project-slide { width: var(--project-card-width); }
+  .home-page #projects .panorama-card { display: flex; flex-direction: column; }
+  .home-page #projects .panorama-card__media {
+    height: clamp(96px, 17svh, 150px);
+    flex: none;
+    aspect-ratio: auto;
+  }
+  .home-page #projects .panorama-card__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+  }
+  .home-page #projects .panorama-card__body h3 {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    min-height: 2.4em;
+    margin: 0;
+  }
+  .home-page #projects .panorama-card__body p {
+    font-size: .875rem;
+    line-height: 1.4;
+    min-height: 2.8em;
+    margin: 0;
+  }
+  .home-page #projects .panorama-card__stack {
+    font-size: .7rem;
+    line-height: 1.4;
+    min-height: 2.8em;
+    margin: 0;
+  }
+  .home-page #projects .panorama-card .btn {
+    align-self: flex-start;
+    margin-top: auto;
+    min-height: 34px;
+    padding: 7px 12px;
+    font-size: .8rem;
+  }
+}
+@media (min-width: 769px) and (max-height: 650px) {
+  .home-page #projects .section-header { max-width: 960px; margin-bottom: 6px; }
+  .home-page #projects .section-title { font-size: 1.5rem !important; }
+  .home-page #projects .section-desc { font-size: .78rem; }
+  .home-page #projects .portfolio-swiper { padding: 6px 0 26px; }
+  .home-page #projects .portfolio-swiper {
+    --project-card-width: clamp(260px, 23vw, 300px);
+  }
+  .home-page #projects .panorama-card__media { height: 88px; }
+  .home-page #projects .panorama-card__body { padding: 10px 12px; gap: 5px; }
+  .home-page #projects .panorama-card__body h3 { font-size: .95rem; }
+  .home-page #projects .panorama-card__body p { font-size: .8rem; }
+  .home-page #projects .panorama-card__stack { font-size: .68rem; }
+  .home-page #projects .panorama-card__category {
+    padding: 4px 8px; font-size: .62rem; left: 12px; bottom: 10px;
+  }
+}

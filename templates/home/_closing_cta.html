@@ -1,5 +1,5 @@
 {% load static %}
-<section class="section-shell section-shell--accent closing-cta" role="region" aria-label="Contacto profesional" data-lazy-bg="{% static 'img/contact/contact-bg.png' %}">
+<section class="section-shell section-shell--accent closing-cta" role="region" aria-label="Contacto profesional" data-lazy-bg="{% static 'img/contact/contact-bg.webp' %}">
     <div class="container">
         <div class="cta-band cta-band--accent closing-cta__panel">
             <div class="closing-cta__status reveal">
@@ -25,6 +25,9 @@
 
             <div class="cta-band__actions closing-cta__actions reveal">
                 <a href="{% url 'contact' %}" class="btn btn-primary closing-cta__primary motion-cta">Contactar</a>
+                {% if cv_url %}
+                <a href="{{ cv_url }}" class="btn btn-outline" download="CV_Jose_Noe.pdf">Descargar CV</a>
+                {% endif %}
                 <a href="https://github.com/JoseNoeT" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Ver GitHub</a>
             </div>
 
