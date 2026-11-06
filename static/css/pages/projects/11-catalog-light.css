@@ -1,0 +1,13 @@
+:root[data-theme="light"] .projects-page {
+  --catalog-surface: var(--color-bg-card);
+  --catalog-ink: var(--color-heading);
+  --catalog-muted: var(--color-body);
+  --catalog-accent: var(--color-text-accent);
+  --catalog-border: var(--color-border-soft);
+}
+:root[data-theme="light"] :is(.catalog-card,.catalog-method,.catalog-contact) { box-shadow: 0 10px 30px rgba(16,35,63,.07); }
+:root[data-theme="light"] .catalog-filter.is-active { background: var(--color-bg-alt); }
+:root[data-theme="light"] .catalog-tech select { background: #fff; color: var(--color-heading); }
+:root[data-theme="light"] .catalog-tags li { background: var(--color-bg-alt); }
+:root[data-theme="light"] .catalog-contact { background: linear-gradient(145deg,#fff,var(--color-bg-alt)); }
+:root[data-theme="light"] .catalog-card h3 a { color: var(--catalog-ink); }

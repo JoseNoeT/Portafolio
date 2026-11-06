@@ -1,6 +1,3 @@
-/* Canonical entrypoint: static/css/pages/projects-detail.css. */
-@import url("./projects-detail/01.css");
-@import url("./projects-detail/02.css");
-@import url("./projects-detail/03.css");
-@import url("./projects-detail/04.css");
-@import url("./projects-detail/05.css");
+/* Scoped case-study page; project list modal styles remain independent. */
+@import url("./projects-detail/06-case-layout.css?v=1");
+@import url("./projects-detail/07-case-media.css?v=1");

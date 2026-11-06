@@ -1,5 +1,5 @@
 /* Canonical entrypoint: static/css/base/typography.css. */
 @import url("./typography/01.css");
 @import url("./typography/02.css");
-@import url("./typography/03.css");
+@import url("./typography/03.css?v=2");
 @import url("./typography/04.css");

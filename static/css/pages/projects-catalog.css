@@ -1,0 +1,5 @@
+/* Projects composition, separate from the Home carousel. */
+@import url("./projects/08-catalog-layout.css?v=1");
+@import url("./projects/09-catalog-cards.css?v=1");
+@import url("./projects/10-catalog-responsive.css?v=1");
+@import url("./projects/11-catalog-light.css?v=2");

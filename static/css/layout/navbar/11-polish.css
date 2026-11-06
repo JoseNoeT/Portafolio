@@ -1,0 +1,34 @@
+/* Shared navbar proportions; existing page offsets consume these tokens. */
+:root { --navbar-height: 68px; --navbar-height-mobile: 60px; }
+/* Theme accents stay local to the navbar and match the approved brand. */
+.navbar { --color-accent-primary: #31b7f6; --navbar-link-hover: #31b7f6; }
+:root[data-theme="light"] .navbar { --color-accent-primary: #007e70; --navbar-link-hover: #007e70; }
+.navbar::before { backdrop-filter: blur(12px) saturate(115%); -webkit-backdrop-filter: blur(12px) saturate(115%); }
+.navbar .nav-container { max-width: 1280px; box-sizing: border-box; }
+.navbar .nav-right { justify-self: end; }
+.navbar .nav-links ul li a { transition: color 180ms ease, border-color 180ms ease, background 180ms ease; }
+.navbar :is(a,button):focus-visible { outline: 2px solid var(--color-accent-primary); outline-offset: 5px; }
+.navbar .nav-primary-cta { animation: none; transition: border-color 180ms ease, background 180ms ease; }
+.navbar .nav-primary-cta::before { display: none; }
+.navbar .nav-primary-cta:hover { transform: none; box-shadow: none; border-color: var(--color-accent-primary); }
+@media (min-width: 1025px) {
+  .navbar .nav-container { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 24px; }
+  .navbar .nav-links { justify-self: center; }
+  .navbar .nav-links ul { gap: clamp(12px,1.5vw,22px); }
+  .navbar .nav-links ul li a { white-space: nowrap; }
+  .navbar .nav-links ul li a:hover { animation: none; transform: none; }
+  .navbar .nav-links ul li a::after {
+    left: 4px; right: 4px; bottom: 0; width: auto; height: 2px;
+    background: var(--color-accent-primary); transform: scaleX(0); transform-origin: left;
+    transition: transform 180ms ease;
+  }
+  .navbar .nav-links ul li a:is(:hover,:focus-visible,[aria-current])::after { transform: scaleX(1); }
+  .navbar .nav-links ul li a[aria-current] { color: var(--navbar-link-hover); background: transparent; border-color: transparent; }
+}
+@media (max-width: 1024px) {
+  .navbar .nav-container { height: var(--navbar-height-mobile); }
+  .navbar .nav-links ul li a[aria-current="location"] { border-color: var(--color-accent-primary); background: var(--color-surface-subtle); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .navbar :is(a,button,img), .navbar .nav-links ul li a::after { transition: none !important; animation: none !important; }
+}

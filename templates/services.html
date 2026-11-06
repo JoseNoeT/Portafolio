@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block hero %}
-    {% include "components/hero.html" with eyebrow="Servicios" title="Soluciones web con una base más clara, funcional y preparada para crecer" subtitle="Puedo aportar en desarrollo, mejora e implementación de proyectos web que necesiten más estructura, lógica funcional y una ejecución técnica más ordenada." %}
+    {% include "components/hero.html" with hero_class="hero--services" eyebrow="Servicios" title="Soluciones web con una base más clara, funcional y preparada para crecer" subtitle="Puedo aportar en desarrollo, mejora e implementación de proyectos web que necesiten más estructura, lógica funcional y una ejecución técnica más ordenada." %}
 {% endblock %}
 
 {% block content %}
@@ -18,9 +18,9 @@
 <!-- 1. SERVICES CAROUSEL SECTION -->
 <section class="section-shell services-offer" id="services-list">
     <div class="container">
-        <header class="services-offer__header">
-            <h2 class="services-offer__title title-reveal">Qué puedo aportar a tu proyecto</h2>
-            <p class="services-offer__lead reveal">Desarrollo, organizo y mejoro soluciones web con una base técnica clara, funcional y preparada para crecer.</p>
+        <header class="services-offer__header section-header">
+            <h2 class="services-offer__title title-reveal section-title">Qué puedo aportar a tu proyecto</h2>
+            <p class="services-offer__lead reveal section-desc">Desarrollo, organizo y mejoro soluciones web con una base técnica clara, funcional y preparada para crecer.</p>
         </header>
 
         <div class="services-carousel" aria-label="Servicios disponibles">
@@ -73,9 +73,9 @@
     <div class="container">
         <div class="services-split__layout">
             <div class="services-split__content">
-                <h2 class="services-split__title title-reveal">Servicios pensados para construir con estructura</h2>
-                <p class="services-split__text reveal">No se trata solo de desarrollar pantallas. Mi enfoque está en crear funcionalidades claras, ordenar la lógica del sistema y construir una base técnica que pueda mantenerse, mejorar y crecer.</p>
-                <p class="services-split__text reveal">Cada parte del proyecto debe tener un propósito claro, una estructura coherente y una lógica que facilite las decisiones futuras del equipo o del cliente.</p>
+                <h2 class="services-split__title title-reveal section-title">Servicios pensados para construir con estructura</h2>
+                <p class="services-split__text reveal section-desc">No se trata solo de desarrollar pantallas. Mi enfoque está en crear funcionalidades claras, ordenar la lógica del sistema y construir una base técnica que pueda mantenerse, mejorar y crecer.</p>
+                <p class="services-split__text reveal section-desc">Cada parte del proyecto debe tener un propósito claro, una estructura coherente y una lógica que facilite las decisiones futuras del equipo o del cliente.</p>
             </div>
             <div class="services-split__visual reveal">
                 <img class="services-split__image" src="{% static 'img/services/serv1.png' %}" alt="Servicios web con estructura técnica" loading="lazy">
@@ -89,8 +89,8 @@
     <div class="container">
         <div class="services-approach__layout">
             <div class="services-approach__content">
-                <h2 class="services-approach__title title-reveal">Enfoque de trabajo</h2>
-                <p class="services-approach__lead reveal">Primero entiendo la necesidad real del proyecto. Después ordeno la estructura, defino una base clara y desarrollo con criterio técnico para que la solución no solo funcione, sino que pueda mantenerse y evolucionar.</p>
+                <h2 class="services-approach__title title-reveal section-title">Enfoque de trabajo</h2>
+                <p class="services-approach__lead reveal section-desc">Primero entiendo la necesidad real del proyecto. Después ordeno la estructura, defino una base clara y desarrollo con criterio técnico para que la solución no solo funcione, sino que pueda mantenerse y evolucionar.</p>
                 <ol class="services-approach__steps">
                     <li class="services-approach__step reveal">
                         <span class="services-approach__badge" aria-hidden="true">1</span>
@@ -121,8 +121,8 @@
 <section class="section-shell section-shell--accent services-cta">
     <div class="container">
         <div class="services-cta__band">
-            <h2 class="services-cta__title reveal">¿Tienes un proyecto que necesita más estructura o una mejor implementación?</h2>
-            <p class="services-cta__text reveal">Puedo ayudarte a revisar una idea, mejorar una base existente o avanzar en una solución web con una lógica más clara y profesional.</p>
+            <h2 class="services-cta__title reveal section-title">¿Tienes un proyecto que necesita más estructura o una mejor implementación?</h2>
+            <p class="services-cta__text reveal section-desc">Puedo ayudarte a revisar una idea, mejorar una base existente o avanzar en una solución web con una lógica más clara y profesional.</p>
             <div class="services-cta__actions reveal">
                 <a href="{% url 'contact' %}" class="btn btn-primary">Contactar</a>
                 <a href="{% url 'projects_list' %}" class="btn btn-outline">Ver proyectos</a>

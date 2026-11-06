@@ -4,18 +4,34 @@
 {% block title %}Sobre mí - Jose Noe{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/pages/about.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/about.css' %}?v=2">
 {% endblock %}
 
 
+{% block body_class %}about-editorial-page{% endblock %}
+
 {% block hero %}
-{% include "components/hero.html" with eyebrow="Sobre mí" title="Un perfil técnico en crecimiento, con foco en proyectos reales" subtitle="Soy Jose Noe, Analista Programador titulado y estudiante de Ingeniería en Informática. Estoy construyendo mi camino en desarrollo web con foco en backend, estructura de sistemas y soluciones funcionales pensadas para necesidades reales." %}
+{% with about_title="Un perfil técnico en crecimiento, con foco en proyectos reales" about_subtitle="Soy Jose Noe, Analista Programador titulado y estudiante de Ingeniería en Informática. Estoy construyendo mi camino en desarrollo web con foco en backend, estructura de sistemas y soluciones funcionales pensadas para necesidades reales." %}
+{% include "components/hero.html" with hero_class="hero--about" eyebrow="Sobre mí" title=about_title subtitle=about_subtitle %}
+<section class="about-editorial-hero hero--jmnt-background" aria-labelledby="about-editorial-title">
+    <header class="section-header">
+        <span class="section-eyebrow">Sobre mí</span>
+        <h1 class="section-title" id="about-editorial-title">{{ about_title }}</h1>
+    </header>
+    <div class="about-editorial-hero__layout">
+        <p class="about-editorial-hero__intro">{{ about_subtitle }}</p>
+        <figure class="about-editorial-hero__photo">
+            <img src="{% static 'img/heroes/light/hero-about-light.webp' %}" alt="" width="1400" height="788" loading="lazy" decoding="async">
+        </figure>
+    </div>
+</section>
+{% endwith %}
 {% endblock %}
 
 {% block content %}
 
 <!-- VALUE PROPOSITION -->
-<section class="section-shell">
+<section class="section-shell about-learning">
     <div class="container">
         <div class="section-header">
             <h2 class="section-title reveal">Una base construida con aprendizaje, orden y criterio técnico</h2>
@@ -53,7 +69,7 @@
 </section>
 
 <!-- WHAT I BRING — step list -->
-<section class="section-shell section-shell--alt">
+<section class="section-shell section-shell--alt about-value">
     <div class="container">
         <div class="section-header">
             <h2 class="section-title reveal">Qué tipo de valor busco aportar</h2>
@@ -80,7 +96,7 @@
 </section>
 
 <!-- STACK -->
-<section class="section-shell">
+<section class="section-shell about-stack">
     <div class="container">
         <div class="section-header">
             <h2 class="section-title reveal">Hacia dónde quiero seguir creciendo</h2>
@@ -104,10 +120,10 @@
 </section>
 
 <!-- CTA -->
-<section class="section-shell section-shell--accent">
+<section class="section-shell section-shell--accent about-close">
     <div class="container">
         <div class="cta-band cta-band--accent">
-            <h2 class="cta-band__title reveal">¿Quieres conocer mejor mi trabajo o ver cómo lo aplico en proyectos concretos?</h2>
+            <h2 class="cta-band__title reveal section-title">¿Quieres conocer mejor mi trabajo o ver cómo lo aplico en proyectos concretos?</h2>
             <p class="cta-band__text reveal">
                 Puedes revisar mis proyectos para ver mi enfoque en la práctica, o escribirme directamente para conversar sobre una oportunidad o colaboración.
             </p>

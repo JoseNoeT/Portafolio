@@ -1,0 +1,17 @@
+{% load static %}
+<article class="catalog-card" data-catalog-card data-category="{{ project.category }}" data-technologies="{{ project.tech_list|join:'|'|lower }}" aria-labelledby="catalog-project-{{ project.pk }}">
+  <a class="catalog-media" href="{% url 'project_detail' project.slug %}" tabindex="-1" aria-hidden="true">
+    {% if project.image %}<img src="{{ project.image.url }}" alt="" loading="lazy" decoding="async" width="640" height="360" onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';">
+    {% elif project.static_image_path %}<img src="{% static project.static_image_path %}" alt="" loading="lazy" decoding="async" width="640" height="360" onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';">
+    {% else %}<div class="catalog-placeholder" aria-hidden="true">{{ project.title|first }}</div>{% endif %}
+    <span class="catalog-category">{% if project.category == 'academic' %}Académico{% elif project.category == 'professional' %}Profesional{% elif project.category == 'engineering' %}Ingeniería{% else %}Personal{% endif %}</span>
+  </a>
+  <div class="catalog-card-body">
+    <h3 id="catalog-project-{{ project.pk }}"><a href="{% url 'project_detail' project.slug %}">{{ project.title }}</a></h3>
+    <p>{{ project.short_description|default:project.description }}</p>
+    {% if project.tech_list %}<ul class="catalog-tags" aria-label="Tecnologías">{% for technology in project.tech_list %}<li>{{ technology }}</li>{% endfor %}</ul>{% endif %}
+    <div class="catalog-card-actions"><a class="btn btn-outline" href="{% url 'project_detail' project.slug %}" data-modal-url="{% url 'project_modal' project.slug %}">Ver caso de estudio <span aria-hidden="true">↗</span></a>
+      <div class="catalog-external-links">{% if project.live_url %}<a href="{% url 'analytics:outbound_event' 'demo_click' project.slug %}" target="_blank" rel="noopener">Demo ↗</a>{% endif %}{% if project.github_url %}<a href="{% url 'analytics:outbound_event' 'github_click' project.slug %}" target="_blank" rel="noopener">Código ↗</a>{% endif %}</div>
+    </div>
+  </div>
+</article>

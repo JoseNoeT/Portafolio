@@ -55,3 +55,10 @@ font-family: var(--font-family-body);
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* Descriptive reading blocks; headings keep their independent alignment. */
+:is(.section-desc,.split-section__text,.text-body,.case-prose,.case-lead,.hero-subtitle,.hero-page__subtitle,.feature-card__text,.cta-band__text,.method-section__text,.catalog-method p,.catalog-contact > p) {
+  line-height: 1.7 !important;
+  max-width: 70ch !important;
+  text-align: left !important;
+}

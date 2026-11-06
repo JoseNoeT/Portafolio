@@ -1,0 +1,28 @@
+/* SVG monogram stays proportional; only HTML lettering is expanded. */
+.navbar .nav-logo { width: 76px; height: 48px; flex-shrink: 0; gap: 0; overflow: visible; }
+.navbar-brand-image {
+  display: block; width: 76px; flex-shrink: 0; aspect-ratio: 1081 / 677;
+  background: url("../../../img/logo/jmnt-dark.svg") center / contain no-repeat;
+}
+:root[data-theme="light"] .navbar-brand-image { background-image: url("../../../img/logo/jmnt-light.svg"); }
+.navbar-identity { display: none; }
+@media (min-width: 1200px) {
+  .navbar .nav-logo { width: 370px; gap: 14px; }
+  .navbar-identity {
+    display: grid; align-content: center; gap: 4px; width: 280px;
+    box-sizing: border-box; padding-left: 14px; border-left: 1px solid var(--navbar-border);
+    text-transform: uppercase; white-space: nowrap; line-height: 1.15;
+  }
+  .navbar-identity__line {
+    display: block; width: calc(100% / 1.12); transform: scaleX(1.12); transform-origin: left center;
+  }
+  .navbar-identity__name { font-size: 15px; font-weight: 800; letter-spacing: .015em; color: #f8fbff; }
+  .navbar-identity__name > span, .navbar-identity__profession { color: var(--color-accent-primary); }
+  .navbar-identity__profession { font-size: 9px; font-weight: 600; letter-spacing: .035em; }
+  .navbar-identity__education { font-size: 9px; font-weight: 500; color: var(--color-text-secondary); }
+  :root[data-theme="light"] .navbar-identity__name { color: #081d38; }
+}
+@media (max-width: 1024px) {
+  .navbar .nav-logo { width: 64px; height: 42px; }
+  .navbar-brand-image { width: 64px; }
+}

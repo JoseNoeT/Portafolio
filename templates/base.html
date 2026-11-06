@@ -19,22 +19,24 @@
 
     <link rel="icon" type="image/png" href="{% static 'img/logo1.png' %}">
 
-    <!-- TYPOGRAPHY: DM Sans for headings + Inter for interface/body -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {% include "partials/fonts.html" %}
 
     <!-- FRONTEND LAYERS: foundation -> layout -> components -> shared responsive -->
-    <link rel="stylesheet" href="{% static 'css/layers/01-foundation.css' %}?v=6.0">
+    <link rel="stylesheet" href="{% static 'css/layers/01-foundation.css' %}?v=6.2">
     <link rel="stylesheet" href="{% static 'css/layers/02-layout.css' %}?v=6.0">
     <link rel="stylesheet" href="{% static 'css/layers/03-components.css' %}?v=6.0">
     <link rel="stylesheet" href="{% static 'css/layers/04-responsive.css' %}?v=6.0">
     <link rel="stylesheet" href="{% static 'css/layout/navbar/09-mobile-drawer.css' %}?v=4">
 
+    <link rel="stylesheet" href="{% static 'css/layout/navbar/10-logo.css' %}?v=6">
+
+    <link rel="stylesheet" href="{% static 'css/layout/navbar/11-polish.css' %}?v=5">
+
     <!-- PAGE SPECIFIC CSS -->
     {% block extra_css %}{% endblock %}
-    <link rel="stylesheet" href="{% static 'css/base/light-theme-fixes.css' %}?v=2">
+    <link rel="stylesheet" href="{% static 'css/base/light-theme-fixes.css' %}?v=6">
 
+    <link rel="stylesheet" href="{% static 'css/components/sections/09-heading-system.css' %}?v=2">
 </head>
 
 <body class="{% block body_class %}{% endblock %}">
@@ -48,15 +50,13 @@
 
             <!-- LOGO -->
             <div class="nav-left">
-                <a href="{% url 'home' %}" class="nav-logo navbar-brand" aria-label="Inicio - Jose Noe">
-                    <img
-                        src="{% static 'img/logo4.webp' %}"
-                        alt="Jose Noe"
-                        class="navbar-logo img-card"
-                        loading="eager"
-                        decoding="async"
-                        fetchpriority="high"
-                    >
+                <a href="{% url 'home' %}" class="nav-logo navbar-brand" aria-label="José Miguel Noe Torres, inicio">
+                    <span class="navbar-brand-image" aria-hidden="true"></span>
+                    <span class="navbar-identity">
+                        <span class="navbar-identity__line navbar-identity__name">José Miguel <span>Noe Torres</span></span>
+                        <span class="navbar-identity__line navbar-identity__profession">Analista Programador Computacional</span>
+                        <span class="navbar-identity__line navbar-identity__education">Estudiante de Ingeniería en Informática</span>
+                    </span>
                 </a>
             </div>
 
@@ -143,6 +143,7 @@
 
     <script src="{% static 'js/base.js' %}?v=2" defer></script>
     <script src="{% static 'js/hero-system.js' %}" defer></script>
+    <script src="{% static 'js/components/navbar-active.js' %}?v=1" defer></script>
 
     {% if APP_DEBUG %}
     <script src="{% static 'js/dev/debug-images.js' %}" defer></script>

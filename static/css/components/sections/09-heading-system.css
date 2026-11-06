@@ -1,0 +1,31 @@
+/* Shared section headings only: never card, form, or technical body titles. */
+.section-header { text-align: center !important; margin-inline: auto !important; }
+.section-title { text-align: center !important; margin-inline: auto !important; position: relative; }
+.section-header :is(.section-eyebrow,.case-eyebrow), .section-label { text-align: center; margin-inline: auto !important; }
+.section-desc, .section-header > .split-section__text { margin-inline: auto !important; }
+.section-title::after {
+  content: "" !important; display: block !important; position: static !important;
+  width: 52px !important; height: 2px !important; margin: 12px auto 0 !important;
+  border: 0 !important; border-radius: 2px; background: var(--color-accent-primary) !important;
+  box-shadow: none !important; opacity: .75; transform: none !important;
+}
+/* Override old reveal states only for shared headings; readable without JS. */
+.section-header > :is(.section-eyebrow,.section-desc,.split-section__text), .section-desc, .section-label {
+  opacity: 1 !important; visibility: visible !important; transform: none;
+}
+.section-title { opacity: 1; visibility: visible; transform: none; }
+.section-title .title-word { opacity: 1 !important; transform: none !important; animation: none !important; }
+@media (prefers-reduced-motion: no-preference) {
+  .section-title:not(.title-reveal), .section-title.words-visible { animation: section-heading-enter 450ms ease-out both; }
+}
+@keyframes section-heading-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-title, .section-title::after, .section-title .title-word { animation: none !important; transition: none !important; transform: none !important; }
+}
+/* Heading groups inside editorial layouts retain their allotted column width. */
+.case-section-heading.section-header, .catalog-heading > .section-header, .catalog-method > .section-header { max-width: none; width: 100%; margin-bottom: 0; }
+.catalog-heading { display: grid; grid-template-columns: minmax(0,1fr); justify-items: center; }
+.catalog-heading .catalog-count { text-align: center; }

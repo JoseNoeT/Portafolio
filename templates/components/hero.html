@@ -1,4 +1,6 @@
-<section class="hero hero-page hero--enhanced" role="banner" aria-label="{{ title|default:'Hero de página' }}">
+{% load static %}
+{% if hero_class %}<link rel="stylesheet" href="{% static 'css/components/hero-page/10-image-backgrounds.css' %}?v=4">{% endif %}
+<section class="hero hero-page hero--enhanced{% if hero_class %} hero--jmnt-background {{ hero_class }}{% endif %}" role="banner" aria-label="{{ title|default:'Hero de página' }}">
     <div class="hero-page__overlay" aria-hidden="true"></div>
 
     <div class="hero-page__panel">

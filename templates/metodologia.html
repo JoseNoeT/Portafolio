@@ -9,7 +9,7 @@
 
 
 {% block hero %}
-{% include "components/hero.html" with eyebrow="Metodología" title="Una forma de trabajo enfocada en claridad, estructura y evolución del proyecto" subtitle="Me interesa abordar cada proyecto entendiendo primero su necesidad real. A partir de eso, organizo la solución, defino una base clara y avanzo de forma ordenada para construir resultados más funcionales, mantenibles y preparados para crecer." %}
+{% include "components/hero.html" with hero_class="hero--methodology" eyebrow="Metodología" title="Una forma de trabajo enfocada en claridad, estructura y evolución del proyecto" subtitle="Me interesa abordar cada proyecto entendiendo primero su necesidad real. A partir de eso, organizo la solución, defino una base clara y avanzo de forma ordenada para construir resultados más funcionales, mantenibles y preparados para crecer." %}
 {% endblock %}
 
 {% block content %}
@@ -22,8 +22,8 @@
       <div class="method-split__inner">
 
         <div class="method-split__content">
-          <p class="method-eyebrow">Análisis</p>
-          <h2 class="method-section__title">Más que desarrollar, busco dar forma a una solución bien pensada</h2>
+          <p class="method-eyebrow section-label">Análisis</p>
+          <h2 class="method-section__title section-title">Más que desarrollar, busco dar forma a una solución bien pensada</h2>
           <p class="method-section__text">Antes de escribir código, necesito entender qué problema debe resolver el proyecto. Esa claridad permite ordenar la información, definir prioridades y construir sobre una base técnica más coherente.</p>
           <p class="method-section__text">Mi objetivo es que cada decisión tenga sentido: desde la estructura inicial hasta la implementación final.</p>
         </div>
@@ -42,10 +42,10 @@
   <section class="method-section method-phases">
     <div class="container">
 
-      <header class="method-section__header">
-        <p class="method-eyebrow">Proceso</p>
-        <h2 class="method-section__title">Fases de trabajo</h2>
-        <p class="method-section__lead">Trabajo por etapas para mantener claridad, reducir improvisación y avanzar con una base técnica más sólida.</p>
+      <header class="method-section__header section-header">
+        <p class="method-eyebrow section-label">Proceso</p>
+        <h2 class="method-section__title section-title">Fases de trabajo</h2>
+        <p class="method-section__lead section-desc">Trabajo por etapas para mantener claridad, reducir improvisación y avanzar con una base técnica más sólida.</p>
       </header>
 
       <div class="method-phases__grid">
@@ -97,8 +97,8 @@
       <div class="method-split__inner">
 
         <div class="method-split__content">
-          <p class="method-eyebrow">Valor aportado</p>
-          <h2 class="method-section__title">Por qué esta forma de trabajo aporta valor</h2>
+          <p class="method-eyebrow section-label">Valor aportado</p>
+          <h2 class="method-section__title section-title">Por qué esta forma de trabajo aporta valor</h2>
           <p class="method-section__text">Trabajar con estructura desde el inicio ayuda a reducir confusión, mejorar la claridad técnica y facilitar que el proyecto pueda mantenerse o crecer. Para un equipo, esto significa una base más comprensible. Para un cliente, una solución más clara y confiable.</p>
 
           <div class="method-benefits">
@@ -131,9 +131,9 @@
   <section class="method-section method-recruiter">
     <div class="container">
 
-      <header class="method-section__header method-section__header--center">
-        <p class="method-eyebrow">Para reclutadores</p>
-        <h2 class="method-section__title">Qué demuestra esta metodología</h2>
+      <header class="method-section__header method-section__header--center section-header">
+        <p class="method-eyebrow section-label">Para reclutadores</p>
+        <h2 class="method-section__title section-title">Qué demuestra esta metodología</h2>
       </header>
 
       <div class="method-recruiter-grid">
@@ -168,8 +168,8 @@
   <section class="method-section method-cta">
     <div class="container">
       <div class="method-cta__band">
-        <h2 class="method-cta__title">¿Quieres ver cómo esta forma de trabajo se refleja en proyectos reales?</h2>
-        <p class="method-cta__text">Puedes revisar mis proyectos para ver cómo aplico esta lógica en la práctica, o escribirme directamente si quieres conversar sobre una idea o necesidad concreta.</p>
+        <h2 class="method-cta__title section-title">¿Quieres ver cómo esta forma de trabajo se refleja en proyectos reales?</h2>
+        <p class="method-cta__text section-desc">Puedes revisar mis proyectos para ver cómo aplico esta lógica en la práctica, o escribirme directamente si quieres conversar sobre una idea o necesidad concreta.</p>
         <div class="method-cta__actions">
           <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver proyectos</a>
           <a href="{% url 'contact' %}" class="btn btn-outline">Contactar</a>

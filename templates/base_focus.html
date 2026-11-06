@@ -13,9 +13,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Portafolio - Jose Noe{% endblock %}</title>
 
+        {% include "partials/fonts.html" %}
+
         <!-- BASE SYSTEM -->
-        <link rel="stylesheet" href="{% static 'css/base/design-tokens.css' %}">
-        <link rel="stylesheet" href="{% static 'css/base/typography.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base/design-tokens.css' %}?v=6.2">
+        <link rel="stylesheet" href="{% static 'css/base/typography.css' %}?v=6.1">
         <link rel="stylesheet" href="{% static 'css/base/global.css' %}">
 
         <!-- LAYOUT -->
@@ -26,6 +28,7 @@
         <link rel="stylesheet" href="{% static 'css/components/sections.css' %}">
 
         {% block extra_css %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/components/sections/09-heading-system.css' %}?v=2">
 </head>
 <body class="focused-layout">
 

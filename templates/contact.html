@@ -9,7 +9,7 @@
 
 
 {% block hero %}
-{% include "components/hero.html" with eyebrow="Contacto" title="Conversemos sobre una oportunidad, una colaboración o una idea de proyecto" subtitle="Si quieres contactarme por una oportunidad laboral, una colaboración o una necesidad relacionada con desarrollo web, aquí tienes una forma clara de hacerlo." %}
+{% include "components/hero.html" with hero_class="hero--contact" eyebrow="Contacto" title="Conversemos sobre una oportunidad, una colaboración o una idea de proyecto" subtitle="Si quieres contactarme por una oportunidad laboral, una colaboración o una necesidad relacionada con desarrollo web, aquí tienes una forma clara de hacerlo." %}
 {% endblock %}
 
 {% block content %}
@@ -109,8 +109,8 @@
     <div class="container">
         <div class="split-section">
             <div class="split-section__content">
-                <h2 class="split-section__title reveal">Canales de contacto</h2>
-                <p class="split-section__text reveal">Puedes escribirme por los medios disponibles aquí. La idea es facilitar un contacto directo, claro y alineado con el tipo de oportunidad o proyecto.</p>
+                <h2 class="split-section__title section-title reveal">Canales de contacto</h2>
+                <p class="split-section__text section-desc reveal">Puedes escribirme por los medios disponibles aquí. La idea es facilitar un contacto directo, claro y alineado con el tipo de oportunidad o proyecto.</p>
 
                 <div class="feature-card reveal" style="margin-top:8px">
                     <p class="feature-card__text"><strong>Correo:</strong> <a href="{% url 'analytics:contact_outbound_event' 'email_click' %}">{{ contact_email }}</a></p>
