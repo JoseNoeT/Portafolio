@@ -1,5 +1,5 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/layout/footer/07-auth.css' %}?v=1">
+{% if not bundled_footer_css %}<link rel="stylesheet" href="{% static 'css/layout/footer/07-auth.css' %}?v=1">{% endif %}
 <footer class="footer footer-v2">
   <div class="footer-watermark" aria-hidden="true">JOSÉ NOE</div>
 

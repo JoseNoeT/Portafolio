@@ -10,6 +10,28 @@ from core.models import ContactMessage, SiteSettings
 from projects.forms import ProjectForm
 
 
+class HomeCSSIntegrationTests(TestCase):
+    def test_home_bundles_preserve_vendor_order_without_footer_duplicate(self):
+        response = self.client.get(reverse('home'))
+        self.assertEqual(response.status_code, 200)
+        html = response.content.decode()
+        base = html.index('css/generated/home-base.css')
+        vendor = html.index('id="swiper-css"')
+        page = html.index('css/generated/home-page.css')
+        self.assertLess(base, vendor)
+        self.assertLess(vendor, page)
+        self.assertEqual(html.count('rel="stylesheet"'), 4)
+        self.assertNotIn('css/layout/footer/07-auth.css', html)
+        self.assertNotIn('css/pages/home.bundle.css', html)
+
+    def test_contact_keeps_original_shared_stylesheets(self):
+        response = self.client.get(reverse('contact'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'css/layers/01-foundation.css')
+        self.assertContains(response, 'css/layout/footer/07-auth.css')
+        self.assertNotContains(response, 'css/generated/')
+
+
 class SiteSettingsModelTests(TestCase):
 	def test_get_solo_creates_or_returns_single_row(self):
 		first = SiteSettings.get_solo()

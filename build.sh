@@ -3,6 +3,7 @@ set -euo pipefail
 
 # Install dependencies, collect static files and run migrations.
 pip install --no-cache-dir -r requirements.txt
+python scripts/build_home_css.py
 # Clear existing collected static files before collecting to avoid stale manifest issues
 python manage.py collectstatic --noinput --clear
 # Run migrations (do not hide errors; fail build if migrations fail).

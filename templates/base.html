@@ -21,6 +21,7 @@
 
     {% include "partials/fonts.html" %}
 
+    {% block stylesheets %}
     <!-- FRONTEND LAYERS: foundation -> layout -> components -> shared responsive -->
     <link rel="stylesheet" href="{% static 'css/layers/01-foundation.css' %}?v=6.2">
     <link rel="stylesheet" href="{% static 'css/layers/02-layout.css' %}?v=6.0">
@@ -37,6 +38,7 @@
     <link rel="stylesheet" href="{% static 'css/base/light-theme-fixes.css' %}?v=7">
 
     <link rel="stylesheet" href="{% static 'css/components/sections/09-heading-system.css' %}?v=2">
+    {% endblock %}
 </head>
 
 <body class="{% block body_class %}{% endblock %}">

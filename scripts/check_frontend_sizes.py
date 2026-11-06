@@ -23,6 +23,9 @@ def files(scope: str):
         if not root.exists():
             continue
         for path in root.rglob("*"):
+            # Line limits apply to authored modules, not generated concatenations.
+            if path.parent == ROOT / "static" / "css" / "generated":
+                continue
             if path.is_file() and path.suffix in EXTENSIONS[scope]:
                 yield path
 

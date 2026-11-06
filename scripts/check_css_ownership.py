@@ -47,6 +47,9 @@ def allowed(path: Path, owner_dir: str) -> bool:
 def main() -> int:
     violations = []
     for path in CSS.rglob("*.css"):
+        # Generated Home bundles are validated against canonical sources by --check.
+        if path.parent == CSS / "generated":
+            continue
         text = path.read_text(encoding="utf-8", errors="replace")
         for owner, (pattern, owner_dir) in OWNERS.items():
             if pattern.search(text) and not allowed(path, owner_dir):
