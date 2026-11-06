@@ -198,7 +198,11 @@ class ProjectAdminCRUDTests(TestCase):
 
         content = resp_detail.content.decode()
         self.assertIn(proj.image.url, content)
-        self.assertEqual(content.count(proj.image.url), 2)
+        # The dialog image is populated by detail-image.js only when opened.
+        self.assertEqual(content.count(proj.image.url), 1)
+        self.assertIn('data-case-image', content)
+        self.assertIn('id="image-modal"', content)
+        self.assertIn('js/projects-page/detail-image.js', content)
         self.assertNotIn(static(proj.static_image_path), content)
 
     def test_detail_uses_static_fallback_when_no_uploaded_image_exists(self):
@@ -215,4 +219,8 @@ class ProjectAdminCRUDTests(TestCase):
 
         content = resp_detail.content.decode()
         self.assertIn(static(proj.static_image_path), content)
-        self.assertEqual(content.count(static(proj.static_image_path)), 2)
+        # The static fallback appears once; the same image is reused in the dialog.
+        self.assertEqual(content.count(static(proj.static_image_path)), 1)
+        self.assertIn('data-case-image', content)
+        self.assertIn('id="image-modal"', content)
+        self.assertIn('js/projects-page/detail-image.js', content)
