@@ -193,42 +193,11 @@
             {{ pages_per_session }}
           </p>
 
-          {% if pages_per_session < 2 %}
-            <span class="analytics-card__level">
-              Exploración baja
-            </span>
-            <p class="analytics-card__help">
-              En promedio se revisan menos de 2 páginas por visita.
-              La mayoría de las visitas no profundiza mucho en el contenido.
-            </p>
-
-          {% elif pages_per_session < 3 %}
-            <span class="analytics-card__level">
-              Exploración moderada
-            </span>
-            <p class="analytics-card__help">
-              Los visitantes suelen revisar entre 2 y 3 páginas.
-              Existe interés por explorar más allá de una sola página.
-            </p>
-
-          {% elif pages_per_session < 4 %}
-            <span class="analytics-card__level">
-              Exploración buena
-            </span>
-            <p class="analytics-card__help">
-              Los visitantes recorren varias partes del portafolio
-              durante una misma visita.
-            </p>
-
-          {% else %}
-            <span class="analytics-card__level">
-              Exploración alta
-            </span>
-            <p class="analytics-card__help">
-              En promedio se exploran 4 o más páginas por visita.
-              Los visitantes están recorriendo varias partes del portafolio.
-            </p>
-          {% endif %}
+          <span class="analytics-card__level">Páginas vistas por sesión</span>
+          <p class="analytics-card__help">
+            Promedio de páginas vistas por sesión durante los últimos 7 días.
+            Incluye visitas repetidas; no mide interés ni páginas únicas.
+          </p>
         </article>
 
       </div>

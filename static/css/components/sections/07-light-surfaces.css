@@ -7,7 +7,7 @@
 :root[data-theme="light"] :is(#projects,#services,.closing-cta,.projects-section,.projects-controls,.services-offer) { background-color: var(--color-bg-secondary) !important; }
 :root[data-theme="light"] :is(#methodology,#about.profile-v2,.section-shell--alt,.method-value,.method-recruiter) { background-color: var(--color-bg-alt) !important; }
 :root[data-theme="light"] :is(#projects,#methodology,[data-lazy-bg],.closing-cta,.projects-section,.projects-controls,.services-offer) { background-image: none !important; }
-:root[data-theme="light"] :is(.hero-story,.hero-page__panel,.panorama-card,.panorama-card__body,.feature-card,.profile-v2__intro,.profile-v2__card,.profile-v2__closing,.closing-cta__panel,.methodology-step,.methodology-slider__viewport,.methodology-story-card,.services-carousel__card,.services-carousel__body,.project-card,.card-body) {
+:root[data-theme="light"] :is(.hero-story,.hero-page__panel,.panorama-card,.panorama-card__body,.feature-card,.profile-v2__intro,.profile-v2__card,.profile-v2__closing,.closing-cta__panel,.methodology-step,.methodology-slider__viewport,.methodology-story-card,.services-carousel__card,.services-carousel__body,.services-approach__step,.services-cta__band,.project-card,.card-body) {
   background: var(--light-surface) !important;
   border-color: var(--light-border) !important;
   box-shadow: var(--light-shadow) !important;
@@ -21,7 +21,7 @@
 :root[data-theme="light"] .hero-canvas { opacity: .12; }
 :root[data-theme="light"] .swiper-slide .panorama-card { opacity: 1; filter: none; }
 :root[data-theme="light"] .panorama-card__body { opacity: 1 !important; }
-:root[data-theme="light"] :is(.hero-tag,.hero-eyebrow,.theme-toggle-pill,.feature-card__tags span,.profile-v2__label,.filter-pill,.chip) {
+:root[data-theme="light"] :is(.hero-tag,.hero-eyebrow,.theme-toggle-pill,.feature-card__tags span,.profile-v2__label,.filter-pill,.chip,.closing-cta__status,.footer-stack span) {
   background: var(--color-bg-alt) !important; border-color: var(--light-border) !important;
 }
 :root[data-theme="light"] .footer-v2 { background: var(--color-bg-secondary); border-color: var(--light-border); box-shadow: var(--light-shadow); color: var(--color-body); }
@@ -36,7 +36,7 @@
 :root[data-theme="light"] body { background: var(--color-bg-primary); color: var(--color-body); }
 :root[data-theme="light"] .feature-card__icon { color: var(--color-text-accent) !important; background: var(--color-bg-alt) !important; border-color: var(--light-border) !important; }
 
-:root[data-theme="light"] :is(.method-phase-card,.method-benefit-card,.method-recruiter-card,.method-cta__band,.methodology-story-card__step) {
+:root[data-theme="light"] :is(.method-phase-card,.method-benefit-card,.method-recruiter__card,.method-cta__band,.methodology-story-card__step) {
   background: var(--light-surface) !important; border-color: var(--light-border) !important; box-shadow: var(--light-shadow);
 }
 :root[data-theme="light"] :is(.method-value,.method-recruiter) { background: var(--color-bg-alt); }

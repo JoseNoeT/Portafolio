@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Metodología - Jose Noe{% endblock %}
+{% block title %}Metodología | José Miguel Noe Torres{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/pages/metodologia.css' %}">
@@ -9,7 +9,7 @@
 
 
 {% block hero %}
-{% include "components/hero.html" with hero_class="hero--methodology" eyebrow="Metodología" title="Una forma de trabajo enfocada en claridad, estructura y evolución del proyecto" subtitle="Me interesa abordar cada proyecto entendiendo primero su necesidad real. A partir de eso, organizo la solución, defino una base clara y avanzo de forma ordenada para construir resultados más funcionales, mantenibles y preparados para crecer." %}
+{% include "components/hero.html" with hero_class="hero--methodology" eyebrow="Metodología" title="Del análisis a la implementación y revisión" subtitle="Organizo el trabajo por etapas: comprender la necesidad, definir el alcance, desarrollar y comprobar el funcionamiento." %}
 {% endblock %}
 
 {% block content %}
@@ -23,9 +23,9 @@
 
         <div class="method-split__content">
           <p class="method-eyebrow section-label">Análisis</p>
-          <h2 class="method-section__title section-title">Más que desarrollar, busco dar forma a una solución bien pensada</h2>
-          <p class="method-section__text">Antes de escribir código, necesito entender qué problema debe resolver el proyecto. Esa claridad permite ordenar la información, definir prioridades y construir sobre una base técnica más coherente.</p>
-          <p class="method-section__text">Mi objetivo es que cada decisión tenga sentido: desde la estructura inicial hasta la implementación final.</p>
+          <h2 class="method-section__title section-title">Definir el problema y el alcance</h2>
+          <p class="method-section__text">Reviso la necesidad, los usuarios, los datos y las restricciones del sistema para identificar funcionalidades y prioridades.</p>
+          <p class="method-section__text">El análisis permite delimitar el trabajo y establecer qué se comprobará al revisar la implementación.</p>
         </div>
 
         <div class="method-split__visual">
@@ -45,7 +45,7 @@
       <header class="method-section__header section-header">
         <p class="method-eyebrow section-label">Proceso</p>
         <h2 class="method-section__title section-title">Fases de trabajo</h2>
-        <p class="method-section__lead section-desc">Trabajo por etapas para mantener claridad, reducir improvisación y avanzar con una base técnica más sólida.</p>
+        <p class="method-section__lead section-desc">Cada etapa se vincula con una actividad concreta y un resultado que puede revisarse.</p>
       </header>
 
       <div class="method-phases__grid">
@@ -55,28 +55,28 @@
             <span class="method-phase-card__number" aria-hidden="true">1</span>
             <div class="method-phase-card__body">
               <h3 class="method-phase-card__title">Entender la necesidad</h3>
-              <p class="method-phase-card__text">Identifico qué necesita realmente el proyecto, qué problema busca resolver y qué base requiere para avanzar.</p>
+              <p class="method-phase-card__text">Identifico usuarios, necesidades y restricciones. El resultado es una definición de requisitos y prioridades.</p>
             </div>
           </li>
           <li class="method-phase-card">
             <span class="method-phase-card__number" aria-hidden="true">2</span>
             <div class="method-phase-card__body">
-              <h3 class="method-phase-card__title">Ordenar la solución</h3>
-              <p class="method-phase-card__text">Defino una estructura inicial para organizar información, funcionalidades y lógica del sistema.</p>
+              <h3 class="method-phase-card__title">Diseñar la solución</h3>
+              <p class="method-phase-card__text">Organizo los componentes, los datos y las tareas. El resultado es una propuesta de implementación ajustada al alcance.</p>
             </div>
           </li>
           <li class="method-phase-card">
             <span class="method-phase-card__number" aria-hidden="true">3</span>
             <div class="method-phase-card__body">
-              <h3 class="method-phase-card__title">Desarrollar con criterio</h3>
-              <p class="method-phase-card__text">Implemento procurando claridad en el código, coherencia técnica y enfoque en el objetivo real.</p>
+              <h3 class="method-phase-card__title">Implementar funcionalidades</h3>
+              <p class="method-phase-card__text">Implemento las funcionalidades acordadas. El resultado son cambios de código que pueden revisarse y probarse.</p>
             </div>
           </li>
           <li class="method-phase-card">
             <span class="method-phase-card__number" aria-hidden="true">4</span>
             <div class="method-phase-card__body">
-              <h3 class="method-phase-card__title">Revisar y mejorar</h3>
-              <p class="method-phase-card__text">Evalúo lo construido, detecto ajustes y dejo una base más consistente para crecer.</p>
+              <h3 class="method-phase-card__title">Comprobar y documentar</h3>
+              <p class="method-phase-card__text">Compruebo el funcionamiento frente a los requisitos y registro los ajustes o limitaciones identificados.</p>
             </div>
           </li>
         </ol>
@@ -99,12 +99,12 @@
         <div class="method-split__content">
           <p class="method-eyebrow section-label">Valor aportado</p>
           <h2 class="method-section__title section-title">Por qué esta forma de trabajo aporta valor</h2>
-          <p class="method-section__text">Trabajar con estructura desde el inicio ayuda a reducir confusión, mejorar la claridad técnica y facilitar que el proyecto pueda mantenerse o crecer. Para un equipo, esto significa una base más comprensible. Para un cliente, una solución más clara y confiable.</p>
+          <p class="method-section__text">Definir requisitos, revisar cambios y registrar limitaciones facilita que el equipo o el cliente comprenda qué se implementó y qué queda pendiente.</p>
 
           <div class="method-benefits">
             <article class="method-benefit-card">
-              <strong class="method-benefit-card__title">Menos improvisación</strong>
-              <p class="method-benefit-card__text">Cada paso tiene una intención definida desde el inicio.</p>
+              <strong class="method-benefit-card__title">Prioridades definidas</strong>
+              <p class="method-benefit-card__text">Las tareas se relacionan con requisitos y un alcance acordado.</p>
             </article>
             <article class="method-benefit-card">
               <strong class="method-benefit-card__title">Mejor mantenimiento</strong>
@@ -112,7 +112,7 @@
             </article>
             <article class="method-benefit-card">
               <strong class="method-benefit-card__title">Mayor claridad técnica</strong>
-              <p class="method-benefit-card__text">El código refleja decisiones razonadas, no soluciones improvisadas.</p>
+              <p class="method-benefit-card__text">Las decisiones y limitaciones relevantes se explican junto con los cambios.</p>
             </article>
           </div>
         </div>
@@ -133,14 +133,14 @@
 
       <header class="method-section__header method-section__header--center section-header">
         <p class="method-eyebrow section-label">Para reclutadores</p>
-        <h2 class="method-section__title section-title">Qué demuestra esta metodología</h2>
+        <h2 class="method-section__title section-title">Competencias que orientan mi trabajo</h2>
       </header>
 
       <div class="method-recruiter-grid">
         <article class="method-recruiter__card">
           <span class="method-recruiter__number">01</span>
           <h3 class="method-recruiter__title">Capacidad para analizar antes de ejecutar</h3>
-          <p class="method-recruiter__text">No me lanzo a escribir código sin entender el problema real. Prefiero dedicar tiempo a comprender antes de construir.</p>
+          <p class="method-recruiter__text">Analizo la necesidad y las restricciones antes de definir las tareas de desarrollo.</p>
         </article>
         <article class="method-recruiter__card">
           <span class="method-recruiter__number">02</span>
@@ -150,16 +150,16 @@
         <article class="method-recruiter__card">
           <span class="method-recruiter__number">03</span>
           <h3 class="method-recruiter__title">Criterio técnico para construir y mantener</h3>
-          <p class="method-recruiter__text">Busco que lo que construyo pueda leerse, modificarse y crecer. No solo que funcione en el momento.</p>
+          <p class="method-recruiter__text">Reviso la organización del código y la información necesaria para comprender y mantener los cambios.</p>
         </article>
         <article class="method-recruiter__card">
           <span class="method-recruiter__number">04</span>
           <h3 class="method-recruiter__title">Mentalidad de mejora continua</h3>
-          <p class="method-recruiter__text">Reviso lo hecho, aprendo de lo que no funcionó y aplico eso al siguiente paso. El proceso no termina con la entrega.</p>
+          <p class="method-recruiter__text">Reviso errores y dificultades para identificar ajustes y aplicar lo aprendido en las siguientes tareas.</p>
         </article>
       </div>
 
-      <p class="method-recruiter__footer">Esta forma de trabajo busca mostrar no solo herramientas, sino criterio profesional para participar en proyectos reales.</p>
+      <p class="method-recruiter__footer">Los proyectos permiten consultar las evidencias disponibles de la aplicación de este enfoque.</p>
 
     </div>
   </section>
@@ -168,8 +168,8 @@
   <section class="method-section method-cta">
     <div class="container">
       <div class="method-cta__band">
-        <h2 class="method-cta__title section-title">¿Quieres ver cómo esta forma de trabajo se refleja en proyectos reales?</h2>
-        <p class="method-cta__text section-desc">Puedes revisar mis proyectos para ver cómo aplico esta lógica en la práctica, o escribirme directamente si quieres conversar sobre una idea o necesidad concreta.</p>
+        <h2 class="method-cta__title section-title">Consulta los proyectos y sus evidencias</h2>
+        <p class="method-cta__text section-desc">Revisa las tecnologías y funcionalidades documentadas, o escríbeme para conversar sobre una necesidad de desarrollo.</p>
         <div class="method-cta__actions">
           <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver proyectos</a>
           <a href="{% url 'contact' %}" class="btn btn-outline">Contactar</a>

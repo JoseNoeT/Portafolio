@@ -33,6 +33,8 @@ def env_int(name: str, default: int) -> int:
 
 
 DEBUG = env_bool('DEBUG', True)
+# Explicit opt-in for local analytics; production defaults to enabled.
+ANALYTICS_ENABLED = env_bool('ANALYTICS_ENABLED', not DEBUG)
 
 # Keep local development simple, but require explicit key when DEBUG=False.
 default_dev_secret = 'dev-only-secret-key-change-me-before-production-2026'

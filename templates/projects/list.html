@@ -7,12 +7,12 @@
 <link rel="stylesheet" href="{% static 'css/pages/projects-catalog.css' %}?v=2">
 {% endblock %}
 {% block hero %}
-{% include "components/hero.html" with hero_class="hero--projects" eyebrow="Proyectos" title="Lo que he construido" subtitle="Aplicaciones, integraciones y herramientas: explora qué problema aborda cada proyecto y cómo lo resolví." %}
+{% include "components/hero.html" with hero_class="hero--projects" eyebrow="Proyectos" title="Proyectos de desarrollo de software" subtitle="Consulta las tecnologías, funcionalidades y evidencias disponibles. Los prototipos y desarrollos en curso se identifican cuando su estado está documentado." %}
 {% endblock %}
 {% block content %}
 <section class="catalog" id="catalog" aria-labelledby="catalog-title">
   <div class="catalog-heading">
-    <div class="section-header"><span class="section-eyebrow">Trabajo aplicado</span><h2 id="catalog-title" class="section-title">Cada proyecto, una solución concreta</h2></div>
+    <div class="section-header"><span class="section-eyebrow">Trabajo aplicado</span><h2 id="catalog-title" class="section-title">Desarrollo aplicado en proyectos</h2></div>
     <p class="catalog-count" data-catalog-count role="status" aria-live="polite">{{ projects|length }} proyectos</p>
   </div>
   {% if projects %}
@@ -35,11 +35,11 @@
   {% else %}<p class="catalog-empty">Pronto encontrarás aquí nuevos proyectos y sus casos de estudio.</p>{% endif %}
 </section>
 <section class="catalog-method" aria-labelledby="catalog-method-title">
-  <div class="section-header"><span class="section-eyebrow">Detrás de cada proyecto</span><h2 id="catalog-method-title" class="section-title">Del problema a las decisiones técnicas</h2><p>En cada caso de estudio puedes conocer la solución y sus tecnologías. Mi metodología explica cómo organizo el análisis, el desarrollo y la mejora.</p></div>
+  <div class="section-header"><span class="section-eyebrow">Detrás de cada proyecto</span><h2 id="catalog-method-title" class="section-title">Del problema a las decisiones técnicas</h2><p>Cada detalle presenta la información y las evidencias disponibles del proyecto. Consulta mi metodología para conocer cómo organizo el análisis, el desarrollo y la revisión.</p></div>
   <a class="btn btn-outline" href="{% url 'metodologia' %}">Conocer mi metodología <span aria-hidden="true">→</span></a>
 </section>
 <section class="catalog-contact" aria-labelledby="catalog-contact-title">
-  <span class="section-eyebrow">Conversemos</span><h2 id="catalog-contact-title" class="section-title">¿Tienes una oportunidad o un proyecto en mente?</h2><p>Cuéntame qué necesitas y veamos cómo puedo aportar.</p>
+  <span class="section-eyebrow">Conversemos</span><h2 id="catalog-contact-title" class="section-title">¿Tienes una oportunidad o un proyecto en mente?</h2><p>Contáctame para una oportunidad laboral o describe tu necesidad de desarrollo de software.</p>
   <div class="catalog-contact-actions"><a class="btn btn-primary" href="{% url 'contact' %}">Contactar</a>{% if cv_url %}<a class="btn btn-outline" href="{{ cv_url }}" download="CV_Jose_Noe.pdf">Descargar CV</a>{% endif %}</div>
 </section>
 <dialog class="pm-dialog" id="project-modal" aria-labelledby="project-modal-title"><div class="pm-dialog__inner" id="project-modal-content"><div class="pm-loading" aria-label="Cargando"><span class="pm-spinner"></span></div></div></dialog>

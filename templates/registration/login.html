@@ -4,7 +4,7 @@
 {% block title %}Iniciar sesión | Jose Noe{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/pages/login.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/login.css' %}?v=2">
 {% endblock %}
 
 {% block content %}
@@ -18,7 +18,7 @@
       </div>
 
       {% if form.errors %}
-      <div class="login-error">
+      <div class="login-error" role="alert">
         <p>Usuario o contraseña incorrectos. Intenta de nuevo.</p>
       </div>
       {% endif %}
@@ -32,6 +32,7 @@
             type="text"
             name="username"
             id="id_username"
+            value="{{ form.username.value|default_if_none:'' }}"
             autofocus
             autocapitalize="none"
             autocomplete="username"

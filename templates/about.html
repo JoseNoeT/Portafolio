@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Sobre mí - Jose Noe{% endblock %}
+{% block title %}Sobre mí | José Miguel Noe Torres{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/pages/about.css' %}?v=2">
@@ -11,7 +11,7 @@
 {% block body_class %}about-editorial-page{% endblock %}
 
 {% block hero %}
-{% with about_title="Un perfil técnico en crecimiento, con foco en proyectos reales" about_subtitle="Soy Jose Noe, Analista Programador titulado y estudiante de Ingeniería en Informática. Estoy construyendo mi camino en desarrollo web con foco en backend, estructura de sistemas y soluciones funcionales pensadas para necesidades reales." %}
+{% with about_title="Formación y experiencia aplicada al desarrollo de software" about_subtitle="Soy José Miguel Noe Torres, Analista Programador Computacional titulado y estudiante de Ingeniería en Informática. Mi formación, práctica profesional y proyectos combinan programación, bases de datos e integración de sistemas." %}
 {% include "components/hero.html" with hero_class="hero--about" eyebrow="Sobre mí" title=about_title subtitle=about_subtitle %}
 <section class="about-editorial-hero hero--jmnt-background" aria-labelledby="about-editorial-title">
     <header class="section-header">
@@ -34,10 +34,8 @@
 <section class="section-shell about-learning">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title reveal">Una base construida con aprendizaje, orden y criterio técnico</h2>
-            <p class="section-desc reveal">
-                Me interesa seguir desarrollándome en proyectos donde la tecnología no solo se implemente, sino que también tenga una base clara, lógica y preparada para evolucionar.
-            </p>
+            <h2 class="section-title reveal">Responsabilidad, organización y aprendizaje</h2>
+            <p class="section-desc reveal">La formación académica y la experiencia aplicada se complementan con una forma de trabajo organizada y el compromiso con las responsabilidades asumidas.</p>
         </div>
 
         <div class="feature-grid">
@@ -46,23 +44,23 @@
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 </div>
                 <h3 class="feature-card__title">Aprendizaje continuo</h3>
-                <p class="feature-card__text">Me interesa crecer en proyectos que me permitan fortalecer criterio técnico, comprensión de sistemas y capacidad de ejecución.</p>
+                <p class="feature-card__text">Continúo mis estudios de Ingeniería en Informática y relaciono el aprendizaje con los problemas que encuentro al desarrollar aplicaciones.</p>
             </article>
 
             <article class="feature-card reveal">
                 <div class="feature-card__icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
                 </div>
-                <h3 class="feature-card__title">Orden y claridad</h3>
-                <p class="feature-card__text">Valoro avanzar por etapas, organizar bien la solución y trabajar sobre una base técnica que tenga coherencia.</p>
+                <h3 class="feature-card__title">Organización del trabajo</h3>
+                <p class="feature-card__text">Organizo las tareas por etapas y prioridades para mantener el seguimiento del trabajo y revisar los avances.</p>
             </article>
 
             <article class="feature-card reveal">
                 <div class="feature-card__icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L9 18l-5-5"/></svg>
                 </div>
-                <h3 class="feature-card__title">Compromiso con proyectos reales</h3>
-                <p class="feature-card__text">Me motiva participar en soluciones que respondan a necesidades concretas y aporten valor de forma funcional y profesional.</p>
+                <h3 class="feature-card__title">Responsabilidad y compromiso</h3>
+                <p class="feature-card__text">Asumo las tareas con responsabilidad y comunico los avances, las dificultades y los ajustes necesarios.</p>
             </article>
         </div>
     </div>
@@ -72,24 +70,22 @@
 <section class="section-shell section-shell--alt about-value">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title reveal">Qué tipo de valor busco aportar</h2>
-            <p class="section-desc reveal">
-                Me interesa aportar en proyectos que necesiten más estructura, mejor base funcional y una ejecución técnica más ordenada.
-            </p>
+            <h2 class="section-title reveal">Experiencia aplicada al desarrollo</h2>
+            <p class="section-desc reveal">La práctica profesional y mis proyectos me han permitido trabajar con sistemas existentes, desarrollar funcionalidades e integrar datos.</p>
         </div>
 
         <ol class="step-list">
             <li class="step-list__item reveal">
-                <span class="step-list__title">Interés por backend y lógica funcional</span>
-                <span class="step-list__text">Me atrae trabajar en la parte del proyecto donde la estructura, la lógica y el funcionamiento técnico hacen una diferencia real.</span>
+                <span class="step-list__title">Desarrollo backend y lógica de negocio</span>
+                <span class="step-list__text">Aplico programación y bases de datos para implementar funcionalidades y organizar la información de las aplicaciones.</span>
             </li>
             <li class="step-list__item reveal">
                 <span class="step-list__title">Capacidad de adaptación</span>
-                <span class="step-list__text">Busco integrarme a contextos distintos, aprender rápido y aportar con una mirada ordenada según la necesidad del proyecto.</span>
+                <span class="step-list__text">Reviso las herramientas y el funcionamiento de cada sistema antes de intervenir en sus componentes.</span>
             </li>
             <li class="step-list__item reveal">
-                <span class="step-list__title">Ejecución con criterio</span>
-                <span class="step-list__text">Me interesa que lo que se construya tenga sentido técnico, sea mantenible y pueda crecer con una base más sólida.</span>
+                <span class="step-list__title">Revisión y mantenimiento</span>
+                <span class="step-list__text">Reviso el funcionamiento de los cambios y documento la información necesaria para comprenderlos y mantenerlos.</span>
             </li>
         </ol>
     </div>
@@ -99,10 +95,8 @@
 <section class="section-shell about-stack">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title reveal">Hacia dónde quiero seguir creciendo</h2>
-            <p class="section-desc reveal">
-                Quiero seguir participando en proyectos donde pueda combinar desarrollo, estructura y resolución de problemas, fortaleciendo una base profesional cada vez más sólida.
-            </p>
+            <h2 class="section-title reveal">Tecnologías y formación técnica</h2>
+            <p class="section-desc reveal">Estas tecnologías forman parte de mi entorno de formación y desarrollo. Su uso específico y el alcance implementado se describen en cada proyecto.</p>
         </div>
 
         <div class="tag-list" style="justify-content:center" aria-label="Tecnologías">
@@ -123,10 +117,8 @@
 <section class="section-shell section-shell--accent about-close">
     <div class="container">
         <div class="cta-band cta-band--accent">
-            <h2 class="cta-band__title reveal section-title">¿Quieres conocer mejor mi trabajo o ver cómo lo aplico en proyectos concretos?</h2>
-            <p class="cta-band__text reveal">
-                Puedes revisar mis proyectos para ver mi enfoque en la práctica, o escribirme directamente para conversar sobre una oportunidad o colaboración.
-            </p>
+            <h2 class="cta-band__title reveal section-title">Conoce mi trabajo aplicado</h2>
+            <p class="cta-band__text reveal">Consulta los proyectos y sus evidencias, o contáctame para conversar sobre una oportunidad laboral o un servicio de desarrollo.</p>
             <div class="cta-band__actions reveal">
                 <a class="btn btn-primary" href="{% url 'projects_list' %}">Ver proyectos</a>
                 <a class="btn btn-outline" href="{% url 'contact' %}">Contactar</a>

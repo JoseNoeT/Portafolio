@@ -82,14 +82,14 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
             visits_30_days = pageviews.filter(created_at__gte=thirty_days_ago).count()
 
             top_pages = list(
-                pageviews.values('path')
+                pageviews.filter(created_at__gte=seven_days_ago).values('path')
                 .annotate(total=Count('id'))
                 .order_by('-total')[:5]
             )
 
             try:
                 top_projects = list(
-                    ProjectView.objects.values('project__title')
+                    ProjectView.objects.filter(created_at__gte=seven_days_ago).values('project_id', 'project__title')
                     .annotate(total=Count('id'))
                     .order_by('-total')[:5]
                 )
@@ -98,7 +98,7 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
                 logger.exception('Failed to compute top_projects; continuing with empty list')
                 top_projects = []
 
-            latest_visits = pageviews.order_by('-created_at')[:10]
+            latest_visits = pageviews.filter(created_at__gte=seven_days_ago).order_by('-created_at')[:10]
         except Exception:
             # Any failure (missing tables, migrations not applied) should not
             # break the admin dashboard. Log and provide safe defaults.
@@ -185,20 +185,20 @@ def analytics_dashboard(request):
     )
 
     top_pages = list(
-        pageviews
+        recent_pageviews
         .values('path')
         .annotate(total=Count('id'))
         .order_by('-total')[:20]
     )
 
     top_projects = list(
-        ProjectView.objects
-        .values('project__title')
+        ProjectView.objects.filter(created_at__gte=seven_days_ago)
+        .values('project_id', 'project__title')
         .annotate(total=Count('id'))
         .order_by('-total')[:20]
     )
 
-    latest_visits = pageviews.order_by('-created_at')[:10]
+    latest_visits = pageviews.filter(created_at__gte=seven_days_ago).order_by('-created_at')[:10]
 
     recent_events = AnalyticsEvent.objects.filter(
         created_at__gte=seven_days_ago
@@ -218,6 +218,7 @@ def analytics_dashboard(request):
         recent_events
         .exclude(session_hash__isnull=True)
         .exclude(session_hash='')
+        .filter(session_hash__in=recent_pageviews.values('session_hash'))
         .values('session_hash')
         .distinct()
         .count()

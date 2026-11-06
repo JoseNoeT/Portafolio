@@ -1,7 +1,8 @@
 from unittest.mock import patch
 
+from django.contrib.auth import get_user_model
 from django.core import mail
-from django.test import TestCase, override_settings
+from django.test import Client, TestCase, override_settings
 from django.urls import reverse
 
 from core.forms import SiteSettingsForm
@@ -115,3 +116,72 @@ class ContactViewTests(TestCase):
 		self.assertEqual(response.status_code, 200)
 		self.assertContains(response, 'No fue posible enviar tu mensaje en este momento')
 		self.assertEqual(ContactMessage.objects.count(), 1)
+
+
+class AdminAccessFlowTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.superuser = get_user_model().objects.create_superuser(
+            username='access_test_admin', email='admin@example.test', password='test-only-password'
+        )
+        cls.regular = get_user_model().objects.create_user(
+            username='access_test_regular', password='test-only-password'
+        )
+
+    def login_with_csrf(self, client, username, **extra):
+        client.get(reverse('login'))
+        return client.post(reverse('login'), {
+            'username': username, 'password': 'test-only-password',
+            'csrfmiddlewaretoken': client.cookies['csrftoken'].value, **extra,
+        })
+
+    def test_anonymous_footer_exposes_login_not_dashboard(self):
+        response = self.client.get(reverse('home'))
+        self.assertContains(response, reverse('login') + '?next=' + reverse('dashboard'))
+        self.assertContains(response, 'Acceso administrativo')
+        self.assertNotContains(response, 'id="navbar-admin"')
+        response = self.client.get(reverse('dashboard'))
+        self.assertRedirects(response, reverse('login') + '?next=' + reverse('dashboard'))
+
+    def test_superuser_login_reaches_dashboard_and_exposes_controls(self):
+        client = Client(enforce_csrf_checks=True)
+        response = self.login_with_csrf(client, self.superuser.username)
+        self.assertRedirects(response, reverse('dashboard'))
+        home = client.get(reverse('home'))
+        self.assertContains(home, 'id="navbar-admin"')
+        self.assertContains(home, 'class="nav-cta-mobile"')
+        self.assertContains(home, 'Cerrar sesión')
+        self.assertNotContains(home, 'Acceso administrativo')
+
+    def test_nonstaff_cannot_access_dashboard_or_staff_links(self):
+        self.client.force_login(self.regular)
+        self.assertEqual(self.client.get(reverse('dashboard')).status_code, 403)
+        self.assertNotContains(self.client.get(reverse('home')), 'id="navbar-admin"')
+
+    def test_logout_requires_post_and_csrf_then_removes_session(self):
+        client = Client(enforce_csrf_checks=True)
+        client.force_login(self.superuser)
+        self.assertEqual(client.get(reverse('logout')).status_code, 405)
+        self.assertEqual(client.post(reverse('logout')).status_code, 403)
+        client.get(reverse('home'))
+        response = client.post(reverse('logout'), {
+            'csrfmiddlewaretoken': client.cookies['csrftoken'].value,
+        })
+        self.assertRedirects(response, reverse('home'))
+        self.assertNotIn('_auth_user_id', client.session)
+        self.assertRedirects(client.get(reverse('dashboard')),
+                             reverse('login') + '?next=' + reverse('dashboard'))
+
+    def test_login_rejects_missing_csrf(self):
+        client = Client(enforce_csrf_checks=True)
+        response = client.post(reverse('login'), {
+            'username': self.superuser.username, 'password': 'test-only-password',
+        })
+        self.assertEqual(response.status_code, 403)
+        self.assertNotIn('_auth_user_id', client.session)
+
+    def test_login_does_not_redirect_to_external_next(self):
+        client = Client(enforce_csrf_checks=True)
+        response = self.login_with_csrf(client, self.superuser.username,
+                                       next='https://example.invalid/private')
+        self.assertRedirects(response, reverse('dashboard'))

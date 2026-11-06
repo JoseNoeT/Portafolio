@@ -11,7 +11,8 @@ from analytics.models import AnalyticsEvent
 from analytics.services import (
     get_request_identity,
     get_session_hash,
-    is_bot_request,
+    should_record_event,
+    sanitized_referrer,
 )
 
 from .forms import ContactForm
@@ -50,16 +51,7 @@ def contact(request):
 			)
 
 			# Registrar contacto v?lido recibido y almacenado.
-			user = getattr(request, 'user', None)
-
-			should_record_submit = not (
-			        (
-			                user
-			                and user.is_authenticated
-			                and user.is_staff
-			        )
-			        or is_bot_request(request)
-			)
+			should_record_submit = should_record_event(request)
 
 			if should_record_submit:
 			        (
@@ -76,13 +68,7 @@ def contact(request):
 			                event_type='contact_submit',
 			                path=request.path[:255],
 			                project=None,
-			                referrer=(
-			                        request.META.get(
-			                                'HTTP_REFERER',
-			                                '',
-			                        )
-			                        or ''
-			                )[:500],
+			                referrer=sanitized_referrer(request),
 			                ip_hash=ip_hash,
 			                user_agent_hash=user_agent_hash,
 			                visitor_hash=visitor_hash,
@@ -125,6 +111,7 @@ def contact(request):
 	context = {
 		'form': form,
 		'contact_email': destination_email,
+		'contact_phone': site_settings.contact_phone,
 		'contact_whatsapp': contact_whatsapp,
 		'whatsapp_url': whatsapp_url,
 	}

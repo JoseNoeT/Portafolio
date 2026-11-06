@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Contacto - Jose Noe{% endblock %}
+{% block title %}Contacto | José Miguel Noe Torres{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/pages/contact.css' %}">
@@ -9,7 +9,7 @@
 
 
 {% block hero %}
-{% include "components/hero.html" with hero_class="hero--contact" eyebrow="Contacto" title="Conversemos sobre una oportunidad, una colaboración o una idea de proyecto" subtitle="Si quieres contactarme por una oportunidad laboral, una colaboración o una necesidad relacionada con desarrollo web, aquí tienes una forma clara de hacerlo." %}
+{% include "components/hero.html" with hero_class="hero--contact" eyebrow="Contacto" title="Contacto profesional" subtitle="Para oportunidades laborales, indica el cargo y la modalidad. Para servicios de software, describe la necesidad, el estado del proyecto y el alcance previsto." %}
 {% endblock %}
 
 {% block content %}
@@ -76,7 +76,7 @@
 <section class="section-shell">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title reveal">¿En qué tipo de casos puedes escribirme?</h2>
+            <h2 class="section-title reveal">Oportunidades laborales y solicitudes de servicios</h2>
         </div>
         <div class="feature-grid">
             <div class="feature-card reveal">
@@ -84,21 +84,21 @@
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 1v6M8 1v6"/></svg>
                 </div>
                 <h3 class="feature-card__title">Oportunidades laborales</h3>
-                <p class="feature-card__text">Posiciones en desarrollo web, backend o equipos técnicos.</p>
+                <p class="feature-card__text">Indica el cargo, las responsabilidades, la organización y la modalidad de trabajo.</p>
             </div>
             <div class="feature-card reveal">
                 <div class="feature-card__icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h8"/><path d="M12 8v8"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
                 </div>
-                <h3 class="feature-card__title">Colaboración en proyectos</h3>
-                <p class="feature-card__text">Mejora o implementación de soluciones web existentes.</p>
+                <h3 class="feature-card__title">Servicios de desarrollo</h3>
+                <p class="feature-card__text">Describe el problema, la aplicación existente y las funcionalidades que necesitas desarrollar o mejorar.</p>
             </div>
             <div class="feature-card reveal">
                 <div class="feature-card__icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                 </div>
-                <h3 class="feature-card__title">Consultas técnicas</h3>
-                <p class="feature-card__text">Backend, estructura de sistemas o desarrollo funcional.</p>
+                <h3 class="feature-card__title">Información del proyecto</h3>
+                <p class="feature-card__text">Incluye objetivos, restricciones y plazos previstos para evaluar la solicitud.</p>
             </div>
         </div>
     </div>
@@ -110,7 +110,7 @@
         <div class="split-section">
             <div class="split-section__content">
                 <h2 class="split-section__title section-title reveal">Canales de contacto</h2>
-                <p class="split-section__text section-desc reveal">Puedes escribirme por los medios disponibles aquí. La idea es facilitar un contacto directo, claro y alineado con el tipo de oportunidad o proyecto.</p>
+                <p class="split-section__text section-desc reveal">Utiliza el formulario o los canales disponibles para consultas laborales y solicitudes de servicios.</p>
 
                 <div class="feature-card reveal" style="margin-top:8px">
                     <p class="feature-card__text"><strong>Correo:</strong> <a href="{% url 'analytics:contact_outbound_event' 'email_click' %}">{{ contact_email }}</a></p>
@@ -145,17 +145,17 @@
     <div class="container">
         <div class="section-header">
             <h2 class="section-title reveal">Disponibilidad</h2>
-            <p class="section-desc reveal">Actualmente estoy abierto a oportunidades donde pueda aportar con desarrollo web, backend y soluciones estructuradas. Si me escribes por un motivo claro, podré responder con mayor contexto y rapidez.</p>
+            <p class="section-desc reveal">Estoy disponible para conversar sobre oportunidades laborales y servicios independientes de desarrollo de software. La información de tu consulta permitirá evaluar su alcance.</p>
         </div>
 
         <div class="cta-band">
-            <h3 class="cta-band__title reveal">¿Prefieres conocer primero mi trabajo antes de escribirme?</h3>
-            <p class="cta-band__text reveal">Puedes revisar mis proyectos para entender mejor mi enfoque y luego contactarme con más contexto sobre tu oportunidad o necesidad.</p>
+            <h3 class="cta-band__title reveal">Consulta mi trabajo antes de contactar</h3>
+            <p class="cta-band__text reveal">Los proyectos reúnen descripciones, tecnologías y evidencias disponibles para conocer mi trabajo.</p>
             <div class="cta-band__actions reveal">
                 <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver proyectos</a>
                 <a href="{% url 'home' %}" class="btn btn-ghost">Volver al inicio</a>
             </div>
-            <p class="section-desc reveal" style="margin-top:16px;font-size:0.85rem;">Tiempo estimado de respuesta: 24 a 48 horas hábiles.</p>
+            <p class="section-desc reveal" style="margin-top:16px;font-size:0.85rem;">La respuesta se enviará al correo indicado en el formulario.</p>
         </div>
     </div>
 </section>

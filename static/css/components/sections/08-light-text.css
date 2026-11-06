@@ -3,7 +3,7 @@
   color: var(--color-body) !important;
   text-shadow: none !important;
 }
-:root[data-theme="light"] :is(.section-title,.split-section__title,.hero-page__title,.closing-cta__title,.feature-card__title,.services-offer__title,.services-carousel__title,.card-title) {
+:root[data-theme="light"] :is(.section-title,.split-section__title,.hero-page__title,.closing-cta__title,.feature-card__title,.services-offer__title,.services-carousel__title,.method-benefit-card__title,.card-title) {
   color: var(--color-heading) !important; text-shadow: none !important;
 }
 :root[data-theme="light"] :is(.section-title,.split-section__title,.hero-page__title,.closing-cta__title,.feature-card__title,.profile-v2__card h3) > span:not(.title-word) {
@@ -14,7 +14,7 @@
   color: var(--color-text-accent) !important; text-shadow: none !important;
 }
 :root[data-theme="light"] :is(.methodology-story-card__step h3,.methodology-story-card__step p) { color: var(--color-body) !important; }
-:root[data-theme="light"] .footer-v2 :is(h2,h3,p,a,strong,span) { color: var(--color-body); text-shadow: none; }
+:root[data-theme="light"] .footer-v2 :is(h2,h3,p,a,strong,span,small) { color: var(--color-body); text-shadow: none; }
 :root[data-theme="light"] .footer-v2 :is(h2,h3,.footer-status strong,.footer-role span) { color: var(--color-heading); }
 :root[data-theme="light"] .footer-watermark { opacity: .035; }
 :root[data-theme="light"] .navbar .nav-links ul li a::after,
@@ -29,3 +29,6 @@
 :root[data-theme="light"] :is(.method-benefit-card__text,.method-recruiter__footer,.method-cta__text) { color: var(--color-body); }
 
 :root[data-theme="light"] :is(.hero-story,.hero-page__panel,.feature-card,.profile-v2__intro,.profile-v2__card,.closing-cta__panel,.panorama-card__body,.methodology-step,.services-carousel__body,.card-body) :is(h1,h2,h3,strong) { color: var(--color-heading) !important; }
+
+/* Legacy first-letter color must follow the light heading color. */
+:root[data-theme="light"] #services .feature-card__title::first-letter { color: var(--color-heading); }

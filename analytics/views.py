@@ -5,7 +5,8 @@ from analytics.models import AnalyticsEvent
 from analytics.services import (
     get_request_identity,
     get_session_hash,
-    is_bot_request,
+    should_record_event,
+    sanitized_referrer,
 )
 from core.models import SiteSettings
 from projects.models import Project
@@ -25,20 +26,8 @@ ALLOWED_CONTACT_EVENTS = {
 }
 
 
-def _should_record_event(request):
-    user = getattr(request, 'user', None)
-
-    if user and user.is_authenticated and user.is_staff:
-        return False
-
-    if is_bot_request(request):
-        return False
-
-    return True
-
-
 def _record_event(request, event_type, project=None):
-    if not _should_record_event(request):
+    if not should_record_event(request):
         return
 
     ip_hash, user_agent_hash, visitor_hash = get_request_identity(
@@ -49,9 +38,9 @@ def _record_event(request, event_type, project=None):
 
     AnalyticsEvent.objects.create(
         event_type=event_type,
-        path=(request.META.get('HTTP_REFERER', '') or request.path)[:255],
+        path=(sanitized_referrer(request) or request.path)[:255],
         project=project,
-        referrer=(request.META.get('HTTP_REFERER', '') or '')[:500],
+        referrer=sanitized_referrer(request),
         ip_hash=ip_hash,
         user_agent_hash=user_agent_hash,
         visitor_hash=visitor_hash,
