@@ -17,43 +17,29 @@
     <meta name="description" content="Portafolio profesional de Jose Noe, desarrollador backend especializado en Django, APIs y arquitectura de software.">
     <meta name="author" content="Jose Noe">
 
-    <link rel="icon" type="image/png" href="{% static 'img/logo4.png' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/logo1.png' %}">
 
-    <!-- TYPOGRAPHY: DM Sans for headings + Inter for interface/body -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {% include "partials/fonts.html" %}
 
-    <!-- BASE SYSTEM -->
-    <link rel="stylesheet" href="{% static 'css/base/design-tokens.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base/typography.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base/global.css' %}">
+    <!-- FRONTEND LAYERS: foundation -> layout -> components -> shared responsive -->
+    <link rel="stylesheet" href="{% static 'css/layers/01-foundation.css' %}?v=6.2">
+    <link rel="stylesheet" href="{% static 'css/layers/02-layout.css' %}?v=6.0">
+    <link rel="stylesheet" href="{% static 'css/layers/03-components.css' %}?v=6.0">
+    <link rel="stylesheet" href="{% static 'css/layers/04-responsive.css' %}?v=6.0">
+    <link rel="stylesheet" href="{% static 'css/layout/navbar/09-mobile-drawer.css' %}?v=4">
 
-    <!-- LAYOUT -->
-    <link rel="stylesheet" href="{% static 'css/layout/layout.css' %}">
-    <link rel="stylesheet" href="{% static 'css/layout/navbar.css' %}?v=2.2">
-    <link rel="stylesheet" href="{% static 'css/layout/header.css' %}">
-    <link rel="stylesheet" href="{% static 'css/layout/footer.css' %}?v=2.1.1">
+    <link rel="stylesheet" href="{% static 'css/layout/navbar/10-logo.css' %}?v=6">
 
-    <!-- COMPONENTS -->
-    <link rel="stylesheet" href="{% static 'css/components/buttons.css' %}">
-    <link rel="stylesheet" href="{% static 'css/components/cards.css' %}">
-    <link rel="stylesheet" href="{% static 'css/components/forms.css' %}">
-    <link rel="stylesheet" href="{% static 'css/components/hero.css' %}?v=2.4">
-    <link rel="stylesheet" href="{% static 'css/components/motion.css' %}?v=1.0">
-    <link rel="stylesheet" href="{% static 'css/components/sections.css' %}">
-    <link rel="stylesheet" href="{% static 'css/components/glass.css' %}">
-    <link rel="stylesheet" href="{% static 'css/components/images.css' %}">
-
-    <!-- RESPONSIVE -->
-    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout/navbar/11-polish.css' %}?v=5">
 
     <!-- PAGE SPECIFIC CSS -->
     {% block extra_css %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/base/light-theme-fixes.css' %}?v=7">
 
+    <link rel="stylesheet" href="{% static 'css/components/sections/09-heading-system.css' %}?v=2">
 </head>
 
-<body>
+<body class="{% block body_class %}{% endblock %}">
 
     <!-- MOBILE NAV OVERLAY -->
     <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
@@ -64,18 +50,19 @@
 
             <!-- LOGO -->
             <div class="nav-left">
-                <a href="{% url 'home' %}" class="nav-logo navbar-brand" aria-label="Inicio - Jose Noe">
-                    <img
-                        src="{% static 'img/logo4.png' %}"
-                        alt="Jose Noe"
-                        class="navbar-logo img-card"
-                        loading="lazy"
-                    >
+                <a href="{% url 'home' %}" class="nav-logo navbar-brand" aria-label="José Miguel Noe Torres, inicio">
+                    <span class="navbar-brand-image" aria-hidden="true"></span>
+                    <span class="navbar-identity">
+                        <span class="navbar-identity__line navbar-identity__name">José Miguel <span>Noe Torres</span></span>
+                        <span class="navbar-identity__line navbar-identity__profession">Analista Programador Computacional</span>
+                        <span class="navbar-identity__line navbar-identity__education">Estudiante de Ingeniería en Informática</span>
+                    </span>
                 </a>
             </div>
 
             <!-- NAVIGATION -->
-            <nav class="nav-links" role="navigation" aria-label="Navegacion principal">
+            <nav class="nav-links" id="primary-navigation" role="navigation" aria-label="Navegación principal">
+                <div class="drawer-heading"><span>NAVEGACIÓN</span><strong>Explora mi portafolio</strong></div>
                 <ul>
                     <li><a href="{% url 'home' %}">Inicio</a></li>
                     <li><a href="{% url 'projects_list' %}">Proyectos</a></li>
@@ -84,6 +71,7 @@
                     <li><a href="{% url 'about' %}">Sobre mí</a></li>
                     <li><a href="{% url 'contact' %}">Contacto</a></li>
                 </ul>
+                <div class="drawer-contact"><a href="{% url 'contact' %}" class="btn btn-primary">Hablemos <span aria-hidden="true">→</span></a></div>
 
                 {% if user.is_authenticated and user.is_staff %}
                 <div class="nav-cta-mobile">
@@ -113,16 +101,10 @@
                 <div class="menu-btn-container">
                     <div class="menu-btn">
 
-                        <input
-                            type="checkbox"
-                            class="menu-checkbox"
-                            id="mobile-menu-toggle"
-                            aria-label="Toggle navigation menu"
-                        >
-
-                        <label for="mobile-menu-toggle" class="menu-label">
-                            <div class="menu-bar"></div>
-                        </label>
+                        <button type="button" id="mobile-menu-toggle" class="menu-label" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-navigation">
+                            <svg class="menu-icon menu-icon-grid" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="6.5" height="6.5" rx="1.2"/><rect x="14.5" y="3" width="6.5" height="6.5" rx="1.2"/><rect x="3" y="14.5" width="6.5" height="6.5" rx="1.2"/><rect x="14.5" y="14.5" width="6.5" height="6.5" rx="1.2"/></svg>
+                            <svg class="menu-icon menu-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg>
+                        </button>
 
                     </div>
                 </div>
@@ -150,11 +132,18 @@
 
     <!-- JAVASCRIPT -->
 
-    <script src="{% static 'js/animations/animations-core.js' %}" defer></script>
+    <script src="{% static 'js/animations/core-utils.js' %}" defer></script>
+    <script src="{% static 'js/animations/mobile-drawer.js' %}?v=3" defer></script>
+    <script src="{% static 'js/animations/filter-transition.js' %}" defer></script>
+    <script src="{% static 'js/animations/animations-core.js' %}?v=2" defer></script>
+    <script src="{% static 'js/animations/reveal-on-scroll.js' %}" defer></script>
+    <script src="{% static 'js/animations/animated-titles.js' %}" defer></script>
+    <script src="{% static 'js/animations/scroll-filter.js' %}" defer></script>
     <script src="{% static 'js/animations/scroll-animations.js' %}" defer></script>
 
-    <script src="{% static 'js/base.js' %}" defer></script>
+    <script src="{% static 'js/base.js' %}?v=2" defer></script>
     <script src="{% static 'js/hero-system.js' %}" defer></script>
+    <script src="{% static 'js/components/navbar-active.js' %}?v=1" defer></script>
 
     {% if APP_DEBUG %}
     <script src="{% static 'js/dev/debug-images.js' %}" defer></script>

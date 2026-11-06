@@ -1,0 +1,80 @@
+#projects,
+#methodology,
+#services,
+#about,
+.closing-cta {
+width: min(100%, var(--home-canvas-width));
+  margin-inline: auto;
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  box-shadow: none;
+}
+
+#methodology::after,
+#services::after,
+#about::after {
+display: none !important;
+}
+
+#projects > .container,
+#methodology > .container,
+#services > .container,
+#about > .container,
+.closing-cta > .container {
+width: 100% !important;
+  max-width: none !important;
+  padding-left: var(--home-gutter) !important;
+  padding-right: var(--home-gutter) !important;
+}
+
+#methodology,
+#services,
+#about,
+.closing-cta {
+margin-top: -1px;
+}
+
+#methodology::before,
+#services::before,
+#about.profile-v2::before,
+.closing-cta::before {
+background-repeat: no-repeat !important;
+}
+
+body {
+background-color: var(--home-canvas-bg);
+}
+
+@media (max-width: 1240px) {
+:root {
+--home-canvas-width: calc(100% - 32px);
+}
+}
+
+@media (max-width: 700px) {
+:root {
+--home-canvas-width: 100%;
+    --home-gutter: 18px;
+}
+}
+
+:root {
+--home-canvas-width: 1400px;
+}
+
+@media (max-width: 1440px) {
+:root {
+--home-canvas-width: calc(100% - 32px);
+}
+}
+
+@media (max-width: 700px) {
+:root {
+--home-canvas-width: 100%;
+}
+}
+
+:root {
+--home-canvas-radius: 28px;
+}

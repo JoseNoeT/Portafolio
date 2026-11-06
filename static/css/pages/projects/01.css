@@ -1,0 +1,83 @@
+/* static/css/pages/projects.css · module 01 */
+.chev {
+opacity: 0.9;
+}
+
+.projects-controls {
+padding: 10px 0 25px;
+}
+
+.filter-bar {
+display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-soft);
+  background: var(--color-surface-subtle);
+  color: var(--color-body);
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-pill:hover {
+transform: translateY(-1px);
+  background: var(--color-surface-subtle-hover);
+}
+
+.filter-pill.is-active {
+background: var(--color-accent-glass);
+  border-color: var(--color-border-accent);
+  color: var(--color-accent-primary);
+}
+
+.projects-section {
+padding: 30px 0 70px;
+}
+
+.projects-carousel {
+position: relative;
+  width: 100%;
+  padding: 0 52px 42px;
+}
+
+.projects-carousel__viewport {
+width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  touch-action: pan-y pinch-zoom;
+  cursor: grab;
+}
+
+.projects-carousel__viewport::-webkit-scrollbar {
+display: none;
+}
+
+.projects-carousel__viewport.is-dragging {
+cursor: grabbing;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
+.projects-grid {
+display: flex;
+  gap: 22px;
+  width: max-content;
+  min-width: 100%;
+}
+
+.projects-grid .project-card {
+flex: 0 0 clamp(280px, 31vw, 390px);
+  width: clamp(280px, 31vw, 390px);
+  scroll-snap-align: start;
+}

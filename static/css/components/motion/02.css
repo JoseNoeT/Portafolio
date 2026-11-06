@@ -1,0 +1,22 @@
+/* static/css/components/motion.css · module 02 */
+.btn:hover::after,
+.nav-primary-cta:hover::after,
+.footer-contact-cta:hover::after {
+opacity: 1;
+  filter: drop-shadow(0 0 5px rgba(56,189,248,.42));
+}
+
+.hero-card::after {
+opacity: .42;
+}
+
+@media (prefers-reduced-motion: reduce) {
+.btn::after,
+  .nav-primary-cta::after,
+  .hero-card::after,
+  .footer-status::after,
+  .footer-email::after,
+  .footer-contact-cta::after {
+animation: none !important;
+}
+}

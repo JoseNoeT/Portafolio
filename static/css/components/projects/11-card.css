@@ -1,0 +1,85 @@
+.panorama-card__body p,
+.swiper-slide:not(.swiper-slide-active) .panorama-card__body p {
+color: #d7e3f1;
+    opacity: 1;
+}
+
+.panorama-card__stack,
+.swiper-slide:not(.swiper-slide-active) .panorama-card__stack {
+color: #38bdf8;
+    opacity: 1;
+    font-weight: 700;
+    text-shadow: 0 0 12px rgba(56,189,248,0.18);
+}
+
+.panorama-card__category,
+.swiper-slide:not(.swiper-slide-active) .panorama-card__category {
+color: #eaf9ff;
+    opacity: 1;
+}
+
+.panorama-card .btn-outline,
+.swiper-slide:not(.swiper-slide-active) .panorama-card .btn-outline {
+color: #38bdf8;
+    opacity: 1;
+}
+
+.swiper-slide:not(.swiper-slide-active) .panorama-card {
+opacity: 0.78;
+    filter: saturate(0.82) brightness(0.84);
+}
+
+.swiper-slide:not(.swiper-slide-active) .panorama-card__body {
+filter: brightness(1.16);
+}
+
+@media (max-width: 1024px) {
+.projects-showcase .section-header {
+margin-bottom: 22px;
+}
+}
+
+@media (max-width: 1024px) {
+.portfolio-swiper {
+width: 100%;
+    overflow: hidden;
+}
+}
+
+@media (max-width: 1024px) {
+.project-slide {
+width: min(42vw, 360px);
+}
+}
+
+@media (max-width: 768px) {
+.projects-atmosphere .projects-tech {
+opacity: .35;
+    transform: scale(.82);
+}
+}
+
+@media (max-width: 768px) {
+.portfolio-swiper {
+padding-inline: 0;
+}
+}
+
+@media (max-width: 768px) {
+.project-slide {
+width: min(66vw, 255px) !important;
+    max-width: 255px;
+}
+}
+
+@media (max-width: 768px) {
+.panorama-card {
+min-height: 0;
+}
+}
+
+@media (max-width: 768px) {
+.panorama-card__media {
+height: 145px;
+}
+}

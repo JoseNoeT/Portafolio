@@ -1,0 +1,82 @@
+/* static/css/components/buttons.css · module 02 */
+.btn-outline:hover,
+.btn.btn-outline:hover {
+background: var(--color-accent-glass);
+  border-color: var(--color-border-accent-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px var(--color-accent-glow);
+}
+
+.btn-outline:active,
+.btn.btn-outline:active {
+transform: translateY(0);
+}
+
+.btn-ghost,
+.btn.btn-ghost {
+background: transparent;
+  color: var(--color-body);
+  border-color: var(--color-border-soft);
+  box-shadow: none;
+}
+
+.btn-ghost:hover,
+.btn.btn-ghost:hover {
+background: var(--color-surface-subtle);
+  color: var(--color-heading);
+  border-color: var(--color-border-soft);
+  transform: translateY(-1px);
+}
+
+.btn-ghost:active,
+.btn.btn-ghost:active {
+transform: translateY(0);
+  background: var(--color-surface-subtle-hover);
+}
+
+.btn-subtle,
+.btn.btn-subtle {
+background: transparent;
+  color: var(--color-accent-primary);
+  border-color: transparent;
+  padding-left: 4px;
+  padding-right: 4px;
+  box-shadow: none;
+}
+
+.btn-subtle:hover,
+.btn.btn-subtle:hover {
+color: var(--color-accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transform: none;
+}
+
+.btn-sm {
+padding: 8px 18px;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  gap: 6px;
+}
+
+.btn-lg {
+padding: 16px 36px;
+  font-size: 1.05rem;
+  border-radius: 20px;
+  gap: 10px;
+}
+
+.btn:focus-visible {
+outline: 2px solid var(--color-accent-primary);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px var(--color-focus-ring);
+}
+
+.btn[disabled],
+.btn.is-disabled {
+opacity: 0.45;
+  pointer-events: none;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}

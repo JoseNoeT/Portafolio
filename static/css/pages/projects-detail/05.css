@@ -1,0 +1,18 @@
+/* static/css/pages/projects-detail.css · module 05 */
+@media (max-width: 600px) {
+.cover-image {
+height: clamp(180px, 52vw, 300px);
+}
+}
+
+@media (max-width: 600px) {
+.detail-actions {
+flex-direction: column;
+}
+}
+
+.detail-main a:focus-visible,
+.detail-sidebar a:focus-visible {
+outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}

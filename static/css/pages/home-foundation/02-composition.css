@@ -1,0 +1,84 @@
+#methodology::after,
+#services::after,
+#about::after {
+content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(86%, 1180px);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(56, 189, 248, 0.12),
+    transparent
+  );
+  pointer-events: none;
+}
+
+:root {
+--home-page-bg: #030a19;
+  --home-page-bg-deep: #020713;
+  --home-page-cyan: #38bdf8;
+  --home-page-text: #f8fbff;
+  --home-page-muted: #c5d3e4;
+}
+
+.projects-showcase,
+#methodology,
+#services,
+#about,
+.section-shell--accent {
+background:
+    radial-gradient(circle at 50% 42%, rgba(14, 165, 233, 0.055), transparent 30%),
+    linear-gradient(180deg, var(--home-page-bg) 0%, var(--home-page-bg-deep) 100%);
+}
+
+#methodology .methodology-content,
+#services .section-header,
+#about .split-section__content,
+.section-shell--accent .cta-band {
+text-align: center;
+}
+
+#methodology .methodology-content .section-eyebrow,
+#services .section-eyebrow,
+#about .section-eyebrow,
+.section-shell--accent .section-eyebrow {
+margin-left: auto;
+  margin-right: auto;
+}
+
+#methodology .methodology-content .split-section__title,
+#services .section-title,
+#about .split-section__title,
+.section-shell--accent .cta-band__title {
+max-width: 24ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: var(--home-page-text);
+  font-size: clamp(1.75rem, 2.35vw, 2.55rem);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+#methodology .methodology-content .split-section__title::after,
+#services .section-title::after,
+#about .split-section__title::after,
+.section-shell--accent .cta-band__title::after {
+margin-left: auto;
+  margin-right: auto;
+}
+
+#methodology .methodology-content .split-section__text,
+#services .section-desc,
+#about .split-section__text,
+.section-shell--accent .cta-band__text {
+max-width: 64ch;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: var(--home-page-muted);
+}

@@ -1,0 +1,6 @@
+/* Canonical cta entrypoint. Ordered modules preserve cascade. */
+@import url("./closing-cta/01-section.css");
+@import url("./closing-cta/02-content.css");
+@import url("./closing-cta/03-motion.css");
+@import url("./closing-cta/04-section.css");
+@import url("./closing-cta/05-responsive.css");

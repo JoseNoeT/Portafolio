@@ -1,0 +1,71 @@
+/* static/css/layout/footer.css · module 06 */
+.footer-v2 .footer-social-icon {
+width: 30px;
+  height: 30px;
+  border-radius: 8px;
+}
+
+.footer-v2 .footer-social-icon svg {
+width: 18px;
+  height: 18px;
+}
+
+.footer-v2 .footer-social-link strong {
+font-size: .78rem;
+}
+
+.footer-v2 .footer-social-link small {
+font-size: .66rem;
+}
+
+.footer-v2 .footer-email {
+padding: 10px 12px;
+  font-size: .75rem;
+}
+
+.footer-v2 .footer-contact p {
+margin: 7px 0 10px;
+  font-size: .7rem;
+  line-height: 1.4;
+}
+
+.footer-v2 .footer-contact-cta {
+padding: 9px 12px;
+  font-size: .72rem;
+}
+
+.footer-v2 .footer-bottom {
+padding-top: 11px;
+  padding-bottom: 11px;
+  font-size: .66rem;
+}
+
+.footer-v2 .footer-top {
+font-size: .66rem;
+}
+
+@media (max-width: 900px) {
+.footer-v2 .footer-intro {
+grid-template-columns: 1fr;
+    gap: 16px;
+}
+}
+
+@media (max-width: 900px) {
+.footer-v2 .footer-grid {
+grid-template-columns: 1fr 1fr;
+}
+}
+
+@media (max-width: 620px) {
+.footer-v2 {
+padding: 28px 20px 0 !important;
+}
+}
+
+@media (max-width: 620px) {
+.footer-v2 .footer-grid {
+grid-template-columns: 1fr;
+    gap: 22px;
+}
+}

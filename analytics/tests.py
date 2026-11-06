@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AnonymousUser
-from django.test import RequestFactory, TestCase
+from django.test import RequestFactory, TestCase, override_settings
 from django.urls import reverse
 
 from analytics.models import PageView, ProjectView
@@ -8,6 +8,7 @@ from analytics.services import should_track_request, track_page_view
 from projects.models import Project
 
 
+@override_settings(ANALYTICS_ENABLED=True)
 class AnalyticsServicesTests(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
@@ -52,6 +53,7 @@ class AnalyticsServicesTests(TestCase):
         self.assertEqual(PageView.objects.count(), 1)
 
 
+@override_settings(ANALYTICS_ENABLED=True)
 class AnalyticsIntegrationTests(TestCase):
     def setUp(self):
         self.user_model = get_user_model()
@@ -121,6 +123,7 @@ def test_regular_browser_is_tracked(self):
         )
     )
     self.assertEqual(PageView.objects.count(), 1)
+@override_settings(ANALYTICS_ENABLED=True)
 class AnalyticsFilteringTests(TestCase):
     def test_robots_txt_is_not_tracked(self):
         self.client.get('/robots.txt')
@@ -143,6 +146,7 @@ class AnalyticsFilteringTests(TestCase):
         )
         self.assertEqual(PageView.objects.count(), 1)
 
+@override_settings(ANALYTICS_ENABLED=True)
 class AnalyticsStatusCodeTests(TestCase):
     def test_404_is_not_tracked(self):
         response = self.client.get(
@@ -153,6 +157,7 @@ class AnalyticsStatusCodeTests(TestCase):
         self.assertEqual(response.status_code, 404)
         self.assertEqual(PageView.objects.count(), 0)
 
+@override_settings(ANALYTICS_ENABLED=True)
 class AnalyticsSessionTests(TestCase):
     def test_same_visitor_keeps_same_visitor_hash(self):
         self.client.get(
@@ -220,6 +225,7 @@ from unittest.mock import patch
 from django.utils import timezone
 
 
+@override_settings(ANALYTICS_ENABLED=True)
 class AnalyticsSessionTimeoutTests(TestCase):
     def test_session_expires_after_30_minutes(self):
         start = timezone.now()

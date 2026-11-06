@@ -1,0 +1,78 @@
+@media (max-width: 480px) {
+.feature-card__text,
+.profile-v2__card p {
+font-size: .84rem;
+    line-height: 1.5;
+}
+}
+
+@media (max-width: 360px) {
+.section-title,
+.split-section__title,
+.cta-band__title {
+font-size: 1.58rem;
+}
+}
+
+@media (max-height: 520px) and (orientation: landscape) and (min-width: 700px) {
+.section-shell {
+min-height: auto !important;
+    padding-block: 28px !important;
+}
+}
+
+@media (hover: none), (pointer: coarse) {
+.btn,
+.nav-links a,
+.methodology-slider__dot,
+.swiper-pagination-bullet {
+min-height: 44px;
+}
+}
+
+@media (hover: none), (pointer: coarse) {
+.btn:hover,
+.feature-card:hover,
+.profile-v2__card:hover,
+.panorama-card:hover {
+transform: none !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology,
+#services,
+#about {
+min-height: calc(100svh - var(--navbar-height-mobile, 64px)) !important;
+    display: flex;
+    align-items: center;
+    padding-block: 26px !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology > .container,
+#services > .container,
+#about > .container {
+width: 100% !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-steps,
+#services .feature-grid,
+#about .profile-v2__grid {
+display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--home-gutter, 18px);
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 8px 12px !important;
+    margin-inline: calc(var(--home-gutter, 18px) * -0.35) !important;
+}
+}

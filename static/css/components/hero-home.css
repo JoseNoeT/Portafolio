@@ -1,0 +1,17 @@
+/* Canonical hero-home entrypoint. Ordered modules preserve cascade. */
+@import url("./hero-home/01-motion.css");
+@import url("./hero-home/02-shell.css");
+@import url("./hero-home/03-motion.css");
+@import url("./hero-home/04-story.css");
+@import url("./hero-home/05-responsive.css");
+@import url("./hero-home/06-responsive.css");
+@import url("./hero-home/07-shell.css");
+@import url("./hero-home/08-actions.css");
+@import url("./hero-home/09-actions.css");
+@import url("./hero-home/10-responsive.css");
+@import url("./hero-home/11-responsive.css");
+@import url("./hero-home/12-responsive.css");
+@import url("./hero-home/13-responsive.css");
+@import url("./hero-home/14-responsive.css");
+@import url("./hero-home/15-responsive.css");
+@import url("./hero-home/16-responsive.css");

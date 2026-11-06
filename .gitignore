@@ -47,3 +47,8 @@ dist/
 # Node
 node_modules/
 package-lock.json
+
+# Local visual checks, temporary files and logo backups
+/output/
+/tmp/
+/static/img/logo/backup*/

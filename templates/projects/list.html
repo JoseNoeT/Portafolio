@@ -1,202 +1,50 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block title %}Proyectos | Jose Noe{% endblock %}
-
+{% block title %}Proyectos de software | José Miguel Noe Torres{% endblock %}
+{% block body_class %}projects-page{% endblock %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/pages/projects.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/projects-catalog.css' %}?v=2">
 {% endblock %}
-
 {% block hero %}
-{% include "components/hero.html" with eyebrow="Proyectos" title="Proyectos que reflejan proceso y solución" subtitle="Selección de trabajos donde aplico desarrollo web, estructura y resolución de necesidades reales." %}
+{% include "components/hero.html" with hero_class="hero--projects" eyebrow="Proyectos" title="Proyectos de desarrollo de software" subtitle="Consulta las tecnologías, funcionalidades y evidencias disponibles. Los prototipos y desarrollos en curso se identifican cuando su estado está documentado." %}
 {% endblock %}
-
 {% block content %}
-
-
-
-
-<section class="projects-controls" id="projects-controls">
-  <div class="container">
-    <div class="filter-bar" role="tablist" aria-label="Filtros de proyectos">
-      <button class="filter-pill is-active" data-filter="all" type="button">Todos</button>
-      <button class="filter-pill" data-filter="backend" type="button">Backend</button>
-      <button class="filter-pill" data-filter="fullstack" type="button">Fullstack</button>
-      <button class="filter-pill" data-filter="django" type="button">Django</button>
-      <button class="filter-pill" data-filter="experimental" type="button">Experimental</button>
-    </div>
+<section class="catalog" id="catalog" aria-labelledby="catalog-title">
+  <div class="catalog-heading">
+    <div class="section-header"><span class="section-eyebrow">Trabajo aplicado</span><h2 id="catalog-title" class="section-title">Desarrollo aplicado en proyectos</h2></div>
+    <p class="catalog-count" data-catalog-count role="status" aria-live="polite">{{ projects|length }} proyectos</p>
   </div>
-</section>
-
-<section class="projects-section" id="projects-grid">
-  <div class="container">
-
-    {% if projects %}
-    <div class="projects-carousel" aria-label="Proyectos destacados">
-
-      <button
-        class="carousel-control carousel-control--prev"
-        type="button"
-        aria-label="Proyecto anterior"
-        data-carousel-prev
-      >
-        &#10094;
-      </button>
-
-      <div class="projects-carousel__viewport" data-carousel-viewport>
-        <div class="projects-grid" data-carousel-track>
-
-      {% for project in projects %}
-      <article class="project-card"
-               data-tags="{{ project.technologies|default:''|lower }}"
-               data-category="{{ project.category|default:'personal'|lower }}">
-
-        <div class="card-media">
-          {% if project.image %}
-            <img src="{{ project.image.url }}" alt="{{ project.title }}" onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';">
-          {% elif project.static_image_path %}
-            <img src="{% static project.static_image_path %}" alt="{{ project.title }}" onerror="this.onerror=null;this.src='{% static 'img/project-placeholder.svg' %}';">
-          {% else %}
-            <div class="media-placeholder" aria-hidden="true"></div>
-          {% endif %}
-        </div>
-
-        <div class="card-body">
-          <h3 class="card-title">{{ project.title }}</h3>
-          <p class="card-desc">{{ project.short_description|default:"Proyecto desarrollado con enfoque en calidad y mantenibilidad." }}</p>
-
-          {% if project.tech_list %}
-          <div class="chips" aria-label="Tecnologías">
-            {% for tech in project.tech_list %}
-              <span class="chip">{{ tech }}</span>
-            {% endfor %}
-          </div>
-          {% endif %}
-
-          <div class="card-meta">
-            <span class="meta-label">Tipo:</span>
-            <span class="meta-value">{{ project.get_category_display }}</span>
-          </div>
-
-          <div class="card-actions">
-            <a class="btn btn-outline btn-sm" href="{% url 'project_detail' project.slug %}" data-modal-url="{% url 'project_modal' project.slug %}">
-              Ver caso de estudio
-            </a>
-
-            {% if project.github_url %}
-            <a class="btn btn-ghost btn-sm" href="{% url 'analytics:outbound_event' 'github_click' project.slug %}" target="_blank" rel="noopener">
-              GitHub
-            </a>
-            {% endif %}
-
-            {% if project.live_url %}
-            <a class="btn btn-ghost btn-sm" href="{% url 'analytics:outbound_event' 'demo_click' project.slug %}" target="_blank" rel="noopener">
-              Demo
-            </a>
-            {% endif %}
-          </div>
-        </div>
-
-      </article>
-      {% endfor %}
-
-        </div>
-      </div>
-
-      <button
-        class="carousel-control carousel-control--next"
-        type="button"
-        aria-label="Proyecto siguiente"
-        data-carousel-next
-      >
-        &#10095;
-      </button>
-
-      <div
-        class="carousel-status"
-        data-carousel-status
-        aria-live="polite"
-      ></div>
-
-    </div>
-    {% else %}
-      <p class="no-projects">No hay proyectos publicados por el momento.</p>
-    {% endif %}
-
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="section-shell section-shell--alt">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title reveal">Cómo construyo soluciones</h2>
-    </div>
-
-    <div class="stats-row">
-      <div class="stat-item reveal">
-        <span class="stat-item__value">✓</span>
-        <span class="stat-item__label">Analizo el problema real</span>
-      </div>
-      <div class="stat-item reveal">
-        <span class="stat-item__value">⎔</span>
-        <span class="stat-item__label">Diseño la arquitectura</span>
-      </div>
-      <div class="stat-item reveal">
-        <span class="stat-item__value">▦</span>
-        <span class="stat-item__label">Desarrollo por fases</span>
-      </div>
-      <div class="stat-item reveal">
-        <span class="stat-item__value">📄</span>
-        <span class="stat-item__label">Documento todo</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TIMELINE -->
-<section class="section-shell">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title reveal">Línea de tiempo</h2>
-    </div>
-
-    <div class="timeline">
-      {% for project in projects %}
-      <div class="timeline-step reveal">
-        <span class="timeline-step__title">{{ project.title }}</span>
-        <span class="timeline-step__meta">{{ project.created_at|date:"Y" }}</span>
-      </div>
+  {% if projects %}
+  <div class="catalog-toolbar">
+    <div class="catalog-filters" role="group" aria-label="Tipo de proyecto">
+      <button type="button" class="catalog-filter is-active" data-category-filter="all" aria-pressed="true">Todos <span>{{ projects|length }}</span></button>
+      {% for category in project_categories %}
+      <button type="button" class="catalog-filter" data-category-filter="{{ category.value }}" aria-pressed="false">{{ category.label }} <span>{{ category.count }}</span></button>
       {% endfor %}
     </div>
+    <label class="catalog-tech">Tecnología<select id="catalog-technology"><option value="all">Todas las tecnologías</option>{% for technology in project_technologies %}<option value="{{ technology|lower }}">{{ technology }}</option>{% endfor %}</select></label>
+    <button type="button" class="catalog-reset" data-catalog-reset hidden>Limpiar filtros</button>
   </div>
+  <p class="catalog-swipe-hint">Desliza para explorar los proyectos <span aria-hidden="true">→</span></p>
+  <div class="catalog-grid" data-catalog-grid>
+    {% for project in projects %}{% include "projects/_catalog_card.html" %}{% endfor %}
+  </div>
+  <div class="catalog-empty" data-catalog-empty hidden><h3>No hay proyectos con esta combinación</h3><p>Prueba otra tecnología o vuelve a mostrar todos.</p><button type="button" class="btn btn-outline" data-catalog-reset>Ver todos los proyectos</button></div>
+  <div class="catalog-navigation" aria-label="Recorrer proyectos"><button type="button" aria-label="Proyecto anterior" data-catalog-prev>←</button><span data-catalog-position aria-live="polite"></span><button type="button" aria-label="Proyecto siguiente" data-catalog-next>→</button></div>
+  {% else %}<p class="catalog-empty">Pronto encontrarás aquí nuevos proyectos y sus casos de estudio.</p>{% endif %}
 </section>
-
-<!-- CTA -->
-<section class="section-shell section-shell--accent">
-  <div class="container">
-    <div class="cta-band cta-band--accent">
-      <h2 class="cta-band__title reveal">¿Interesado en trabajar conmigo?</h2>
-      <p class="cta-band__text reveal">Construyo software a medida, presencial o remoto, con enfoque profesional.</p>
-      <div class="cta-band__actions reveal">
-        <a class="btn btn-primary" href="{% url 'contact' %}">Contactar</a>
-      </div>
-    </div>
-  </div>
+<section class="catalog-method" aria-labelledby="catalog-method-title">
+  <div class="section-header"><span class="section-eyebrow">Detrás de cada proyecto</span><h2 id="catalog-method-title" class="section-title">Del problema a las decisiones técnicas</h2><p>Cada detalle presenta la información y las evidencias disponibles del proyecto. Consulta mi metodología para conocer cómo organizo el análisis, el desarrollo y la revisión.</p></div>
+  <a class="btn btn-outline" href="{% url 'metodologia' %}">Conocer mi metodología <span aria-hidden="true">→</span></a>
 </section>
-
-<!-- PROJECT MODAL -->
-<dialog class="pm-dialog" id="project-modal" aria-labelledby="project-modal-title">
-  <div class="pm-dialog__inner" id="project-modal-content">
-    <div class="pm-loading" aria-label="Cargando">
-      <span class="pm-spinner"></span>
-    </div>
-  </div>
-</dialog>
-
+<section class="catalog-contact" aria-labelledby="catalog-contact-title">
+  <span class="section-eyebrow">Conversemos</span><h2 id="catalog-contact-title" class="section-title">¿Tienes una oportunidad o un proyecto en mente?</h2><p>Contáctame para una oportunidad laboral o describe tu necesidad de desarrollo de software.</p>
+  <div class="catalog-contact-actions"><a class="btn btn-primary" href="{% url 'contact' %}">Contactar</a>{% if cv_url %}<a class="btn btn-outline" href="{{ cv_url }}" download="CV_Jose_Noe.pdf">Descargar CV</a>{% endif %}</div>
+</section>
+<dialog class="pm-dialog" id="project-modal" aria-labelledby="project-modal-title"><div class="pm-dialog__inner" id="project-modal-content"><div class="pm-loading" aria-label="Cargando"><span class="pm-spinner"></span></div></div></dialog>
 {% endblock %}
-
 {% block extra_js %}
-<script src="{% static 'js/projects.js' %}" defer></script>
-<script src="{% static 'js/project-modal.js' %}" defer></script>
+<script type="module" src="{% static 'js/projects-page/catalog.js' %}?v=1"></script>
+<script type="module" src="{% static 'js/project-modal.js' %}?v=2.0"></script>
 {% endblock %}

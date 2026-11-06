@@ -96,3 +96,12 @@
 .login-back:hover {
   color: var(--color-accent-primary);
 }
+
+/* Keep this existing form readable in both themes and narrow viewports. */
+.login-card { background: var(--color-bg-card); border-color: var(--color-border-soft); }
+.login-form input { width: 100%; min-width: 0; }
+:root[data-theme="light"] .login-error { color: #9f1239; background: #fff1f2; border-color: #fda4af; }
+@media (max-width: 480px) {
+  .login-section { padding-inline: 0; }
+  .login-card { padding: 24px 18px; }
+}

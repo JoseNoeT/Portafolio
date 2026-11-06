@@ -1,0 +1,15 @@
+@media (max-width: 480px) {
+.methodology-story-card {
+flex-basis: 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    padding-inline: 3px;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.methodology-story-mobile__track {
+transition: none !important;
+}
+}

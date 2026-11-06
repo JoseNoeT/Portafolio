@@ -1,0 +1,43 @@
+/* Opt-in only: Home never receives these modifiers or background assets. */
+.hero--jmnt-background {
+  --jmnt-wash-start: color-mix(in srgb, var(--color-bg-primary) 72%, transparent);
+  --jmnt-wash-end: color-mix(in srgb, var(--color-bg-primary) 48%, transparent);
+  background-image: linear-gradient(110deg,var(--jmnt-wash-start),var(--jmnt-wash-end)), var(--jmnt-hero-image) !important;
+  background-size: cover !important;
+  background-position: var(--jmnt-hero-position,50% 50%) !important;
+  background-repeat: no-repeat !important;
+}
+.hero--about { --jmnt-hero-image: url("../../../img/heroes/hero-about.webp"); --jmnt-hero-position: 52% 48%; }
+.hero--services { --jmnt-hero-image: url("../../../img/heroes/hero-services.webp"); --jmnt-hero-position: 55% 48%; }
+.hero--methodology { --jmnt-hero-image: url("../../../img/heroes/hero-methodology.webp"); --jmnt-hero-position: 52% 48%; }
+.hero--projects { --jmnt-hero-image: url("../../../img/heroes/hero-projects.webp"); --jmnt-hero-position: 55% 48%; }
+.hero--case-study { --jmnt-hero-image: url("../../../img/heroes/hero-case-study.webp"); --jmnt-hero-position: 55% 50%; }
+.hero--contact { --jmnt-hero-image: url("../../../img/heroes/hero-contact.webp"); --jmnt-hero-position: 60% 48%; }
+/* Replace only the old atmosphere layer; preserve panels and content layout. */
+.hero.hero--jmnt-background > .hero-page__overlay { background: transparent !important; }
+.hero.hero--jmnt-background::before,
+.hero.hero--jmnt-background > .hero-page__overlay::before,
+.hero.hero--jmnt-background > .hero-page__overlay::after { content: none; }
+.case-hero.hero--jmnt-background { --jmnt-wash-start: color-mix(in srgb,var(--color-bg-primary) 94%,transparent); --jmnt-wash-end: color-mix(in srgb,var(--color-bg-primary) 70%,transparent); }
+/* Theme-specific light photographs; dark assignments above are unchanged. */
+:root[data-theme="light"] .hero--jmnt-background {
+  --jmnt-wash-start: color-mix(in srgb,var(--color-bg-primary) 64%,transparent);
+  --jmnt-wash-end: color-mix(in srgb,var(--color-bg-primary) 32%,transparent);
+  background-color: var(--color-bg-primary);
+  background-image: linear-gradient(110deg,var(--jmnt-wash-start),var(--jmnt-wash-end)),var(--jmnt-light-image) !important;
+}
+:root[data-theme="light"] :is(.hero--about,.about-editorial-hero) { --jmnt-light-image: url("../../../img/heroes/light/hero-about-light.webp"); }
+:root[data-theme="light"] .hero--services { --jmnt-light-image: url("../../../img/heroes/light/hero-services-light.webp"); }
+:root[data-theme="light"] .hero--methodology { --jmnt-light-image: url("../../../img/heroes/light/hero-methodology-light.webp"); }
+:root[data-theme="light"] .hero--projects { --jmnt-light-image: url("../../../img/heroes/light/hero-projects-light.webp"); }
+:root[data-theme="light"] .hero--contact { --jmnt-light-image: url("../../../img/heroes/light/hero-contact-light.webp"); }
+:root[data-theme="light"] .hero--case-study { --jmnt-light-image: url("../../../img/heroes/light/hero-case-study-light.webp"); }
+:root[data-theme="light"] :is(.case-hero,.about-editorial-hero).hero--jmnt-background {
+  --jmnt-wash-start: color-mix(in srgb,var(--color-bg-primary) 92%,transparent);
+  --jmnt-wash-end: color-mix(in srgb,var(--color-bg-primary) 76%,transparent);
+}
+@media (max-width: 600px) {
+  .hero--jmnt-background { --jmnt-hero-position: 58% center; }
+  .hero--contact { --jmnt-hero-position: 65% center; }
+  .hero--case-study { --jmnt-hero-position: 60% center; }
+}

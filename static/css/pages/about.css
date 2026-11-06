@@ -13,3 +13,34 @@
     padding: 16px;
   }
 }
+
+/* Editorial prototype: only About's light presentation changes. */
+.about-editorial-hero { display: none; }
+:root[data-theme="light"] .about-editorial-page .hero--about { display: none; }
+:root[data-theme="light"] .about-editorial-page .about-editorial-hero {
+  display: block; box-sizing: border-box; max-width: 1180px; margin: 0 auto;
+  padding: calc(var(--navbar-height-mobile) + 28px) 20px 36px;
+}
+:root[data-theme="light"] .about-editorial-hero > .section-header { max-width: 900px; margin-bottom: 28px; }
+:root[data-theme="light"] .about-editorial-hero h1 { font-size: clamp(2rem,4vw,3.5rem); line-height: 1.12; text-wrap: balance; }
+:root[data-theme="light"] .about-editorial-hero__layout { display: grid; gap: 24px; align-items: center; }
+:root[data-theme="light"] .about-editorial-hero__intro { margin: 0; max-width: 70ch; font-size: 1.05rem; line-height: 1.7; color: var(--color-body); text-align: left; }
+:root[data-theme="light"] .about-editorial-hero__photo {
+  margin: 0; padding: 6px; min-width: 0; border: 1px solid var(--color-border-soft);
+  border-radius: 22px; background: var(--color-bg-card); box-shadow: 0 12px 28px rgba(16,35,63,.10);
+}
+:root[data-theme="light"] .about-editorial-hero__photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 16px; }
+:root[data-theme="light"] .about-editorial-page :is(.about-learning,.about-stack) { background: var(--color-bg-secondary); }
+:root[data-theme="light"] .about-editorial-page .about-learning { --light-shadow: 0 6px 18px rgba(16,35,63,.06); }
+:root[data-theme="light"] .about-editorial-page .about-close .cta-band {
+  --color-heading: #FFFFFF;
+  --color-body: #EAF1F8;
+  --color-border-soft: rgba(255,255,255,.18);
+  background: #10233F; border-color: var(--color-border-soft); box-shadow: 0 12px 28px rgba(16,35,63,.12);
+}
+@media (min-width: 800px) {
+  :root[data-theme="light"] .about-editorial-hero__layout { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 40px; }
+}
+@media (min-width: 1025px) {
+  :root[data-theme="light"] .about-editorial-page .about-editorial-hero { padding: calc(var(--navbar-height) + 32px) 28px 48px; }
+}

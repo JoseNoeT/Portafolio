@@ -1,0 +1,61 @@
+{% load static %}
+<div class="methodology-story-mobile reveal" data-methodology-story aria-label="Etapas de metodología">
+                    <div class="methodology-story-mobile__track" data-methodology-story-track>
+                        <article class="methodology-story-card is-active" data-methodology-story-slide="0">
+                            <div class="methodology-story-card__step">
+                                <span class="methodology-story-card__number">01</span>
+                                <div>
+                                    <h3>Analizo el problema</h3>
+                                    <p>Identifico usuarios, requisitos y prioridades.</p>
+                                </div>
+                            </div>
+                            <div class="methodology-story-card__visual">
+                                <img src="{% static 'img/projects/campus360.jpg' %}" alt="Análisis del problema y necesidades del proyecto" loading="lazy" decoding="async" fetchpriority="low" />
+                                <div class="methodology-story-card__caption">
+                                    <span>01 · Problema</span>
+                                    <strong>Entender antes de construir</strong>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="methodology-story-card" data-methodology-story-slide="1">
+                            <div class="methodology-story-card__step">
+                                <span class="methodology-story-card__number">02</span>
+                                <div>
+                                    <h3>Diseño la solución</h3>
+                                    <p>Organizo componentes, datos y tareas de implementación.</p>
+                                </div>
+                            </div>
+                            <div class="methodology-story-card__visual">
+                                <img src="{% static 'img/arquitec.jpeg' %}" alt="Diseño de arquitectura y estructura de la solución" loading="lazy" decoding="async" fetchpriority="low" />
+                                <div class="methodology-story-card__caption">
+                                    <span>02 · Diseño</span>
+                                    <strong>Organizar componentes y datos</strong>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="methodology-story-card" data-methodology-story-slide="2">
+                            <div class="methodology-story-card__step">
+                                <span class="methodology-story-card__number">03</span>
+                                <div>
+                                    <h3>Desarrollo y compruebo</h3>
+                                    <p>Implemento funcionalidades y verifico los requisitos.</p>
+                                </div>
+                            </div>
+                            <div class="methodology-story-card__visual">
+                                <img src="{% static 'img/projects/ferramas.webp' %}" alt="Implementación de la solución web" loading="lazy" decoding="async" fetchpriority="low" />
+                                <div class="methodology-story-card__caption">
+                                    <span>03 · Solución</span>
+                                    <strong>Construir, probar y mejorar</strong>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="methodology-story-mobile__controls" aria-label="Cambiar etapa de metodología">
+                        <button type="button" class="methodology-story-mobile__dot is-active" data-methodology-story-dot="0" aria-label="Ver etapa 1"></button>
+                        <button type="button" class="methodology-story-mobile__dot" data-methodology-story-dot="1" aria-label="Ver etapa 2"></button>
+                        <button type="button" class="methodology-story-mobile__dot" data-methodology-story-dot="2" aria-label="Ver etapa 3"></button>
+                    </div>
+                </div>

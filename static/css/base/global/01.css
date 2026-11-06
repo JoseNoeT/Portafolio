@@ -1,0 +1,81 @@
+/* static/css/base/global.css · module 01 */
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+scrollbar-width: none;               /* Firefox */
+}
+
+html::-webkit-scrollbar {
+display: none;                        /* Chrome / Edge / Safari */
+}
+
+html,
+body {
+width: 100%;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+
+  background-color: var(--color-bg-primary);
+  color: var(--color-body);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+color: var(--color-heading);
+}
+
+p {
+margin-bottom: 1rem;
+  color: var(--color-body);
+  line-height: 1.75;
+}
+
+a {
+color: var(--color-accent-primary);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+a:hover {
+color: var(--color-accent-secondary);
+}
+
+button,
+.btn {
+background: var(--gradient-primary);
+  color: var(--color-btn-text);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+button:hover,
+.btn:hover {
+transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--color-accent-glow);
+}
+
+button.error,
+.btn.error {
+background-color: var(--error-color);
+}

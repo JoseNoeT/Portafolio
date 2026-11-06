@@ -1,0 +1,86 @@
+/* static/css/pages/projects-detail.css · module 04 */
+.image-modal.is-open {
+display: flex;
+}
+
+.image-modal-content {
+max-width: min(1000px, 90vw);
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-soft);
+  box-shadow: 0 16px 48px var(--color-shadow-base);
+}
+
+.image-modal-close {
+position: absolute;
+  top: 16px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-soft);
+  background: var(--color-surface-subtle);
+  color: var(--color-body);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.image-modal-close:hover {
+background: var(--color-accent-glass);
+  border-color: var(--color-accent-primary);
+}
+
+.image-modal-close:focus-visible {
+outline: 2px solid var(--color-accent-primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+.detail-layout {
+grid-template-columns: 1fr;
+}
+}
+
+@media (max-width: 900px) {
+.detail-sidebar {
+position: relative;
+    top: 0;
+}
+}
+
+@media (max-width: 900px) {
+.sidebar-actions {
+flex-direction: row;
+}
+}
+
+@media (max-width: 900px) {
+.sidebar-actions .btn {
+flex: 1;
+}
+}
+
+@media (max-width: 600px) {
+.hero--detail {
+padding: clamp(80px, 12vh, 120px) 16px clamp(32px, 6vh, 56px);
+}
+}
+
+@media (max-width: 600px) {
+.detail-cover {
+max-width: 100%;
+}
+}
+
+@media (max-width: 600px) {
+.cover-trigger {
+padding: 4px;
+}
+}

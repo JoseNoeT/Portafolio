@@ -1,0 +1,2 @@
+/* Canonical horizontal entrypoint. Ordered modules preserve cascade. */
+@import url("./horizontal-rail/01-responsive.css");

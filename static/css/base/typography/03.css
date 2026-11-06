@@ -1,0 +1,64 @@
+/* static/css/base/typography.css · module 03 */
+h2,
+.section-title,
+.split-section__title,
+.cta-band__title {
+font-family: var(--font-family-heading);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+h3,
+.panorama-card__body h3,
+.feature-card__title,
+.profile-v2__card h3 {
+font-family: var(--font-family-heading);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+}
+
+body,
+p,
+a,
+button,
+input,
+textarea,
+select,
+.section-desc,
+.split-section__text,
+.feature-card__text {
+font-family: var(--font-family-body);
+}
+
+.section-eyebrow,
+.panorama-card__category,
+.feature-card__tags,
+.profile-v2__label,
+.closing-cta__status {
+font-family: var(--font-family-body);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+button,
+.btn,
+nav,
+.nav-links {
+font-family: var(--font-family-body);
+  font-weight: 600;
+}
+
+/* Opacity only: keep glyph spacing and line wrapping stable during entry. */
+@keyframes text-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Descriptive reading blocks; headings keep their independent alignment. */
+:is(.section-desc,.split-section__text,.text-body,.case-prose,.case-lead,.hero-subtitle,.hero-page__subtitle,.feature-card__text,.cta-band__text,.method-section__text,.catalog-method p,.catalog-contact > p) {
+  line-height: 1.7 !important;
+  max-width: 70ch !important;
+  text-align: left !important;
+}

@@ -1,0 +1,10 @@
+/* Home bundle: transferable page composition in canonical cascade order. */
+@import url("./home-foundation.css?v=6.0");
+@import url("../components/hero-home.css?v=6.0");
+@import url("../components/project-carousel.css?v=6.0");
+@import url("../components/methodology-slider.css?v=6.0");
+@import url("../components/capabilities.css?v=6.0");
+@import url("../components/profile.css?v=6.0");
+@import url("../components/closing-cta.css?v=6.0");
+@import url("../components/horizontal-rail.css?v=6.0");
+@import url("./home.css?v=6.0");

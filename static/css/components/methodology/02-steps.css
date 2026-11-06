@@ -1,0 +1,80 @@
+.methodology-step h3 {
+margin: 0 0 3px;
+  color: #f8fbff;
+  font-size: 0.98rem;
+}
+
+.methodology-step p {
+margin: 0;
+  color: #aebed2;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+#methodology .split-section__visual {
+position: relative;
+}
+
+#methodology .split-section__visual::before {
+content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  border: 1px solid rgba(56, 189, 248, 0.46);
+  box-shadow:
+    0 0 20px rgba(14, 165, 233, 0.10),
+    inset 0 0 22px rgba(14, 165, 233, 0.035);
+}
+
+@media (max-width: 767px) {
+#methodology .methodology-content,
+#methodology .methodology-content .split-section__title,
+#methodology .methodology-content .split-section__text {
+text-align: center;
+}
+}
+
+@media (max-width: 767px) {
+#methodology .methodology-content .split-section__title {
+max-width: none;
+}
+}
+
+@media (max-width: 767px) {
+#methodology .methodology-content .split-section__title::after,
+#methodology .methodology-content .section-eyebrow {
+margin-left: auto;
+    margin-right: auto;
+}
+}
+
+@media (max-width: 767px) {
+.methodology-steps {
+text-align: left;
+}
+}
+
+#methodology .methodology-content .split-section__title {
+max-width: 18ch;
+  font-size: clamp(1.65rem, 2.25vw, 2.45rem);
+  line-height: 1.08;
+}
+
+@media (max-width: 767px) {
+#methodology .methodology-content .split-section__title {
+max-width: 22ch;
+    font-size: clamp(1.55rem, 7vw, 2rem);
+}
+}
+
+#methodology .methodology-content .section-eyebrow {
+display: inline-flex;
+  width: auto;
+  max-width: max-content;
+  padding: 7px 16px;
+  margin: 0 0 16px;
+  border-radius: 999px;
+  letter-spacing: 0.14em;
+}

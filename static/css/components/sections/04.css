@@ -1,0 +1,82 @@
+/* static/css/components/sections.css · module 04 */
+.cta-band--accent {
+border-color: var(--color-border-accent-soft);
+  background: var(--color-bg-accent);
+}
+
+.stats-row {
+display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  text-align: center;
+}
+
+.stat-item {
+padding: clamp(20px, 2.5vw, 28px) 16px;
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--color-border-soft);
+}
+
+.stat-item__value {
+display: block;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-stat-value);
+}
+
+.stat-item__label {
+display: block;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--color-stat-label);
+}
+
+.timeline {
+position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-left: 24px;
+}
+
+.timeline::before {
+content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--timeline-line);
+}
+
+.timeline-step {
+position: relative;
+  padding: 0 0 32px 24px;
+}
+
+.timeline-step::before {
+content: "";
+  position: absolute;
+  left: -24px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--timeline-dot);
+  box-shadow: 0 0 0 5px var(--timeline-dot-ring);
+}
+
+.timeline-step__title {
+margin: 0 0 6px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.timeline-step__text {
+margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-body);
+}

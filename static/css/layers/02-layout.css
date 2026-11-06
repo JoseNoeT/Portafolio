@@ -1,0 +1,5 @@
+/* Layer 02: global shell and navigation. Depends only on foundation. */
+@import url("../layout/layout.css?v=6.0");
+@import url("../layout/navbar.css?v=6.0");
+@import url("../layout/header.css?v=6.0");
+@import url("../layout/footer.css?v=6.0");

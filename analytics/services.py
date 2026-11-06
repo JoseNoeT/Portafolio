@@ -1,4 +1,7 @@
 ﻿import hashlib
+from urllib.parse import urlsplit, urlunsplit
+
+from django.conf import settings
 
 from django.db.models import Q
 from django.utils import timezone
@@ -54,6 +57,35 @@ BOT_USER_AGENT_MARKERS = (
 )
 
 SESSION_TIMEOUT_MINUTES = 30
+
+
+def analytics_enabled():
+    return getattr(settings, 'ANALYTICS_ENABLED', not settings.DEBUG)
+
+
+def should_record_event(request):
+    user = getattr(request, 'user', None)
+    return (
+        analytics_enabled()
+        and not (user and user.is_authenticated and user.is_staff)
+        and not is_bot_request(request)
+    )
+
+
+def sanitized_referrer(request):
+    # Origin and path only: discard credentials, query parameters and fragments.
+    try:
+        parts = urlsplit(request.META.get('HTTP_REFERER', '') or '')
+        if parts.scheme not in {'http', 'https'} or not parts.hostname:
+            return ''
+        host = parts.hostname
+        if ':' in host:
+            host = f'[{host}]'
+        if parts.port:
+            host += f':{parts.port}'
+        return urlunsplit((parts.scheme, host, parts.path, '', ''))[:500]
+    except ValueError:
+        return ''
 
 
 def get_client_ip(request):
@@ -141,7 +173,7 @@ def is_ignored_analytics_path(path):
 
 
 def ignored_pageview_filter():
-    query = Q()
+    query = Q(path__iendswith='/modal/') | Q(path__iendswith='/modal')
 
     for path in IGNORED_ANALYTICS_PATHS:
         query |= Q(path__iexact=path)
@@ -165,6 +197,9 @@ def get_visible_pageviews_queryset():
 
 
 def should_track_request(request):
+    if not analytics_enabled():
+        return False
+
     if request.method != 'GET':
         return False
 
@@ -186,6 +221,9 @@ def track_page_view(request, page_title=''):
     if not should_track_request(request):
         return
 
+    if (request.path or '').rstrip('/').lower().endswith('/modal'):
+        return
+
     ip_hash, user_agent_hash, visitor_hash = get_request_identity(
         request
     )
@@ -195,9 +233,7 @@ def track_page_view(request, page_title=''):
         path=(request.path or '')[:255],
         page_title=(page_title or '')[:255],
         method=request.method,
-        referrer=(
-            request.META.get('HTTP_REFERER', '') or ''
-        )[:500],
+        referrer=sanitized_referrer(request),
         ip_hash=ip_hash,
         user_agent_hash=user_agent_hash,
         visitor_hash=visitor_hash,

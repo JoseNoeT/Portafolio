@@ -2,6 +2,8 @@ from functools import wraps
 import logging
 
 from django.contrib import messages
+from django.contrib.staticfiles import finders
+from django.templatetags.static import static
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, get_object_or_404, redirect
@@ -37,8 +39,25 @@ def staff_required(view_func):
 # ---------------------------------------------------------------------------
 
 def list_projects(request):
-    projects = Project.objects.all()
-    return render(request, "projects/list.html", {"projects": projects})
+    projects = list(Project.objects.order_by('-updated_at'))
+    labels = {'professional': 'Profesionales', 'academic': 'Académicos',
+              'personal': 'Personales', 'engineering': 'Ingeniería'}
+    categories = [
+        {'value': value, 'label': labels.get(value, label),
+         'count': sum(project.category == value for project in projects)}
+        for value, label in Project.CATEGORY_CHOICES
+        if any(project.category == value for project in projects)
+    ]
+    technologies = {}
+    for project in projects:
+        for technology in project.tech_list:
+            technologies.setdefault(technology.casefold(), technology)
+    cv_path = 'docs/CV_Jose_Noe.pdf'
+    return render(request, "projects/list.html", {
+        'projects': projects, 'project_categories': categories,
+        'project_technologies': sorted(technologies.values(), key=str.casefold),
+        'cv_url': static(cv_path) if finders.find(cv_path) else None,
+    })
 
 
 def project_detail(request, slug):

@@ -1,0 +1,82 @@
+@media (max-width: 767px) {
+#methodology .methodology-content::before {
+inset: -24px -18px;
+    background: rgba(2, 9, 23, .62);
+}
+}
+
+@media (max-width: 767px) {
+.methodology-scene__bg {
+filter: brightness(.34) saturate(.55) contrast(.82) blur(2.5px);
+}
+}
+
+.methodology-scene__background {
+z-index: 0;
+}
+
+.methodology-scene__veil {
+z-index: 1;
+}
+
+#methodology.methodology-scene > .container {
+position: relative;
+  z-index: 2;
+}
+
+#methodology .methodology-slider {
+position: relative;
+  z-index: 3;
+  opacity: 1;
+}
+
+#methodology .methodology-slider__viewport {
+position: relative;
+  z-index: 4;
+  opacity: 1;
+  filter: none !important;
+}
+
+#methodology .methodology-slide.is-active {
+opacity: 1 !important;
+}
+
+#methodology .methodology-slide.is-active img {
+opacity: 1 !important;
+  filter: brightness(.96) saturate(.96) contrast(1.04) !important;
+}
+
+.methodology-slide.is-active img {
+-webkit-animation: home-kenburns-top-left var(--home-motion-duration, 12s) var(--home-motion-ease, ease-in-out) infinite alternate !important;
+  animation: home-kenburns-top-left var(--home-motion-duration, 12s) var(--home-motion-ease, ease-in-out) infinite alternate !important;
+}
+
+.methodology-scene__bg.is-active {
+-webkit-animation: home-kenburns-top-left var(--home-motion-duration, 12s) var(--home-motion-ease, ease-in-out) infinite alternate !important;
+  animation: home-kenburns-top-left var(--home-motion-duration, 12s) var(--home-motion-ease, ease-in-out) infinite alternate !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+.methodology-slide.is-active img,
+.methodology-scene__bg.is-active {
+-webkit-animation: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+}
+
+@media (max-width: 1024px) {
+#methodology .split-section {
+grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: center;
+}
+}
+
+@media (max-width: 1024px) {
+#methodology .methodology-slider {
+width: 100%;
+    max-width: 480px;
+    justify-self: center;
+}
+}

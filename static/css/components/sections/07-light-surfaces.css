@@ -1,0 +1,47 @@
+/* Light surfaces override legacy component backgrounds without changing dark mode. */
+:root[data-theme="light"] {
+  --light-surface: #FFFFFF;
+  --light-border: #D7E3EF;
+  --light-shadow: 0 12px 32px rgba(16,35,63,.08);
+}
+:root[data-theme="light"] :is(#projects,#services,.closing-cta,.projects-section,.projects-controls,.services-offer) { background-color: var(--color-bg-secondary) !important; }
+:root[data-theme="light"] :is(#methodology,#about.profile-v2,.section-shell--alt,.method-value,.method-recruiter) { background-color: var(--color-bg-alt) !important; }
+:root[data-theme="light"] :is(#projects,#methodology,[data-lazy-bg],.closing-cta,.projects-section,.projects-controls,.services-offer) { background-image: none !important; }
+:root[data-theme="light"] :is(.hero-story,.hero-page__panel,.panorama-card,.panorama-card__body,.feature-card,.profile-v2__intro,.profile-v2__card,.profile-v2__closing,.closing-cta__panel,.methodology-step,.methodology-slider__viewport,.methodology-story-card,.services-carousel__card,.services-carousel__body,.services-approach__step,.services-cta__band,.project-card,.card-body) {
+  background: var(--light-surface) !important;
+  border-color: var(--light-border) !important;
+  box-shadow: var(--light-shadow) !important;
+}
+/* Decorative atmosphere stays in dark mode; content images remain visible. */
+:root[data-theme="light"] :is(#services,#about.profile-v2,.closing-cta)::before,
+:root[data-theme="light"] :is(#services,#about.profile-v2,.closing-cta)::after { background: none !important; }
+:root[data-theme="light"] .methodology-scene__background { display: none; }
+:root[data-theme="light"] .hero--home > :is(.hero-canvas,.hero-overlay) { display: none; }
+:root[data-theme="light"] .hero-page__overlay { background: rgba(248,250,252,.86) !important; }
+:root[data-theme="light"] .hero-canvas { opacity: .12; }
+:root[data-theme="light"] .swiper-slide .panorama-card { opacity: 1; filter: none; }
+:root[data-theme="light"] .panorama-card__body { opacity: 1 !important; }
+:root[data-theme="light"] :is(.hero-tag,.hero-eyebrow,.theme-toggle-pill,.feature-card__tags span,.profile-v2__label,.filter-pill,.chip,.closing-cta__status,.footer-stack span) {
+  background: var(--color-bg-alt) !important; border-color: var(--light-border) !important;
+}
+:root[data-theme="light"] .footer-v2 { background: var(--color-bg-secondary); border-color: var(--light-border); box-shadow: var(--light-shadow); color: var(--color-body); }
+:root[data-theme="light"] :is(.footer-status,.footer-email,.footer-contact-cta,.footer-social-icon) { background: var(--color-bg-alt); border-color: var(--light-border); }
+:root[data-theme="light"] .footer-bottom { background: var(--color-bg-alt); }
+:root[data-theme="light"] :is(.btn-primary,.nav-primary-cta) { color: #fff !important; background: var(--gradient-primary) !important; }
+:root[data-theme="light"] :is(.btn-outline,.btn-ghost) { color: var(--color-text-accent) !important; background: rgba(255,255,255,.85) !important; border-color: var(--color-text-accent) !important; }
+:root[data-theme="light"] .nav-links ul li a[aria-current="page"] { color: var(--color-heading); background: rgba(4,120,87,.10); border-color: var(--color-text-accent); }
+:root[data-theme="light"] .navbar .drawer-contact .btn { color: #fff !important; }
+:root[data-theme="light"] .navbar-logo { filter: drop-shadow(0 1px 2px rgba(0,0,0,.3)); }
+
+:root[data-theme="light"] body { background: var(--color-bg-primary); color: var(--color-body); }
+:root[data-theme="light"] .feature-card__icon { color: var(--color-text-accent) !important; background: var(--color-bg-alt) !important; border-color: var(--light-border) !important; }
+
+:root[data-theme="light"] :is(.method-phase-card,.method-benefit-card,.method-recruiter__card,.method-cta__band,.methodology-story-card__step) {
+  background: var(--light-surface) !important; border-color: var(--light-border) !important; box-shadow: var(--light-shadow);
+}
+:root[data-theme="light"] :is(.method-value,.method-recruiter) { background: var(--color-bg-alt); }
+:root[data-theme="light"] .methodology-step__number { background: var(--color-bg-alt) !important; }
+
+:root[data-theme="light"] :is(.section-eyebrow,.hero-page__eyebrow,.method-eyebrow) { color: var(--color-label) !important; background: var(--color-bg-alt) !important; border-color: var(--light-border) !important; }
+
+:root[data-theme="light"] #methodology .methodology-content::before { background: var(--color-bg-secondary); filter: none; backdrop-filter: none; box-shadow: none; }

@@ -1,0 +1,18 @@
+@media (max-width: 360px) {
+.project-slide {
+width: min(63vw, 225px) !important;
+    max-width: 225px;
+}
+}
+
+@media (max-width: 360px) {
+.panorama-card__media {
+height: 122px;
+}
+}
+
+@media (max-width: 360px) {
+.panorama-card__body {
+padding: 11px;
+}
+}

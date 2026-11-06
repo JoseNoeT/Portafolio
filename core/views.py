@@ -1,6 +1,8 @@
 import logging
 
 from django.conf import settings
+from django.contrib.staticfiles import finders
+from django.templatetags.static import static
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.shortcuts import redirect, render
@@ -9,7 +11,8 @@ from analytics.models import AnalyticsEvent
 from analytics.services import (
     get_request_identity,
     get_session_hash,
-    is_bot_request,
+    should_record_event,
+    sanitized_referrer,
 )
 
 from .forms import ContactForm
@@ -21,7 +24,9 @@ logger = logging.getLogger(__name__)
 
 def home(request):
     projects = Project.objects.all().order_by('-updated_at')
-    return render(request, 'home.html', {'projects': projects})
+    cv_path = 'docs/CV_Jose_Noe.pdf'
+    cv_url = static(cv_path) if finders.find(cv_path) else None
+    return render(request, 'home.html', {'projects': projects, 'cv_url': cv_url})
 
 
 def contact(request):
@@ -46,16 +51,7 @@ def contact(request):
 			)
 
 			# Registrar contacto v?lido recibido y almacenado.
-			user = getattr(request, 'user', None)
-
-			should_record_submit = not (
-			        (
-			                user
-			                and user.is_authenticated
-			                and user.is_staff
-			        )
-			        or is_bot_request(request)
-			)
+			should_record_submit = should_record_event(request)
 
 			if should_record_submit:
 			        (
@@ -72,13 +68,7 @@ def contact(request):
 			                event_type='contact_submit',
 			                path=request.path[:255],
 			                project=None,
-			                referrer=(
-			                        request.META.get(
-			                                'HTTP_REFERER',
-			                                '',
-			                        )
-			                        or ''
-			                )[:500],
+			                referrer=sanitized_referrer(request),
 			                ip_hash=ip_hash,
 			                user_agent_hash=user_agent_hash,
 			                visitor_hash=visitor_hash,
@@ -121,6 +111,7 @@ def contact(request):
 	context = {
 		'form': form,
 		'contact_email': destination_email,
+		'contact_phone': site_settings.contact_phone,
 		'contact_whatsapp': contact_whatsapp,
 		'whatsapp_url': whatsapp_url,
 	}

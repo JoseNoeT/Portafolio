@@ -1,0 +1,27 @@
+{% load static %}
+<section class="section-shell section-shell--alt methodology-scene methodology-scene--0" id="methodology">
+    <div class="methodology-scene__background" aria-hidden="true">
+        <div class="methodology-scene__bg methodology-scene__bg--0 is-active" data-bg-src="{% static 'img/projects/campus360.jpg' %}"></div>
+        <div class="methodology-scene__bg methodology-scene__bg--1" data-bg-src="{% static 'img/arquitec.jpeg' %}"></div>
+        <div class="methodology-scene__bg methodology-scene__bg--2" data-bg-src="{% static 'img/projects/ferramas.webp' %}"></div>
+        <div class="methodology-scene__veil"></div>
+    </div>
+    <div class="container">
+        <div class="split-section">
+            <div class="split-section__content methodology-content">
+                <div class="section-header">
+                <span class="section-eyebrow reveal">Metodología</span>
+                <h2 class="split-section__title reveal section-title">
+                    Análisis y desarrollo. <span class="methodology-title-accent">Un proceso por etapas.</span>
+                </h2>
+                <p class="split-section__text reveal">
+                    Primero identifico la necesidad y los requisitos. Después organizo la solución, implemento las funcionalidades y compruebo los cambios.
+                </p>
+                </div>
+
+{% include "home/_methodology_mobile_story.html" %}
+
+{% include "home/_methodology_desktop_story.html" %}
+        </div>
+    </div>
+</section>

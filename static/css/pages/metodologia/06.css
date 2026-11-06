@@ -1,0 +1,77 @@
+/* static/css/pages/metodologia.css · module 06 */
+@media (prefers-reduced-motion: reduce) {
+.metodologia-page * {
+animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+}
+}
+
+.method-section {
+padding: clamp(56px, 7vw, 88px) 0;
+}
+
+.method-phases,
+.method-recruiter {
+background: rgba(255, 255, 255, 0.025);
+  border-top: 1px solid rgba(56, 189, 248, 0.07);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.07);
+}
+
+.method-section__header {
+margin-bottom: clamp(28px, 4vw, 44px);
+}
+
+.method-section__header--center {
+text-align: center;
+}
+
+.method-section__header--center .method-section__title {
+max-width: 26ch;
+  margin-inline: auto;
+}
+
+.method-section__title {
+font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.18;
+  color: var(--color-heading, #ddf1ff);
+  margin: 0 0 10px;
+  text-wrap: pretty;
+}
+
+.method-section__lead {
+font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+  line-height: 1.72;
+  color: var(--color-body, #9abdd6);
+  max-width: 60ch;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.method-section__text {
+font-size: clamp(0.92rem, 1.2vw, 1rem);
+  line-height: 1.76;
+  color: var(--color-body, #9abdd6);
+  margin: 0;
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+
+.method-split__inner {
+display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.method-split__content {
+min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.method-split__visual {
+min-width: 0;
+}

@@ -1,0 +1,83 @@
+/* static/css/layout/navbar.css · module 03 */
+.nav-overlay.active,
+.nav-overlay[aria-hidden="false"] {
+opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+
+.menu-checkbox {
+display:none!important;
+}
+
+.menu-btn-container {
+display:none;
+}
+
+.menu-label {
+display:none;
+  align-items:center;
+  justify-content:center;
+  width:40px;
+  height:40px;
+  cursor:pointer;
+}
+
+.menu-bar {
+position:relative;
+  width:24px;
+  height:2px;
+  border-radius:2px;
+  background:var(--color-text-primary);
+  transition:.3s;
+}
+
+.menu-bar::before,
+.menu-bar::after {
+content:"";
+  position:absolute;
+  left:0;
+  width:24px;
+  height:2px;
+  border-radius:2px;
+  background:var(--color-text-primary);
+  transition:.3s;
+}
+
+.menu-bar::before {
+top:-8px;
+}
+
+.menu-bar::after {
+top:8px;
+}
+
+.menu-checkbox:checked + .menu-label .menu-bar {
+background:transparent;
+}
+
+.menu-checkbox:checked + .menu-label .menu-bar::before {
+top:0;
+  transform:rotate(45deg);
+}
+
+.menu-checkbox:checked + .menu-label .menu-bar::after {
+top:0;
+  transform:rotate(-45deg);
+}
+
+.nav-links::-webkit-scrollbar {
+width:6px;
+}
+
+.nav-links::-webkit-scrollbar-thumb {
+background:var(--color-accent-glow-strong);
+  border-radius:3px;
+}
+
+@media (max-width:1024px) {
+.navbar {
+height:var(--navbar-height-mobile);
+z-index:2000;
+}
+}

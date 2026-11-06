@@ -1,0 +1,85 @@
+/* static/css/pages/projects.css · module 02 */
+.carousel-control {
+position: absolute;
+  top: 42%;
+  z-index: 4;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 1px solid var(--color-border-soft);
+
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+
+  color: var(--color-heading);
+
+  box-shadow: var(--glass-shadow);
+
+  cursor: pointer;
+
+  font-size: 1.25rem;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    background 0.2s ease;
+}
+
+.carousel-control:hover {
+transform: translateY(-2px) scale(1.05);
+  background: var(--color-accent-glass);
+}
+
+.carousel-control:focus-visible {
+outline: 2px solid var(--color-accent-primary);
+  outline-offset: 3px;
+}
+
+.carousel-control--prev {
+left: 0;
+}
+
+.carousel-control--next {
+right: 0;
+}
+
+.carousel-control:disabled {
+opacity: 0.3;
+  cursor: default;
+  transform: none;
+}
+
+.carousel-status {
+position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+
+  min-height: 20px;
+
+  color: var(--color-caption);
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+.projects-carousel {
+padding: 0 0 40px;
+}
+}
+
+@media (max-width: 768px) {
+.projects-carousel__viewport {
+width: calc(100% + 16px);
+    padding-right: 16px;
+}
+}

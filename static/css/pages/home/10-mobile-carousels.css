@@ -1,0 +1,33 @@
+@media (max-width: 768px) {
+  .home-page :is(#services .feature-grid, #about .profile-v2__grid, .methodology-story-mobile).mobile-card-carousel {
+    display: block !important;
+    width: 100% !important;
+    max-width: 360px !important;
+    overflow: hidden !important;
+    margin-inline: auto !important;
+    padding: 4px 0 12px !important;
+    mask-image: none;
+    -webkit-mask-image: none;
+    scroll-snap-type: none !important;
+    direction: ltr;
+  }
+  .home-page .mobile-card-carousel::after { display: none !important; }
+  .home-page .mobile-card-carousel > .swiper-wrapper {
+    display: flex !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+    transition-timing-function: ease;
+  }
+  .home-page :is(#services, #about, #methodology) .mobile-card-carousel .swiper-slide {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: auto;
+    width: calc((100% - 1.68px) / 1.12) !important;
+    transform: none;
+    opacity: 1;
+  }
+}

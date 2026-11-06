@@ -1,19 +1,21 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/layout/footer/07-auth.css' %}?v=1">
 <footer class="footer footer-v2">
   <div class="footer-watermark" aria-hidden="true">JOSÉ NOE</div>
 
   <div class="footer-container">
     <section class="footer-intro" aria-label="Resumen profesional">
       <div class="footer-identity">
-        <h2>JOSÉ NOE</h2>
-        <p class="footer-role">Analista Programador <span>|</span> Estudiante de Ingeniería en Informática</p>
-        <p class="footer-summary">Desarrollo soluciones web con foco en backend, automatización y sistemas reales.</p>
+        <h2>José Miguel Noe Torres</h2>
+        <p class="footer-role">Analista Programador Computacional titulado <span>|</span> Estudiante de Ingeniería en Informática</p>
+        <p class="footer-summary">Desarrollo web con enfoque en backend, bases de datos e integración de sistemas.</p>
 
         <div class="footer-stack" aria-label="Tecnologías principales">
           <span>Python</span>
           <span>Django</span>
           <span>SQL</span>
-          <span>AWS</span>
-          <span>Automatización</span>
+          <span>JavaScript</span>
+          <span>HTML/CSS</span>
         </div>
       </div>
 
@@ -65,7 +67,7 @@
           <strong>jmnt2012@gmail.com</strong>
           <b>→</b>
         </a>
-        <p>Escríbeme para oportunidades, proyectos o simplemente conversar.</p>
+        <p>Contacto para oportunidades laborales y servicios de desarrollo de software.</p>
         <a href="{% url 'contact' %}" class="footer-contact-cta">Ir a la página de contacto <span>→</span></a>
       </section>
     </div>
@@ -73,14 +75,24 @@
 
   <div class="footer-bottom">
     <div>
-      <span>© 2026 José Noe</span>
+      <span>© 2026 José Miguel Noe Torres</span>
       <i></i>
-      <span>Diseñado y desarrollado por <strong>José Noe</strong></span>
+      <span>Diseñado y desarrollado por <strong>José Miguel Noe Torres</strong></span>
     </div>
     <div>
       <span>Santiago, Chile</span>
       <i></i>
       <button type="button" class="footer-top" data-scroll-top aria-label="Volver arriba">↑ <span>Volver arriba</span></button>
+    </div>
+    <div class="footer-auth">
+      {% if not user.is_authenticated %}
+      <a class="footer-auth-control" href="{% url 'login' %}?next={% url 'dashboard' %}">Acceso administrativo</a>
+      {% else %}
+      <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="footer-auth-control">Cerrar sesión</button>
+      </form>
+      {% endif %}
     </div>
   </div>
 </footer>

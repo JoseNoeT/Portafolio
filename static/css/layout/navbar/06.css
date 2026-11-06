@@ -1,0 +1,80 @@
+/* static/css/layout/navbar.css · module 06 */
+@media (max-width:1024px) {
+.nav-cta-mobile .btn-secondary:hover {
+background:var(--color-surface-subtle-hover);
+color:var(--color-text-primary);
+}
+}
+
+@media (max-width:768px) {
+.nav-links {
+padding:72px 20px 20px;
+}
+}
+
+@media (max-width:768px) {
+.nav-links ul {
+gap:24px;
+}
+}
+
+@media (max-width:480px) {
+.nav-links {
+width:100%;
+padding:80px 18px 18px;
+}
+}
+
+@media (max-width:480px) {
+.nav-links ul {
+gap:20px;
+}
+}
+
+@media (max-width:480px) {
+.nav-links ul li a {
+font-size:1rem;
+}
+}
+
+.menu-label:focus-visible,
+.nav-links a:focus-visible {
+outline:2px solid var(--color-accent-primary);
+outline-offset:2px;
+}
+
+@keyframes drawerIn {
+from{
+transform:translateX(8%);
+opacity:0;
+}
+to{
+transform:translateX(0);
+opacity:1;
+}
+}
+
+@keyframes navbarLogoEnter {
+from{
+opacity:0;
+transform:translateY(-6px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.navbar {
+--nav-motion-duration: .62s;
+}
+
+.nav-container {
+max-width: 1400px;
+  padding-inline: clamp(20px, 3vw, 34px);
+}
+
+.nav-links a {
+font-weight: 600;
+  letter-spacing: -.01em;
+}

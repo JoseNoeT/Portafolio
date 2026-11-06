@@ -1,0 +1,83 @@
+@media (max-width: 768px) {
+.methodology-story-mobile__controls {
+display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+}
+
+@media (max-width: 768px) {
+.methodology-story-mobile__dot {
+width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 1px solid rgba(56,189,248,.72);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    transition:
+      width .3s ease,
+      background .3s ease,
+      box-shadow .3s ease;
+}
+}
+
+@media (max-width: 768px) {
+.methodology-story-mobile__dot.is-active {
+width: 30px;
+    background: #38bdf8;
+    box-shadow: 0 0 12px rgba(56,189,248,.55);
+}
+}
+
+@media (max-width: 480px) {
+.methodology-story-mobile__track {
+grid-auto-columns: min(88vw, 365px);
+    gap: 12px;
+    padding-right: 10px;
+}
+}
+
+@media (max-width: 480px) {
+.methodology-story-card {
+gap: 10px;
+}
+}
+
+@media (max-width: 480px) {
+.methodology-story-card__step {
+grid-template-columns: 46px minmax(0, 1fr);
+    min-height: 96px;
+    gap: 12px;
+    padding: 12px 13px;
+    border-radius: 17px;
+}
+}
+
+@media (max-width: 480px) {
+.methodology-story-card__number {
+width: 46px;
+    height: 46px;
+}
+}
+
+@media (max-width: 480px) {
+.methodology-story-card__step h3 {
+font-size: .95rem;
+}
+}
+
+@media (max-width: 480px) {
+.methodology-story-card__step p {
+font-size: .8rem;
+}
+}
+
+@media (max-width: 480px) {
+.methodology-story-card__caption {
+left: 15px;
+    right: 15px;
+    bottom: 14px;
+}
+}

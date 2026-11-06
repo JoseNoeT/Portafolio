@@ -1,197 +1,65 @@
-﻿{% extends "base_focus.html" %}
+{% extends "base_focus.html" %}
 {% load static %}
-
-{% block title %}{{ project.title }} - Caso de Estudio{% endblock %}
-
+{% block title %}{{ project.title }} | Proyecto de José Miguel Noe Torres{% endblock %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/pages/projects-detail.css' %}">
-<link rel="stylesheet" href="{% static 'css/components/hero.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/projects-detail.css' %}?v=2">
+<link rel="stylesheet" href="{% static 'css/components/hero-page/10-image-backgrounds.css' %}?v=4">
 {% endblock %}
-
 {% block content %}
-
-<!-- HERO â€” project title band -->
-<section class="hero hero--detail" id="project-detail-hero">
-  <canvas class="hero-canvas" width="900" height="220" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;"></canvas>
-  <div class="hero-overlay" aria-hidden="true"></div>
-  <div class="container hero-inner">
-    <a href="{% url 'projects_list' %}" class="btn btn-ghost btn-sm detail-back">â† Proyectos</a>
-    <h1 class="hero-title">{{ project.title }}</h1>
-    {% if project.short_description %}
-    <p class="hero-subtitle">{{ project.short_description }}</p>
-    {% endif %}
-    <div class="detail-chips">
-      {% if project.get_category_display %}
-      <span class="detail-chip">{{ project.get_category_display }}</span>
+<main class="case-study">
+  <a href="{% url 'projects_list' %}" class="case-back">← Todos los proyectos</a>
+  <header class="case-hero hero--jmnt-background hero--case-study{% if not project.image and not project.static_image_path %} case-hero--text{% endif %}">
+    <div class="case-intro">
+      <p class="case-eyebrow">Proyecto · {{ project.get_category_display }}</p>
+      <h1>{{ project.title }}</h1>
+      {% if project.short_description %}<p class="case-lead">{{ project.short_description }}</p>{% endif %}
+      {% if project.tech_list %}
+      <ul class="case-stack" aria-label="Tecnologías utilizadas">{% for tech in project.tech_list %}<li>{{ tech }}</li>{% endfor %}</ul>
       {% endif %}
-      <span class="detail-chip">{{ project.created_at|date:"M Y" }}</span>
-    </div>
-  </div>
-</section>
-
-<!-- COVER IMAGE -->
-{% if project.image or project.static_image_path %}
-<section class="section-shell section-shell--compact" aria-label="Vista previa del proyecto">
-  <div class="container">
-    <div class="detail-cover">
-      <button type="button" class="cover-trigger" id="open-image-modal" aria-label="Ampliar imagen del proyecto">
-        {% if project.image %}
-          <img src="{{ project.image.url }}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
-        {% else %}
-          <img src="{% static project.static_image_path %}" alt="Imagen del proyecto {{ project.title }}" class="cover-image">
-        {% endif %}
-      </button>
-      <p class="cover-caption">Haz clic en la imagen para ampliarla</p>
-    </div>
-  </div>
-</section>
-{% endif %}
-
-<!-- MAIN CONTENT -->
-<section class="section-shell">
-  <div class="container">
-    <div class="detail-layout">
-
-      <main class="detail-main">
-
-        <div class="detail-section">
-          <span class="section-eyebrow">Resumen</span>
-          <h2 class="detail-section__title">Resumen ejecutivo</h2>
-          <p class="detail-section__text">{{ project.description }}</p>
-        </div>
-
-        <div class="detail-section">
-          <span class="section-eyebrow">Stack</span>
-          <h2 class="detail-section__title">TecnologÃ­as utilizadas</h2>
-          <p class="detail-section__text">{{ project.technologies|default:"TecnologÃ­as no especificadas." }}</p>
-        </div>
-
-        {% if project.live_url or project.github_url %}
-        <div class="detail-section">
-          <span class="section-eyebrow">Enlaces</span>
-          <h2 class="detail-section__title">Acceso al proyecto</h2>
-          <div class="detail-actions">
-            {% if project.live_url %}
-            <a href="{% url 'analytics:outbound_event' 'demo_click' project.slug %}" target="_blank" rel="noopener" class="btn btn-primary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Ver demo en vivo
-            </a>
-            {% endif %}
-            {% if project.github_url %}
-            <a href="{% url 'analytics:outbound_event' 'github_click' project.slug %}" target="_blank" rel="noopener" class="btn btn-outline">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              Repositorio GitHub
-            </a>
-            {% endif %}
-          </div>
-        </div>
-        {% endif %}
-
-      </main>
-
-      <aside class="detail-sidebar">
-        <div class="sidebar-card">
-          <h3 class="sidebar-card__heading">Detalles del proyecto</h3>
-
-          <div class="meta-block">
-            <span class="meta-block__label">Fecha</span>
-            <span class="meta-block__value">{{ project.created_at|date:"d M Y" }}</span>
-          </div>
-
-          <div class="meta-block">
-            <span class="meta-block__label">Stack</span>
-            <span class="meta-block__value">{{ project.technologies|default:"No especificado" }}</span>
-          </div>
-
-          <div class="meta-block">
-            <span class="meta-block__label">CategorÃ­a</span>
-            <span class="meta-block__value">{{ project.get_category_display }}</span>
-          </div>
-
-          {% if project.live_url or project.github_url %}
-          <div class="sidebar-actions">
-            {% if project.live_url %}
-            <a href="{% url 'analytics:outbound_event' 'demo_click' project.slug %}" target="_blank" rel="noopener" class="btn btn-primary btn-sm btn-block">Demo</a>
-            {% endif %}
-            {% if project.github_url %}
-            <a href="{% url 'analytics:outbound_event' 'github_click' project.slug %}" target="_blank" rel="noopener" class="btn btn-outline btn-sm btn-block">GitHub</a>
-            {% endif %}
-          </div>
-          {% endif %}
-        </div>
-      </aside>
-
-    </div>
-  </div>
-</section>
-
-<!-- CTA â€” back to projects -->
-<section class="section-shell section-shell--accent">
-  <div class="container">
-    <div class="cta-band">
-      <h2 class="cta-band__title">Â¿Quieres ver mÃ¡s proyectos?</h2>
-      <p class="cta-band__text">Explora otros casos de estudio o ponte en contacto para colaborar.</p>
-      <div class="cta-band__actions">
-        <a href="{% url 'projects_list' %}" class="btn btn-primary">Ver todos los proyectos</a>
-        <a href="{% url 'contact' %}" class="btn btn-outline">Contactar</a>
+      {% if project.github_url or project.live_url %}
+      <div class="case-actions">
+        {% if project.github_url %}<a href="{% url 'analytics:outbound_event' 'github_click' project.slug %}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Ver código en GitHub ↗</a>{% endif %}
+        {% if project.live_url %}<a href="{% url 'analytics:outbound_event' 'demo_click' project.slug %}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Abrir demo ↗</a>{% endif %}
       </div>
+      {% endif %}
+      <p class="case-date">Publicado <time datetime="{{ project.created_at|date:'Y-m-d' }}">{{ project.created_at|date:"d M Y" }}</time></p>
     </div>
-  </div>
-</section>
-
-<!-- IMAGE MODAL -->
-{% if project.image or project.static_image_path %}
-<div class="image-modal" id="image-modal" aria-hidden="true" role="dialog" aria-label="Imagen ampliada del proyecto">
-    <button type="button" class="image-modal-close" id="close-image-modal" aria-label="Cerrar imagen">Ã—</button>
-    {% if project.image %}
-    <img src="{{ project.image.url }}" alt="Imagen ampliada del proyecto {{ project.title }}" class="image-modal-content">
-    {% else %}
-    <img src="{% static project.static_image_path %}" alt="Imagen ampliada del proyecto {{ project.title }}" class="image-modal-content">
+    {% if project.image or project.static_image_path %}
+    <figure class="case-cover">
+      <button type="button" class="case-image-trigger" data-case-image aria-label="Ampliar imagen de {{ project.title }}">
+        {% if project.image %}<img src="{{ project.image.url }}" alt="Imagen de {{ project.title }}" width="960" height="640" decoding="async">{% else %}<img src="{% static project.static_image_path %}" alt="Imagen de {{ project.title }}" width="960" height="640" decoding="async">{% endif %}
+      </button>
+      <figcaption>Imagen del proyecto · Selecciona para ampliar</figcaption>
+    </figure>
     {% endif %}
-</div>
-{% endif %}
-
+  </header>
+  {% if project.description and project.description != project.short_description %}
+  <section class="case-section" aria-labelledby="case-overview">
+    <div class="case-section-heading section-header"><span class="case-eyebrow">01 · Descripción</span><h2 id="case-overview" class="section-title">Qué se construyó</h2></div>
+    <div class="case-prose">{{ project.description|linebreaks }}</div>
+  </section>
+  {% endif %}
+  {% with gallery=project.gallery.all %}
+  {% if gallery or project.demo_video_url %}
+  <section class="case-section" aria-labelledby="case-evidence">
+    <div class="case-section-heading section-header"><span class="case-eyebrow">Material del proyecto</span><h2 id="case-evidence" class="section-title">Evidencias disponibles</h2></div>
+    <div class="case-evidence">
+      {% if project.demo_video_url %}<a class="case-resource" href="{{ project.demo_video_url }}" target="_blank" rel="noopener noreferrer">Ver video del proyecto <span aria-hidden="true">↗</span></a>{% endif %}
+      {% if gallery %}<div class="case-gallery">{% for item in gallery %}{% if item.image %}
+        <figure><button type="button" class="case-image-trigger" data-case-image aria-label="Ampliar {{ item.title|default:project.title }}"><img src="{{ item.image.url }}" alt="{{ item.title|default:project.title }}" width="960" height="640" loading="lazy" decoding="async"></button>{% if item.title %}<figcaption>{{ item.title }}</figcaption>{% endif %}</figure>
+      {% endif %}{% endfor %}</div>{% endif %}
+    </div>
+  </section>
+  {% endif %}
+  {% endwith %}
+  <footer class="case-footer">
+    <div class="section-header"><span class="case-eyebrow">Sigue explorando</span><h2 class="section-title">Consulta otros proyectos</h2></div>
+    <div class="case-actions"><a href="{% url 'projects_list' %}" class="btn btn-outline">Ver todos los proyectos</a><a href="{% url 'contact' %}" class="btn btn-primary">Contactar</a></div>
+  </footer>
+</main>
+<dialog class="case-image-dialog" id="image-modal" aria-label="Imagen ampliada del proyecto">
+  <button type="button" class="case-image-close" aria-label="Cerrar imagen">×</button>
+  <img alt="">
+</dialog>
 {% endblock %}
-
-{% block extra_js %}
-<script src="{% static 'js/hero-animation.js' %}"></script>
-{% if project.image or project.static_image_path %}
-<script>
-    (function () {
-        var openBtn = document.getElementById("open-image-modal");
-        var closeBtn = document.getElementById("close-image-modal");
-        var modal = document.getElementById("image-modal");
-
-        if (!openBtn || !closeBtn || !modal) return;
-
-        function openModal() {
-            modal.classList.add("is-open");
-            modal.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
-        }
-
-        function closeModal() {
-            modal.classList.remove("is-open");
-            modal.setAttribute("aria-hidden", "true");
-            document.body.style.overflow = "";
-        }
-
-        openBtn.addEventListener("click", openModal);
-        closeBtn.addEventListener("click", closeModal);
-
-        modal.addEventListener("click", function (event) {
-            if (event.target === modal) {
-                closeModal();
-            }
-        });
-
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "Escape" && modal.classList.contains("is-open")) {
-                closeModal();
-            }
-        });
-    })();
-</script>
-{% endif %}
-{% endblock %}
-
+{% block extra_js %}<script src="{% static 'js/projects-page/detail-image.js' %}?v=1" defer></script>{% endblock %}

@@ -1,0 +1,82 @@
+/* static/css/pages/metodologia.css · module 01 */
+.metodologia-page {
+position: relative;
+}
+
+.method-section {
+padding: clamp(56px, 7vw, 80px) 0;
+}
+
+.method-eyebrow {
+display: inline-flex;
+  align-items: center;
+  margin: 0 0 14px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-label, #2ca8f3);
+  background: var(--color-accent-glass);
+  border: 1px solid var(--color-border-accent-soft);
+}
+
+.method-section__title {
+font-size: clamp(1.55rem, 2.6vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.18;
+  color: var(--color-heading);
+  margin: 0 0 12px;
+  text-wrap: pretty;
+}
+
+.method-section__lead {
+font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+  line-height: 1.72;
+  color: var(--color-body);
+  max-width: 60ch;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.method-section__text {
+font-size: clamp(0.92rem, 1.2vw, 1rem);
+  line-height: 1.74;
+  color: var(--color-body);
+  margin: 0;
+  max-width: 60ch;
+  text-wrap: pretty;
+}
+
+.method-section__header {
+margin-bottom: clamp(28px, 4vw, 44px);
+}
+
+.method-section__header--center {
+text-align: center;
+}
+
+.method-section__header--center .method-section__title {
+max-width: 26ch;
+  margin-inline: auto;
+}
+
+.method-image-card {
+border-radius: var(--radius-xl, 16px);
+  overflow: hidden;
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.method-image-card img {
+display: block;
+  width: 100%;
+  height: clamp(200px, 22vw, 300px);
+  object-fit: cover;
+}
+
+.method-split {
+border-top: 1px solid var(--color-border-soft);
+}

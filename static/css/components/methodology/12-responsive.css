@@ -1,0 +1,82 @@
+@media (max-width: 768px) {
+#methodology .methodology-content,
+#methodology .methodology-slider,
+#methodology .split-section__visual {
+min-width: 0 !important;
+    max-width: 100% !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-slider,
+#methodology .methodology-slider.reveal,
+#methodology .methodology-slider.active,
+#methodology .split-section__visual {
+width: 100% !important;
+    justify-self: stretch !important;
+    margin-inline: 0 !important;
+    transform: none !important;
+    translate: none !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-slider__viewport {
+width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: 0 !important;
+    overflow: hidden !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-slide,
+#methodology .methodology-slide.is-active {
+max-width: 100% !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-slider__controls {
+width: 100%;
+    margin-inline: 0 !important;
+}
+}
+
+@media (max-width: 480px) {
+#methodology > .container {
+padding-inline: 14px !important;
+}
+}
+
+@media (max-width: 480px) {
+#methodology .methodology-slider {
+padding-inline: 0 !important;
+}
+}
+
+@media (max-width: 480px) {
+#methodology .methodology-slider::before {
+inset: -12px -8px -10px !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-content {
+gap: 7px !important;
+}
+}
+
+.methodology-slider[data-direction="prev"] .methodology-slide:not(.is-active) {
+transform: translateX(-9%) scale(.97);
+}
+
+.methodology-slider[data-direction="next"] .methodology-slide:not(.is-active) {
+transform: translateX(9%) scale(.97);
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-steps {
+scroll-behavior: smooth;
+}
+}

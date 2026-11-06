@@ -1,0 +1,81 @@
+/* static/css/pages/metodologia.css · module 07 */
+.method-image-card {
+border-radius: var(--radius-xl, 16px);
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.24);
+  box-shadow:
+    0 16px 44px rgba(0, 0, 0, 0.46),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 0 32px rgba(56, 189, 248, 0.06);
+}
+
+.method-image-card img {
+display: block;
+  width: 100%;
+  height: clamp(260px, 30vw, 400px);
+  object-fit: cover;
+}
+
+.method-phases__grid {
+display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(28px, 5vw, 60px);
+  align-items: start;
+}
+
+.method-phases__list {
+list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.method-phases__visual {
+position: sticky;
+  top: clamp(80px, 12vh, 120px);
+}
+
+.method-phase-card {
+display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: clamp(14px, 1.8vw, 20px) clamp(16px, 2vw, 24px);
+  background: rgba(18, 36, 64, 0.80);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: var(--radius-md, 10px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.30);
+  transition: border-color 240ms ease, box-shadow 240ms ease;
+}
+
+.method-phase-card:hover {
+border-color: rgba(56, 189, 248, 0.44);
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.40),
+    0 0 18px rgba(56, 189, 248, 0.08);
+}
+
+.method-phase-card__number {
+flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #b6f0ff 0%, #38bdf8 60%, #0ea5e9 100%);
+  color: #01111f;
+  font-size: 0.84rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 2px;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.36);
+}
+
+.method-phase-card__body {
+min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

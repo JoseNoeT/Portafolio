@@ -1,0 +1,63 @@
+/* static/css/components/buttons.css · module 03 */
+.btn-icon {
+padding: 10px;
+  border-radius: var(--radius-md);
+}
+
+.btn-icon.btn-sm {
+padding: 7px;
+}
+
+.btn-icon.btn-lg {
+padding: 14px;
+}
+
+.btn-block {
+width: 100%;
+}
+
+[data-theme="light"] .btn-primary,
+[data-theme="light"] .btn.btn-primary {
+box-shadow: 0 8px 24px rgba(16, 185, 129, 0.18);
+}
+
+[data-theme="light"] .btn-primary:hover,
+[data-theme="light"] .btn.btn-primary:hover {
+box-shadow: 0 12px 32px rgba(16, 185, 129, 0.25);
+}
+
+[data-theme="light"] .btn-outline,
+[data-theme="light"] .btn.btn-outline {
+color: var(--color-accent-strong);
+}
+
+[data-theme="light"] .btn-ghost,
+[data-theme="light"] .btn.btn-ghost {
+color: var(--color-body);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .btn-ghost:hover,
+[data-theme="light"] .btn.btn-ghost:hover {
+background: rgba(0, 0, 0, 0.04);
+  color: var(--color-heading);
+}
+
+[data-theme="light"] .btn-outline:hover,
+[data-theme="light"] .btn.btn-outline:hover {
+box-shadow: 0 6px 18px rgba(16, 185, 129, 0.15);
+}
+
+@media (max-width: 480px) {
+.btn {
+padding: 11px 22px;
+    font-size: 0.9rem;
+}
+}
+
+@media (max-width: 480px) {
+.btn-lg {
+padding: 14px 28px;
+    font-size: 0.98rem;
+}
+}

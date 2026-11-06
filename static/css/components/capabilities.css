@@ -1,0 +1,11 @@
+/* Canonical capabilities entrypoint. Ordered modules preserve cascade. */
+@import url("./capabilities/01-cards.css");
+@import url("./capabilities/02-section.css");
+@import url("./capabilities/03-motion.css");
+@import url("./capabilities/04-section.css");
+@import url("./capabilities/05-cards.css");
+@import url("./capabilities/06-cards.css");
+@import url("./capabilities/07-responsive.css");
+@import url("./capabilities/08-cards.css");
+@import url("./capabilities/09-section.css");
+@import url("./capabilities/10-responsive.css");

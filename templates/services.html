@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Servicios - Jose Noe{% endblock %}
+{% block title %}Servicios | José Miguel Noe Torres{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/pages/services.css' %}">
 {% endblock %}
 
 {% block hero %}
-    {% include "components/hero.html" with eyebrow="Servicios" title="Soluciones web con una base más clara, funcional y preparada para crecer" subtitle="Puedo aportar en desarrollo, mejora e implementación de proyectos web que necesiten más estructura, lógica funcional y una ejecución técnica más ordenada." %}
+    {% include "components/hero.html" with hero_class="hero--services" eyebrow="Servicios" title="Soluciones de software para necesidades reales" subtitle="Desarrollo y mejora de aplicaciones web, con requisitos, alcance y entregables definidos según la necesidad de cada proyecto." %}
 {% endblock %}
 
 {% block content %}
@@ -18,9 +18,9 @@
 <!-- 1. SERVICES CAROUSEL SECTION -->
 <section class="section-shell services-offer" id="services-list">
     <div class="container">
-        <header class="services-offer__header">
-            <h2 class="services-offer__title title-reveal">Qué puedo aportar a tu proyecto</h2>
-            <p class="services-offer__lead reveal">Desarrollo, organizo y mejoro soluciones web con una base técnica clara, funcional y preparada para crecer.</p>
+        <header class="services-offer__header section-header">
+            <h2 class="services-offer__title title-reveal section-title">Servicios de desarrollo de software</h2>
+            <p class="services-offer__lead reveal section-desc">Cada servicio parte de una necesidad concreta y delimita qué se implementará, qué se verificará y qué queda fuera del alcance.</p>
         </header>
 
         <div class="services-carousel" aria-label="Servicios disponibles">
@@ -31,7 +31,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                     </div>
                     <h3 class="services-carousel__title">Desarrollo backend</h3>
-                    <p class="services-carousel__text">Funcionalidades, lógica de negocio, autenticación, roles y conexión con bases de datos para proyectos que necesitan una estructura sólida y escalable.</p>
+                    <p class="services-carousel__text">Para aplicaciones que necesitan gestionar usuarios, datos o reglas de negocio. Implementación de funcionalidades backend; el alcance comprende los módulos y verificaciones acordados.</p>
                 </div>
                 <div class="services-carousel__media">
                     <img class="services-carousel__image" src="{% static 'img/services/serv2.png' %}" alt="Desarrollo backend" loading="lazy">
@@ -44,7 +44,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h8"/><path d="M12 8v8"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg>
                     </div>
                     <h3 class="services-carousel__title">Estructura e integración</h3>
-                    <p class="services-carousel__text">Organización de componentes, flujos y conexiones entre partes del sistema para dar claridad técnica y permitir el crecimiento del proyecto.</p>
+                    <p class="services-carousel__text">Para sistemas que necesitan conectar componentes o intercambiar datos. Revisión e implementación de conexiones, sujetas a los accesos, servicios existentes y requisitos acordados.</p>
                 </div>
                 <div class="services-carousel__media">
                     <img class="services-carousel__image" src="{% static 'img/services/serv3.png' %}" alt="Estructura e integración" loading="lazy">
@@ -57,7 +57,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L9 18l-5-5"/></svg>
                     </div>
                     <h3 class="services-carousel__title">Mejora de proyectos web</h3>
-                    <p class="services-carousel__text">Ajustes visuales, funcionales y estructurales para llevar proyectos existentes a un nivel más claro, estable y profesional.</p>
+                    <p class="services-carousel__text">Para aplicaciones con errores o funcionalidades por ajustar. Revisión del problema, correcciones delimitadas y comprobación de los cambios incluidos en el alcance.</p>
                 </div>
                 <div class="services-carousel__media">
                     <img class="services-carousel__image" src="{% static 'img/services/serv4.png' %}" alt="Mejora de proyectos web" loading="lazy">
@@ -73,9 +73,9 @@
     <div class="container">
         <div class="services-split__layout">
             <div class="services-split__content">
-                <h2 class="services-split__title title-reveal">Servicios pensados para construir con estructura</h2>
-                <p class="services-split__text reveal">No se trata solo de desarrollar pantallas. Mi enfoque está en crear funcionalidades claras, ordenar la lógica del sistema y construir una base técnica que pueda mantenerse, mejorar y crecer.</p>
-                <p class="services-split__text reveal">Cada parte del proyecto debe tener un propósito claro, una estructura coherente y una lógica que facilite las decisiones futuras del equipo o del cliente.</p>
+                <h2 class="services-split__title title-reveal section-title">Alcance y entregables acordados</h2>
+                <p class="services-split__text reveal section-desc">Antes de iniciar, se definen las funcionalidades, los requisitos, los accesos necesarios y los criterios para comprobar el trabajo.</p>
+                <p class="services-split__text reveal section-desc">Los entregables se acuerdan según el servicio: código de los cambios, instrucciones necesarias y evidencias de las verificaciones realizadas.</p>
             </div>
             <div class="services-split__visual reveal">
                 <img class="services-split__image" src="{% static 'img/services/serv1.png' %}" alt="Servicios web con estructura técnica" loading="lazy">
@@ -89,8 +89,8 @@
     <div class="container">
         <div class="services-approach__layout">
             <div class="services-approach__content">
-                <h2 class="services-approach__title title-reveal">Enfoque de trabajo</h2>
-                <p class="services-approach__lead reveal">Primero entiendo la necesidad real del proyecto. Después ordeno la estructura, defino una base clara y desarrollo con criterio técnico para que la solución no solo funcione, sino que pueda mantenerse y evolucionar.</p>
+                <h2 class="services-approach__title title-reveal section-title">Enfoque de trabajo</h2>
+                <p class="services-approach__lead reveal section-desc">Reviso la necesidad y el sistema existente, delimito el trabajo y organizo su implementación. Los cambios se comprueban frente a los requisitos acordados.</p>
                 <ol class="services-approach__steps">
                     <li class="services-approach__step reveal">
                         <span class="services-approach__badge" aria-hidden="true">1</span>
@@ -98,15 +98,15 @@
                     </li>
                     <li class="services-approach__step reveal">
                         <span class="services-approach__badge" aria-hidden="true">2</span>
-                        <span class="services-approach__step-text">Ordenar la estructura</span>
+                        <span class="services-approach__step-text">Definir alcance y entregables</span>
                     </li>
                     <li class="services-approach__step reveal">
                         <span class="services-approach__badge" aria-hidden="true">3</span>
-                        <span class="services-approach__step-text">Desarrollar con criterio</span>
+                        <span class="services-approach__step-text">Implementar funcionalidades</span>
                     </li>
                     <li class="services-approach__step reveal">
                         <span class="services-approach__badge" aria-hidden="true">4</span>
-                        <span class="services-approach__step-text">Revisar y mejorar</span>
+                        <span class="services-approach__step-text">Comprobar los cambios</span>
                     </li>
                 </ol>
             </div>
@@ -121,10 +121,10 @@
 <section class="section-shell section-shell--accent services-cta">
     <div class="container">
         <div class="services-cta__band">
-            <h2 class="services-cta__title reveal">¿Tienes un proyecto que necesita más estructura o una mejor implementación?</h2>
-            <p class="services-cta__text reveal">Puedo ayudarte a revisar una idea, mejorar una base existente o avanzar en una solución web con una lógica más clara y profesional.</p>
+            <h2 class="services-cta__title reveal section-title">¿Necesitas desarrollar o mejorar una aplicación?</h2>
+            <p class="services-cta__text reveal section-desc">Describe el problema, el estado actual de la aplicación y el resultado esperado para evaluar el alcance del servicio.</p>
             <div class="services-cta__actions reveal">
-                <a href="{% url 'contact' %}" class="btn btn-primary">Contactar</a>
+                <a href="{% url 'contact' %}" class="btn btn-primary">Consultar sobre un proyecto</a>
                 <a href="{% url 'projects_list' %}" class="btn btn-outline">Ver proyectos</a>
             </div>
         </div>

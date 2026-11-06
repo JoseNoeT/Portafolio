@@ -1,0 +1,39 @@
+{% load static %}
+<section class="section-shell section-shell--accent closing-cta" role="region" aria-label="Contacto profesional" data-lazy-bg="{% static 'img/contact/contact-bg.webp' %}">
+    <div class="container">
+        <div class="cta-band cta-band--accent closing-cta__panel">
+            <div class="closing-cta__status reveal">
+                <span class="closing-cta__pulse" aria-hidden="true"></span>
+                Disponible para oportunidades
+            </div>
+
+            <h2 class="cta-band__title closing-cta__title reveal section-title">
+                Contacto para <span>oportunidades y proyectos</span>
+            </h2>
+
+            <div class="closing-cta__focus reveal" aria-label="Áreas de interés">
+                <span>Desarrollo Full Stack</span>
+                <i aria-hidden="true"></i>
+                <span>Datos e Integración</span>
+                <i aria-hidden="true"></i>
+                <span>Desarrollo backend</span>
+            </div>
+
+            <p class="cta-band__text closing-cta__text reveal">Para oportunidades laborales, puedes consultar mi currículum y mis proyectos. Para servicios independientes, escríbeme con la necesidad de tu organización y el alcance previsto.</p>
+
+            <div class="cta-band__actions closing-cta__actions reveal">
+                <a href="{% url 'contact' %}" class="btn btn-primary closing-cta__primary motion-cta">Contactar</a>
+                {% if cv_url %}
+                <a href="{{ cv_url }}" class="btn btn-outline" download="CV_Jose_Noe.pdf">Descargar CV</a>
+                {% endif %}
+                <a href="https://github.com/JoseNoeT" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Ver GitHub</a>
+            </div>
+
+            <div class="closing-cta__meta reveal">
+                <span>Santiago, Chile</span>
+                <span aria-hidden="true">·</span>
+                <span>Remoto / Híbrido</span>
+            </div>
+        </div>
+    </div>
+</section>

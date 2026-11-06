@@ -1,0 +1,66 @@
+.hero {
+position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero.hero-page {
+--hero-bg-1: #01050d;
+    --hero-bg-2: #020914;
+    --hero-bg-3: #06142b;
+    --hero-bg-4: #01050d;
+
+    --hero-cyan-1: rgba(90, 220, 255, 0.10);
+    --hero-cyan-2: rgba(46, 160, 255, 0.08);
+    --hero-cyan-3: rgba(120, 225, 255, 0.05);
+
+    --hero-grid-line: rgba(180, 220, 255, 0.03);
+    --hero-vignette: rgba(0, 0, 0, 0.82);
+
+    --hero-panel-top: rgba(17, 28, 52, 0.48);
+    --hero-panel-bottom: rgba(5, 10, 22, 0.72);
+    --hero-panel-border: rgba(255, 255, 255, 0.16);
+    --hero-panel-inner: rgba(255, 255, 255, 0.05);
+    --hero-panel-glow: rgba(69, 190, 255, 0.12);
+
+    width: 100%;
+    max-width: 1400px;
+    min-height: 230px;
+    margin: 0 auto;
+    padding: calc(var(--navbar-height, 78px) + 26px) 28px 34px;
+
+    border-radius: var(--radius-xl, 32px);
+    isolation: isolate;
+    z-index: 10;
+
+    background:
+        radial-gradient(
+            circle at 15% 25%,
+            rgba(56, 189, 248, 0.07) 0%,
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(90, 220, 255, 0.06) 0%,
+            transparent 26%
+        ),
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(120, 225, 255, 0.04) 0%,
+            transparent 18%
+        ),
+        linear-gradient(
+            145deg,
+            var(--hero-bg-1) 0%,
+            var(--hero-bg-2) 38%,
+            var(--hero-bg-3) 68%,
+            var(--hero-bg-4) 100%
+        );
+
+    box-shadow:
+        0 26px 60px rgba(0, 0, 0, 0.52),
+        0 0 0 1px rgba(120, 186, 255, 0.04) inset,
+        0 0 24px rgba(30, 144, 255, 0.03);
+}

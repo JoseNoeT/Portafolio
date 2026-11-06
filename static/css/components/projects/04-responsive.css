@@ -1,0 +1,81 @@
+@media (max-width: 700px) {
+.project-slide {
+width: 82vw;
+        max-width: 350px;
+}
+}
+
+@media (max-width: 700px) {
+.portfolio-swiper .swiper-button-prev,
+.portfolio-swiper .swiper-button-next {
+display: none;
+}
+}
+
+.panorama-card {
+position: relative;
+    isolation: isolate;
+    transform-style: preserve-3d;
+    background: var(--glass-bg);
+    border-color: rgba(56, 189, 248, 0.28);
+    transition: opacity 0.45s ease, transform 0.18s ease-out,
+                border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panorama-card::before {
+content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: 5;
+    padding: 1.5px;
+    border-radius: inherit;
+    background: conic-gradient(
+        from var(--edge-angle, 0deg),
+        transparent 0deg 292deg,
+        rgba(14, 165, 233, 0.15) 304deg,
+        #38bdf8 320deg,
+        #e0f7ff 326deg,
+        #38bdf8 332deg,
+        rgba(14, 165, 233, 0.15) 346deg,
+        transparent 360deg
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+                  linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.72;
+    animation: panorama-edge-orbit 5.5s linear infinite;
+}
+
+.panorama-card::after {
+content: "";
+    position: absolute;
+    inset: -5px;
+    z-index: -1;
+    border-radius: 26px;
+    pointer-events: none;
+    transition: box-shadow 0.3s ease;
+}
+
+.swiper-slide-active .panorama-card {
+border-color: rgba(56, 189, 248, 0.48);
+    box-shadow: 0 22px 58px rgba(0, 0, 0, 0.32),
+                0 0 18px rgba(14, 165, 233, 0.10);
+}
+
+.swiper-slide-active .panorama-card::before {
+opacity: 1;
+    animation-duration: 3.8s;
+}
+
+.panorama-card:hover {
+border-color: rgba(56, 189, 248, 0.72);
+    box-shadow: 0 26px 64px rgba(0, 0, 0, 0.36),
+                0 0 22px rgba(14, 165, 233, 0.18);
+}
+
+.panorama-card:hover::after {
+box-shadow: 0 0 14px rgba(56, 189, 248, 0.18),
+                0 0 30px rgba(14, 165, 233, 0.08);
+}

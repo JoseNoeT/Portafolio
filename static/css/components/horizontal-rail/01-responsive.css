@@ -1,0 +1,50 @@
+@media (max-width: 768px) {
+.mobile-horizontal-hint {
+position: relative;
+}
+}
+
+@media (max-width: 768px) {
+.mobile-horizontal-hint::before {
+content: "Desliza →";
+    position: absolute;
+    right: 10px;
+    top: -18px;
+    z-index: 6;
+    color: rgba(125, 211, 252, .82);
+    font-size: .58rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: opacity .3s ease, transform .3s ease;
+}
+}
+
+@media (max-width: 768px) {
+.mobile-horizontal-hint.is-hint-visible::before {
+opacity: 1;
+    transform: translateX(0);
+}
+}
+
+@media (max-width: 768px) {
+.mobile-horizontal-hint.is-hint-done::before {
+opacity: 0;
+    transform: translateX(5px);
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.mobile-horizontal-hint {
+scroll-behavior: auto !important;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.mobile-horizontal-hint::before {
+transition: none !important;
+}
+}

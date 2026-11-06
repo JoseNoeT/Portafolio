@@ -1,0 +1,83 @@
+@media (prefers-reduced-motion: reduce) {
+#methodology .methodology-step,
+#methodology .methodology-step__number,
+#methodology .methodology-slide,
+#methodology .methodology-slide__caption {
+transition: none !important;
+}
+}
+
+.methodology-story-mobile {
+display: none;
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-steps,
+#methodology .methodology-slider {
+display: none !important;
+}
+}
+
+@media (max-width: 768px) {
+#methodology .methodology-content {
+width: 100%;
+    max-width: none !important;
+}
+}
+
+@media (max-width: 768px) {
+.methodology-story-mobile {
+display: block;
+    width: 100%;
+    min-width: 0;
+    margin-top: 8px;
+}
+}
+
+@media (max-width: 768px) {
+.methodology-story-mobile__track {
+display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(86vw, 390px);
+    gap: 14px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 12px 10px 4px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 4px;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+}
+
+@media (max-width: 768px) {
+.methodology-story-mobile__track::-webkit-scrollbar {
+display: none;
+}
+}
+
+@media (max-width: 768px) {
+.methodology-story-card {
+min-width: 0;
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 12px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    opacity: .76;
+    transform: scale(.985);
+    transition:
+      opacity .34s ease,
+      transform .46s cubic-bezier(.2,.8,.2,1);
+}
+}
+
+@media (max-width: 768px) {
+.methodology-story-card.is-active {
+opacity: 1;
+    transform: scale(1);
+}
+}
